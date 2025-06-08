@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kết quả thanh toán VNPAY</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- SweetAlert2 CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.32/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.32/dist/sweetalert2.all.min.js"></script>
+</head>
+<body>
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="text-center mb-4">Kết quả thanh toán</h3>
+                        <div id="paymentResult">
+                            <!-- Kết quả thanh toán sẽ được hiển thị ở đây -->
+                        </div>
+                        <div class="text-center mt-4">
+                            <a href="/member.html" class="btn btn-primary">Quay lại trang chủ</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module">
+        // Import Firebase modules
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+        import { getDatabase, ref, set, get } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
+
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyBxtxHc0J2y4RTPZ5msgygaJYFG8bhyzJE",
+            authDomain: "jobquest-29445.firebaseapp.com",
+            databaseURL: "https://jobquest-29445-default-rtdb.firebaseio.com",
+            projectId: "jobquest-29445",
+            storageBucket: "jobquest-29445.firebasestorage.app",
+            messagingSenderId: "792726027474",
+            appId: "1:792726027474:web:7372c0490c5d7390ebc10b",
+            measurementId: "G-3XJ0EENTDJ"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const database = getDatabase(app);
+
+        // Hàm xử lý kết quả thanh toán
+        async function handlePaymentResult() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const vnp_ResponseCode = urlParams.get('vnp_ResponseCode');
+            const vnp_TransactionNo = urlParams.get('vnp_TransactionNo');
+            const vnp_TransactionStatus = urlParams.get('vnp_TransactionStatus');
+            const vnp_TxnRef = urlParams.get('vnp_TxnRef');
+            const vnp_Amount = urlParams.get('vnp_Amount');
+            const vnp_OrderInfo = urlParams.get('vnp_OrderInfo');
+            const vnp_BankCode = urlParams.get('vnp_BankCode');
+            const vnp_PayDate = urlParams.get('vnp_PayDate');
+
+            const resultDiv = document.getElementById('paymentResult');
+            const amount = parseInt(vnp_Amount) / 100; // Chuyển về số tiền gốc
+
+            // Kiểm tra đăng nhập
+            onAuthStateChanged(auth, async function(user) {
+                if (!user) {
+                    resultDiv.innerHTML = `
+                        <div class="alert alert-danger">
+                            Vui lòng đăng nhập để xem kết quả thanh toán.
+                        </div>
+                    `;
+                    return;
+                }
+
+                // Nếu thanh toán thành công, cập nhật số dư và trạng thái giao dịch
+                if (vnp_ResponseCode === '00' && vnp_TransactionStatus === '00') {
+                    try {
+                        // Lấy số dư hiện tại
+                        const balanceRef = ref(database, `users/${user.uid}/balance`);
+                        const balanceSnapshot = await get(balanceRef);
+                        const currentBalance = balanceSnapshot.val() || 0;
+
+                        // Cập nhật số dư mới (chỉ cộng thêm số tiền vừa nạp)
+                        const newBalance = currentBalance + amount;
+                        await set(balanceRef, newBalance);
+
+                        // Cập nhật trạng thái giao dịch trong lịch sử của user
+                        const userTransactionRef = ref(database, `users/${user.uid}/transactions/${vnp_TxnRef}`);
+                        const transactionData = {
+                            amount: amount,
+                            bankCode: vnp_BankCode,
+                            completedAt: vnp_PayDate,
+                            createdAt: vnp_PayDate,
+                            orderInfo: vnp_OrderInfo,
+                            paymentMethod: 'vnpay',
+                            responseCode: vnp_ResponseCode,
+                            status: 'completed',
+                            transactionNo: vnp_TransactionNo,
+                            transactionStatus: vnp_TransactionStatus,
+                            type: 'deposit'
+                        };
+
+                        // Cập nhật trạng thái giao dịch
+                        await set(userTransactionRef, transactionData);
+
+                        // Hiển thị kết quả thành công
+                        let resultHTML = `
+                            <div class="table-responsive">
+                                <table class="table table-bordered">
+                                    <tr>
+                                        <th>Mã giao dịch:</th>
+                                        <td>${vnp_TxnRef}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Số tiền nạp:</th>
+                                        <td>${amount.toLocaleString('vi-VN')} VND</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Nội dung thanh toán:</th>
+                                        <td>${vnp_OrderInfo}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Mã ngân hàng:</th>
+                                        <td>${vnp_BankCode || 'N/A'}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Thời gian thanh toán:</th>
+                                        <td>${vnp_PayDate ? formatDate(vnp_PayDate) : 'N/A'}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Mã giao dịch VNPAY:</th>
+                                        <td>${vnp_TransactionNo || 'N/A'}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Trạng thái:</th>
+                                        <td><span class="badge bg-success">Thành công</span></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Số dư mới:</th>
+                                        <td>${newBalance.toLocaleString('vi-VN')} VND</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        `;
+                        resultDiv.innerHTML = resultHTML;
+
+                        // Hiển thị thông báo thành công
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Thanh toán thành công!',
+                            text: `Số tiền nạp: ${amount.toLocaleString('vi-VN')} VND\nSố dư mới: ${newBalance.toLocaleString('vi-VN')} VND`,
+                            showConfirmButton: true
+                        });
+                    } catch (error) {
+                        console.error('Error updating transaction:', error);
+                        resultDiv.innerHTML = `
+                            <div class="alert alert-danger">
+                                Có lỗi xảy ra khi cập nhật giao dịch. Vui lòng liên hệ hỗ trợ.
+                            </div>
+                        `;
+                    }
+                } else {
+                    // Cập nhật trạng thái giao dịch thất bại
+                    try {
+                        const userTransactionRef = ref(database, `users/${user.uid}/transactions/${vnp_TxnRef}`);
+                        const transactionData = {
+                            amount: amount,
+                            bankCode: vnp_BankCode,
+                            completedAt: vnp_PayDate,
+                            createdAt: vnp_PayDate,
+                            orderInfo: vnp_OrderInfo,
+                            paymentMethod: 'vnpay',
+                            responseCode: vnp_ResponseCode,
+                            status: 'failed',
+                            transactionNo: vnp_TransactionNo,
+                            transactionStatus: vnp_TransactionStatus,
+                            type: 'deposit'
+                        };
+
+                        // Cập nhật trạng thái giao dịch
+                        await set(userTransactionRef, transactionData);
+
+                        // Hiển thị kết quả thất bại
+                        let resultHTML = `
+                            <div class="table-responsive">
+                                <table class="table table-bordered">
+                                    <tr>
+                                        <th>Mã giao dịch:</th>
+                                        <td>${vnp_TxnRef}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Số tiền:</th>
+                                        <td>${amount.toLocaleString('vi-VN')} VND</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Nội dung thanh toán:</th>
+                                        <td>${vnp_OrderInfo}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Mã ngân hàng:</th>
+                                        <td>${vnp_BankCode || 'N/A'}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Thời gian thanh toán:</th>
+                                        <td>${vnp_PayDate ? formatDate(vnp_PayDate) : 'N/A'}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Mã giao dịch VNPAY:</th>
+                                        <td>${vnp_TransactionNo || 'N/A'}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Trạng thái:</th>
+                                        <td><span class="badge bg-danger">Thất bại</span></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        `;
+                        resultDiv.innerHTML = resultHTML;
+
+                        // Hiển thị thông báo thất bại
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Thanh toán thất bại!',
+                            text: 'Vui lòng thử lại sau.',
+                            showConfirmButton: true
+                        });
+                    } catch (error) {
+                        console.error('Error updating transaction:', error);
+                        resultDiv.innerHTML = `
+                            <div class="alert alert-danger">
+                                Có lỗi xảy ra khi cập nhật giao dịch. Vui lòng liên hệ hỗ trợ.
+                            </div>
+                        `;
+                    }
+                }
+            });
+        }
+
+        // Hàm format ngày giờ
+        function formatDate(dateString) {
+            if (!dateString) return 'N/A';
+            const year = dateString.substring(0, 4);
+            const month = dateString.substring(4, 6);
+            const day = dateString.substring(6, 8);
+            const hour = dateString.substring(8, 10);
+            const minute = dateString.substring(10, 12);
+            const second = dateString.substring(12, 14);
+            return `${day}/${month}/${year} ${hour}:${minute}:${second}`;
+        }
+
+        // Gọi hàm xử lý kết quả khi trang được load
+        handlePaymentResult();
+    </script>
+</body>
+</html> 
