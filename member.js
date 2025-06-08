@@ -621,9 +621,6 @@
                                 <a href="#" class="list-group-item list-group-item-action" data-section="messageManagement">
                                     <i class="fas fa-envelope me-2"></i> Tin nhắn
                                 </a>
-                                <a href="#" class="list-group-item list-group-item-action" data-section="notificationManagement">
-                                    <i class="fas fa-bell me-2"></i> Thông báo
-                                </a>
                                 <a href="#" class="list-group-item list-group-item-action" data-section="reportManagement">
                                     <i class="fas fa-chart-bar me-2"></i> Báo cáo thống kê
                                 </a>
