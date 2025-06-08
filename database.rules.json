@@ -1,6 +1,7 @@
 {
   "rules": {
     ".read": "auth != null",
+    ".write": "auth != null",
     "users": {
       "$userId": {
         ".write": "auth != null && auth.uid === $userId",
@@ -59,13 +60,24 @@
       }
     },
     "messages": {
-      "$conversationId": {
-        ".read": "auth != null && (data.child('senderId').val() === auth.uid || data.child('receiverId').val() === auth.uid)",
-        ".write": "auth != null && (data.child('senderId').val() === auth.uid || data.child('receiverId').val() === auth.uid)",
-        "$messageId": {
-          ".validate": "newData.hasChildren(['senderId', 'content', 'timestamp'])",
-          "senderId": {
-            ".validate": "newData.val() === auth.uid"
+      "$jobId": {
+        "$candidateId": {
+          ".read": "auth != null && (root.child('jobs').child($jobId).child('employerId').val() === auth.uid || $candidateId === auth.uid)",
+          ".write": "auth != null && (root.child('jobs').child($jobId).child('employerId').val() === auth.uid || ($candidateId === auth.uid && root.child('applications').child($jobId).child($candidateId).child('status').val() === 'accepted'))",
+          "$messageId": {
+            ".validate": "newData.hasChildren(['senderId', 'text', 'timestamp', 'isRead'])",
+            "senderId": {
+              ".validate": "newData.val() === auth.uid"
+            },
+            "text": {
+              ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 1000"
+            },
+            "timestamp": {
+              ".validate": "newData.val() === now"
+            },
+            "isRead": {
+              ".validate": "newData.isBoolean()"
+            }
           }
         }
       }

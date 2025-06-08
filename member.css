@@ -494,4 +494,171 @@ footer a:hover, .social-links a:hover {
   .navbar .nav-item.dropdown:hover .dropdown-toggle::after {
     transform: rotate(180deg);
   }
+}
+
+/* Styles cho phần tin nhắn */
+.conversation-item {
+    padding: 12px 15px;
+    border-left: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.conversation-item:hover {
+    background-color: #f8f9fa;
+    border-left-color: #0d6efd;
+}
+
+.conversation-item.active {
+    background-color: #e9ecef;
+    border-left-color: #0d6efd;
+}
+
+.conversation-item h6 {
+    margin-bottom: 2px;
+    font-size: 0.95rem;
+}
+
+.conversation-item p {
+    color: #6c757d;
+    font-size: 0.85rem;
+    margin-bottom: 0;
+}
+
+.conversation-item .unread-count {
+    background: #0d6efd;
+    color: white;
+    padding: 2px 6px;
+    border-radius: 10px;
+    font-size: 0.75rem;
+}
+
+/* Styles cho tin nhắn */
+.messages-container {
+    height: 400px;
+    overflow-y: auto;
+    padding: 1rem;
+    background: #f8f9fa;
+}
+
+.message {
+    display: flex;
+    margin-bottom: 1rem;
+    max-width: 80%;
+}
+
+.message-sent {
+    margin-left: auto;
+    flex-direction: row-reverse;
+}
+
+.message-received {
+    margin-right: auto;
+}
+
+.message-content {
+    padding: 8px 12px;
+    border-radius: 15px;
+    position: relative;
+}
+
+.message-sent .message-content {
+    background-color: #0d6efd;
+    color: white;
+    border-bottom-right-radius: 5px;
+}
+
+.message-received .message-content {
+    background-color: #e9ecef;
+    color: #212529;
+    border-bottom-left-radius: 5px;
+}
+
+.message-text {
+    font-size: 0.95rem;
+    line-height: 1.4;
+    word-wrap: break-word;
+}
+
+.message-time {
+    font-size: 0.75rem;
+    margin-top: 4px;
+    opacity: 0.8;
+}
+
+.message-sent .message-time {
+    text-align: right;
+    color: #dee2e6;
+}
+
+.message-received .message-time {
+    color: #6c757d;
+}
+
+/* Input tin nhắn */
+.message-input-container {
+    background: white;
+    border-top: 1px solid #dee2e6;
+    padding: 1rem;
+}
+
+.message-input-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.message-input {
+    flex: 1;
+    border: 1px solid #dee2e6;
+    border-radius: 20px;
+    padding: 8px 15px;
+    font-size: 0.95rem;
+    transition: all 0.2s ease;
+}
+
+.message-input:focus {
+    outline: none;
+    border-color: #0d6efd;
+    box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+}
+
+.send-button {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #0d6efd;
+    color: white;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.send-button:hover {
+    background: #0b5ed7;
+    transform: scale(1.05);
+}
+
+.send-button:active {
+    transform: scale(0.95);
+}
+
+/* Scrollbar tùy chỉnh */
+.messages-container::-webkit-scrollbar {
+    width: 6px;
+}
+
+.messages-container::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.messages-container::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 3px;
+}
+
+.messages-container::-webkit-scrollbar-thumb:hover {
+    background: #555;
 } 
