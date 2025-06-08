@@ -2,7 +2,7 @@
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
     import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-analytics.js";
     import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, sendPasswordResetEmail, signOut, onAuthStateChanged, updateProfile } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
-    import { getDatabase, ref, set, onValue, query, orderByChild, equalTo, limitToFirst, get, update } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
+    import { getDatabase, ref, set, onValue, query, orderByChild, equalTo, limitToFirst, get, update, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
 
     // Your web app's Firebase configuration
     const firebaseConfig = {
@@ -40,7 +40,8 @@
         equalTo,
         limitToFirst,
         get,
-        update
+        update,
+        serverTimestamp
     };
 
     // VNPAY configuration
@@ -1301,13 +1302,214 @@
         }
 
         function loadMessages(userId) {
-            // Placeholder cho load tin nhắn
-            document.getElementById('conversationsList').innerHTML = `
-                <div class="text-center text-muted py-4">
-                    <i class="fas fa-comments fa-3x mb-3"></i>
-                    <p>Chức năng đang được phát triển</p>
+            const { database, ref, get, query, orderByChild, equalTo, onValue } = window.firebase;
+            const conversationsList = document.getElementById('conversationsList');
+            const messagesList = document.getElementById('messagesList');
+            const messageInput = document.getElementById('messageInput');
+            const sendMessageBtn = document.getElementById('sendMessageBtn');
+            
+            // Đầu tiên, lấy danh sách tin tuyển dụng của nhà tuyển dụng
+            const jobsRef = ref(database, 'jobs');
+            const jobsQuery = query(jobsRef, orderByChild('employerId'), equalTo(userId));
+            
+            get(jobsQuery).then(async (jobsSnapshot) => {
+                if (!jobsSnapshot.exists()) {
+                    conversationsList.innerHTML = `
+                        <div class="text-center text-muted py-4">
+                            <i class="fas fa-comments fa-3x mb-3"></i>
+                            <p>Chưa có tin nhắn nào</p>
+                        </div>
+                    `;
+                    return;
+                }
+
+                // Lấy tất cả ứng viên đã được duyệt từ các tin tuyển dụng
+                const approvedCandidates = [];
+                const jobs = [];
+                jobsSnapshot.forEach((jobSnapshot) => {
+                    const job = jobSnapshot.val();
+                    job.id = jobSnapshot.key;
+                    jobs.push(job);
+                });
+
+                // Lấy danh sách ứng viên được duyệt cho mỗi tin
+                for (const job of jobs) {
+                    const applicationsRef = ref(database, `applications/${job.id}`);
+                    const applicationsSnapshot = await get(applicationsRef);
+                    
+                    if (applicationsSnapshot.exists()) {
+                        applicationsSnapshot.forEach((applicationSnapshot) => {
+                            const application = applicationSnapshot.val();
+                            if (application.status === 'accepted') {
+                                approvedCandidates.push({
+                                    candidateId: application.candidateId,
+                                    candidateName: application.candidateName,
+                                    candidateEmail: application.candidateEmail,
+                                    jobId: job.id,
+                                    jobTitle: job.title,
+                                    appliedAt: application.appliedAt
+                                });
+                            }
+                        });
+                    }
+                }
+
+                if (approvedCandidates.length === 0) {
+                    conversationsList.innerHTML = `
+                        <div class="text-center text-muted py-4">
+                            <i class="fas fa-comments fa-3x mb-3"></i>
+                            <p>Chưa có ứng viên nào được duyệt</p>
+                        </div>
+                    `;
+                    return;
+                }
+
+                // Hiển thị danh sách ứng viên được duyệt
+                conversationsList.innerHTML = approvedCandidates.map(candidate => `
+                    <a href="#" class="list-group-item list-group-item-action conversation-item" 
+                       data-candidate-id="${candidate.candidateId}"
+                       data-job-id="${candidate.jobId}">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h6 class="mb-1">${candidate.candidateName}</h6>
+                            <small class="text-muted unread-count"></small>
+                        </div>
+                        <p class="mb-1 small text-truncate">${candidate.jobTitle}</p>
+                        <small class="text-muted">
+                            <i class="fas fa-clock me-1"></i>${moment(candidate.appliedAt).fromNow()}
+                        </small>
+                    </a>
+                `).join('');
+
+                // Xử lý sự kiện click vào hội thoại
+                const conversationItems = document.querySelectorAll('.conversation-item');
+                conversationItems.forEach(item => {
+                    item.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        
+                        // Remove active class from all items
+                        conversationItems.forEach(i => i.classList.remove('active'));
+                        // Add active class to clicked item
+                        this.classList.add('active');
+
+                        const candidateId = this.dataset.candidateId;
+                        const jobId = this.dataset.jobId;
+                        
+                        // Load tin nhắn của hội thoại được chọn
+                        loadConversationMessages(userId, candidateId, jobId);
+                    });
+                });
+
+                // Xử lý gửi tin nhắn
+                sendMessageBtn.onclick = function() {
+                    const activeConversation = document.querySelector('.conversation-item.active');
+                    if (!activeConversation || !messageInput.value.trim()) return;
+
+                    const candidateId = activeConversation.dataset.candidateId;
+                    const jobId = activeConversation.dataset.jobId;
+                    const messageText = messageInput.value.trim();
+
+                    // Tạo tin nhắn mới
+                    const messagesRef = ref(database, `messages/${jobId}/${candidateId}`);
+                    const newMessageRef = ref(database, `messages/${jobId}/${candidateId}/${Date.now()}`);
+                    set(newMessageRef, {
+                        senderId: userId,
+                        text: messageText,
+                        timestamp: serverTimestamp(), // Sử dụng server timestamp
+                        isRead: false
+                    }).then(() => {
+                        messageInput.value = '';
+                        messageInput.focus();
+                    }).catch(error => {
+                        console.error('Error sending message:', error);
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Lỗi!',
+                            text: 'Không thể gửi tin nhắn.'
+                        });
+                    });
+                };
+
+                // Xử lý gửi tin nhắn khi nhấn Enter
+                messageInput.onkeypress = function(e) {
+                    if (e.key === 'Enter') {
+                        e.preventDefault();
+                        sendMessageBtn.click();
+                    }
+                };
+            }).catch(error => {
+                console.error('Error loading messages:', error);
+                conversationsList.innerHTML = `
+                    <div class="alert alert-danger">
+                        Có lỗi xảy ra khi tải tin nhắn
+                    </div>
+                `;
+            });
+        }
+
+        // Hàm load tin nhắn của một hội thoại
+        function loadConversationMessages(userId, candidateId, jobId) {
+            const { database, ref, onValue } = window.firebase;
+            const messagesList = document.getElementById('messagesList');
+            const messagesRef = ref(database, `messages/${jobId}/${candidateId}`);
+
+            // Hiển thị loading
+            messagesList.innerHTML = `
+                <div class="text-center py-4">
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">Đang tải...</span>
+                    </div>
                 </div>
             `;
+
+            onValue(messagesRef, (snapshot) => {
+                if (!snapshot.exists()) {
+                    messagesList.innerHTML = `
+                        <div class="text-center text-muted py-4">
+                            <p>Chưa có tin nhắn nào</p>
+                            <small>Hãy bắt đầu cuộc trò chuyện</small>
+                        </div>
+                    `;
+                    return;
+                }
+
+                const messages = [];
+                snapshot.forEach((childSnapshot) => {
+                    messages.push({
+                        id: childSnapshot.key,
+                        ...childSnapshot.val()
+                    });
+                });
+
+                // Sắp xếp tin nhắn theo thời gian
+                messages.sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
+
+                messagesList.innerHTML = messages.map(message => `
+                    <div class="message ${message.senderId === userId ? 'message-sent' : 'message-received'} mb-3">
+                        <div class="message-content">
+                            <div class="message-text">${message.text}</div>
+                            <div class="message-time small text-muted">
+                                ${moment(message.timestamp).format('HH:mm DD/MM/YYYY')}
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+
+                // Scroll to bottom
+                messagesList.scrollTop = messagesList.scrollHeight;
+
+                // Đánh dấu tin nhắn đã đọc
+                if (messages.length > 0) {
+                    const updates = {};
+                    messages.forEach(message => {
+                        if (message.senderId !== userId && !message.isRead) {
+                            updates[`messages/${jobId}/${candidateId}/${message.id}/isRead`] = true;
+                        }
+                    });
+                    if (Object.keys(updates).length > 0) {
+                        update(ref(database), updates);
+                    }
+                }
+            });
         }
 
         function loadNotifications(userId) {
@@ -1387,12 +1589,213 @@
         }
 
         function loadCandidateMessages(userId) {
-            document.getElementById('candidateConversationsList').innerHTML = `
-                <div class="text-center text-muted py-4">
-                    <i class="fas fa-comments fa-3x mb-3"></i>
-                    <p>Chưa có tin nhắn</p>
+            const { database, ref, get, query, orderByChild, equalTo, onValue } = window.firebase;
+            const conversationsList = document.getElementById('candidateConversationsList');
+            const messagesList = document.getElementById('candidateMessagesList');
+            const messageInput = document.getElementById('candidateMessageInput');
+            const sendMessageBtn = document.getElementById('candidateSendMessageBtn');
+
+            // Lấy danh sách các công việc mà ứng viên đã được duyệt
+            const applicationsRef = ref(database, 'applications');
+            
+            // Tìm tất cả applications của ứng viên này
+            get(query(applicationsRef)).then(async (snapshot) => {
+                const approvedJobs = [];
+                
+                if (snapshot.exists()) {
+                    // Duyệt qua tất cả jobs
+                    snapshot.forEach((jobSnapshot) => {
+                        const jobId = jobSnapshot.key;
+                        // Duyệt qua tất cả applications trong job
+                        jobSnapshot.forEach((appSnapshot) => {
+                            const application = appSnapshot.val();
+                            // Kiểm tra nếu là application của user hiện tại và đã được duyệt
+                            if (application.candidateId === userId && application.status === 'accepted') {
+                                approvedJobs.push({
+                                    jobId: jobId,
+                                    ...application
+                                });
+                            }
+                        });
+                    });
+                }
+
+                if (approvedJobs.length === 0) {
+                    conversationsList.innerHTML = `
+                        <div class="text-center text-muted py-4">
+                            <i class="fas fa-comments fa-3x mb-3"></i>
+                            <p>Chưa có tin nhắn nào</p>
+                            <small>Bạn sẽ nhận được tin nhắn khi được duyệt ứng tuyển</small>
+                        </div>
+                    `;
+                    return;
+                }
+
+                // Lấy thông tin chi tiết của từng job
+                const jobDetails = await Promise.all(approvedJobs.map(async (job) => {
+                    const jobRef = ref(database, `jobs/${job.jobId}`);
+                    const jobSnapshot = await get(jobRef);
+                    const jobData = jobSnapshot.val();
+                    
+                    // Lấy thông tin nhà tuyển dụng
+                    const employerRef = ref(database, `users/${jobData.employerId}`);
+                    const employerSnapshot = await get(employerRef);
+                    const employerData = employerSnapshot.val();
+
+                    return {
+                        ...job,
+                        jobTitle: jobData.title,
+                        employerName: employerData.name || employerData.email,
+                        employerId: jobData.employerId
+                    };
+                }));
+
+                // Hiển thị danh sách hội thoại
+                conversationsList.innerHTML = jobDetails.map(job => `
+                    <a href="#" class="list-group-item list-group-item-action conversation-item" 
+                       data-job-id="${job.jobId}"
+                       data-employer-id="${job.employerId}">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h6 class="mb-1">${job.jobTitle}</h6>
+                            <small class="text-muted unread-count"></small>
+                        </div>
+                        <p class="mb-1 small text-truncate">${job.employerName}</p>
+                        <small class="text-muted">
+                            <i class="fas fa-clock me-1"></i>${moment(job.appliedAt).fromNow()}
+                        </small>
+                    </a>
+                `).join('');
+
+                // Xử lý sự kiện click vào hội thoại
+                const conversationItems = document.querySelectorAll('#candidateConversationsList .conversation-item');
+                conversationItems.forEach(item => {
+                    item.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        
+                        // Remove active class from all items
+                        conversationItems.forEach(i => i.classList.remove('active'));
+                        // Add active class to clicked item
+                        this.classList.add('active');
+
+                        const jobId = this.dataset.jobId;
+                        
+                        // Load tin nhắn của hội thoại được chọn
+                        loadCandidateConversationMessages(userId, jobId);
+                    });
+                });
+
+                // Xử lý gửi tin nhắn
+                if (sendMessageBtn) {
+                    sendMessageBtn.onclick = function() {
+                        const activeConversation = document.querySelector('#candidateConversationsList .conversation-item.active');
+                        if (!activeConversation || !messageInput.value.trim()) return;
+
+                        const jobId = activeConversation.dataset.jobId;
+                        const messageText = messageInput.value.trim();
+
+                        // Tạo tin nhắn mới
+                        const messagesRef = ref(database, `messages/${jobId}/${userId}`);
+                        const newMessageRef = ref(database, `messages/${jobId}/${userId}/${Date.now()}`);
+                        set(newMessageRef, {
+                            senderId: userId,
+                            text: messageText,
+                            timestamp: serverTimestamp(),
+                            isRead: false
+                        }).then(() => {
+                            messageInput.value = '';
+                            messageInput.focus();
+                        }).catch(error => {
+                            console.error('Error sending message:', error);
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Lỗi!',
+                                text: 'Không thể gửi tin nhắn.'
+                            });
+                        });
+                    };
+
+                    // Xử lý gửi tin nhắn khi nhấn Enter
+                    messageInput.onkeypress = function(e) {
+                        if (e.key === 'Enter') {
+                            e.preventDefault();
+                            sendMessageBtn.click();
+                        }
+                    };
+                }
+            }).catch(error => {
+                console.error('Error loading candidate messages:', error);
+                conversationsList.innerHTML = `
+                    <div class="alert alert-danger">
+                        Có lỗi xảy ra khi tải tin nhắn
+                    </div>
+                `;
+            });
+        }
+
+        // Hàm load tin nhắn của một hội thoại cho ứng viên
+        function loadCandidateConversationMessages(userId, jobId) {
+            const { database, ref, onValue } = window.firebase;
+            const messagesList = document.getElementById('candidateMessagesList');
+            const messagesRef = ref(database, `messages/${jobId}/${userId}`);
+
+            // Hiển thị loading
+            messagesList.innerHTML = `
+                <div class="text-center py-4">
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">Đang tải...</span>
+                    </div>
                 </div>
             `;
+
+            onValue(messagesRef, (snapshot) => {
+                if (!snapshot.exists()) {
+                    messagesList.innerHTML = `
+                        <div class="text-center text-muted py-4">
+                            <p>Chưa có tin nhắn nào</p>
+                            <small>Hãy bắt đầu cuộc trò chuyện</small>
+                        </div>
+                    `;
+                    return;
+                }
+
+                const messages = [];
+                snapshot.forEach((childSnapshot) => {
+                    messages.push({
+                        id: childSnapshot.key,
+                        ...childSnapshot.val()
+                    });
+                });
+
+                // Sắp xếp tin nhắn theo thời gian
+                messages.sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
+
+                messagesList.innerHTML = messages.map(message => `
+                    <div class="message ${message.senderId === userId ? 'message-sent' : 'message-received'} mb-3">
+                        <div class="message-content">
+                            <div class="message-text">${message.text}</div>
+                            <div class="message-time small text-muted">
+                                ${moment(message.timestamp).format('HH:mm DD/MM/YYYY')}
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+
+                // Scroll to bottom
+                messagesList.scrollTop = messagesList.scrollHeight;
+
+                // Đánh dấu tin nhắn đã đọc
+                if (messages.length > 0) {
+                    const updates = {};
+                    messages.forEach(message => {
+                        if (message.senderId !== userId && !message.isRead) {
+                            updates[`messages/${jobId}/${userId}/${message.id}/isRead`] = true;
+                        }
+                    });
+                    if (Object.keys(updates).length > 0) {
+                        update(ref(database), updates);
+                    }
+                }
+            });
         }
 
         function loadProfileViews(userId) {
