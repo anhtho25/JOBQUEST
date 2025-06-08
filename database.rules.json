@@ -1,0 +1,74 @@
+{
+  "rules": {
+    ".read": "auth != null",
+    "users": {
+      "$userId": {
+        ".write": "auth != null && auth.uid === $userId",
+        "role": {
+          ".validate": "newData.val() === 'employer' || newData.val() === 'candidate'"
+        },
+        "balance": {
+          ".validate": "newData.isNumber() && newData.val() >= 0"
+        }
+      }
+    },
+    "jobs": {
+      ".read": true,
+      ".write": "auth != null && root.child('users').child(auth.uid).child('role').val() === 'employer'",
+      ".indexOn": ["employerId", "status", "createdAt"],
+      "$jobId": {
+        ".validate": "newData.hasChildren(['title', 'description', 'employerId'])",
+        "employerId": {
+          ".validate": "newData.val() === auth.uid"
+        }
+      }
+    },
+    "applications": {
+      "$jobId": {
+        ".read": "auth != null && (root.child('jobs').child($jobId).child('employerId').val() === auth.uid || data.child('candidateId').val() === auth.uid)",
+        ".write": "auth != null",
+        ".indexOn": ["candidateId", "status", "appliedAt"],
+        "$applicationId": {
+          ".validate": "newData.hasChildren(['candidateId', 'jobId', 'status'])",
+          ".write": "auth != null && (data.child('candidateId').val() === auth.uid || root.child('jobs').child($jobId).child('employerId').val() === auth.uid)",
+          "status": {
+            ".validate": "newData.val() === 'pending' || newData.val() === 'accepted' || newData.val() === 'rejected'"
+          },
+          "candidateId": {
+            ".validate": "!data.exists() || data.val() === newData.val()"
+          }
+        }
+      }
+    },
+    "transactions": {
+      "$userId": {
+        ".read": "auth != null && auth.uid === $userId",
+        ".write": "auth != null && auth.uid === $userId",
+        "$transactionId": {
+          ".validate": "newData.hasChildren(['amount', 'type', 'status'])",
+          "amount": {
+            ".validate": "newData.isNumber() && newData.val() > 0"
+          },
+          "type": {
+            ".validate": "newData.val() === 'deposit' || newData.val() === 'payment'"
+          },
+          "status": {
+            ".validate": "newData.val() === 'pending' || newData.val() === 'completed' || newData.val() === 'failed'"
+          }
+        }
+      }
+    },
+    "messages": {
+      "$conversationId": {
+        ".read": "auth != null && (data.child('senderId').val() === auth.uid || data.child('receiverId').val() === auth.uid)",
+        ".write": "auth != null && (data.child('senderId').val() === auth.uid || data.child('receiverId').val() === auth.uid)",
+        "$messageId": {
+          ".validate": "newData.hasChildren(['senderId', 'content', 'timestamp'])",
+          "senderId": {
+            ".validate": "newData.val() === auth.uid"
+          }
+        }
+      }
+    }
+  }
+} 
