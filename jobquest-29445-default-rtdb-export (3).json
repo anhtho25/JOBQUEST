@@ -1,0 +1,137 @@
+{
+  "jobs": {
+    "1749357569314": {
+      "benefits": "Mức lương cạnh tranh + thưởng theo năng suất\n\nĐược đào tạo nghiệp vụ chuyên môn\n\nMôi trường làm việc thân thiện, nhẹ nhàng, đúng như tên gọi \"Ấm\"\n\nGiảm giá 30% cho nhân viên khi dùng sản phẩm tại quán",
+      "category": "Sales",
+      "contactAddress": "Số 123, Nguyễn Trãi, Quận 5, TP. Hồ Chí Minh",
+      "createdAt": "2025-06-08T04:39:29.314Z",
+      "date": "2025-06-08",
+      "deadline": "2025-06-29",
+      "description": "Phục vụ khách hàng tại quán cà phê và bánh ngọt\n\nGiới thiệu và tư vấn sản phẩm cho khách\n\nDọn dẹp, giữ gìn vệ sinh khu vực làm việc\n\nHỗ trợ pha chế đơn giản (sẽ được đào tạo)\n\nLàm việc theo ca linh hoạt (sáng, chiều, tối)",
+      "employerId": "1O29cjK6R2dzYc2mZVfoTKfoT432",
+      "requirements": "Nam/Nữ từ 18–25 tuổi, ngoại hình ưa nhìn, thân thiện\n\nCó tinh thần trách nhiệm và làm việc nhóm\n\nƯu tiên ứng viên có kinh nghiệm phục vụ quán cà phê\n\nCó thể làm việc cuối tuần, lễ Tết",
+      "salaryMax": "8.000000",
+      "salaryMin": "5.000000",
+      "salaryType": "vnd",
+      "status": "pending",
+      "title": "Nhân viên phục vụ tại quán cà phê bánh ngọt",
+      "type": "part-time"
+    }
+  },
+  "users": {
+    "1O29cjK6R2dzYc2mZVfoTKfoT432": {
+      "balance": 2800000,
+      "company": {
+        "address": "Số 123, Nguyễn Trãi, Quận 5, TP. Hồ Chí Minh",
+        "description": "Ấm - Coffee and Cake không chỉ là nơi thưởng thức cà phê và bánh ngọt, mà còn là không gian để bạn tìm thấy sự thư giãn và kết nối. Mỗi ly cà phê, mỗi chiếc bánh đều được làm từ tâm huyết, mang đến hương vị đậm đà và yêu thương.",
+        "email": "contact@amcoffee.vn",
+        "name": "Ấm coffee and cake",
+        "phone": "02812345678",
+        "website": "https://amcoffeeandcake.netlify.app"
+      },
+      "createdAt": "2025-06-07T03:35:49.707Z",
+      "email": "baokhangml99@gmail.com",
+      "name": "Võ Trần Hoàng Bảo Khang",
+      "role": "employer",
+      "transactions": {
+        "TOPUP_1O29cjK6_1749353110619": {
+          "amount": 1000000,
+          "bankCode": "NCB",
+          "completedAt": "20250608103007",
+          "createdAt": "20250608103007",
+          "orderInfo": "Nap tien tai khoan JOBQUEST",
+          "paymentMethod": "vnpay",
+          "responseCode": "00",
+          "status": "completed",
+          "transactionNo": "15006684",
+          "transactionStatus": "00",
+          "type": "deposit"
+        },
+        "TOPUP_1O29cjK6_1749353907704": {
+          "amount": 300000,
+          "bankCode": "NCB",
+          "completedAt": "20250608103955",
+          "createdAt": "20250608103955",
+          "orderInfo": "Nap tien tai khoan JOBQUEST",
+          "paymentMethod": "vnpay",
+          "responseCode": "00",
+          "status": "completed",
+          "transactionNo": "15006696",
+          "transactionStatus": "00",
+          "type": "deposit"
+        },
+        "TOPUP_1O29cjK6_1749354039041": {
+          "amount": 500000,
+          "bankCode": "NCB",
+          "completedAt": "20250608104130",
+          "createdAt": "20250608104130",
+          "orderInfo": "Nap tien tai khoan JOBQUEST",
+          "paymentMethod": "vnpay",
+          "responseCode": "00",
+          "status": "completed",
+          "transactionNo": "15006701",
+          "transactionStatus": "00",
+          "type": "deposit"
+        },
+        "TOPUP_1O29cjK6_1749354155099": {
+          "amount": 1000000,
+          "bankCode": "VNPAY",
+          "completedAt": "20250608104314",
+          "createdAt": "20250608104314",
+          "orderInfo": "Nap tien tai khoan JOBQUEST",
+          "paymentMethod": "vnpay",
+          "responseCode": "24",
+          "status": "failed",
+          "transactionNo": "0",
+          "transactionStatus": "02",
+          "type": "deposit"
+        },
+        "TOPUP_1O29cjK6_1749354949208": {
+          "amount": 1000000,
+          "bankCode": "VNPAY",
+          "completedAt": "20250608105628",
+          "createdAt": "20250608105628",
+          "orderInfo": "Nap tien tai khoan JOBQUEST",
+          "paymentMethod": "vnpay",
+          "responseCode": "24",
+          "status": "failed",
+          "transactionNo": "0",
+          "transactionStatus": "02",
+          "type": "deposit"
+        },
+        "TOPUP_1O29cjK6_1749355002560": {
+          "amount": 1000000,
+          "bankCode": "VNPAY",
+          "completedAt": "20250608105721",
+          "createdAt": "20250608105721",
+          "orderInfo": "Nap tien tai khoan JOBQUEST",
+          "paymentMethod": "vnpay",
+          "responseCode": "24",
+          "status": "failed",
+          "transactionNo": "0",
+          "transactionStatus": "02",
+          "type": "deposit"
+        },
+        "TOPUP_1O29cjK6_1749357201888": {
+          "amount": 1000000,
+          "bankCode": "NCB",
+          "completedAt": "20250608113427",
+          "createdAt": "20250608113427",
+          "orderInfo": "Nap tien tai khoan JOBQUEST",
+          "paymentMethod": "vnpay",
+          "responseCode": "00",
+          "status": "completed",
+          "transactionNo": "15006788",
+          "transactionStatus": "00",
+          "type": "deposit"
+        }
+      }
+    },
+    "wzukitDM2SaT6CdP0hsQ5jU4BGr1": {
+      "createdAt": "2025-06-03T10:22:02.087Z",
+      "email": "ntho0124@gmail.com",
+      "name": "Nguyễn Trần Anh Thơ",
+      "role": "candidate"
+    }
+  }
+}
