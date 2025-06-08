@@ -15,7 +15,7 @@
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
         import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-analytics.js";
         import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, sendPasswordResetEmail, signOut, onAuthStateChanged, updateProfile, GoogleAuthProvider, signInWithPopup } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
-        import { getDatabase, ref, set, onValue, query, orderByChild, equalTo, limitToFirst } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
+        import { getDatabase, ref, set, onValue, query, orderByChild, equalTo, limitToFirst, get } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
 
         // Your web app's Firebase configuration
         const firebaseConfig = {
@@ -53,7 +53,8 @@
             equalTo,
             limitToFirst,
             GoogleAuthProvider,
-            signInWithPopup
+            signInWithPopup,
+            get
         };
     </script>
 
@@ -555,6 +556,57 @@
             transform: rotate(180deg);
           }
         } 
+
+        /* Modal Styles */
+        .modal-dialog {
+            display: flex;
+            align-items: center;
+            min-height: calc(100% - 1rem);
+        }
+
+        #applyJobModal .modal-content {
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        #applyJobModal .modal-header {
+            background-color: #f8f9fa;
+            border-bottom: 1px solid #dee2e6;
+            border-radius: 8px 8px 0 0;
+        }
+
+        #applyJobModal .modal-footer {
+            background-color: #f8f9fa;
+            border-top: 1px solid #dee2e6;
+            border-radius: 0 0 8px 8px;
+        }
+
+        #applyJobModal .form-control:focus {
+            border-color: #0a3570;
+            box-shadow: 0 0 0 0.2rem rgba(10,53,112,0.25);
+        }
+
+        #applyJobModal textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        /* Modal Animation */
+        .modal.fade .modal-dialog {
+            transform: translate(0, -50px);
+            transition: transform 0.3s ease-out;
+        }
+
+        .modal.show .modal-dialog {
+            transform: none;
+        }
+
+        /* Responsive Modal */
+        @media (max-width: 576px) {
+            .modal-dialog {
+                margin: 0.5rem;
+          }
+        } 
     </style>
 </head>
 <body>
@@ -770,7 +822,7 @@
                     <p class="mb-0">&copy; 2024 VIỆC LÀM NHANH. All rights reserved.</p>
                 </div>
                 <div class="col-md-6 text-end">
-                    <img src="images/payment-methods.png" alt="Payment Methods" height="30">
+                    <img src="https://sandbox.vnpayment.vn/paymentv2/images/brands/logo.svg" alt="VNPAY" height="30">
                 </div>
             </div>
         </div>
@@ -929,7 +981,7 @@
     
     document.addEventListener('DOMContentLoaded', function() {
         const navbarAccountArea = document.getElementById('navbarAccountArea');
-        const { auth, database, signInWithEmailAndPassword, createUserWithEmailAndPassword, sendPasswordResetEmail, signOut, onAuthStateChanged, updateProfile, ref, set, onValue, query, orderByChild, equalTo, limitToFirst, GoogleAuthProvider, signInWithPopup } = window.firebase;
+        const { auth, database, signInWithEmailAndPassword, createUserWithEmailAndPassword, sendPasswordResetEmail, signOut, onAuthStateChanged, updateProfile, ref, set, onValue, query, orderByChild, equalTo, limitToFirst, GoogleAuthProvider, signInWithPopup, get } = window.firebase;
         
         // Kiểm tra trạng thái đăng nhập
         onAuthStateChanged(auth, function(user) {
@@ -1517,7 +1569,7 @@
 
     // Function to handle job application
     function applyForJob(jobId) {
-        const { auth } = window.firebase;
+        const { auth, database, ref, set, get } = window.firebase;
         const user = auth.currentUser;
 
         if (!user) {
@@ -1537,23 +1589,147 @@
             return;
         }
 
-        // TODO: Implement job application logic
+        // Kiểm tra role của user
+        const userRef = ref(database, `users/${user.uid}`);
+        get(userRef).then((snapshot) => {
+            const userData = snapshot.val();
+            if (!userData || userData.role !== 'candidate') {
         Swal.fire({
-            title: 'Xác nhận ứng tuyển',
-            text: 'Bạn có chắc chắn muốn ứng tuyển vị trí này?',
-            icon: 'question',
-            showCancelButton: true,
-            confirmButtonText: 'Ứng tuyển',
-            cancelButtonText: 'Hủy'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                // TODO: Submit application to Firebase
-                Swal.fire(
-                    'Đã ứng tuyển!',
-                    'Hồ sơ của bạn đã được gửi đến nhà tuyển dụng.',
-                    'success'
-                );
+                    title: 'Không thể ứng tuyển',
+                    text: 'Chỉ ứng viên mới có thể ứng tuyển công việc',
+                    icon: 'error'
+                });
+                return;
             }
+
+            // Kiểm tra xem đã ứng tuyển chưa
+            const applicationRef = ref(database, `applications/${jobId}/${user.uid}`);
+            get(applicationRef).then((applicationSnapshot) => {
+                if (applicationSnapshot.exists()) {
+                    Swal.fire({
+                        title: 'Đã ứng tuyển',
+                        text: 'Bạn đã ứng tuyển vị trí này rồi',
+                        icon: 'info'
+                    });
+                    return;
+                }
+
+                // Xóa modal cũ nếu tồn tại
+                const oldModal = document.getElementById('applyJobModal');
+                if (oldModal) {
+                    oldModal.remove();
+                }
+
+                // Tạo modal ứng tuyển
+                const modalHtml = `
+                    <div class="modal fade" id="applyJobModal" tabindex="-1" aria-labelledby="applyJobModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="applyJobModalLabel">Ứng tuyển công việc</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <form id="applyJobForm">
+                                        <div class="mb-3">
+                                            <label for="coverLetter" class="form-label">Thư giới thiệu <span class="text-danger">*</span></label>
+                                            <textarea class="form-control" id="coverLetter" rows="4" required 
+                                                placeholder="Viết giới thiệu ngắn về bản thân và mong muốn ứng tuyển..."></textarea>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="cvLink" class="form-label">Link CV của bạn (nếu có)</label>
+                                            <input type="url" class="form-control" id="cvLink" placeholder="https://...">
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                                    <button type="button" class="btn btn-primary" id="submitApplication">Gửi ứng tuyển</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+
+                // Thêm modal vào body
+                document.body.insertAdjacentHTML('beforeend', modalHtml);
+
+                // Khởi tạo modal
+                const applyJobModal = new bootstrap.Modal(document.getElementById('applyJobModal'), {
+                    backdrop: 'static',
+                    keyboard: false
+                });
+
+                // Xử lý sự kiện submit
+                document.getElementById('submitApplication').onclick = function() {
+                    const coverLetter = document.getElementById('coverLetter').value.trim();
+                    const cvLink = document.getElementById('cvLink').value.trim();
+
+                    if (!coverLetter) {
+                        Swal.fire({
+                            title: 'Lỗi!',
+                            text: 'Vui lòng viết thư giới thiệu',
+                            icon: 'error'
+                        });
+                        return;
+                    }
+
+                    // Hiển thị loading
+                    Swal.fire({
+                        title: 'Đang xử lý...',
+                        text: 'Vui lòng chờ trong giây lát',
+                        allowOutsideClick: false,
+                        didOpen: () => {
+                            Swal.showLoading();
+                        }
+                    });
+
+                    // Lưu thông tin ứng tuyển vào Firebase
+                    const applicationData = {
+                        candidateId: user.uid,
+                        candidateName: user.displayName || userData.name,
+                        candidateEmail: user.email,
+                        coverLetter: coverLetter,
+                        cvLink: cvLink || null,
+                        status: 'pending',
+                        appliedAt: new Date().toISOString(),
+                        jobId: jobId
+                    };
+
+                    // Lưu vào applications/${jobId}/${userId}
+                    set(applicationRef, applicationData)
+                        .then(() => {
+                            applyJobModal.hide();
+                            Swal.fire({
+                                title: 'Ứng tuyển thành công!',
+                                text: 'Hồ sơ của bạn đã được gửi đến nhà tuyển dụng',
+                                icon: 'success'
+                            });
+                            
+                            // Đóng modal chi tiết công việc nếu đang mở
+                            if (jobDetailModal) {
+                                jobDetailModal.hide();
+                            }
+                        })
+                        .catch((error) => {
+                            console.error('Error applying for job:', error);
+                            Swal.fire({
+                                title: 'Lỗi!',
+                                text: 'Có lỗi xảy ra khi gửi hồ sơ. Vui lòng thử lại sau.',
+                                icon: 'error'
+                            });
+                        });
+                };
+
+                // Xử lý sự kiện đóng modal
+                const modal = document.getElementById('applyJobModal');
+                modal.addEventListener('hidden.bs.modal', function () {
+                    this.remove(); // Xóa modal khỏi DOM khi đóng
+                });
+
+                // Hiển thị modal
+                applyJobModal.show();
+            });
         });
     }
     </script>

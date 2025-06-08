@@ -1,26 +1,41 @@
 {
+  "applications": {
+    "1749359491638": {
+      "wzukitDM2SaT6CdP0hsQ5jU4BGr1": {
+        "appliedAt": "2025-06-08T05:24:39.921Z",
+        "candidateEmail": "ntho0124@gmail.com",
+        "candidateId": "wzukitDM2SaT6CdP0hsQ5jU4BGr1",
+        "candidateName": "Anh Thơ",
+        "coverLetter": "Chào anh/chị tuyển dụng,\n\nEm tên là Nguyễn Minh Thảo, hiện đang sinh sống tại TP. Hồ Chí Minh. Em là người thân thiện, chịu khó và luôn sẵn sàng học hỏi trong công việc. Em đặc biệt yêu thích không gian quán cà phê và mong muốn được làm việc trong môi trường năng động, gần gũi với khách hàng.\n\nEm viết thư này để ứng tuyển vào vị trí nhân viên phục vụ tại quán Gió & Nắng Café. Em tin rằng với tinh thần trách nhiệm và khả năng giao tiếp tốt, em sẽ là một phần hỗ trợ tích cực cho hoạt động của quán.\n\nEm rất mong nhận được cơ hội để thể hiện khả năng của mình trong buổi phỏng vấn sắp tới.\nXin cảm ơn anh/chị đã dành thời gian xem hồ sơ của em.\n\nTrân trọng,\nNguyễn Minh Thảo\n📞 0968 123 456\n📧 minhthao.nguyen01@gmail.com",
+        "cvLink": "https://example.com/cv-minhthao",
+        "jobId": "1749359491638",
+        "status": "accepted",
+        "updatedAt": "2025-06-08T05:37:01.187Z"
+      }
+    }
+  },
   "jobs": {
-    "1749357569314": {
-      "benefits": "Mức lương cạnh tranh + thưởng theo năng suất\n\nĐược đào tạo nghiệp vụ chuyên môn\n\nMôi trường làm việc thân thiện, nhẹ nhàng, đúng như tên gọi \"Ấm\"\n\nGiảm giá 30% cho nhân viên khi dùng sản phẩm tại quán",
+    "1749359491638": {
+      "benefits": "Quyền lợi\nMức lương cạnh tranh + thưởng theo năng suất\n\nĐược đào tạo nghiệp vụ chuyên môn\n\nMôi trường làm việc thân thiện, nhẹ nhàng, đúng như tên gọi \"Ấm\"\n\nGiảm giá 30% cho nhân viên khi dùng sản phẩm tại quán\n\nThông tin liên hệ\n📞 Điện thoại: 02812345678\n\n🌐 Website: amcoffeeandcake.netlify.app",
       "category": "Sales",
       "contactAddress": "Số 123, Nguyễn Trãi, Quận 5, TP. Hồ Chí Minh",
-      "createdAt": "2025-06-08T04:39:29.314Z",
+      "createdAt": "2025-06-08T05:11:18.232Z",
       "date": "2025-06-08",
-      "deadline": "2025-06-29",
+      "deadline": "2025-06-30",
       "description": "Phục vụ khách hàng tại quán cà phê và bánh ngọt\n\nGiới thiệu và tư vấn sản phẩm cho khách\n\nDọn dẹp, giữ gìn vệ sinh khu vực làm việc\n\nHỗ trợ pha chế đơn giản (sẽ được đào tạo)\n\nLàm việc theo ca linh hoạt (sáng, chiều, tối)",
       "employerId": "1O29cjK6R2dzYc2mZVfoTKfoT432",
       "requirements": "Nam/Nữ từ 18–25 tuổi, ngoại hình ưa nhìn, thân thiện\n\nCó tinh thần trách nhiệm và làm việc nhóm\n\nƯu tiên ứng viên có kinh nghiệm phục vụ quán cà phê\n\nCó thể làm việc cuối tuần, lễ Tết",
-      "salaryMax": "8.000000",
+      "salaryMax": "9.000000",
       "salaryMin": "5.000000",
       "salaryType": "vnd",
-      "status": "pending",
+      "status": "approved",
       "title": "Nhân viên phục vụ tại quán cà phê bánh ngọt",
-      "type": "part-time"
+      "type": "full-time"
     }
   },
   "users": {
     "1O29cjK6R2dzYc2mZVfoTKfoT432": {
-      "balance": 2800000,
+      "balance": 2650000,
       "company": {
         "address": "Số 123, Nguyễn Trãi, Quận 5, TP. Hồ Chí Minh",
         "description": "Ấm - Coffee and Cake không chỉ là nơi thưởng thức cà phê và bánh ngọt, mà còn là không gian để bạn tìm thấy sự thư giãn và kết nối. Mỗi ly cà phê, mỗi chiếc bánh đều được làm từ tâm huyết, mang đến hương vị đậm đà và yêu thương.",
@@ -34,6 +49,30 @@
       "name": "Võ Trần Hoàng Bảo Khang",
       "role": "employer",
       "transactions": {
+        "POST_1O29cjK6_1749358644059": {
+          "amount": -50000,
+          "createdAt": "2025-06-08T04:57:24.059Z",
+          "description": "Phí đăng tin tuyển dụng: Nhân viên pha chế tại quán The Bean House",
+          "jobId": "1749358644059",
+          "status": "completed",
+          "type": "job_posting"
+        },
+        "POST_1O29cjK6_1749358875661": {
+          "amount": -50000,
+          "createdAt": "2025-06-08T05:01:15.661Z",
+          "description": "Phí đăng tin tuyển dụng: Barista pha chế tại quán Mộc Garden Coffee",
+          "jobId": "1749358875661",
+          "status": "completed",
+          "type": "job_posting"
+        },
+        "POST_1O29cjK6_1749359491638": {
+          "amount": -50000,
+          "createdAt": "2025-06-08T05:11:31.638Z",
+          "description": "Phí đăng tin tuyển dụng: Nhân viên phục vụ tại quán cà phê bánh ngọt",
+          "jobId": "1749359491638",
+          "status": "completed",
+          "type": "job_posting"
+        },
         "TOPUP_1O29cjK6_1749353110619": {
           "amount": 1000000,
           "bankCode": "NCB",

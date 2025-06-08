@@ -2,7 +2,7 @@
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
     import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-analytics.js";
     import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, sendPasswordResetEmail, signOut, onAuthStateChanged, updateProfile } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
-    import { getDatabase, ref, set, onValue, query, orderByChild, equalTo, limitToFirst, get } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
+    import { getDatabase, ref, set, onValue, query, orderByChild, equalTo, limitToFirst, get, update } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
 
     // Your web app's Firebase configuration
     const firebaseConfig = {
@@ -39,7 +39,8 @@
         orderByChild,
         equalTo,
         limitToFirst,
-        get
+        get,
+        update
     };
 
     // VNPAY configuration
@@ -299,7 +300,7 @@
 
     document.addEventListener('DOMContentLoaded', function() {
         const navbarAccountArea = document.getElementById('navbarAccountArea');
-        const { auth, database, signInWithEmailAndPassword, createUserWithEmailAndPassword, sendPasswordResetEmail, signOut, onAuthStateChanged, updateProfile, ref, set, onValue, query, orderByChild, equalTo, limitToFirst, get } = window.firebase;
+        const { auth, database, signInWithEmailAndPassword, createUserWithEmailAndPassword, sendPasswordResetEmail, signOut, onAuthStateChanged, updateProfile, ref, set, onValue, query, orderByChild, equalTo, limitToFirst, get, update } = window.firebase;
         
         // Kiểm tra trạng thái đăng nhập
         onAuthStateChanged(auth, function(user) {
@@ -684,77 +685,8 @@
                         // Hiển thị thống kê dựa trên role
                         const statisticsCards = document.getElementById('statisticsCards');
                         if (data.role === 'employer') {
-                            statisticsCards.innerHTML = `
-                                <div class="col-md-4">
-                                    <div class="card text-center">
-                                        <div class="card-body">
-                                            <i class="fas fa-briefcase fa-2x text-warning mb-3"></i>
-                                            <h5>0</h5>
-                                            <p class="card-text text-muted">Tin tuyển dụng đang đăng</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="card text-center">
-                                        <div class="card-body">
-                                            <i class="fas fa-users fa-2x text-info mb-3"></i>
-                                            <h5>0</h5>
-                                            <p class="card-text text-muted">Ứng viên đã ứng tuyển</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="card text-center">
-                                        <div class="card-body">
-                                            <i class="fas fa-eye fa-2x text-success mb-3"></i>
-                                            <h5>0</h5>
-                                            <p class="card-text text-muted">Lượt xem tin tuyển dụng</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            `;
-                            
-                            // Hiển thị các phần dành cho employer
-                            document.getElementById('latestJobPosts').style.display = 'block';
-                            document.getElementById('latestApplications').style.display = 'block';
-                            document.getElementById('latestAppliedJobs').style.display = 'none';
-                            document.getElementById('latestSavedJobs').style.display = 'none';
-                        } else {
-                            statisticsCards.innerHTML = `
-                                <div class="col-md-4">
-                                    <div class="card text-center">
-                                        <div class="card-body">
-                                            <i class="fas fa-suitcase fa-2x text-warning mb-3"></i>
-                                            <h5>0</h5>
-                                            <p class="card-text text-muted">Việc làm phù hợp</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="card text-center">
-                                        <div class="card-body">
-                                            <i class="fas fa-eye fa-2x text-info mb-3"></i>
-                                            <h5>0</h5>
-                                            <p class="card-text text-muted">Lượt xem hồ sơ</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="card text-center">
-                                        <div class="card-body">
-                                            <i class="fas fa-check-circle fa-2x text-success mb-3"></i>
-                                            <h5>0</h5>
-                                            <p class="card-text text-muted">NTD gửi email mời ứng tuyển</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            `;
-                            
-                            // Hiển thị các phần dành cho candidate
-                            document.getElementById('latestAppliedJobs').style.display = 'block';
-                            document.getElementById('latestSavedJobs').style.display = 'block';
-                            document.getElementById('latestJobPosts').style.display = 'none';
-                            document.getElementById('latestApplications').style.display = 'none';
+                            // Gọi hàm cập nhật thống kê trước khi hiển thị
+                            updateEmployerStatistics(user.uid);
                         }
                     }
                 }, { onlyOnce: true });
@@ -863,77 +795,8 @@
                         // Hiển thị thống kê dựa trên role
                         const statisticsCards = document.getElementById('statisticsCards');
                         if (data.role === 'employer') {
-                            statisticsCards.innerHTML = `
-                                <div class="col-md-4">
-                                    <div class="card text-center">
-                                        <div class="card-body">
-                                            <i class="fas fa-briefcase fa-2x text-warning mb-3"></i>
-                                            <h5>0</h5>
-                                            <p class="card-text text-muted">Tin tuyển dụng đang đăng</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="card text-center">
-                                        <div class="card-body">
-                                            <i class="fas fa-users fa-2x text-info mb-3"></i>
-                                            <h5>0</h5>
-                                            <p class="card-text text-muted">Ứng viên đã ứng tuyển</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="card text-center">
-                                        <div class="card-body">
-                                            <i class="fas fa-eye fa-2x text-success mb-3"></i>
-                                            <h5>0</h5>
-                                            <p class="card-text text-muted">Lượt xem tin tuyển dụng</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            `;
-                            
-                            // Hiển thị các phần dành cho employer
-                            document.getElementById('latestJobPosts').style.display = 'block';
-                            document.getElementById('latestApplications').style.display = 'block';
-                            document.getElementById('latestAppliedJobs').style.display = 'none';
-                            document.getElementById('latestSavedJobs').style.display = 'none';
-                        } else {
-                            statisticsCards.innerHTML = `
-                                <div class="col-md-4">
-                                    <div class="card text-center">
-                                        <div class="card-body">
-                                            <i class="fas fa-suitcase fa-2x text-warning mb-3"></i>
-                                            <h5>0</h5>
-                                            <p class="card-text text-muted">Việc làm phù hợp</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="card text-center">
-                                        <div class="card-body">
-                                            <i class="fas fa-eye fa-2x text-info mb-3"></i>
-                                            <h5>0</h5>
-                                            <p class="card-text text-muted">Lượt xem hồ sơ</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="card text-center">
-                                        <div class="card-body">
-                                            <i class="fas fa-check-circle fa-2x text-success mb-3"></i>
-                                            <h5>0</h5>
-                                            <p class="card-text text-muted">NTD gửi email mời ứng tuyển</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            `;
-                            
-                            // Hiển thị các phần dành cho candidate
-                            document.getElementById('latestAppliedJobs').style.display = 'block';
-                            document.getElementById('latestSavedJobs').style.display = 'block';
-                            document.getElementById('latestJobPosts').style.display = 'none';
-                            document.getElementById('latestApplications').style.display = 'none';
+                            // Gọi hàm cập nhật thống kê trước khi hiển thị
+                            updateEmployerStatistics(user.uid);
                         }
                     }
                 }, { onlyOnce: true });
@@ -1091,10 +954,34 @@
         // Xử lý form đăng tin tuyển dụng
         const jobPostForm = document.getElementById('jobPostForm');
         if (jobPostForm) {
-            jobPostForm.addEventListener('submit', function(e) {
+            jobPostForm.addEventListener('submit', async function(e) {
                 e.preventDefault();
                 const user = auth.currentUser;
                 if (!user) return;
+
+                // Kiểm tra số dư tài khoản
+                const userRef = ref(database, 'users/' + user.uid);
+                const userSnapshot = await get(userRef);
+                const userData = userSnapshot.val();
+                const currentBalance = userData.balance || 0;
+                const postingFee = 50000; // Phí đăng tin: 50,000 VNĐ
+
+                if (currentBalance < postingFee) {
+                    Swal.fire({
+                        title: 'Số dư không đủ!',
+                        text: 'Bạn cần nạp thêm tiền để đăng tin tuyển dụng. Phí đăng tin: 50,000 VNĐ',
+                        icon: 'error',
+                        showCancelButton: true,
+                        confirmButtonText: 'Nạp tiền ngay',
+                        cancelButtonText: 'Để sau'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            // Chuyển đến trang nạp tiền
+                            document.querySelector('[data-section="wallet"]').click();
+                        }
+                    });
+                    return;
+                }
 
                 const jobData = {
                     title: document.getElementById('jobTitle').value,
@@ -1109,40 +996,308 @@
                     requirements: document.getElementById('jobRequirements').value,
                     benefits: document.getElementById('jobBenefits').value,
                     employerId: user.uid,
-                    status: 'pending',
+                    status: 'approved', // Thay đổi từ 'pending' thành 'approved'
                     date: new Date().toISOString().split('T')[0],
                     createdAt: new Date().toISOString()
                 };
 
-                const jobsRef = ref(database, 'jobs');
-                const newJobRef = ref(database, 'jobs/' + Date.now());
-                set(newJobRef, jobData).then(() => {
+                // Hiển thị xác nhận trước khi đăng tin
+                const result = await Swal.fire({
+                    title: 'Xác nhận đăng tin',
+                    html: `
+                        <div class="text-start">
+                            <p><strong>Tiêu đề:</strong> ${jobData.title}</p>
+                            <p><strong>Phí đăng tin:</strong> 50,000 VNĐ</p>
+                            <p><strong>Số dư hiện tại:</strong> ${currentBalance.toLocaleString()} VNĐ</p>
+                            <p><strong>Số dư còn lại:</strong> ${(currentBalance - postingFee).toLocaleString()} VNĐ</p>
+                        </div>
+                    `,
+                    icon: 'question',
+                    showCancelButton: true,
+                    confirmButtonText: 'Xác nhận đăng tin',
+                    cancelButtonText: 'Hủy'
+                });
+
+                if (!result.isConfirmed) {
+                    return;
+                }
+
+                try {
+                    // Hiển thị loading
+                    Swal.fire({
+                        title: 'Đang xử lý...',
+                        text: 'Vui lòng chờ trong giây lát',
+                        allowOutsideClick: false,
+                        didOpen: () => {
+                            Swal.showLoading();
+                        }
+                    });
+
+                    // Tạo transaction ID
+                    const transactionId = `POST_${user.uid.slice(0, 8)}_${Date.now()}`;
+                    
+                    // Tạo tin tuyển dụng mới
+                    const jobsRef = ref(database, 'jobs');
+                    const newJobRef = ref(database, 'jobs/' + Date.now());
+                    
+                    // Cập nhật số dư và thêm transaction
+                    const updates = {};
+                    updates[`users/${user.uid}/balance`] = currentBalance - postingFee;
+                    updates[`users/${user.uid}/transactions/${transactionId}`] = {
+                        amount: -postingFee,
+                        type: 'job_posting',
+                        status: 'completed',
+                        createdAt: new Date().toISOString(),
+                        jobId: newJobRef.key,
+                        description: `Phí đăng tin tuyển dụng: ${jobData.title}`
+                    };
+                    
+                    // Thực hiện cập nhật đồng thời
+                    await set(newJobRef, jobData);
+                    await update(ref(database), updates);
+
                     Swal.fire({
                         title: 'Thành công!',
-                        text: 'Tin tuyển dụng đã được đăng và đang chờ duyệt.',
+                        text: 'Tin tuyển dụng đã được đăng thành công.',
                         icon: 'success',
                         timer: 2000
                     }).then(() => {
                         jobPostForm.reset();
                     });
-                }).catch(error => {
+                } catch (error) {
+                    console.error('Error posting job:', error);
                     Swal.fire({
                         title: 'Lỗi!',
                         text: 'Có lỗi xảy ra khi đăng tin.',
                         icon: 'error'
                     });
-                });
+                }
             });
         }
 
         function loadCandidates(userId) {
-            // Placeholder cho load danh sách ứng viên
-            document.getElementById('candidatesList').innerHTML = `
-                <div class="text-center text-muted py-4">
-                    <i class="fas fa-users fa-3x mb-3"></i>
-                    <p>Chức năng đang được phát triển</p>
-                </div>
-            `;
+            const { database, ref, get, query, orderByChild, equalTo } = window.firebase;
+            
+            // Lấy danh sách tin tuyển dụng của nhà tuyển dụng
+            const jobsRef = ref(database, 'jobs');
+            const jobsQuery = query(jobsRef, orderByChild('employerId'), equalTo(userId));
+            
+            get(jobsQuery).then(async (jobsSnapshot) => {
+                if (!jobsSnapshot.exists()) {
+                    document.getElementById('candidatesList').innerHTML = `
+                        <div class="text-center text-muted py-4">
+                            <i class="fas fa-users fa-3x mb-3"></i>
+                            <p>Chưa có ứng viên nào ứng tuyển</p>
+                        </div>
+                    `;
+                    return;
+                }
+
+                // Lấy tất cả ứng viên từ các tin tuyển dụng
+                const allApplications = [];
+                const jobs = [];
+                jobsSnapshot.forEach((jobSnapshot) => {
+                    const job = jobSnapshot.val();
+                    job.id = jobSnapshot.key;
+                    jobs.push(job);
+                });
+
+                // Lấy danh sách ứng viên cho mỗi tin
+                for (const job of jobs) {
+                    const applicationsRef = ref(database, `applications/${job.id}`);
+                    const applicationsSnapshot = await get(applicationsRef);
+                    
+                    if (applicationsSnapshot.exists()) {
+                        applicationsSnapshot.forEach((applicationSnapshot) => {
+                            const application = applicationSnapshot.val();
+                            application.id = applicationSnapshot.key;
+                            application.jobTitle = job.title;
+                            allApplications.push(application);
+                        });
+                    }
+                }
+
+                if (allApplications.length === 0) {
+                    document.getElementById('candidatesList').innerHTML = `
+                        <div class="text-center text-muted py-4">
+                            <i class="fas fa-users fa-3x mb-3"></i>
+                            <p>Chưa có ứng viên nào ứng tuyển</p>
+                        </div>
+                    `;
+                    return;
+                }
+
+                // Sắp xếp ứng viên theo thời gian ứng tuyển mới nhất
+                allApplications.sort((a, b) => new Date(b.appliedAt) - new Date(a.appliedAt));
+
+                // Hiển thị danh sách ứng viên
+                document.getElementById('candidatesList').innerHTML = `
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Ứng viên</th>
+                                    <th>Vị trí ứng tuyển</th>
+                                    <th>Ngày ứng tuyển</th>
+                                    <th>Trạng thái</th>
+                                    <th>Thao tác</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                ${allApplications.map(application => `
+                                    <tr>
+                                        <td>
+                                            <div>
+                                                <strong>${application.candidateName}</strong>
+                                                <br>
+                                                <small class="text-muted">${application.candidateEmail}</small>
+                                            </div>
+                                        </td>
+                                        <td>${application.jobTitle}</td>
+                                        <td>${new Date(application.appliedAt).toLocaleDateString('vi-VN')}</td>
+                                        <td>
+                                            <span class="badge ${getStatusBadgeClass(application.status)}">
+                                                ${getStatusText(application.status)}
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <div class="btn-group">
+                                                <button class="btn btn-sm btn-outline-primary" onclick="viewApplication('${application.jobId}', '${application.candidateId}')">
+                                                    <i class="fas fa-eye"></i>
+                                                </button>
+                                                <button class="btn btn-sm btn-outline-success" onclick="updateApplicationStatus('${application.jobId}', '${application.candidateId}', 'accepted')">
+                                                    <i class="fas fa-check"></i>
+                                                </button>
+                                                <button class="btn btn-sm btn-outline-danger" onclick="updateApplicationStatus('${application.jobId}', '${application.candidateId}', 'rejected')">
+                                                    <i class="fas fa-times"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                `).join('')}
+                            </tbody>
+                        </table>
+                    </div>
+                `;
+            }).catch((error) => {
+                console.error('Error loading candidates:', error);
+                document.getElementById('candidatesList').innerHTML = `
+                    <div class="alert alert-danger">
+                        Có lỗi xảy ra khi tải danh sách ứng viên
+                    </div>
+                `;
+            });
+        }
+
+        // Hàm hỗ trợ lấy class cho badge trạng thái
+        function getStatusBadgeClass(status) {
+            switch (status) {
+                case 'pending':
+                    return 'bg-warning';
+                case 'accepted':
+                    return 'bg-success';
+                case 'rejected':
+                    return 'bg-danger';
+                default:
+                    return 'bg-secondary';
+            }
+        }
+
+        // Hàm hỗ trợ lấy text hiển thị trạng thái
+        function getStatusText(status) {
+            switch (status) {
+                case 'pending':
+                    return 'Chờ duyệt';
+                case 'accepted':
+                    return 'Đã duyệt';
+                case 'rejected':
+                    return 'Từ chối';
+                default:
+                    return 'Không xác định';
+            }
+        }
+
+        // Hàm xem chi tiết ứng tuyển
+        window.viewApplication = function(jobId, candidateId) {
+            const { database, ref, get } = window.firebase;
+            const applicationRef = ref(database, `applications/${jobId}/${candidateId}`);
+            
+            get(applicationRef).then((snapshot) => {
+                if (!snapshot.exists()) {
+                    Swal.fire({
+                        title: 'Lỗi!',
+                        text: 'Không tìm thấy thông tin ứng tuyển',
+                        icon: 'error'
+                    });
+                    return;
+                }
+
+                const application = snapshot.val();
+                
+                Swal.fire({
+                    title: 'Chi tiết ứng tuyển',
+                    html: `
+                        <div class="text-start">
+                            <h6>Thông tin ứng viên:</h6>
+                            <p><strong>Họ tên:</strong> ${application.candidateName}</p>
+                            <p><strong>Email:</strong> ${application.candidateEmail}</p>
+                            ${application.cvLink ? `<p><strong>CV:</strong> <a href="${application.cvLink}" target="_blank">Xem CV</a></p>` : ''}
+                            
+                            <h6 class="mt-4">Thư giới thiệu:</h6>
+                            <div class="border rounded p-3 bg-light">
+                                <pre style="white-space: pre-wrap;">${application.coverLetter}</pre>
+                            </div>
+                            
+                            <h6 class="mt-4">Thông tin khác:</h6>
+                            <p><strong>Ngày ứng tuyển:</strong> ${new Date(application.appliedAt).toLocaleString('vi-VN')}</p>
+                            <p><strong>Trạng thái:</strong> <span class="badge ${getStatusBadgeClass(application.status)}">${getStatusText(application.status)}</span></p>
+                        </div>
+                    `,
+                    width: '600px',
+                    confirmButtonText: 'Đóng'
+                });
+            });
+        }
+
+        // Hàm cập nhật trạng thái ứng tuyển
+        window.updateApplicationStatus = function(jobId, candidateId, newStatus) {
+            const { database, ref, update } = window.firebase;
+            const applicationRef = ref(database, `applications/${jobId}/${candidateId}`);
+            
+            const statusText = newStatus === 'accepted' ? 'duyệt' : 'từ chối';
+            
+            Swal.fire({
+                title: 'Xác nhận',
+                text: `Bạn có chắc chắn muốn ${statusText} ứng viên này?`,
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Xác nhận',
+                cancelButtonText: 'Hủy'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    update(applicationRef, {
+                        status: newStatus,
+                        updatedAt: new Date().toISOString()
+                    }).then(() => {
+                        Swal.fire({
+                            title: 'Thành công!',
+                            text: `Đã ${statusText} ứng viên`,
+                            icon: 'success',
+                            timer: 1500
+                        }).then(() => {
+                            // Reload danh sách ứng viên
+                            loadCandidates(auth.currentUser.uid);
+                        });
+                    }).catch((error) => {
+                        console.error('Error updating application status:', error);
+                        Swal.fire({
+                            title: 'Lỗi!',
+                            text: `Không thể ${statusText} ứng viên`,
+                            icon: 'error'
+                        });
+                    });
+                }
+            });
         }
 
         function loadMessages(userId) {
@@ -1574,9 +1729,9 @@
                                     .then(() => {
                             Swal.fire({
                                 icon: 'success',
-                                            title: 'Thanh toán thành công!',
-                                            text: `Đã nạp ${amount.toLocaleString('vi-VN')} VNĐ vào tài khoản`,
-                                            showConfirmButton: true
+                                        title: 'Thanh toán thành công!',
+                                        text: `Đã nạp ${amount.toLocaleString('vi-VN')} VNĐ vào tài khoản`,
+                                        showConfirmButton: true
                             }).then(() => {
                                             window.location.href = 'member.html';
                                         });
@@ -1703,6 +1858,300 @@
                 }
             }
         });
+
+        // Hàm cập nhật thống kê cho nhà tuyển dụng
+        async function updateEmployerStatistics(userId) {
+            const { database, ref, get, query, orderByChild, equalTo } = window.firebase;
+            const statisticsCards = document.getElementById('statisticsCards');
+            const latestJobsList = document.getElementById('jobPostsList');
+            const latestApplicationsList = document.getElementById('applicationsList');
+            
+            try {
+                // Lấy danh sách tin tuyển dụng của nhà tuyển dụng
+                const jobsRef = ref(database, 'jobs');
+                const jobsQuery = query(jobsRef, orderByChild('employerId'), equalTo(userId));
+                const jobsSnapshot = await get(jobsQuery);
+
+                // Khởi tạo các biến thống kê
+                let totalJobs = 0;
+                let activeJobs = 0;
+                let totalApplications = 0;
+                let pendingApplications = 0;
+                let acceptedApplications = 0;
+                let jobs = [];
+
+                if (jobsSnapshot.exists()) {
+                    // Đếm số tin tuyển dụng
+                    jobsSnapshot.forEach((jobSnapshot) => {
+                        const job = jobSnapshot.val();
+                        job.id = jobSnapshot.key;
+                        jobs.push(job);
+                        totalJobs++;
+                        if (job.status === 'approved') {
+                            activeJobs++;
+                        }
+                    });
+
+                    // Lấy số lượng ứng viên cho mỗi tin
+                    for (const job of jobs) {
+                        const applicationsRef = ref(database, `applications/${job.id}`);
+                        const applicationsSnapshot = await get(applicationsRef);
+                        
+                        if (applicationsSnapshot.exists()) {
+                            applicationsSnapshot.forEach((applicationSnapshot) => {
+                                const application = applicationSnapshot.val();
+                                totalApplications++;
+                                if (application.status === 'pending') {
+                                    pendingApplications++;
+                                } else if (application.status === 'accepted') {
+                                    acceptedApplications++;
+                                }
+                            });
+                        }
+                    }
+                }
+
+                // Cập nhật giao diện thống kê
+                if (statisticsCards) {
+                    statisticsCards.innerHTML = `
+                        <div class="col-md-6">
+                            <div class="card border-0 shadow-sm h-100">
+                                <div class="card-body text-center">
+                                    <div class="feature-icon bg-primary bg-gradient text-white rounded-3 mb-3">
+                                        <i class="fas fa-briefcase"></i>
+                                    </div>
+                                    <h3 class="fw-bold">${totalJobs}</h3>
+                                    <p class="text-muted mb-0">Tin tuyển dụng</p>
+                                    <hr>
+                                    <div class="small text-muted">
+                                        <span class="text-success">${activeJobs} đang hiển thị</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <div class="card border-0 shadow-sm h-100">
+                                <div class="card-body text-center">
+                                    <div class="feature-icon bg-success bg-gradient text-white rounded-3 mb-3">
+                                        <i class="fas fa-users"></i>
+                                    </div>
+                                    <h3 class="fw-bold">${totalApplications}</h3>
+                                    <p class="text-muted mb-0">Ứng viên</p>
+                                    <hr>
+                                    <div class="small text-muted">
+                                        <span class="text-warning">${pendingApplications} chờ duyệt</span> •
+                                        <span class="text-success">${acceptedApplications} đã duyệt</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                }
+
+                // Cập nhật danh sách tin tuyển dụng mới nhất
+                if (latestJobsList) {
+                    if (jobs.length > 0) {
+                        // Sắp xếp theo thời gian tạo mới nhất
+                        jobs.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+                        
+                        latestJobsList.innerHTML = `
+                            <div class="list-group list-group-flush">
+                                ${jobs.slice(0, 5).map(job => `
+                                    <div class="list-group-item">
+                                        <div class="d-flex w-100 justify-content-between align-items-center">
+                                            <div>
+                                                <h6 class="mb-1">${job.title}</h6>
+                                                <small class="text-muted">
+                                                    <i class="fas fa-map-marker-alt me-1"></i>${job.contactAddress}
+                                                </small>
+                                            </div>
+                                            <div class="text-end">
+                                                <span class="badge ${job.status === 'approved' ? 'bg-success' : 'bg-warning'}">
+                                                    ${job.status === 'approved' ? 'Đang hiển thị' : 'Chờ duyệt'}
+                                                </span>
+                                                <button class="btn btn-sm btn-outline-primary ms-2" onclick="viewJobDetails('${job.id}')">
+                                                    <i class="fas fa-eye"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        `;
+                    } else {
+                        latestJobsList.innerHTML = `
+                            <div class="text-center text-muted py-4">
+                                <i class="fas fa-briefcase fa-3x mb-3"></i>
+                                <p>Bạn chưa đăng tin tuyển dụng nào</p>
+                                <button class="btn btn-primary" onclick="showSection('jobPostForm')">
+                                    <i class="fas fa-plus me-2"></i>Đăng tin ngay
+                                </button>
+                            </div>
+                        `;
+                    }
+                }
+
+                // Cập nhật danh sách ứng viên mới nhất
+                if (latestApplicationsList) {
+                    let allApplications = [];
+                    
+                    // Gom tất cả ứng viên từ các tin tuyển dụng
+                    for (const job of jobs) {
+                        const applicationsRef = ref(database, `applications/${job.id}`);
+                        const applicationsSnapshot = await get(applicationsRef);
+                        
+                        if (applicationsSnapshot.exists()) {
+                            applicationsSnapshot.forEach((applicationSnapshot) => {
+                                const application = applicationSnapshot.val();
+                                application.id = applicationSnapshot.key;
+                                application.jobTitle = job.title;
+                                allApplications.push(application);
+                            });
+                        }
+                    }
+
+                    if (allApplications.length > 0) {
+                        // Sắp xếp theo thời gian ứng tuyển mới nhất
+                        allApplications.sort((a, b) => new Date(b.appliedAt) - new Date(a.appliedAt));
+                        
+                        latestApplicationsList.innerHTML = `
+                            <div class="list-group list-group-flush">
+                                ${allApplications.slice(0, 5).map(application => `
+                                    <div class="list-group-item">
+                                        <div class="d-flex w-100 justify-content-between align-items-center">
+                                            <div>
+                                                <h6 class="mb-1">${application.candidateName}</h6>
+                                                <small class="text-muted">
+                                                    <i class="fas fa-briefcase me-1"></i>${application.jobTitle}
+                                                </small>
+                                            </div>
+                                            <div class="text-end">
+                                                <span class="badge ${getStatusBadgeClass(application.status)}">
+                                                    ${getStatusText(application.status)}
+                                                </span>
+                                                <button class="btn btn-sm btn-outline-primary ms-2" onclick="viewApplication('${application.jobId}', '${application.candidateId}')">
+                                                    <i class="fas fa-eye"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        `;
+                    } else {
+                        latestApplicationsList.innerHTML = `
+                            <div class="text-center text-muted py-4">
+                                <i class="fas fa-users fa-3x mb-3"></i>
+                                <p>Chưa có ứng viên nào ứng tuyển</p>
+                            </div>
+                        `;
+                    }
+                }
+            } catch (error) {
+                console.error('Error updating employer statistics:', error);
+                // Hiển thị thông báo lỗi
+                if (statisticsCards) {
+                    statisticsCards.innerHTML = `
+                        <div class="col-12">
+                            <div class="alert alert-danger">
+                                <i class="fas fa-exclamation-circle me-2"></i>
+                                Có lỗi xảy ra khi tải dữ liệu thống kê
+                            </div>
+                        </div>
+                    `;
+                }
+                if (latestJobsList) {
+                    latestJobsList.innerHTML = `
+                        <div class="alert alert-danger">
+                            <i class="fas fa-exclamation-circle me-2"></i>
+                            Có lỗi xảy ra khi tải danh sách tin tuyển dụng
+                        </div>
+                    `;
+                }
+                if (latestApplicationsList) {
+                    latestApplicationsList.innerHTML = `
+                        <div class="alert alert-danger">
+                            <i class="fas fa-exclamation-circle me-2"></i>
+                            Có lỗi xảy ra khi tải danh sách ứng viên
+                        </div>
+                    `;
+                }
+            }
+        }
+
+        // Thêm hàm xem chi tiết và chỉnh sửa tin
+        function viewJobDetails(jobId) {
+            // TODO: Implement view job details
+            console.log('View job:', jobId);
+        }
+
+        function editJob(jobId) {
+            // TODO: Implement edit job
+            console.log('Edit job:', jobId);
+        }
+
+        // Cập nhật phần xử lý trạng thái đăng nhập
+        onAuthStateChanged(auth, async (user) => {
+            if (user) {
+                // Lấy thông tin user từ database
+                const userRef = ref(database, 'users/' + user.uid);
+                const snapshot = await get(userRef);
+                const userData = snapshot.val();
+
+                if (userData && userData.role === 'employer') {
+                    // Cập nhật thống kê cho nhà tuyển dụng
+                    updateEmployerStatistics(user.uid);
+                }
+            }
+        });
+
+        // Hàm xem chi tiết tin tuyển dụng
+        window.viewJobDetails = function(jobId) {
+            const { database, ref, get } = window.firebase;
+            const jobRef = ref(database, `jobs/${jobId}`);
+            
+            get(jobRef).then((snapshot) => {
+                if (!snapshot.exists()) {
+                    Swal.fire({
+                        title: 'Lỗi!',
+                        text: 'Không tìm thấy thông tin tin tuyển dụng',
+                        icon: 'error'
+                    });
+                    return;
+                }
+
+                const job = snapshot.val();
+                
+                Swal.fire({
+                    title: job.title,
+                    html: `
+                        <div class="text-start">
+                            <h6>Chi tiết công việc:</h6>
+                            <p><strong>Loại hình:</strong> ${job.type}</p>
+                            <p><strong>Địa điểm:</strong> ${job.location}</p>
+                            <p><strong>Mức lương:</strong> ${job.salaryMin} - ${job.salaryMax} VNĐ</p>
+                            
+                            <h6 class="mt-4">Mô tả công việc:</h6>
+                            <div class="border rounded p-3 bg-light">
+                                <pre style="white-space: pre-wrap;">${job.description}</pre>
+                            </div>
+                            
+                            <h6 class="mt-4">Yêu cầu:</h6>
+                            <div class="border rounded p-3 bg-light">
+                                <pre style="white-space: pre-wrap;">${job.requirements}</pre>
+                            </div>
+                            
+                            <h6 class="mt-4">Thông tin khác:</h6>
+                            <p><strong>Ngày đăng:</strong> ${new Date(job.createdAt).toLocaleString('vi-VN')}</p>
+                            <p><strong>Trạng thái:</strong> <span class="badge ${getStatusBadgeClass(job.status)}">${getStatusText(job.status)}</span></p>
+                        </div>
+                    `,
+                    width: '600px',
+                    confirmButtonText: 'Đóng'
+                });
+            });
+        }
     }); // Đóng module script
 
     // Hàm cập nhật số dư tài khoản
