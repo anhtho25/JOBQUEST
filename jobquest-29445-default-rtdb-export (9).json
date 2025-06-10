@@ -1,0 +1,394 @@
+{
+  "applications": {
+    "1749359491638": {
+      "wzukitDM2SaT6CdP0hsQ5jU4BGr1": {
+        "appliedAt": "2025-06-08T05:24:39.921Z",
+        "candidateEmail": "ntho0124@gmail.com",
+        "candidateId": "wzukitDM2SaT6CdP0hsQ5jU4BGr1",
+        "candidateName": "Anh Thơ",
+        "coverLetter": "Chào anh/chị tuyển dụng,\n\nEm tên là Nguyễn Minh Thảo, hiện đang sinh sống tại TP. Hồ Chí Minh. Em là người thân thiện, chịu khó và luôn sẵn sàng học hỏi trong công việc. Em đặc biệt yêu thích không gian quán cà phê và mong muốn được làm việc trong môi trường năng động, gần gũi với khách hàng.\n\nEm viết thư này để ứng tuyển vào vị trí nhân viên phục vụ tại quán Gió & Nắng Café. Em tin rằng với tinh thần trách nhiệm và khả năng giao tiếp tốt, em sẽ là một phần hỗ trợ tích cực cho hoạt động của quán.\n\nEm rất mong nhận được cơ hội để thể hiện khả năng của mình trong buổi phỏng vấn sắp tới.\nXin cảm ơn anh/chị đã dành thời gian xem hồ sơ của em.\n\nTrân trọng,\nNguyễn Minh Thảo\n📞 0968 123 456\n📧 minhthao.nguyen01@gmail.com",
+        "cvLink": "https://example.com/cv-minhthao",
+        "jobId": "1749359491638",
+        "status": "accepted",
+        "updatedAt": "2025-06-08T07:26:37.530Z"
+      }
+    },
+    "1749367536839": {
+      "wzukitDM2SaT6CdP0hsQ5jU4BGr1": {
+        "appliedAt": "2025-06-08T07:27:37.994Z",
+        "candidateEmail": "ntho0124@gmail.com",
+        "candidateId": "wzukitDM2SaT6CdP0hsQ5jU4BGr1",
+        "candidateName": "Anh Thơ",
+        "coverLetter": "aaa",
+        "cvLink": "aa",
+        "jobId": "1749367536839",
+        "status": "accepted",
+        "updatedAt": "2025-06-08T07:28:31.635Z"
+      }
+    }
+  },
+  "conversations": {
+    "1O29cjK6R2dzYc2mZVfoTKfoT432_wzukitDM2SaT6CdP0hsQ5jU4BGr1": {
+      "candidateId": "wzukitDM2SaT6CdP0hsQ5jU4BGr1",
+      "createdAt": "2025-06-08T06:23:17.965Z",
+      "employerId": "1O29cjK6R2dzYc2mZVfoTKfoT432",
+      "jobTitle": "Nhân viên phục vụ tại quán cà phê bánh ngọt",
+      "unread": false
+    }
+  },
+  "cvs": {
+    "wzukitDM2SaT6CdP0hsQ5jU4BGr1": {
+      "achievements": [
+        {
+          "date": "2021 – 2022",
+          "description": "Tham gia làm bánh handmade và tổ chức các buổi chia sẻ bánh miễn phí tại trường THPT.\n\n",
+          "name": "Tham gia CLB làm bánh"
+        }
+      ],
+      "certificates": [
+        {
+          "expiryDate": "2025-06-24",
+          "issueDate": "2025-06-08",
+          "name": "An toàn thực phẩm",
+          "organization": "Trung tâm đào tạo vệ sinh an toàn TP.HCM"
+        }
+      ],
+      "createdAt": "2025-06-08T08:38:31.286Z",
+      "downloads": 2,
+      "education": [
+        {
+          "description": "Hoàn thành chương trình THPT, có tham gia các hoạt động ngoại khóa như văn nghệ, đội thanh niên tình nguyện.\n\n",
+          "endDate": "2025-06-28",
+          "major": "Không có",
+          "school": "Trường THPT Nguyễn Du",
+          "startDate": "2025-06-07"
+        }
+      ],
+      "experience": [
+        {
+          "company": "Tiệm Bánh Mộc Mạc",
+          "currentJob": false,
+          "description": " Phục vụ khách hàng tại quầy, giới thiệu bánh và thức uống, dọn dẹp khu vực quán, hỗ trợ thu ngân khi cần. Luôn giữ thái độ vui vẻ, chuyên nghiệp trong ca làm việc.",
+          "endDate": "2025-06-19",
+          "position": "Nhân viên phục vụ",
+          "startDate": "2025-06-08"
+        }
+      ],
+      "personalInfo": {
+        "address": "cái vồn bình minh vĩnh long",
+        "email": "ntho0124@gmail.com",
+        "fullName": "Nguyễn Trần Anh Thơ",
+        "jobTitle": "Nhân viên phục vụ tại quán cà phê bánh ngọt",
+        "phone": "0907708210",
+        "summary": "Tôi là một người năng động, thân thiện, có tinh thần trách nhiệm cao trong công việc. Tôi yêu thích môi trường quán cà phê và bánh ngọt, luôn sẵn sàng học hỏi để mang lại trải nghiệm tốt nhất cho khách hàng. Với tinh thần phục vụ và khả năng làm việc nhóm tốt, tôi tin rằng mình có thể đóng góp tích cực vào sự phát triển của quán."
+      },
+      "skills": [
+        {
+          "description": " Có khả năng phối hợp với các bạn phục vụ, barista và thu ngân để vận hành quán hiệu quả.",
+          "level": "Khá",
+          "name": "Giao tiếp với khách hàng"
+        }
+      ],
+      "updatedAt": "2025-06-08T08:38:31.286Z",
+      "userId": "wzukitDM2SaT6CdP0hsQ5jU4BGr1"
+    }
+  },
+  "jobs": {
+    "1749359491638": {
+      "benefits": "Quyền lợi\nMức lương cạnh tranh + thưởng theo năng suất\n\nĐược đào tạo nghiệp vụ chuyên môn\n\nMôi trường làm việc thân thiện, nhẹ nhàng, đúng như tên gọi \"Ấm\"\n\nGiảm giá 30% cho nhân viên khi dùng sản phẩm tại quán\n\nThông tin liên hệ\n📞 Điện thoại: 02812345678\n\n🌐 Website: amcoffeeandcake.netlify.app",
+      "category": "Sales",
+      "contactAddress": "Số 123, Nguyễn Trãi, Quận 5, TP. Hồ Chí Minh",
+      "createdAt": "2025-06-08T05:11:18.232Z",
+      "date": "2025-06-08",
+      "deadline": "2025-06-30",
+      "description": "Phục vụ khách hàng tại quán cà phê và bánh ngọt\n\nGiới thiệu và tư vấn sản phẩm cho khách\n\nDọn dẹp, giữ gìn vệ sinh khu vực làm việc\n\nHỗ trợ pha chế đơn giản (sẽ được đào tạo)\n\nLàm việc theo ca linh hoạt (sáng, chiều, tối)",
+      "employerId": "1O29cjK6R2dzYc2mZVfoTKfoT432",
+      "requirements": "Nam/Nữ từ 18–25 tuổi, ngoại hình ưa nhìn, thân thiện\n\nCó tinh thần trách nhiệm và làm việc nhóm\n\nƯu tiên ứng viên có kinh nghiệm phục vụ quán cà phê\n\nCó thể làm việc cuối tuần, lễ Tết",
+      "salaryMax": "9.000000",
+      "salaryMin": "5.000000",
+      "salaryType": "vnd",
+      "status": "approved",
+      "title": "Nhân viên phục vụ tại quán cà phê bánh ngọt",
+      "type": "full-time"
+    },
+    "1749367536839": {
+      "benefits": "aa",
+      "category": "Sales",
+      "contactAddress": "45 Nguyễn Hữu Cảnh, Bình Thạnh, TP. Hồ Chí Minh",
+      "createdAt": "2025-06-08T07:25:27.684Z",
+      "date": "2025-06-08",
+      "deadline": "2025-06-30",
+      "description": "aa",
+      "employerId": "1O29cjK6R2dzYc2mZVfoTKfoT432",
+      "requirements": "aa",
+      "salaryMax": "10.000000",
+      "salaryMin": "5.000000",
+      "salaryType": "vnd",
+      "status": "approved",
+      "title": "Barista pha chế tại quán Mộc Garden Coffee",
+      "type": "full-time"
+    },
+    "1749379634828": {
+      "benefits": "Mức lương cạnh tranh, thưởng theo năng lực và hiệu suất.\n\nĐược đào tạo nâng cao kỹ năng và cập nhật công nghệ mới.\n\nMôi trường làm việc thân thiện, có cơ hội thăng tiến.\n\nTham gia BHXH, BHYT đầy đủ sau thời gian thử việc.\n\nDu lịch công ty hàng năm và các hoạt động team-building định kỳ.",
+      "category": "HR",
+      "contactAddress": "241 Lê Văn Việt, Quận 9, TP. Hồ Chí Minh",
+      "createdAt": "2025-06-08T10:47:10.945Z",
+      "date": "2025-06-08",
+      "deadline": "2025-06-30",
+      "description": "Kiểm tra, chẩn đoán lỗi và sửa chữa các thiết bị điện tử như: tivi, loa, amply, board mạch điều khiển.\n\nThay thế linh kiện, vệ sinh và bảo trì định kỳ thiết bị cho khách hàng.\n\nGhi nhận phiếu sửa chữa và báo cáo tình trạng thiết bị.\n\nHỗ trợ kỹ thuật cho bộ phận chăm sóc khách hàng khi có yêu cầu.",
+      "employerId": "1O29cjK6R2dzYc2mZVfoTKfoT432",
+      "requirements": "Nam, tuổi từ 20 – 35.\n\nTốt nghiệp Trung cấp/Cao đẳng chuyên ngành điện tử, điện – điện lạnh hoặc tương đương.\n\nCó ít nhất 1 năm kinh nghiệm sửa chữa thiết bị điện tử.\n\nSử dụng thành thạo các dụng cụ đo, hàn, khò, máy hiện sóng là lợi thế.\n\nTrung thực, có tinh thần trách nhiệm, cẩn thận trong công việc.\n\n",
+      "salaryMax": "12.000000",
+      "salaryMin": "8.000000",
+      "salaryType": "vnd",
+      "status": "approved",
+      "title": "Kỹ thuật viên sửa chữa thiết bị điện tử",
+      "type": "full-time"
+    }
+  },
+  "messages": {
+    "1749359491638": {
+      "wzukitDM2SaT6CdP0hsQ5jU4BGr1": {
+        "1749365648488": {
+          "isRead": true,
+          "senderId": "1O29cjK6R2dzYc2mZVfoTKfoT432",
+          "text": "chào",
+          "timestamp": 1749365648006
+        },
+        "1749365780410": {
+          "isRead": true,
+          "senderId": "wzukitDM2SaT6CdP0hsQ5jU4BGr1",
+          "text": "em nghe",
+          "timestamp": 1749365779927
+        },
+        "1749365785602": {
+          "isRead": true,
+          "senderId": "1O29cjK6R2dzYc2mZVfoTKfoT432",
+          "text": "?",
+          "timestamp": 1749365785119
+        },
+        "1749365789414": {
+          "isRead": true,
+          "senderId": "wzukitDM2SaT6CdP0hsQ5jU4BGr1",
+          "text": "???",
+          "timestamp": 1749365788934
+        },
+        "1749365947288": {
+          "isRead": true,
+          "senderId": "wzukitDM2SaT6CdP0hsQ5jU4BGr1",
+          "text": "?",
+          "timestamp": 1749365946796
+        },
+        "1749365949534": {
+          "isRead": true,
+          "senderId": "1O29cjK6R2dzYc2mZVfoTKfoT432",
+          "text": "?",
+          "timestamp": 1749365949035
+        },
+        "1749365959325": {
+          "isRead": true,
+          "senderId": "wzukitDM2SaT6CdP0hsQ5jU4BGr1",
+          "text": "mé",
+          "timestamp": 1749365958832
+        },
+        "1749365961464": {
+          "isRead": true,
+          "senderId": "1O29cjK6R2dzYc2mZVfoTKfoT432",
+          "text": "cc",
+          "timestamp": 1749365960964
+        }
+      }
+    },
+    "1749367536839": {
+      "wzukitDM2SaT6CdP0hsQ5jU4BGr1": {
+        "1749367719888": {
+          "isRead": true,
+          "senderId": "1O29cjK6R2dzYc2mZVfoTKfoT432",
+          "text": "chào",
+          "timestamp": 1749367719374
+        }
+      }
+    }
+  },
+  "news": {
+    "news_001": {
+      "category": "trend",
+      "categoryName": "Xu hướng",
+      "content": "Khám phá những ngành nghề đang có nhu cầu cao và mức lương hấp dẫn trong năm 2024...",
+      "excerpt": "Khám phá những ngành nghề đang có nhu cầu cao và mức lương hấp dẫn trong năm 2024...",
+      "featured": true,
+      "imageUrl": "https://images.unsplash.com/photo-1521737711867-e3b97375f902",
+      "publishedAt": "2024-03-20T10:00:00Z",
+      "readTime": 8,
+      "seoDescription": "Khám phá 10 xu hướng nghề nghiệp hot nhất 2024 với mức lương hấp dẫn và cơ hội phát triển cao.",
+      "seoTitle": "10 Xu Hướng Nghề Nghiệp Nổi Bật Năm 2024 | JOBQUEST",
+      "slug": "10-xu-huong-nghe-nghiep-noi-bat-nam-2024",
+      "status": "published",
+      "tags": [
+        "xu-huong",
+        "nghe-nghiep",
+        "2024",
+        "luong-cao"
+      ],
+      "title": "10 Xu Hướng Nghề Nghiệp Nổi Bật Năm 2024",
+      "updatedAt": "2024-03-20T10:00:00Z",
+      "views": 1262
+    }
+  },
+  "users": {
+    "1O29cjK6R2dzYc2mZVfoTKfoT432": {
+      "balance": 2550000,
+      "company": {
+        "address": "Số 123, Nguyễn Trãi, Quận 5, TP. Hồ Chí Minh",
+        "description": "Ấm - Coffee and Cake không chỉ là nơi thưởng thức cà phê và bánh ngọt, mà còn là không gian để bạn tìm thấy sự thư giãn và kết nối. Mỗi ly cà phê, mỗi chiếc bánh đều được làm từ tâm huyết, mang đến hương vị đậm đà và yêu thương.",
+        "email": "contact@amcoffee.vn",
+        "name": "Ấm coffee and cake",
+        "phone": "02812345678",
+        "website": "https://amcoffeeandcake.netlify.app/"
+      },
+      "createdAt": "2025-06-07T03:35:49.707Z",
+      "email": "baokhangml99@gmail.com",
+      "name": "Võ Trần Hoàng Bảo Khang",
+      "role": "employer",
+      "transactions": {
+        "POST_1O29cjK6_1749358644059": {
+          "amount": -50000,
+          "createdAt": "2025-06-08T04:57:24.059Z",
+          "description": "Phí đăng tin tuyển dụng: Nhân viên pha chế tại quán The Bean House",
+          "jobId": "1749358644059",
+          "status": "completed",
+          "type": "job_posting"
+        },
+        "POST_1O29cjK6_1749358875661": {
+          "amount": -50000,
+          "createdAt": "2025-06-08T05:01:15.661Z",
+          "description": "Phí đăng tin tuyển dụng: Barista pha chế tại quán Mộc Garden Coffee",
+          "jobId": "1749358875661",
+          "status": "completed",
+          "type": "job_posting"
+        },
+        "POST_1O29cjK6_1749359491638": {
+          "amount": -50000,
+          "createdAt": "2025-06-08T05:11:31.638Z",
+          "description": "Phí đăng tin tuyển dụng: Nhân viên phục vụ tại quán cà phê bánh ngọt",
+          "jobId": "1749359491638",
+          "status": "completed",
+          "type": "job_posting"
+        },
+        "POST_1O29cjK6_1749367536839": {
+          "amount": -50000,
+          "createdAt": "2025-06-08T07:25:36.839Z",
+          "description": "Phí đăng tin tuyển dụng: Barista pha chế tại quán Mộc Garden Coffee",
+          "jobId": "1749367536839",
+          "status": "completed",
+          "type": "job_posting"
+        },
+        "POST_1O29cjK6_1749379634828": {
+          "amount": -50000,
+          "createdAt": "2025-06-08T10:47:14.828Z",
+          "description": "Phí đăng tin tuyển dụng: Kỹ thuật viên sửa chữa thiết bị điện tử",
+          "jobId": "1749379634828",
+          "status": "completed",
+          "type": "job_posting"
+        },
+        "TOPUP_1O29cjK6_1749353110619": {
+          "amount": 1000000,
+          "bankCode": "NCB",
+          "completedAt": "20250608103007",
+          "createdAt": "20250608103007",
+          "orderInfo": "Nap tien tai khoan JOBQUEST",
+          "paymentMethod": "vnpay",
+          "responseCode": "00",
+          "status": "completed",
+          "transactionNo": "15006684",
+          "transactionStatus": "00",
+          "type": "deposit"
+        },
+        "TOPUP_1O29cjK6_1749353907704": {
+          "amount": 300000,
+          "bankCode": "NCB",
+          "completedAt": "20250608103955",
+          "createdAt": "20250608103955",
+          "orderInfo": "Nap tien tai khoan JOBQUEST",
+          "paymentMethod": "vnpay",
+          "responseCode": "00",
+          "status": "completed",
+          "transactionNo": "15006696",
+          "transactionStatus": "00",
+          "type": "deposit"
+        },
+        "TOPUP_1O29cjK6_1749354039041": {
+          "amount": 500000,
+          "bankCode": "NCB",
+          "completedAt": "20250608104130",
+          "createdAt": "20250608104130",
+          "orderInfo": "Nap tien tai khoan JOBQUEST",
+          "paymentMethod": "vnpay",
+          "responseCode": "00",
+          "status": "completed",
+          "transactionNo": "15006701",
+          "transactionStatus": "00",
+          "type": "deposit"
+        },
+        "TOPUP_1O29cjK6_1749354155099": {
+          "amount": 1000000,
+          "bankCode": "VNPAY",
+          "completedAt": "20250608104314",
+          "createdAt": "20250608104314",
+          "orderInfo": "Nap tien tai khoan JOBQUEST",
+          "paymentMethod": "vnpay",
+          "responseCode": "24",
+          "status": "failed",
+          "transactionNo": "0",
+          "transactionStatus": "02",
+          "type": "deposit"
+        },
+        "TOPUP_1O29cjK6_1749354949208": {
+          "amount": 1000000,
+          "bankCode": "VNPAY",
+          "completedAt": "20250608105628",
+          "createdAt": "20250608105628",
+          "orderInfo": "Nap tien tai khoan JOBQUEST",
+          "paymentMethod": "vnpay",
+          "responseCode": "24",
+          "status": "failed",
+          "transactionNo": "0",
+          "transactionStatus": "02",
+          "type": "deposit"
+        },
+        "TOPUP_1O29cjK6_1749355002560": {
+          "amount": 1000000,
+          "bankCode": "VNPAY",
+          "completedAt": "20250608105721",
+          "createdAt": "20250608105721",
+          "orderInfo": "Nap tien tai khoan JOBQUEST",
+          "paymentMethod": "vnpay",
+          "responseCode": "24",
+          "status": "failed",
+          "transactionNo": "0",
+          "transactionStatus": "02",
+          "type": "deposit"
+        },
+        "TOPUP_1O29cjK6_1749357201888": {
+          "amount": 1000000,
+          "bankCode": "NCB",
+          "completedAt": "20250608113427",
+          "createdAt": "20250608113427",
+          "orderInfo": "Nap tien tai khoan JOBQUEST",
+          "paymentMethod": "vnpay",
+          "responseCode": "00",
+          "status": "completed",
+          "transactionNo": "15006788",
+          "transactionStatus": "00",
+          "type": "deposit"
+        }
+      }
+    },
+    "wzukitDM2SaT6CdP0hsQ5jU4BGr1": {
+      "createdAt": "2025-06-03T10:22:02.087Z",
+      "email": "ntho0124@gmail.com",
+      "name": "Nguyễn Trần Anh Thơ",
+      "role": "candidate"
+    }
+  }
+}

@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xem CV - VIỆC LÀM NHANH</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- SweetAlert2 CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.32/dist/sweetalert2.min.css">
+    
+    <!-- Firebase SDK -->
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-analytics.js";
+        import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+        import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
+
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyBxtxHc0J2y4RTPZ5msgygaJYFG8bhyzJE",
+            authDomain: "jobquest-29445.firebaseapp.com",
+            databaseURL: "https://jobquest-29445-default-rtdb.firebaseio.com",
+            projectId: "jobquest-29445",
+            storageBucket: "jobquest-29445.firebaseapp.com",
+            messagingSenderId: "792726027474",
+            appId: "1:792726027474:web:7372c0490c5d7390ebc10b",
+            measurementId: "G-3XJ0EENTDJ"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+        const auth = getAuth(app);
+        const database = getDatabase(app);
+
+        // Make Firebase services available globally
+        window.firebase = {
+            auth,
+            database,
+            ref,
+            onValue,
+            onAuthStateChanged
+        };
+    </script>
+
+    <!-- Add html2pdf library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .cv-container {
+            max-width: 210mm;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+        .cv-header {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .cv-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        .cv-header h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .cv-header p {
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        .cv-section {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .section-title {
+            color: #0a3570;
+            margin-bottom: 1.5rem;
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+        .entry-item {
+            margin-bottom: 15px;
+            padding: 15px;
+            border: 1px solid #eee;
+            border-radius: 4px;
+        }
+        .entry-item:last-child {
+            margin-bottom: 0;
+        }
+        .entry-item h5 {
+            color: #0a3570;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+        .entry-item p {
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+        .skill-level {
+            display: inline-block;
+            padding: 0.25rem 1rem;
+            background: #e9ecef;
+            border-radius: 15px;
+            margin-left: 1rem;
+        }
+        .cv-actions {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            gap: 10px;
+        }
+        .btn-download {
+            background-color: #28a745;
+            color: white;
+        }
+        .btn-download:hover {
+            background-color: #218838;
+            color: white;
+        }
+
+        @media print {
+            body {
+                margin: 0;
+                padding: 0;
+                background: white;
+            }
+            .cv-container {
+                width: 210mm;
+                height: auto;
+                margin: 0;
+                padding: 20px;
+                box-shadow: none;
+                border-radius: 0;
+            }
+            .cv-header {
+                border-radius: 0;
+                padding: 20px;
+            }
+            .cv-section {
+                padding: 15px 20px;
+                margin-bottom: 15px;
+                page-break-inside: avoid;
+            }
+            .entry-item {
+                padding: 15px;
+                margin-bottom: 15px;
+                page-break-inside: avoid;
+            }
+            .cv-actions {
+                display: none !important;
+            }
+        }
+
+        @page {
+            size: A4;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top">
+        <div class="container">
+            <a class="navbar-brand d-flex flex-column align-items-center" href="#">
+                <img src="images/jobquest-logo.png" alt="VIỆC LÀM NHANH Logo" height="60" class="mb-1">
+                <span class="fw-bold text-white" style="font-size:1.2rem; letter-spacing:2px;">VIỆC LÀM NHANH</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html"><i class="fas fa-home"></i> Trang chủ</a>
+                    </li>
+                  
+                </ul>
+                <div class="d-flex align-items-center" id="navbarAccountArea">
+                    <!-- Account area will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div id="cvContent">
+            <!-- CV content will be populated by JavaScript -->
+            <div class="text-center py-5">
+                <div class="spinner-border text-primary" role="status">
+                    <span class="visually-hidden">Đang tải...</span>
+                </div>
+                <p class="mt-3">Đang tải thông tin CV...</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- CV Actions -->
+    <div class="cv-actions">
+        <button onclick="window.print()" class="btn btn-primary">
+            <i class="fas fa-print"></i> In CV
+        </button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- SweetAlert2 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.32/dist/sweetalert2.all.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const { auth, database, ref, onValue } = window.firebase;
+
+            // Lấy ID từ URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const cvId = urlParams.get('id');
+
+            if (!cvId) {
+                Swal.fire({
+                    title: 'Lỗi!',
+                    text: 'Không tìm thấy thông tin CV',
+                    icon: 'error'
+                }).then(() => {
+                    window.location.href = 'create-cv.html';
+                });
+                return;
+            }
+
+            // Lấy thông tin CV từ Firebase
+            const cvRef = ref(database, `cvs/${cvId}`);
+            onValue(cvRef, (snapshot) => {
+                const cvData = snapshot.val();
+                if (cvData) {
+                    displayCV(cvData);
+                } else {
+                    Swal.fire({
+                        title: 'Lỗi!',
+                        text: 'Không tìm thấy thông tin CV',
+                        icon: 'error'
+                    }).then(() => {
+                        window.location.href = 'create-cv.html';
+                    });
+                }
+            });
+
+            // Hiển thị CV
+            function displayCV(data) {
+                const cvContent = document.getElementById('cvContent');
+                
+                let html = `
+                    <div class="cv-container">
+                        <div class="cv-header">
+                            <h1 class="display-4">${data.personalInfo.fullName}</h1>
+                            <h3 class="mb-3">${data.personalInfo.jobTitle}</h3>
+                            <p class="mb-2"><i class="fas fa-envelope me-2"></i>${data.personalInfo.email}</p>
+                            <p class="mb-2"><i class="fas fa-phone me-2"></i>${data.personalInfo.phone}</p>
+                            <p class="mb-0"><i class="fas fa-map-marker-alt me-2"></i>${data.personalInfo.address}</p>
+                        </div>
+
+                        <div class="cv-section">
+                            <h4 class="section-title">Giới thiệu</h4>
+                            <p>${data.personalInfo.summary}</p>
+                        </div>`;
+
+                if (data.education && data.education.length > 0) {
+                    html += `
+                        <div class="cv-section">
+                            <h4 class="section-title">Học vấn</h4>`;
+                    data.education.forEach(edu => {
+                        html += `
+                            <div class="entry-item">
+                                <h5>${edu.school}</h5>
+                                <p class="mb-1"><strong>Chuyên ngành:</strong> ${edu.major}</p>
+                                <p class="mb-1"><strong>Thời gian:</strong> ${formatDate(edu.startDate)} - ${formatDate(edu.endDate)}</p>
+                                ${edu.description ? `<p class="mb-0">${edu.description}</p>` : ''}
+                            </div>`;
+                    });
+                    html += `</div>`;
+                }
+
+                if (data.experience && data.experience.length > 0) {
+                    html += `
+                        <div class="cv-section">
+                            <h4 class="section-title">Kinh nghiệm làm việc</h4>`;
+                    data.experience.forEach(exp => {
+                        html += `
+                            <div class="entry-item">
+                                <h5>${exp.position} tại ${exp.company}</h5>
+                                <p class="mb-1"><strong>Thời gian:</strong> ${formatDate(exp.startDate)} - ${exp.currentJob ? 'Hiện tại' : formatDate(exp.endDate)}</p>
+                                <p class="mb-0">${exp.description}</p>
+                            </div>`;
+                    });
+                    html += `</div>`;
+                }
+
+                if (data.skills && data.skills.length > 0) {
+                    html += `
+                        <div class="cv-section">
+                            <h4 class="section-title">Kỹ năng</h4>`;
+                    data.skills.forEach(skill => {
+                        html += `
+                            <div class="entry-item">
+                                <h5>${skill.name} <span class="skill-level">${skill.level}</span></h5>
+                                ${skill.description ? `<p class="mb-0">${skill.description}</p>` : ''}
+                            </div>`;
+                    });
+                    html += `</div>`;
+                }
+
+                if (data.certificates && data.certificates.length > 0) {
+                    html += `
+                        <div class="cv-section">
+                            <h4 class="section-title">Chứng chỉ</h4>`;
+                    data.certificates.forEach(cert => {
+                        html += `
+                            <div class="entry-item">
+                                <h5>${cert.name}</h5>
+                                <p class="mb-1"><strong>Tổ chức cấp:</strong> ${cert.organization}</p>
+                                <p class="mb-0"><strong>Thời gian:</strong> ${formatDate(cert.issueDate)}${cert.expiryDate ? ` - ${formatDate(cert.expiryDate)}` : ''}</p>
+                            </div>`;
+                    });
+                    html += `</div>`;
+                }
+
+                if (data.achievements && data.achievements.length > 0) {
+                    html += `
+                        <div class="cv-section">
+                            <h4 class="section-title">Hoạt động và thành tích</h4>`;
+                    data.achievements.forEach(achievement => {
+                        html += `
+                            <div class="entry-item">
+                                <h5>${achievement.name}</h5>
+                                <p class="mb-1"><strong>Thời gian:</strong> ${achievement.date}</p>
+                                <p class="mb-0">${achievement.description}</p>
+                            </div>`;
+                    });
+                    html += `</div>`;
+                }
+
+                html += `</div>`;
+                cvContent.innerHTML = html;
+            }
+
+            // Format date helper
+            function formatDate(dateString) {
+                if (!dateString) return '';
+                const date = new Date(dateString);
+                return date.toLocaleDateString('vi-VN');
+            }
+        });
+    </script>
+</body>
+</html> 

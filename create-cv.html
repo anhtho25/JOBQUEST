@@ -578,9 +578,9 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top">
         <div class="container">
-            <a class="navbar-brand d-flex flex-column align-items-center" href="index.html">
-                <img src="images/jobquest-logo.png" alt="JOBQUEST Logo" height="60" class="mb-1">
-                <span class="fw-bold text-white" style="font-size:1.2rem; letter-spacing:2px;">JOBQUEST</span>
+            <a class="navbar-brand d-flex flex-column align-items-center" href="#">
+                <img src="images/jobquest-logo.png" alt="VIỆC LÀM NHANH Logo" height="60" class="mb-1">
+                <span class="fw-bold text-white" style="font-size:1.2rem; letter-spacing:2px;">VIỆC LÀM NHANH</span>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
@@ -588,7 +588,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" href="index.html"><i class="fas fa-home"></i> Trang chủ</a>
+                        <a class="nav-link active" href="#"><i class="fas fa-home"></i> Trang chủ</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="jobs.html"><i class="fas fa-search"></i> Việc làm</a>
@@ -598,15 +598,16 @@
                             <i class="fas fa-file-alt"></i> Tạo CV
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="cvDropdown">
+                            <li><a class="dropdown-item" href="create-cv.html">Mẫu CV tham khảo</a></li>
                             <li><a class="dropdown-item" href="create-cv.html">Tạo CV mới</a></li>
               
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="company.html"><i class="fas fa-building"></i> Công ty</a>
+                        <a class="nav-link" href="#"><i class="fas fa-building"></i> Công ty</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="news.html"><i class="fas fa-newspaper"></i> Tin tức</a>
+                        <a class="nav-link" href="#"><i class="fas fa-newspaper"></i> Tin tức</a>
                     </li>
                 </ul>
                 <div class="d-flex align-items-center" id="navbarAccountArea">
@@ -617,240 +618,225 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <div class="hero-section position-relative" style="background: url('images/we-are-hiring-digital-collage.jpg') center center/cover no-repeat; min-height: 450px;">
-        <div class="container position-relative" style="z-index:2;">
-            <div class="row align-items-center">
-                <div class="col-8 col-lg-7.5 py-5" style="background: rgba(255,255,255,0.85); border-radius: 24px;">
-                    <h1 class="fw-bold mb-4" style="font-size:2.5rem;">Khám Phá Cơ Hội Nghề Nghiệp Của Bạn</h1>
-                    <p class="lead mb-4">
-                        Tìm kiếm công việc mơ ước với hàng ngàn cơ hội từ các công ty hàng đầu.<br>
-                        Bắt đầu hành trình sự nghiệp của bạn ngay hôm nay!
-                    </p>
-                    <div class="search-box">
-                        <form class="d-flex">
-                            <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Nhập từ khóa, vị trí công việc...">
-                                <button class="btn btn-primary" type="submit">
-                                    <i class="fas fa-search"></i> Tìm kiếm
-                                </button>
-                            </div>
-                        </form>
-                        <div class="mt-3">
-                            <span class="text-muted">Tìm kiếm phổ biến:</span>
-                            <a href="#" class="badge bg-light text-dark text-decoration-none me-2">Lập trình viên</a>
-                            <a href="#" class="badge bg-light text-dark text-decoration-none me-2">Marketing</a>
-                            <a href="#" class="badge bg-light text-dark text-decoration-none">Kinh doanh</a>
+  <main>
+    <div class="container py-5">
+      <div class="row mb-5">
+        <div class="col-12 text-center">
+          <h1 class="display-4 mb-3">Tạo CV</h1>
+          <p class="lead">Điền thông tin của bạn để tạo CV</p>
+        </div>
+      </div>
+
+      <!-- CV Form -->
+      <div class="row">
+        <div class="col-12">
+          <div class="card shadow-sm">
+            <div class="card-body">
+              <form id="cvForm">
+                <!-- Thông tin cá nhân -->
+                <div class="mb-4">
+                  <h4 class="mb-3">Thông tin cá nhân</h4>
+                  <div class="row">
+                    <div class="col-md-6 mb-3">
+                      <label for="fullName" class="form-label">Họ và tên</label>
+                      <input type="text" class="form-control" id="fullName" required>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                      <label for="jobTitle" class="form-label">Vị trí ứng tuyển</label>
+                      <input type="text" class="form-control" id="jobTitle" required>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                      <label for="email" class="form-label">Email</label>
+                      <input type="email" class="form-control" id="email" required>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                      <label for="phone" class="form-label">Số điện thoại</label>
+                      <input type="tel" class="form-control" id="phone" required>
+                    </div>
+                    <div class="col-12 mb-3">
+                      <label for="address" class="form-label">Địa chỉ</label>
+                      <input type="text" class="form-control" id="address" required>
+                    </div>
+                    <div class="col-12 mb-3">
+                      <label for="summary" class="form-label">Giới thiệu bản thân</label>
+                      <textarea class="form-control" id="summary" rows="4" required></textarea>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Học vấn -->
+                <div class="mb-4">
+                  <h4 class="mb-3">Học vấn</h4>
+                  <div id="educationContainer">
+                    <div class="education-entry border rounded p-3 mb-3">
+                      <div class="row">
+                        <div class="col-md-6 mb-3">
+                          <label class="form-label">Tên trường</label>
+                          <input type="text" class="form-control" name="school[]" required>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div style="position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(10,53,112,0.15);z-index:1;"></div>
-    </div>
-
-    <!-- Quick Stats -->
-    <div class="quick-stats py-4 bg-primary text-white">
-        <div class="container">
-            <div class="row text-center">
-                <div class="col-md-3">
-                    <div class="stat-item">
-                        <i class="fas fa-briefcase fa-2x mb-2"></i>
-                        <h3 class="mb-0">10,000+</h3>
-                        <p class="mb-0">Việc làm</p>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="stat-item">
-                        <i class="fas fa-building fa-2x mb-2"></i>
-                        <h3 class="mb-0">5,000+</h3>
-                        <p class="mb-0">Công ty</p>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="stat-item">
-                        <i class="fas fa-users fa-2x mb-2"></i>
-                        <h3 class="mb-0">50,000+</h3>
-                        <p class="mb-0">Ứng viên</p>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="stat-item">
-                        <i class="fas fa-handshake fa-2x mb-2"></i>
-                        <h3 class="mb-0">8,000+</h3>
-                        <p class="mb-0">Tuyển dụng thành công</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Job Categories -->
-    <div class="job-categories py-5">
-        <div class="container">
-            <h2 class="text-center mb-5">Ngành Nghề Phổ Biến</h2>
-            <div class="row g-4">
-                <div class="col-md-3">
-                    <div class="category-card text-center p-4">
-                        <i class="fas fa-laptop-code fa-3x text-primary mb-3"></i>
-                        <h5>Công nghệ thông tin</h5>
-                        <p class="text-muted">1,234 việc làm</p>
-                        <a href="#" class="btn btn-outline-primary btn-sm">Xem ngay</a>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="category-card text-center p-4">
-                        <i class="fas fa-chart-line fa-3x text-primary mb-3"></i>
-                        <h5>Marketing</h5>
-                        <p class="text-muted">856 việc làm</p>
-                        <a href="#" class="btn btn-outline-primary btn-sm">Xem ngay</a>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="category-card text-center p-4">
-                        <i class="fas fa-bullhorn fa-3x text-primary mb-3"></i>
-                        <h5>Kinh doanh</h5>
-                        <p class="text-muted">1,567 việc làm</p>
-                        <a href="#" class="btn btn-outline-primary btn-sm">Xem ngay</a>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="category-card text-center p-4">
-                        <i class="fas fa-graduation-cap fa-3x text-primary mb-3"></i>
-                        <h5>Giáo dục</h5>
-                        <p class="text-muted">432 việc làm</p>
-                        <a href="#" class="btn btn-outline-primary btn-sm">Xem ngay</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- How It Works -->
-    <div class="how-it-works py-5 bg-light">
-        <div class="container">
-            <h2 class="text-center mb-5">Cách Thức Hoạt Động</h2>
-            <div class="row g-4">
-                <div class="col-md-4">
-                    <div class="step-card text-center p-4">
-                        <div class="step-number">1</div>
-                        <i class="fas fa-user-plus fa-3x text-primary mb-3"></i>
-                        <h5>Tạo Tài Khoản</h5>
-                        <p>Đăng ký tài khoản miễn phí và hoàn thiện hồ sơ của bạn</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="step-card text-center p-4">
-                        <div class="step-number">2</div>
-                        <i class="fas fa-search fa-3x text-primary mb-3"></i>
-                        <h5>Tìm Việc Làm</h5>
-                        <p>Tìm kiếm công việc phù hợp với kỹ năng và mong muốn của bạn</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="step-card text-center p-4">
-                        <div class="step-number">3</div>
-                        <i class="fas fa-paper-plane fa-3x text-primary mb-3"></i>
-                        <h5>Ứng Tuyển</h5>
-                        <p>Nộp đơn ứng tuyển và theo dõi trạng thái hồ sơ của bạn</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Latest Jobs -->
-    <div class="latest-jobs py-5">
-        <div class="container">
-            <div class="d-flex justify-content-between align-items-center mb-5">
-                <h2 class="mb-0">Việc Làm Mới Nhất</h2>
-                <div class="job-filters">
-                    <select class="form-select">
-                        <option>Tất cả ngành nghề</option>
-                        <option>CNTT</option>
-                        <option>Marketing</option>
-                        <option>Kinh doanh</option>
-                    </select>
-                </div>
-            </div>
-            <div class="row g-4" id="latestJobs">
-                <!-- Job cards sẽ được render ở đây bằng JS -->
-            </div>
-            <div class="text-center mt-4">
-                <button class="btn btn-outline-primary">Xem thêm việc làm</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Top Companies -->
-    <div class="top-companies py-5 bg-light">
-        <div class="container">
-            <h2 class="text-center mb-5">Công Ty Hàng Đầu</h2>
-            <div class="row g-4">
-                <div class="col-md-3">
-                    <div class="company-card text-center p-4">
-                        <img src="https://via.placeholder.com/100" alt="Company" class="company-logo mb-3" width="100">
-                        <h5>ABC Group</h5>
-                        <p class="text-muted">30+ việc làm</p>
-                        <a href="#" class="btn btn-outline-primary btn-sm">Xem công ty</a>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="company-card text-center p-4">
-                        <img src="images/company1.png" alt="Company 1" class="company-logo mb-3" width="100">
-                        <h5>Tech Solutions</h5>
-                        <p class="text-muted">50+ việc làm</p>
-                        <a href="#" class="btn btn-outline-primary btn-sm">Xem công ty</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Testimonials -->
-    <div class="testimonials py-5">
-        <div class="container">
-            <h2 class="text-center mb-5">Khách Hàng Nói Gì Về Chúng Tôi</h2>
-            <div class="row g-4">
-                <div class="col-md-4">
-                    <div class="testimonial-card p-4">
-                        <div class="d-flex align-items-center mb-3">
-                            <img src="https://via.placeholder.com/60" alt="User" class="rounded-circle me-3" width="60">
-                            <div>
-                                <h5 class="mb-1">Trần Thị B</h5>
-                                <p class="text-muted mb-0">Nhà tuyển dụng</p>
-                            </div>
+                        <div class="col-md-6 mb-3">
+                          <label class="form-label">Chuyên ngành</label>
+                          <input type="text" class="form-control" name="major[]" required>
                         </div>
-                        <p class="mb-0">"JOBQUEST giúp tôi tuyển dụng nhanh chóng, tiết kiệm thời gian và chi phí."</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="testimonial-card p-4">
-                        <div class="d-flex align-items-center mb-3">
-                            <img src="images/user1.jpg" alt="User 1" class="rounded-circle me-3" width="60">
-                            <div>
-                                <h5 class="mb-1">Nguyễn Văn A</h5>
-                                <p class="text-muted mb-0">Lập trình viên</p>
-                            </div>
+                        <div class="col-md-6 mb-3">
+                          <label class="form-label">Thời gian bắt đầu</label>
+                          <input type="date" class="form-control" name="eduStartDate[]" required>
                         </div>
-                        <p class="mb-0">"Tôi đã tìm được công việc mơ ước thông qua JobPortal. Quy trình ứng tuyển rất đơn giản và hiệu quả."</p>
+                        <div class="col-md-6 mb-3">
+                          <label class="form-label">Thời gian kết thúc</label>
+                          <input type="date" class="form-control" name="eduEndDate[]" required>
+                        </div>
+                        <div class="col-12">
+                          <label class="form-label">Mô tả</label>
+                          <textarea class="form-control" name="eduDescription[]" rows="3"></textarea>
+                        </div>
+                      </div>
                     </div>
+                  </div>
+                  <button type="button" class="btn btn-outline-primary" id="addEducation">
+                    <i class="fas fa-plus"></i> Thêm học vấn
+                  </button>
                 </div>
-            </div>
-        </div>
-    </div>
 
-    <!-- Call to Action -->
-    <div class="cta-section py-5 bg-primary text-white">
-        <div class="container text-center">
-            <h2 class="mb-4">Sẵn Sàng Tìm Việc?</h2>
-            <p class="lead mb-4">Tham gia cùng hàng nghìn ứng viên đang tìm kiếm cơ hội việc làm tốt nhất</p>
-            <div class="d-flex justify-content-center gap-3">
-                <a href="#" class="btn btn-light btn-lg">Tạo hồ sơ ngay</a>
-                <a href="employer-login.html" class="btn btn-outline-light btn-lg">Đăng tin tuyển dụng</a>
+                <!-- Kinh nghiệm làm việc -->
+                <div class="mb-4">
+                  <h4 class="mb-3">Kinh nghiệm làm việc</h4>
+                  <div id="experienceContainer">
+                    <div class="experience-entry border rounded p-3 mb-3">
+                      <div class="row">
+                        <div class="col-md-6 mb-3">
+                          <label class="form-label">Tên công ty</label>
+                          <input type="text" class="form-control" name="company[]" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                          <label class="form-label">Vị trí</label>
+                          <input type="text" class="form-control" name="position[]" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                          <label class="form-label">Thời gian bắt đầu</label>
+                          <input type="date" class="form-control" name="expStartDate[]" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                          <label class="form-label">Thời gian kết thúc</label>
+                          <input type="date" class="form-control" name="expEndDate[]">
+                          <div class="form-check mt-2">
+                            <input class="form-check-input" type="checkbox" name="currentJob[]">
+                            <label class="form-check-label">Đang làm việc tại đây</label>
+                          </div>
+                        </div>
+                        <div class="col-12">
+                          <label class="form-label">Mô tả công việc</label>
+                          <textarea class="form-control" name="expDescription[]" rows="3" required></textarea>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <button type="button" class="btn btn-outline-primary" id="addExperience">
+                    <i class="fas fa-plus"></i> Thêm kinh nghiệm
+                  </button>
+                </div>
+
+                <!-- Kỹ năng -->
+                <div class="mb-4">
+                  <h4 class="mb-3">Kỹ năng</h4>
+                  <div id="skillsContainer">
+                    <div class="skill-entry border rounded p-3 mb-3">
+                      <div class="row">
+                        <div class="col-md-6 mb-3">
+                          <label class="form-label">Tên kỹ năng</label>
+                          <input type="text" class="form-control" name="skillName[]" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                          <label class="form-label">Mức độ thành thạo</label>
+                          <select class="form-select" name="skillLevel[]" required>
+                            <option value="Cơ bản">Cơ bản</option>
+                            <option value="Trung bình">Trung bình</option>
+                            <option value="Khá">Khá</option>
+                            <option value="Thành thạo">Thành thạo</option>
+                            <option value="Chuyên gia">Chuyên gia</option>
+                          </select>
+                        </div>
+                        <div class="col-12">
+                          <label class="form-label">Mô tả chi tiết</label>
+                          <textarea class="form-control" name="skillDescription[]" rows="2"></textarea>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <button type="button" class="btn btn-outline-primary" id="addSkill">
+                    <i class="fas fa-plus"></i> Thêm kỹ năng
+                  </button>
+                </div>
+
+                <!-- Chứng chỉ -->
+                <div class="mb-4">
+                  <h4 class="mb-3">Chứng chỉ</h4>
+                  <div id="certificatesContainer">
+                    <div class="certificate-entry border rounded p-3 mb-3">
+                      <div class="row">
+                        <div class="col-md-6 mb-3">
+                          <label class="form-label">Tên chứng chỉ</label>
+                          <input type="text" class="form-control" name="certName[]" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                          <label class="form-label">Tổ chức cấp</label>
+                          <input type="text" class="form-control" name="certOrg[]" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                          <label class="form-label">Ngày cấp</label>
+                          <input type="date" class="form-control" name="certDate[]" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                          <label class="form-label">Ngày hết hạn</label>
+                          <input type="date" class="form-control" name="certExpiry[]">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <button type="button" class="btn btn-outline-primary" id="addCertificate">
+                    <i class="fas fa-plus"></i> Thêm chứng chỉ
+                  </button>
+                </div>
+
+                <!-- Hoạt động và thành tích -->
+                <div class="mb-4">
+                  <h4 class="mb-3">Hoạt động và thành tích</h4>
+                  <div id="achievementsContainer">
+                    <div class="achievement-entry border rounded p-3 mb-3">
+                      <div class="row">
+                        <div class="col-md-6 mb-3">
+                          <label class="form-label">Tên hoạt động/thành tích</label>
+                          <input type="text" class="form-control" name="achievementName[]" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                          <label class="form-label">Thời gian</label>
+                          <input type="text" class="form-control" name="achievementDate[]" required>
+                        </div>
+                        <div class="col-12">
+                          <label class="form-label">Mô tả chi tiết</label>
+                          <textarea class="form-control" name="achievementDescription[]" rows="3" required></textarea>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <button type="button" class="btn btn-outline-primary" id="addAchievement">
+                    <i class="fas fa-plus"></i> Thêm hoạt động/thành tích
+                  </button>
+                </div>
+
+                <!-- Nút submit -->
+                <div class="text-center mt-4">
+                  <button type="submit" class="btn btn-primary btn-lg px-5">
+                    <i class="fas fa-file-export me-2"></i>Tạo CV
+                  </button>
+                </div>
+              </form>
             </div>
+          </div>
         </div>
+      </div>
     </div>
+  </main>
 
     <!-- Footer -->
     <footer class="py-5">
@@ -1436,6 +1422,263 @@
                         </div>
                     `).join('');
                 }
+            });
+        }
+
+        // Lấy thông tin người dùng đã đăng nhập
+        auth.onAuthStateChanged(function(user) {
+            if (user) {
+                // Lấy thông tin chi tiết từ Realtime Database
+                const userRef = ref(database, 'users/' + user.uid);
+                onValue(userRef, (snapshot) => {
+                    const userData = snapshot.val();
+                    if (userData) {
+                        // Điền thông tin vào form và set readonly
+                        const fullNameInput = document.getElementById('fullName');
+                        const emailInput = document.getElementById('email');
+                        const phoneInput = document.getElementById('phone');
+                        const addressInput = document.getElementById('address');
+
+                        fullNameInput.value = userData.name || user.displayName || '';
+                        emailInput.value = userData.email || user.email || '';
+                        phoneInput.value = userData.phone || '';
+                        addressInput.value = userData.address || '';
+
+                        // Chỉ set readonly cho họ tên và email
+                        const readOnlyFields = ['fullName', 'email'];
+                        readOnlyFields.forEach(id => {
+                            const input = document.getElementById(id);
+                            input.readOnly = true;
+                            input.classList.add('bg-light');
+                        });
+                    }
+                });
+            } else {
+                // Nếu chưa đăng nhập, chuyển hướng về trang đăng nhập
+                window.location.href = 'login.html';
+            }
+        });
+
+        // Xử lý thêm mục học vấn
+        const addEducation = document.getElementById('addEducation');
+        if (addEducation) {
+            addEducation.addEventListener('click', function() {
+                const container = document.getElementById('educationContainer');
+                const template = container.children[0].cloneNode(true);
+                
+                // Reset giá trị các trường
+                template.querySelectorAll('input, textarea').forEach(input => {
+                    input.value = '';
+                });
+
+                // Thêm nút xóa
+                const deleteBtn = document.createElement('button');
+                deleteBtn.type = 'button';
+                deleteBtn.className = 'btn btn-danger mt-2';
+                deleteBtn.innerHTML = '<i class="fas fa-trash"></i> Xóa';
+                deleteBtn.onclick = function() {
+                    this.parentElement.remove();
+                };
+                template.appendChild(deleteBtn);
+                
+                container.appendChild(template);
+            });
+        }
+
+        // Xử lý thêm kinh nghiệm làm việc
+        const addExperience = document.getElementById('addExperience');
+        if (addExperience) {
+            addExperience.addEventListener('click', function() {
+                const container = document.getElementById('experienceContainer');
+                const template = container.children[0].cloneNode(true);
+                
+                template.querySelectorAll('input, textarea').forEach(input => {
+                    input.value = '';
+                    if (input.type === 'checkbox') input.checked = false;
+                });
+
+                const deleteBtn = document.createElement('button');
+                deleteBtn.type = 'button';
+                deleteBtn.className = 'btn btn-danger mt-2';
+                deleteBtn.innerHTML = '<i class="fas fa-trash"></i> Xóa';
+                deleteBtn.onclick = function() {
+                    this.parentElement.remove();
+                };
+                template.appendChild(deleteBtn);
+                
+                container.appendChild(template);
+            });
+        }
+
+        // Xử lý thêm kỹ năng
+        const addSkill = document.getElementById('addSkill');
+        if (addSkill) {
+            addSkill.addEventListener('click', function() {
+                const container = document.getElementById('skillsContainer');
+                const template = container.children[0].cloneNode(true);
+                
+                template.querySelectorAll('input, textarea, select').forEach(input => {
+                    input.value = '';
+                });
+
+                const deleteBtn = document.createElement('button');
+                deleteBtn.type = 'button';
+                deleteBtn.className = 'btn btn-danger mt-2';
+                deleteBtn.innerHTML = '<i class="fas fa-trash"></i> Xóa';
+                deleteBtn.onclick = function() {
+                    this.parentElement.remove();
+                };
+                template.appendChild(deleteBtn);
+                
+                container.appendChild(template);
+            });
+        }
+
+        // Xử lý thêm chứng chỉ
+        const addCertificate = document.getElementById('addCertificate');
+        if (addCertificate) {
+            addCertificate.addEventListener('click', function() {
+                const container = document.getElementById('certificatesContainer');
+                const template = container.children[0].cloneNode(true);
+                
+                template.querySelectorAll('input').forEach(input => {
+                    input.value = '';
+                });
+
+                const deleteBtn = document.createElement('button');
+                deleteBtn.type = 'button';
+                deleteBtn.className = 'btn btn-danger mt-2';
+                deleteBtn.innerHTML = '<i class="fas fa-trash"></i> Xóa';
+                deleteBtn.onclick = function() {
+                    this.parentElement.remove();
+                };
+                template.appendChild(deleteBtn);
+                
+                container.appendChild(template);
+            });
+        }
+
+        // Xử lý thêm hoạt động/thành tích
+        const addAchievement = document.getElementById('addAchievement');
+        if (addAchievement) {
+            addAchievement.addEventListener('click', function() {
+                const container = document.getElementById('achievementsContainer');
+                const template = container.children[0].cloneNode(true);
+                
+                template.querySelectorAll('input, textarea').forEach(input => {
+                    input.value = '';
+                });
+
+                const deleteBtn = document.createElement('button');
+                deleteBtn.type = 'button';
+                deleteBtn.className = 'btn btn-danger mt-2';
+                deleteBtn.innerHTML = '<i class="fas fa-trash"></i> Xóa';
+                deleteBtn.onclick = function() {
+                    this.parentElement.remove();
+                };
+                template.appendChild(deleteBtn);
+                
+                container.appendChild(template);
+            });
+        }
+
+        // Xử lý submit form
+        const cvForm = document.getElementById('cvForm');
+        if (cvForm) {
+            cvForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const user = auth.currentUser;
+                if (!user) {
+                    Swal.fire({
+                        title: 'Lỗi!',
+                        text: 'Vui lòng đăng nhập để tạo CV',
+                        icon: 'error'
+                    });
+                    return;
+                }
+
+                // Hiển thị loading
+                Swal.fire({
+                    title: 'Đang xử lý...',
+                    text: 'Vui lòng chờ trong giây lát',
+                    allowOutsideClick: false,
+                    didOpen: () => {
+                        Swal.showLoading();
+                    }
+                });
+
+                // Thu thập dữ liệu từ form
+                const formData = {
+                    userId: user.uid,
+                    personalInfo: {
+                        fullName: document.getElementById('fullName').value,
+                        jobTitle: document.getElementById('jobTitle').value,
+                        email: document.getElementById('email').value,
+                        phone: document.getElementById('phone').value,
+                        address: document.getElementById('address').value,
+                        summary: document.getElementById('summary').value
+                    },
+                    education: Array.from(document.getElementById('educationContainer').children).map(entry => ({
+                        school: entry.querySelector('[name="school[]"]').value,
+                        major: entry.querySelector('[name="major[]"]').value,
+                        startDate: entry.querySelector('[name="eduStartDate[]"]').value,
+                        endDate: entry.querySelector('[name="eduEndDate[]"]').value,
+                        description: entry.querySelector('[name="eduDescription[]"]').value
+                    })),
+                    experience: Array.from(document.getElementById('experienceContainer').children).map(entry => ({
+                        company: entry.querySelector('[name="company[]"]').value,
+                        position: entry.querySelector('[name="position[]"]').value,
+                        startDate: entry.querySelector('[name="expStartDate[]"]').value,
+                        endDate: entry.querySelector('[name="expEndDate[]"]').value,
+                        currentJob: entry.querySelector('[name="currentJob[]"]')?.checked || false,
+                        description: entry.querySelector('[name="expDescription[]"]').value
+                    })),
+                    skills: Array.from(document.getElementById('skillsContainer').children).map(entry => ({
+                        name: entry.querySelector('[name="skillName[]"]').value,
+                        level: entry.querySelector('[name="skillLevel[]"]').value,
+                        description: entry.querySelector('[name="skillDescription[]"]').value
+                    })),
+                    certificates: Array.from(document.getElementById('certificatesContainer').children).map(entry => ({
+                        name: entry.querySelector('[name="certName[]"]').value,
+                        organization: entry.querySelector('[name="certOrg[]"]').value,
+                        issueDate: entry.querySelector('[name="certDate[]"]').value,
+                        expiryDate: entry.querySelector('[name="certExpiry[]"]').value
+                    })),
+                    achievements: Array.from(document.getElementById('achievementsContainer').children).map(entry => ({
+                        name: entry.querySelector('[name="achievementName[]"]').value,
+                        date: entry.querySelector('[name="achievementDate[]"]').value,
+                        description: entry.querySelector('[name="achievementDescription[]"]').value
+                    })),
+                    createdAt: new Date().toISOString(),
+                    updatedAt: new Date().toISOString()
+                };
+
+                // Lưu CV vào Firebase
+                const cvRef = ref(database, `cvs/${user.uid}`);
+                set(cvRef, formData)
+                    .then(() => {
+                        Swal.fire({
+                            title: 'Thành công!',
+                            text: 'CV của bạn đã được lưu thành công',
+                            icon: 'success',
+                            confirmButtonText: 'Xem CV',
+                            showCancelButton: true,
+                            cancelButtonText: 'Đóng'
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                window.location.href = `view-cv.html?id=${user.uid}`;
+                            }
+                        });
+                    })
+                    .catch((error) => {
+                        console.error('Lỗi khi lưu CV:', error);
+                        Swal.fire({
+                            title: 'Lỗi!',
+                            text: 'Có lỗi xảy ra khi lưu CV. Vui lòng thử lại sau.',
+                            icon: 'error'
+                        });
+                    });
             });
         }
     });

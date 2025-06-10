@@ -630,9 +630,9 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top">
         <div class="container">
-            <a class="navbar-brand d-flex flex-column align-items-center" href="#">
-                <img src="images/jobquest-logo.png" alt="VIỆC LÀM NHANH Logo" height="60" class="mb-1">
-                <span class="fw-bold text-white" style="font-size:1.2rem; letter-spacing:2px;">VIỆC LÀM NHANH</span>
+            <a class="navbar-brand d-flex flex-column align-items-center" href="index.html">
+                <img src="images/jobquest-logo.png" alt="JOBQUEST Logo" height="60" class="mb-1">
+                <span class="fw-bold text-white" style="font-size:1.2rem; letter-spacing:2px;">JOBQUEST</span>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
@@ -640,7 +640,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" href="#"><i class="fas fa-home"></i> Trang chủ</a>
+                        <a class="nav-link active" href="index.html"><i class="fas fa-home"></i> Trang chủ</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="jobs.html"><i class="fas fa-search"></i> Việc làm</a>
@@ -650,16 +650,15 @@
                             <i class="fas fa-file-alt"></i> Tạo CV
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="cvDropdown">
-                            <li><a class="dropdown-item" href="create-cv.html">Mẫu CV tham khảo</a></li>
                             <li><a class="dropdown-item" href="create-cv.html">Tạo CV mới</a></li>
               
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="fas fa-building"></i> Công ty</a>
+                        <a class="nav-link" href="company.html"><i class="fas fa-building"></i> Công ty</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="fas fa-newspaper"></i> Tin tức</a>
+                        <a class="nav-link" href="news.html"><i class="fas fa-newspaper"></i> Tin tức</a>
                     </li>
                 </ul>
                 <div class="d-flex align-items-center" id="navbarAccountArea">
@@ -1381,14 +1380,26 @@
         // Load jobs from Firebase
         function loadJobs() {
             const jobsRef = ref(database, 'jobs');
-            onValue(jobsRef, (snapshot) => {
-                allJobs = []; // Reset allJobs array
-                snapshot.forEach((childSnapshot) => {
-                    const job = childSnapshot.val();
-                    job.id = childSnapshot.key;
-                    allJobs.push(job);
+            const usersRef = ref(database, 'users');
+            
+            // First get all users
+            get(usersRef).then((usersSnapshot) => {
+                const users = usersSnapshot.val();
+                
+                // Then get all jobs
+                onValue(jobsRef, (snapshot) => {
+                    allJobs = []; // Reset allJobs array
+                    snapshot.forEach((childSnapshot) => {
+                        const job = childSnapshot.val();
+                        job.id = childSnapshot.key;
+                        // Add employer info to job
+                        if (job.employerId && users[job.employerId]) {
+                            job.employer = users[job.employerId];
+                        }
+                        allJobs.push(job);
+                    });
+                    filterAndDisplayJobs();
                 });
-                filterAndDisplayJobs();
             });
         }
 
@@ -1445,7 +1456,7 @@
                                     <span class="badge bg-info me-2">${job.type}</span>
                                     <span class="badge ${job.status === 'approved' ? 'bg-success' : job.status === 'pending' ? 'bg-warning' : 'bg-danger'}">${job.status === 'approved' ? 'Đã duyệt' : job.status === 'pending' ? 'Chờ duyệt' : 'Từ chối'}</span>
                                 </div>
-                                <p class="mb-2"><i class="fas fa-building me-2"></i>${job.employerName || 'Nhà tuyển dụng'}</p>
+                                <p class="mb-2"><i class="fas fa-building me-2"></i>${allJobs.find(j => j.id === job.id)?.employer?.company?.name || 'Nhà tuyển dụng'}</p>
                                 <p class="mb-2"><i class="fas fa-map-marker-alt me-2"></i>${job.contactAddress}</p>
                                 <p class="mb-2"><i class="fas fa-money-bill-wave me-2"></i>${Number(job.salaryMin).toLocaleString()} - ${Number(job.salaryMax).toLocaleString()} ${job.salaryType.toUpperCase()}</p>
                                 <p class="mb-3"><i class="fas fa-calendar me-2"></i>Hạn nộp: ${job.deadline}</p>
@@ -1516,7 +1527,7 @@
                     
                     <p class="mb-2">
                         <i class="fas fa-building me-2"></i>
-                        <strong>Công ty:</strong> ${job.employerName || 'Nhà tuyển dụng'}
+                        <strong>Công ty:</strong> ${job.employer?.company?.name || 'Nhà tuyển dụng'}
                     </p>
                     <p class="mb-2">
                         <i class="fas fa-map-marker-alt me-2"></i>
