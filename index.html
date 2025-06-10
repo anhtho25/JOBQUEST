@@ -15,7 +15,7 @@
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
         import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-analytics.js";
         import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, sendPasswordResetEmail, signOut, onAuthStateChanged, updateProfile, GoogleAuthProvider, signInWithPopup } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
-        import { getDatabase, ref, set, onValue, query, orderByChild, equalTo, limitToFirst } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
+        import { getDatabase, ref, set, onValue, query, orderByChild, equalTo, limitToFirst, limitToLast, push, startAfter } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
 
         // Your web app's Firebase configuration
         const firebaseConfig = {
@@ -36,7 +36,7 @@
         const database = getDatabase(app);
 
         // Make Firebase services available globally
-        window.firebase = {
+        const firebaseServices = {
             auth,
             database,
             signInWithEmailAndPassword,
@@ -52,9 +52,15 @@
             orderByChild,
             equalTo,
             limitToFirst,
+            limitToLast,
+            push,
+            startAfter,
             GoogleAuthProvider,
             signInWithPopup
         };
+
+        // Ensure all Firebase services are properly exposed
+        window.firebase = firebaseServices;
     </script>
 
     <style>
@@ -388,6 +394,47 @@
             border: 3px solid #007bff;
         }
 
+        /* Testimonial Carousel */
+        .testimonial-carousel {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonial-carousel .row {
+            transition: transform 0.5s ease;
+        }
+
+        .testimonial-nav button {
+            width: 40px;
+            height: 40px;
+            padding: 0;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+        .testimonial-nav button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* Rating Stars */
+        .rating {
+            color: #ffc107;
+            cursor: pointer;
+        }
+
+        .rating .rating-star {
+            padding: 0 2px;
+            transition: all 0.2s ease;
+        }
+
+        .rating .rating-star:hover,
+        .rating .rating-star.active {
+            transform: scale(1.2);
+        }
+
         /* Call to Action */
         .cta-section {
             background: #e6f0fa;
@@ -602,9 +649,7 @@
               
                         </ul>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="company.html"><i class="fas fa-building"></i> Công ty</a>
-                    </li>
+                  
                     <li class="nav-item">
                         <a class="nav-link" href="news.html"><i class="fas fa-newspaper"></i> Tin tức</a>
                     </li>
@@ -621,7 +666,7 @@
     <div class="hero-section position-relative" style="background: url('images/we-are-hiring-digital-collage.jpg') center center/cover no-repeat; min-height: 450px;">
         <div class="container position-relative" style="z-index:2;">
             <div class="row align-items-center">
-                <div class="col-8 col-lg-7.5 py-5" style="background: rgba(255,255,255,0.85); border-radius: 24px;">
+                <!-- <div class="col-8 col-lg-7.5 py-5" style="background: rgba(255,255,255,0.85); border-radius: 24px;">
                     <h1 class="fw-bold mb-4" style="font-size:2.5rem;">Khám Phá Cơ Hội Nghề Nghiệp Của Bạn</h1>
                     <p class="lead mb-4">
                         Tìm kiếm công việc mơ ước với hàng ngàn cơ hội từ các công ty hàng đầu.<br>
@@ -643,7 +688,7 @@
                             <a href="#" class="badge bg-light text-dark text-decoration-none">Kinh doanh</a>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
         <div style="position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(10,53,112,0.15);z-index:1;"></div>
@@ -776,81 +821,55 @@
             <div class="row g-4" id="latestJobs">
                 <!-- Job cards sẽ được render ở đây bằng JS -->
             </div>
-            <div class="text-center mt-4">
+            <!-- <div class="text-center mt-4">
                 <button class="btn btn-outline-primary">Xem thêm việc làm</button>
-            </div>
+            </div> -->
         </div>
     </div>
 
-    <!-- Top Companies -->
-    <div class="top-companies py-5 bg-light">
-        <div class="container">
-            <h2 class="text-center mb-5">Công Ty Hàng Đầu</h2>
-            <div class="row g-4">
-                <div class="col-md-3">
-                    <div class="company-card text-center p-4">
-                        <img src="https://via.placeholder.com/100" alt="Company" class="company-logo mb-3" width="100">
-                        <h5>ABC Group</h5>
-                        <p class="text-muted">30+ việc làm</p>
-                        <a href="#" class="btn btn-outline-primary btn-sm">Xem công ty</a>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="company-card text-center p-4">
-                        <img src="images/company1.png" alt="Company 1" class="company-logo mb-3" width="100">
-                        <h5>Tech Solutions</h5>
-                        <p class="text-muted">50+ việc làm</p>
-                        <a href="#" class="btn btn-outline-primary btn-sm">Xem công ty</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    
 
     <!-- Testimonials -->
     <div class="testimonials py-5">
         <div class="container">
-            <h2 class="text-center mb-5">Khách Hàng Nói Gì Về Chúng Tôi</h2>
-            <div class="row g-4">
-                <div class="col-md-4">
-                    <div class="testimonial-card p-4">
-                        <div class="d-flex align-items-center mb-3">
-                            <img src="https://via.placeholder.com/60" alt="User" class="rounded-circle me-3" width="60">
-                            <div>
-                                <h5 class="mb-1">Trần Thị B</h5>
-                                <p class="text-muted mb-0">Nhà tuyển dụng</p>
-                            </div>
-                        </div>
-                        <p class="mb-0">"JOBQUEST giúp tôi tuyển dụng nhanh chóng, tiết kiệm thời gian và chi phí."</p>
+            <div class="row align-items-center mb-5">
+                <div class="col-md-6">
+                    <h2 class="mb-0">Khách Hàng Nói Gì Về Chúng Tôi</h2>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <div class="testimonial-nav">
+                        <button class="btn btn-outline-primary me-2" id="prevTestimonial">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button class="btn btn-outline-primary" id="nextTestimonial">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
                     </div>
                 </div>
-                <div class="col-md-4">
+            </div>
+            
+            <!-- Carousel cho đánh giá -->
+            <div class="testimonial-carousel">
+                <div class="row" id="testimonialContainer">
+                    <!-- Đánh giá sẽ được load động vào đây -->
+                </div>
+            </div>
+
+            <!-- Form gửi đánh giá -->
+            <div class="row mt-5">
+                <div class="col-md-6 mx-auto">
                     <div class="testimonial-card p-4">
-                        <div class="d-flex align-items-center mb-3">
-                            <img src="images/user1.jpg" alt="User 1" class="rounded-circle me-3" width="60">
-                            <div>
-                                <h5 class="mb-1">Nguyễn Văn A</h5>
-                                <p class="text-muted mb-0">Lập trình viên</p>
-                            </div>
+                        <h5 class="text-center mb-4">Gửi Đánh Giá Của Bạn</h5>
+                        <div id="testimonialFormContainer">
+                            <!-- Form sẽ được load động dựa vào trạng thái đăng nhập -->
                         </div>
-                        <p class="mb-0">"Tôi đã tìm được công việc mơ ước thông qua JobPortal. Quy trình ứng tuyển rất đơn giản và hiệu quả."</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Call to Action -->
-    <div class="cta-section py-5 bg-primary text-white">
-        <div class="container text-center">
-            <h2 class="mb-4">Sẵn Sàng Tìm Việc?</h2>
-            <p class="lead mb-4">Tham gia cùng hàng nghìn ứng viên đang tìm kiếm cơ hội việc làm tốt nhất</p>
-            <div class="d-flex justify-content-center gap-3">
-                <a href="#" class="btn btn-light btn-lg">Tạo hồ sơ ngay</a>
-                <a href="employer-login.html" class="btn btn-outline-light btn-lg">Đăng tin tuyển dụng</a>
-            </div>
-        </div>
-    </div>
+   
 
     <!-- Footer -->
     <footer class="py-5">
@@ -1402,39 +1421,356 @@
             });
         }
 
+        // Xử lý đánh giá sao và form
+        function initRatingStars() {
+            const ratingStars = document.querySelectorAll('.rating-star');
+            const ratingValue = document.getElementById('ratingValue');
+            if (!ratingStars.length || !ratingValue) return;
+
+            ratingStars.forEach(star => {
+                star.addEventListener('mouseover', function() {
+                    const rating = this.dataset.rating;
+                    updateStarDisplay(rating);
+                });
+
+                star.addEventListener('mouseout', function() {
+                    updateStarDisplay(ratingValue.value);
+                });
+
+                star.addEventListener('click', function() {
+                    const rating = this.dataset.rating;
+                    ratingValue.value = rating;
+                    updateStarDisplay(rating);
+                });
+            });
+
+            // Xử lý form đánh giá
+            const testimonialForm = document.getElementById('testimonialForm');
+            if (testimonialForm) {
+                testimonialForm.addEventListener('submit', handleTestimonialSubmit);
+            }
+        }
+
+        // Xử lý form đánh giá
+        const testimonialFormContainer = document.getElementById('testimonialFormContainer');
+        let currentUser = null;
+
+        // Hàm cập nhật hiển thị sao
+        function updateStarDisplay(rating) {
+            const stars = document.querySelectorAll('.rating-star');
+            stars.forEach(star => {
+                const starRating = star.dataset.rating;
+                if (starRating <= rating) {
+                    star.classList.remove('far');
+                    star.classList.add('fas');
+                } else {
+                    star.classList.remove('fas');
+                    star.classList.add('far');
+                }
+            });
+        }
+
+        // Hàm render form dựa trên trạng thái đăng nhập
+        function renderTestimonialForm() {
+            if (!testimonialFormContainer) return;
+
+            if (currentUser) {
+                // Lấy thông tin user từ database
+                const userRef = ref(database, 'users/' + currentUser.uid);
+                onValue(userRef, (snapshot) => {
+                    const userData = snapshot.val();
+                    const userRole = userData?.role === 'employer' ? 'Nhà tuyển dụng' : 'Ứng viên';
+                    const userName = userData?.name || currentUser.displayName || currentUser.email;
+
+                    testimonialFormContainer.innerHTML = `
+                        <form id="testimonialForm">
+                            <div class="mb-3">
+                                <label class="form-label">Họ và tên</label>
+                                <input type="text" class="form-control" id="reviewerName" value="${userName}" readonly>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Vai trò</label>
+                                <input type="text" class="form-control" id="reviewerRole" value="${userRole}" readonly>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Đánh giá của bạn</label>
+                                <div class="rating text-center mb-2">
+                                    <i class="far fa-star fs-4 rating-star" data-rating="1"></i>
+                                    <i class="far fa-star fs-4 rating-star" data-rating="2"></i>
+                                    <i class="far fa-star fs-4 rating-star" data-rating="3"></i>
+                                    <i class="far fa-star fs-4 rating-star" data-rating="4"></i>
+                                    <i class="far fa-star fs-4 rating-star" data-rating="5"></i>
+                                </div>
+                                <input type="hidden" id="ratingValue" value="0" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Nội dung đánh giá</label>
+                                <textarea class="form-control" id="reviewContent" rows="3" placeholder="Chia sẻ trải nghiệm của bạn..." required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100">Gửi đánh giá</button>
+                        </form>
+                    `;
+
+                    // Khởi tạo lại sự kiện cho rating stars
+                    initRatingStars();
+
+                    // Xử lý submit form
+                    const testimonialForm = document.getElementById('testimonialForm');
+                    if (testimonialForm) {
+                        testimonialForm.addEventListener('submit', handleTestimonialSubmit);
+                    }
+                });
+            } else {
+                testimonialFormContainer.innerHTML = `
+                    <div class="text-center">
+                        <p class="mb-3">Vui lòng đăng nhập để gửi đánh giá của bạn</p>
+                        <button class="btn btn-primary" onclick="showLoginModal()">Đăng nhập ngay</button>
+                    </div>
+                `;
+            }
+        }
+
+        // Hàm xử lý submit form
+        function handleTestimonialSubmit(e) {
+            e.preventDefault();
+
+            const rating = parseInt(document.getElementById('ratingValue').value);
+            if (rating === 0) {
+                Swal.fire({
+                    title: 'Lỗi!',
+                    text: 'Vui lòng chọn số sao đánh giá',
+                    icon: 'error'
+                });
+                return;
+            }
+
+            // Hiển thị loading
+            Swal.fire({
+                title: 'Đang xử lý...',
+                text: 'Vui lòng chờ trong giây lát',
+                allowOutsideClick: false,
+                didOpen: () => {
+                    Swal.showLoading();
+                }
+            });
+
+            // Lấy dữ liệu từ form
+            const reviewData = {
+                name: document.getElementById('reviewerName').value,
+                role: document.getElementById('reviewerRole').value,
+                rating: rating,
+                content: document.getElementById('reviewContent').value,
+                userId: currentUser.uid,
+                userEmail: currentUser.email,
+                photoURL: currentUser.photoURL || currentUser.providerData[0]?.photoURL,
+                createdAt: new Date().toISOString(),
+                status: 'approved' // Hiển thị ngay lập tức
+            };
+
+            // Lưu vào Firebase
+            const testimonialRef = firebase.ref(database, 'testimonials');
+            const newTestimonialRef = firebase.push(testimonialRef);
+            
+            firebase.set(newTestimonialRef, reviewData)
+                .then(() => {
+                                                Swal.fire({
+                                title: 'Thành công!',
+                                text: 'Cảm ơn bạn đã gửi đánh giá.',
+                                icon: 'success',
+                                timer: 2000
+                            });
+                    document.getElementById('testimonialForm').reset();
+                    document.getElementById('ratingValue').value = '0';
+                    updateStarDisplay(0);
+                })
+                .catch((error) => {
+                    console.error('Error saving testimonial:', error);
+                    Swal.fire({
+                        title: 'Lỗi!',
+                        text: 'Có lỗi xảy ra khi gửi đánh giá. Vui lòng thử lại sau.',
+                        icon: 'error'
+                    });
+                });
+        }
+
+        // Hàm hiển thị modal đăng nhập
+        function showLoginModal() {
+            const loginModal = new bootstrap.Modal(document.getElementById('loginModal'));
+            loginModal.show();
+        }
+
+        // Theo dõi trạng thái đăng nhập
+        onAuthStateChanged(auth, (user) => {
+            currentUser = user;
+            renderTestimonialForm();
+        });
+
+        // Biến toàn cục cho testimonials
+        const testimonialContainer = document.getElementById('testimonialContainer');
+        let allTestimonials = [];
+
+        function loadLatestTestimonials() {
+            const testimonialRef = firebase.ref(database, 'testimonials');
+            const testimonialQuery = firebase.query(
+                testimonialRef,
+                firebase.orderByChild('createdAt')
+            );
+
+            firebase.onValue(testimonialQuery, (snapshot) => {
+                if (!snapshot.exists()) {
+                    testimonialContainer.innerHTML = '<div class="col-12 text-center">Chưa có đánh giá nào.</div>';
+                    return;
+                }
+
+                allTestimonials = [];
+                snapshot.forEach((childSnapshot) => {
+                    const testimonial = childSnapshot.val();
+                    allTestimonials.push({
+                        id: childSnapshot.key,
+                        ...testimonial
+                    });
+                });
+
+                // Sắp xếp theo thời gian mới nhất và giới hạn 5 đánh giá
+                allTestimonials.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+                allTestimonials = allTestimonials.slice(0, 5);
+
+                // Hiển thị đánh giá
+                renderTestimonials();
+            });
+        }
+
+        function renderTestimonials() {
+            if (allTestimonials.length === 0) {
+                testimonialContainer.innerHTML = '<div class="col-12 text-center">Chưa có đánh giá nào.</div>';
+                return;
+            }
+
+            const testimonialHTML = allTestimonials.map(testimonial => `
+                <div class="col mb-4">
+                    <div class="testimonial-card p-4 h-100 border rounded shadow-sm">
+                        <div class="d-flex align-items-center mb-3">
+                            <img src="${testimonial.photoURL || 'https://via.placeholder.com/60'}" 
+                                 alt="${testimonial.name}" 
+                                 class="rounded-circle me-3" 
+                                 width="60"
+                                 height="60"
+                                 style="object-fit: cover;">
+                            <div>
+                                <h5 class="mb-1">${testimonial.name}</h5>
+                                <p class="text-muted mb-0">${testimonial.role}</p>
+                            </div>
+                        </div>
+                        <div class="rating mb-2">
+                            ${Array(5).fill(0).map((_, i) => 
+                                `<i class="${i < testimonial.rating ? 'fas' : 'far'} fa-star text-warning"></i>`
+                            ).join('')}
+                        </div>
+                        <p class="mb-0 text-muted fst-italic">"${testimonial.content}"</p>
+                        <small class="text-muted mt-2 d-block">
+                            Đăng ngày: ${new Date(testimonial.createdAt).toLocaleDateString('vi-VN')}
+                        </small>
+                    </div>
+                </div>
+            `).join('');
+
+            testimonialContainer.innerHTML = `
+                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                    ${testimonialHTML}
+                </div>
+            `;
+        }
+
+        // Load testimonials khi trang được tải
+        loadLatestTestimonials();
+
+        // Load đánh giá ban đầu
+        loadLatestTestimonials();
+
         // Hiển thị tin tuyển dụng mới nhất từ Firebase Realtime Database
         const latestJobs = document.getElementById('latestJobs');
         if (latestJobs) {
             const jobsRef = ref(database, 'jobs');
-            const jobsQuery = query(jobsRef, orderByChild('status'), equalTo('approved'), limitToFirst(6));
+            const jobsQuery = query(
+                jobsRef,
+                orderByChild('createdAt')
+            );
             
             onValue(jobsQuery, (snapshot) => {
+                if (!snapshot.exists()) {
+                    latestJobs.innerHTML = '<div class="col-12 text-center text-muted">Chưa có tin tuyển dụng nào.</div>';
+                    return;
+                }
+
                 const jobs = [];
                 snapshot.forEach((childSnapshot) => {
-                    jobs.push({ id: childSnapshot.key, ...childSnapshot.val() });
+                    const job = childSnapshot.val();
+                    if (job.status === 'approved') {
+                        jobs.push({ id: childSnapshot.key, ...job });
+                    }
                 });
 
+                // Sắp xếp theo thời gian mới nhất
+                jobs.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+
                 if (jobs.length === 0) {
-                    latestJobs.innerHTML = '<div class="col-12 text-center text-muted">Chưa có tin tuyển dụng nào.</div>';
+                    latestJobs.innerHTML = '<div class="col-12 text-center text-muted">Chưa có tin tuyển dụng nào được phê duyệt.</div>';
                 } else {
-                    latestJobs.innerHTML = jobs.map(job => `
+                    // Chỉ lấy 6 tin mới nhất
+                    const latestSixJobs = jobs.slice(0, 6);
+                    
+                    latestJobs.innerHTML = latestSixJobs.map(job => `
                         <div class="col-md-6 col-lg-4 mb-4">
-                            <div class="card h-100 shadow-sm">
+                            <div class="card h-100 shadow-sm job-card">
                                 <div class="card-body">
-                                    <h5 class="card-title">${job.title}</h5>
-                                    <div class="mb-2"><span class="badge bg-primary">${job.category}</span> <span class="badge bg-info">${job.type}</span></div>
-                                    <p class="mb-1"><i class="fa fa-building me-2"></i>${job.employer || 'Nhà tuyển dụng'}</p>
-                                    <p class="mb-1"><i class="fa fa-map-marker-alt me-2"></i>${job.contactAddress}</p>
-                                    <p class="mb-1"><i class="fa fa-money-bill-wave me-2"></i>${Number(job.salaryMin).toLocaleString()} - ${Number(job.salaryMax).toLocaleString()} ${job.salaryType.toUpperCase()}</p>
-                                    <p class="mb-1"><i class="fa fa-calendar me-2"></i>Hạn nộp: ${job.deadline}</p>
+                                    <h5 class="card-title text-primary mb-3">${job.title}</h5>
+                                    <div class="mb-3">
+                                        <span class="badge bg-primary me-2">${job.category}</span>
+                                        <span class="badge ${job.type === 'full-time' ? 'bg-success' : 'bg-info'}">${
+                                            job.type === 'full-time' ? 'Toàn thời gian' : 
+                                            job.type === 'part-time' ? 'Bán thời gian' : 
+                                            job.type === 'intern' ? 'Thực tập' : job.type
+                                        }</span>
+                                    </div>
+                                    <p class="mb-2">
+                                        <i class="fas fa-map-marker-alt me-2 text-secondary"></i>
+                                        ${job.contactAddress}
+                                    </p>
+                                    <p class="mb-2">
+                                        <i class="fas fa-money-bill-wave me-2 text-secondary"></i>
+                                        ${Number(job.salaryMin).toLocaleString()} - ${Number(job.salaryMax).toLocaleString()} 
+                                        ${job.salaryType.toUpperCase() === 'VND' ? 'VNĐ' : job.salaryType.toUpperCase()}
+                                    </p>
+                                    <p class="mb-0">
+                                        <i class="fas fa-clock me-2 text-secondary"></i>
+                                        Hạn nộp: ${new Date(job.deadline).toLocaleDateString('vi-VN')}
+                                    </p>
                                 </div>
-                                <div class="card-footer bg-white border-0 d-flex justify-content-between align-items-center">
-                                    <small class="text-muted">${job.date || ''}</small>
-                                    <span class="badge bg-success">${job.status}</span>
+                                <div class="card-footer bg-white border-0">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <small class="text-muted">
+                                            Đăng ngày: ${new Date(job.createdAt).toLocaleDateString('vi-VN')}
+                                        </small>
+                                      
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     `).join('');
+
+                    // Thêm hiệu ứng hover cho job cards
+                    const jobCards = document.querySelectorAll('.job-card');
+                    jobCards.forEach(card => {
+                        card.addEventListener('mouseenter', function() {
+                            this.style.transform = 'translateY(-5px)';
+                            this.style.boxShadow = '0 4px 15px rgba(0,0,0,0.1)';
+                            this.style.transition = 'all 0.3s ease';
+                        });
+                        card.addEventListener('mouseleave', function() {
+                            this.style.transform = 'translateY(0)';
+                            this.style.boxShadow = '';
+                        });
+                    });
                 }
             });
         }
