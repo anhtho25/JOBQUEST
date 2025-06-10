@@ -2,7 +2,13 @@
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
     import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-analytics.js";
     import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, sendPasswordResetEmail, signOut, onAuthStateChanged, updateProfile } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
-    import { getDatabase, ref, set, onValue, query, orderByChild, equalTo, limitToFirst, get, update, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
+    import { getDatabase, ref, set, onValue, query, orderByChild, equalTo, limitToFirst, get, update, serverTimestamp, remove } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
+
+    // Biến lưu trữ các biểu đồ
+    let applicantsChart = null;
+    let applicationStatusChart = null;
+    let jobPostsChart = null;
+    let topCategoriesChart = null;
 
     // Your web app's Firebase configuration
     const firebaseConfig = {
@@ -41,7 +47,8 @@
         limitToFirst,
         get,
         update,
-        serverTimestamp
+        serverTimestamp,
+        remove
     };
 
     // VNPAY configuration
@@ -630,32 +637,18 @@
                             setupMenuNavigation(data.role);
                         } else {
                             sidebarMenu.innerHTML = `
-                                <a href="#" class="list-group-item list-group-item-action active" data-section="generalManagement">
-                                    <i class="fas fa-cog me-2"></i> Quản lý chung
-                                </a>
+                             
                                 <a href="#" class="list-group-item list-group-item-action" data-section="cvManagement">
                                     <i class="fas fa-file-alt me-2"></i> Quản lý CV
                                 </a>
                                 <a href="#" class="list-group-item list-group-item-action" data-section="aiJobSuggestions">
                                     <i class="fas fa-robot me-2"></i> Việc làm AI gợi ý <span class="badge bg-danger ms-2">NEW</span>
                                 </a>
-                                <a href="#" class="list-group-item list-group-item-action" data-section="coverLetterManagement">
-                                    <i class="fas fa-envelope me-2"></i> Quản lý Cover Letter
-                                </a>
                                 <a href="#" class="list-group-item list-group-item-action" data-section="appliedJobsManagement">
                                     <i class="fas fa-briefcase me-2"></i> Việc làm đã ứng tuyển
                                 </a>
-                                <a href="#" class="list-group-item list-group-item-action" data-section="savedJobsManagement">
-                                    <i class="fas fa-star me-2"></i> Việc làm đã lưu
-                                </a>
                                 <a href="#" class="list-group-item list-group-item-action" data-section="candidateMessages">
                                     <i class="fas fa-comments me-2"></i> Tin nhắn
-                                </a>
-                                <a href="#" class="list-group-item list-group-item-action" data-section="profileViews">
-                                    <i class="fas fa-eye me-2"></i> NTD đã xem hồ sơ
-                                </a>
-                                <a href="#" class="list-group-item list-group-item-action" data-section="notificationSettings">
-                                    <i class="fas fa-bell me-2"></i> Cài đặt thông báo việc làm
                                 </a>
                             `;
                             // Thêm event listeners cho menu items
@@ -1519,41 +1512,671 @@
             `;
         }
 
-        function loadReports(userId) {
-            // Placeholder cho load báo cáo
-            document.getElementById('totalJobPosts').textContent = '0';
-            document.getElementById('totalApplications').textContent = '0';
-            document.getElementById('totalViews').textContent = '0';
-            document.getElementById('hiredCandidates').textContent = '0';
+        // Hàm tạo dữ liệu mẫu cho biểu đồ theo thời gian
+        function generateTimeSeriesData(days) {
+            const data = [];
+            const labels = [];
+            const currentDate = new Date();
+            
+            for (let i = days - 1; i >= 0; i--) {
+                const date = new Date(currentDate);
+                date.setDate(date.getDate() - i);
+                labels.push(date.toLocaleDateString('vi-VN'));
+                data.push(0); // Giá trị mặc định, sẽ được cập nhật từ dữ liệu thực
+            }
+            
+            return { labels, data };
         }
+
+        // Hàm cập nhật biểu đồ số lượng ứng viên theo thời gian
+        function updateApplicantsChart(days, applicationsData) {
+            const ctx = document.getElementById('applicantsChart').getContext('2d');
+            const { labels, data } = generateTimeSeriesData(days);
+
+            // Cập nhật số liệu từ dữ liệu thực
+            applicationsData.forEach(app => {
+                const appDate = new Date(app.appliedAt).toLocaleDateString('vi-VN');
+                const index = labels.indexOf(appDate);
+                if (index !== -1) {
+                    data[index]++;
+                }
+            });
+
+            if (applicantsChart) {
+                applicantsChart.destroy();
+            }
+
+            applicantsChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Số lượng ứng viên',
+                        data: data,
+                        borderColor: 'rgb(75, 192, 192)',
+                        tension: 0.1,
+                        fill: false
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                stepSize: 1
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Hàm cập nhật biểu đồ tỷ lệ trạng thái ứng viên
+        function updateApplicationStatusChart(applicationsData) {
+            const ctx = document.getElementById('applicationStatusChart').getContext('2d');
+            
+            // Tính toán số lượng cho mỗi trạng thái
+            const statusCounts = {
+                pending: 0,
+                accepted: 0,
+                rejected: 0
+            };
+            
+            applicationsData.forEach(app => {
+                statusCounts[app.status]++;
+            });
+
+            if (applicationStatusChart) {
+                applicationStatusChart.destroy();
+            }
+
+            applicationStatusChart = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Chờ duyệt', 'Đã duyệt', 'Từ chối'],
+                    datasets: [{
+                        data: [statusCounts.pending, statusCounts.accepted, statusCounts.rejected],
+                        backgroundColor: [
+                            'rgb(255, 205, 86)',
+                            'rgb(75, 192, 192)',
+                            'rgb(255, 99, 132)'
+                        ]
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom'
+                        }
+                    }
+                }
+            });
+        }
+
+        // Hàm cập nhật biểu đồ số tin đăng theo thời gian
+        function updateJobPostsChart(days, jobsData) {
+            const ctx = document.getElementById('jobPostsChart').getContext('2d');
+            const { labels, data } = generateTimeSeriesData(days);
+
+            // Cập nhật số liệu từ dữ liệu thực
+            jobsData.forEach(job => {
+                const jobDate = new Date(job.createdAt).toLocaleDateString('vi-VN');
+                const index = labels.indexOf(jobDate);
+                if (index !== -1) {
+                    data[index]++;
+                }
+            });
+
+            if (jobPostsChart) {
+                jobPostsChart.destroy();
+            }
+
+            jobPostsChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Số tin đăng',
+                        data: data,
+                        backgroundColor: 'rgba(54, 162, 235, 0.5)',
+                        borderColor: 'rgb(54, 162, 235)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                stepSize: 1
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Hàm cập nhật biểu đồ top ngành nghề
+        function updateTopCategoriesChart(jobsData, applicationsData) {
+            const ctx = document.getElementById('topCategoriesChart').getContext('2d');
+            
+            // Tính toán số ứng viên cho mỗi ngành nghề
+            const categoryApplications = {};
+            
+            applicationsData.forEach(app => {
+                const job = jobsData.find(j => j.id === app.jobId);
+                if (job) {
+                    categoryApplications[job.category] = (categoryApplications[job.category] || 0) + 1;
+                }
+            });
+
+            // Sắp xếp và lấy top 5 ngành nghề
+            const sortedCategories = Object.entries(categoryApplications)
+                .sort(([,a], [,b]) => b - a)
+                .slice(0, 5);
+
+            if (topCategoriesChart) {
+                topCategoriesChart.destroy();
+            }
+
+            topCategoriesChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: sortedCategories.map(([category]) => category),
+                    datasets: [{
+                        label: 'Số lượng ứng viên',
+                        data: sortedCategories.map(([,count]) => count),
+                        backgroundColor: 'rgba(153, 102, 255, 0.5)',
+                        borderColor: 'rgb(153, 102, 255)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    indexAxis: 'y',
+                    scales: {
+                        x: {
+                            beginAtZero: true,
+                            ticks: {
+                                stepSize: 1
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Cập nhật hàm loadReports để sử dụng các biểu đồ
+        async function loadReports(userId) {
+            const { database, ref, query, orderByChild, equalTo, get } = window.firebase;
+            
+            try {
+                // Lấy thời gian từ bộ lọc
+                const timeRangeFilter = document.getElementById('timeRangeFilter');
+                const days = parseInt(timeRangeFilter.value);
+                
+                // Lấy danh sách tin tuyển dụng
+                const jobsRef = ref(database, 'jobs');
+                const jobsQuery = query(jobsRef, orderByChild('employerId'), equalTo(userId));
+                const jobsSnapshot = await get(jobsQuery);
+                
+                const jobs = [];
+                let totalJobs = 0;
+                let activeJobs = 0;
+                let totalViews = 0;
+                
+                if (jobsSnapshot.exists()) {
+                    jobsSnapshot.forEach((jobSnapshot) => {
+                        const job = jobSnapshot.val();
+                        job.id = jobSnapshot.key;
+                        jobs.push(job);
+                        totalJobs++;
+                        if (job.status === 'approved') activeJobs++;
+                        totalViews += job.views || 0;
+                    });
+                }
+                
+                // Lấy danh sách ứng viên
+                const applications = [];
+                let totalApplications = 0;
+                let acceptedApplications = 0;
+                
+                for (const job of jobs) {
+                    const applicationsRef = ref(database, `applications/${job.id}`);
+                    const applicationsSnapshot = await get(applicationsRef);
+                    
+                    if (applicationsSnapshot.exists()) {
+                        applicationsSnapshot.forEach((applicationSnapshot) => {
+                            const application = applicationSnapshot.val();
+                            application.id = applicationSnapshot.key;
+                            application.jobId = job.id;
+                            applications.push(application);
+                            totalApplications++;
+                            if (application.status === 'accepted') {
+                                acceptedApplications++;
+                            }
+                        });
+                    }
+                }
+                
+                // Cập nhật thống kê tổng quan
+                document.getElementById('totalJobPosts').textContent = totalJobs;
+                document.getElementById('totalApplications').textContent = totalApplications;
+                document.getElementById('totalViews').textContent = totalViews;
+                document.getElementById('hiredCandidates').textContent = acceptedApplications;
+                
+                // Cập nhật các biểu đồ
+                updateApplicantsChart(days, applications);
+                updateApplicationStatusChart(applications);
+                updateJobPostsChart(days, jobs);
+                updateTopCategoriesChart(jobs, applications);
+                
+            } catch (error) {
+                console.error('Error loading reports:', error);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Lỗi!',
+                    text: 'Không thể tải dữ liệu báo cáo.'
+                });
+            }
+        }
+
+        // Thêm event listener cho bộ lọc thời gian
+        document.getElementById('timeRangeFilter').addEventListener('change', function() {
+            const userId = firebase.auth.currentUser?.uid;
+            if (userId) {
+                loadReports(userId);
+            }
+        });
+
+        // Thêm event listener cho nút xuất báo cáo
+        document.getElementById('exportReportBtn').addEventListener('click', async function() {
+            const userId = firebase.auth.currentUser?.uid;
+            if (!userId) return;
+            
+            try {
+                // TODO: Implement report export functionality
+                Swal.fire({
+                    icon: 'info',
+                    title: 'Thông báo',
+                    text: 'Tính năng xuất báo cáo đang được phát triển.'
+                });
+            } catch (error) {
+                console.error('Error exporting report:', error);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Lỗi!',
+                    text: 'Không thể xuất báo cáo.'
+                });
+            }
+        });
 
         // Candidate section loaders
-        function loadCVList(userId) {
-            // Placeholder - sẽ load từ database
-            document.getElementById('cvList').innerHTML = `
-                <div class="text-center text-muted py-4">
-                    <i class="fas fa-file-alt fa-3x mb-3"></i>
-                    <p>Bạn chưa có CV nào. Hãy tạo CV đầu tiên!</p>
-                    <a href="create-cv.html" class="btn btn-primary">Tạo CV ngay</a>
+        async function loadCVList(userId) {
+            try {
+                // Get CV data from Firebase
+                const cvRef = ref(database, `cvs/${userId}`);
+                const snapshot = await get(cvRef);
+                const cvData = snapshot.val();
+
+                if (!cvData) {
+                    document.getElementById('cv-list-container').innerHTML = `
+                        <div class="alert alert-info">
+                            <i class="fas fa-info-circle me-2"></i>
+                            Bạn chưa có CV nào. Hãy tạo CV mới để bắt đầu.
                 </div>
             `;
-        }
+                    return;
+                }
 
-        function loadAIJobSuggestions(userId) {
-            // Simulate loading with timeout
-            setTimeout(() => {
-                document.getElementById('aiJobsList').innerHTML = `
-                    <div class="alert alert-success">
-                        <i class="fas fa-check-circle me-2"></i>
-                        Đã tìm thấy 12 việc làm phù hợp với profile của bạn!
+                // Create CV preview card
+                const cvCard = `
+                    <div class="cv-card">
+                        <!-- Card Header with Actions -->
+                        <div class="cv-card-header">
+                            <div class="cv-status ${cvData.status || 'active'}">
+                                <i class="fas fa-circle me-1"></i>
+                                ${cvData.status === 'draft' ? 'Bản nháp' : 'Đang hoạt động'}
                     </div>
-                    <div class="text-center text-muted py-4">
-                        <i class="fas fa-cogs fa-3x mb-3"></i>
-                        <p>Chức năng AI đang được phát triển</p>
-                        <small>Sắp ra mắt với nhiều tính năng thông minh</small>
+                            <div class="dropdown cv-actions-dropdown">
+                                <button class="btn btn-link" type="button" id="cvActions${userId}" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fas fa-ellipsis-v"></i>
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="cvActions${userId}">
+                                    <li>
+                                        <a class="dropdown-item" href="#" onclick="previewCV('${userId}'); return false;">
+                                            <i class="fas fa-eye me-2"></i>Xem trước
+                                        </a>
+                                    </li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li>
+                                        <a class="dropdown-item text-danger" href="#" onclick="confirmDeleteCV('${userId}'); return false;">
+                                            <i class="fas fa-trash-alt me-2"></i>Xóa
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="card-body">
+                            <!-- CV Title and Basic Info -->
+                            <div class="cv-main-info">
+                                <h5 class="cv-title">${cvData.personalInfo.jobTitle || 'Chưa có tiêu đề'}</h5>
+                                <p class="cv-update-time">
+                                    <i class="far fa-clock me-1"></i>
+                                    Cập nhật: ${formatDateTime(cvData.updatedAt)}
+                                </p>
+                            </div>
+
+                            <!-- CV Content Preview -->
+                            <div class="cv-preview">
+                                <div class="cv-section">
+                                    <h6><i class="fas fa-user me-2"></i>Thông tin cá nhân</h6>
+                                    <p class="mb-1"><strong>Họ tên:</strong> ${cvData.personalInfo.fullName}</p>
+                                    <p class="mb-1"><strong>Email:</strong> ${cvData.personalInfo.email}</p>
+                                    <p class="mb-1"><strong>SĐT:</strong> ${cvData.personalInfo.phone}</p>
+                                </div>
+
+                                <div class="cv-section">
+                                    <h6><i class="fas fa-briefcase me-2"></i>Kinh nghiệm</h6>
+                                    <p class="cv-count">${cvData.experience ? cvData.experience.length : 0} kinh nghiệm</p>
+                                </div>
+
+                                <div class="cv-section">
+                                    <h6><i class="fas fa-graduation-cap me-2"></i>Học vấn</h6>
+                                    <p class="cv-count">${cvData.education ? cvData.education.length : 0} bằng cấp</p>
+                                </div>
+
+                                <div class="cv-section">
+                                    <h6><i class="fas fa-tools me-2"></i>Kỹ năng</h6>
+                                    <p class="cv-count">${cvData.skills ? cvData.skills.length : 0} kỹ năng</p>
+                                </div>
+                            </div>
+
+                           
+                        </div>
                     </div>
                 `;
-            }, 2000);
+
+                document.getElementById('cv-list-container').innerHTML = cvCard;
+
+                // Initialize all dropdowns after content is loaded
+                const dropdownElementList = [].slice.call(document.querySelectorAll('.dropdown-toggle'));
+                dropdownElementList.map(function (dropdownToggleEl) {
+                    return new bootstrap.Dropdown(dropdownToggleEl);
+                });
+
+            } catch (error) {
+                console.error("Error loading CV:", error);
+                document.getElementById('cv-list-container').innerHTML = `
+                    <div class="alert alert-danger">
+                        <i class="fas fa-exclamation-circle me-2"></i>
+                        Có lỗi xảy ra khi tải CV. Vui lòng thử lại sau.
+                    </div>
+                `;
+            }
+        }
+
+        // Confirm delete CV
+        function confirmDeleteCV(userId) {
+            if (confirm('Bạn có chắc chắn muốn xóa CV này không? Hành động này không thể hoàn tác.')) {
+                deleteCV(userId);
+            }
+        }
+
+        async function loadAIJobSuggestions(userId) {
+            const aiJobsList = document.getElementById('aiJobsList');
+            aiJobsList.innerHTML = `
+                <div class="ai-loading">
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">Đang tìm kiếm...</span>
+                    </div>
+                    <p>Đang phân tích CV và tìm kiếm việc làm phù hợp...</p>
+                </div>
+            `;
+
+            try {
+                // Lấy CV của user
+                const cvRef = ref(database, `cvs/${userId}`);
+                const cvSnapshot = await get(cvRef);
+                if (!cvSnapshot.exists()) {
+                    aiJobsList.innerHTML = `
+                        <div class="ai-empty-state">
+                            <i class="fas fa-file-alt"></i>
+                            <p>Bạn cần tạo CV để nhận được gợi ý việc làm phù hợp!</p>
+                            <a href="create-cv.html" class="btn btn-primary mt-3">
+                                <i class="fas fa-plus-circle me-2"></i>Tạo CV ngay
+                            </a>
+                        </div>
+                    `;
+                    return;
+                }
+                const cv = cvSnapshot.val();
+
+                // Lấy tất cả jobs đang active
+                const jobsRef = ref(database, 'jobs');
+                const jobsQuery = query(jobsRef, orderByChild('status'), equalTo('approved'));
+                const jobsSnapshot = await get(jobsQuery);
+                if (!jobsSnapshot.exists()) {
+                    aiJobsList.innerHTML = `
+                        <div class="ai-empty-state">
+                            <i class="fas fa-briefcase"></i>
+                            <p>Hiện chưa có tin tuyển dụng nào.</p>
+                        </div>
+                    `;
+                    return;
+                }
+
+                const allJobs = [];
+                jobsSnapshot.forEach((childSnapshot) => {
+                    allJobs.push({
+                        id: childSnapshot.key,
+                        ...childSnapshot.val()
+                    });
+                });
+
+                // Tìm các jobs phù hợp nhất sử dụng thuật toán KNN
+                const matchingJobs = await window.jobRecommendation.findMatchingJobs(cv, allJobs);
+
+                if (matchingJobs.length === 0) {
+                    aiJobsList.innerHTML = `
+                        <div class="ai-empty-state">
+                            <i class="fas fa-search"></i>
+                            <p>Chưa tìm thấy việc làm phù hợp với CV của bạn.</p>
+                        </div>
+                    `;
+                    return;
+                }
+
+                // Phân loại việc làm theo mức độ phù hợp
+                const highMatchJobs = matchingJobs.filter(job => job.matchScore >= 80);
+                const mediumMatchJobs = matchingJobs.filter(job => job.matchScore >= 60 && job.matchScore < 80);
+                const lowMatchJobs = matchingJobs.filter(job => job.matchScore < 60);
+
+                // Tính toán thống kê
+                const stats = {
+                    totalJobs: matchingJobs.length,
+                    avgMatchScore: Math.round(matchingJobs.reduce((sum, job) => sum + job.matchScore, 0) / matchingJobs.length),
+                    highMatchCount: highMatchJobs.length,
+                    uniqueCategories: new Set(matchingJobs.map(job => job.category)).size
+                };
+
+                // Hiển thị kết quả
+                aiJobsList.innerHTML = `
+                    <div class="ai-jobs-container">
+                        <div class="ai-jobs-header">
+                            <h3>Việc làm phù hợp với bạn</h3>
+                            <p>Dựa trên CV của bạn, chúng tôi đã phân tích và tìm ra những việc làm phù hợp nhất</p>
+                        </div>
+
+                        <div class="ai-jobs-stats">
+                            <div class="stat-card">
+                                <i class="fas fa-briefcase"></i>
+                                <div class="stat-number">${stats.totalJobs}</div>
+                                <div class="stat-label">Việc làm phù hợp</div>
+                            </div>
+                           
+                            <div class="stat-card">
+                                <i class="fas fa-star"></i>
+                                <div class="stat-number">${stats.highMatchCount}</div>
+                                <div class="stat-label">Việc làm phù hợp cao</div>
+                            </div>
+                            <div class="stat-card">
+                                <i class="fas fa-th-large"></i>
+                                <div class="stat-number">${stats.uniqueCategories}</div>
+                                <div class="stat-label">Ngành nghề</div>
+                            </div>
+                        </div>
+
+                        
+
+                        <div class="suggestions-grid">
+                            ${matchingJobs.map(job => `
+                                <div class="suggestion-card" data-salary="${job.salaryMin}" data-location="${job.contactAddress}" data-type="${job.type}" data-score="${job.matchScore}">
+                                    <div class="suggestion-header">
+                                        <h5 class="job-title">${job.title}</h5>
+                                        <span class="match-score">
+                                            <i class="fas fa-chart-line me-1"></i>
+                                            ${Math.round(job.matchScore)}% phù hợp
+                                        </span>
+                                    </div>
+                                    <div class="job-info">
+                                        <div class="info-item">
+                                            <i class="fas fa-building"></i>
+                                            ${job.employer || 'Nhà tuyển dụng'}
+                                        </div>
+                                        <div class="info-item">
+                                            <i class="fas fa-money-bill-wave"></i>
+                                            ${Number(job.salaryMin).toLocaleString()} - ${Number(job.salaryMax).toLocaleString()} ${job.salaryType.toUpperCase()}
+                                        </div>
+                                        <div class="info-item">
+                                            <i class="fas fa-map-marker-alt"></i>
+                                            ${job.contactAddress}
+                                        </div>
+                                        <div class="info-item">
+                                            <i class="fas fa-clock"></i>
+                                            ${job.type}
+                                        </div>
+                                    </div>
+                                    <div class="matching-points">
+                                        <h6><i class="fas fa-check-circle"></i>Điểm phù hợp</h6>
+                                        <ul>
+                                            ${job.matchingPoints.slice(0, 3).map(point => `
+                                                <li><i class="fas fa-check"></i>${point}</li>
+                                            `).join('')}
+                                            ${job.matchingPoints.length > 3 ? `
+                                                <li class="text-primary" style="cursor: pointer" onclick="showAllMatchingPoints('${job.id}')">
+                                                    <i class="fas fa-plus-circle"></i>
+                                                    Xem thêm ${job.matchingPoints.length - 3} điểm phù hợp
+                                                </li>
+                                            ` : ''}
+                                        </ul>
+                                    </div>
+                                    <div class="suggestion-actions">
+                                        <button class="btn btn-outline-primary" onclick="showJobDetail('${job.id}')">
+                                            <i class="fas fa-info-circle"></i>Chi tiết
+                                        </button>
+                                        <button class="btn btn-primary" onclick="applyForJob('${job.id}')">
+                                            <i class="fas fa-paper-plane"></i>Ứng tuyển
+                                        </button>
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+
+                // Thêm các hàm xử lý filter
+                window.resetFilters = function() {
+                    document.getElementById('salaryFilter').value = '';
+                    document.getElementById('locationFilter').value = '';
+                    document.getElementById('jobTypeFilter').value = '';
+                    document.getElementById('matchScoreFilter').value = '';
+                    applyFilters();
+                };
+
+                window.applyFilters = function() {
+                    const salary = document.getElementById('salaryFilter').value;
+                    const location = document.getElementById('locationFilter').value;
+                    const jobType = document.getElementById('jobTypeFilter').value;
+                    const matchScore = document.getElementById('matchScoreFilter').value;
+
+                    const cards = document.querySelectorAll('.suggestion-card');
+                    cards.forEach(card => {
+                        let show = true;
+
+                        if (salary) {
+                            const [min, max] = salary.split('-').map(Number);
+                            const jobSalary = Number(card.dataset.salary);
+                            if (max) {
+                                show = show && (jobSalary >= min && jobSalary <= max);
+                            } else {
+                                show = show && jobSalary >= min;
+                            }
+                        }
+
+                        if (location) {
+                            show = show && card.dataset.location.includes(location);
+                        }
+
+                        if (jobType) {
+                            show = show && card.dataset.type === jobType;
+                        }
+
+                        if (matchScore) {
+                            const score = Number(card.dataset.score);
+                            if (matchScore === '80') {
+                                show = show && score >= 80;
+                            } else if (matchScore === '60') {
+                                show = show && score >= 60 && score < 80;
+                            } else {
+                                show = show && score < 60;
+                            }
+                        }
+
+                        card.style.display = show ? '' : 'none';
+                    });
+                };
+
+                window.showAllMatchingPoints = function(jobId) {
+                    const job = matchingJobs.find(j => j.id === jobId);
+                    if (job) {
+                        Swal.fire({
+                            title: 'Tất cả điểm phù hợp',
+                            html: `
+                                <ul class="list-unstyled text-start">
+                                    ${job.matchingPoints.map(point => `
+                                        <li class="mb-2">
+                                            <i class="fas fa-check text-success me-2"></i>
+                                            ${point}
+                                        </li>
+                                    `).join('')}
+                                </ul>
+                            `,
+                            confirmButtonText: 'Đóng'
+                        });
+                    }
+                };
+
+            } catch (error) {
+                console.error('Error loading AI job suggestions:', error);
+                aiJobsList.innerHTML = `
+                    <div class="ai-empty-state">
+                        <i class="fas fa-exclamation-circle"></i>
+                        <p>Đã có lỗi xảy ra khi tìm kiếm việc làm phù hợp. Vui lòng thử lại sau!</p>
+                        <button class="btn btn-primary mt-3" onclick="loadAIJobSuggestions('${userId}')">
+                            <i class="fas fa-redo me-2"></i>Thử lại
+                        </button>
+                    </div>
+                `;
+            }
         }
 
         function loadCoverLetters(userId) {
@@ -1565,12 +2188,214 @@
             `;
         }
 
+        // Biến lưu trữ danh sách việc làm đã ứng tuyển
+        let appliedJobsList = [];
+
         function loadAppliedJobs(userId) {
-            document.getElementById('appliedJobsFullList').innerHTML = `
+            const { database, ref, get, query } = window.firebase;
+            const appliedJobsFullList = document.getElementById('appliedJobsFullList');
+
+            if (!appliedJobsFullList) return;
+
+            // Thêm phần giao diện bộ lọc
+            appliedJobsFullList.innerHTML = `
+                <div class="card shadow-sm mb-4">
+                    <div class="card-body">
+                        <div class="row g-3">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="form-label">Tìm kiếm</label>
+                                    <input type="text" class="form-control" id="appliedJobsSearch" 
+                                        placeholder="Tên công việc, công ty...">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="form-label">Trạng thái</label>
+                                    <select class="form-select" id="appliedJobsStatus">
+                                        <option value="">Tất cả trạng thái</option>
+                                        <option value="pending">Chờ duyệt</option>
+                                        <option value="accepted">Đã duyệt</option>
+                                        <option value="rejected">Từ chối</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="form-label">Thời gian</label>
+                                    <select class="form-select" id="appliedJobsTime">
+                                        <option value="">Tất cả thời gian</option>
+                                        <option value="7">7 ngày qua</option>
+                                        <option value="30">30 ngày qua</option>
+                                        <option value="90">90 ngày qua</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="appliedJobsListContent">
+                    <div class="text-center py-4">
+                        <div class="spinner-border text-primary" role="status">
+                            <span class="visually-hidden">Đang tải...</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            // Lấy tất cả applications từ database
+            const applicationsRef = ref(database, 'applications');
+            get(query(applicationsRef)).then(async (snapshot) => {
+                const appliedJobs = [];
+                
+                if (snapshot.exists()) {
+                    // Duyệt qua tất cả jobs
+                    snapshot.forEach((jobSnapshot) => {
+                        const jobId = jobSnapshot.key;
+                        // Duyệt qua tất cả applications trong job
+                        jobSnapshot.forEach((appSnapshot) => {
+                            const application = appSnapshot.val();
+                            // Kiểm tra nếu là application của user hiện tại
+                            if (application.candidateId === userId) {
+                                appliedJobs.push({
+                                    jobId: jobId,
+                                    ...application
+                                });
+                            }
+                        });
+                    });
+                }
+
+                if (appliedJobs.length === 0) {
+                    document.getElementById('appliedJobsListContent').innerHTML = `
                 <div class="text-center text-muted py-4">
                     <i class="fas fa-briefcase fa-3x mb-3"></i>
                     <p>Bạn chưa ứng tuyển công việc nào</p>
                     <a href="jobs.html" class="btn btn-primary">Tìm việc ngay</a>
+                        </div>
+                    `;
+                    return;
+                }
+
+                // Lấy thông tin chi tiết của từng job
+                const jobDetails = await Promise.all(appliedJobs.map(async (application) => {
+                    const jobRef = ref(database, `jobs/${application.jobId}`);
+                    const jobSnapshot = await get(jobRef);
+                    const jobData = jobSnapshot.val();
+                    
+                    // Lấy thông tin nhà tuyển dụng
+                    const employerRef = ref(database, `users/${jobData.employerId}`);
+                    const employerSnapshot = await get(employerRef);
+                    const employerData = employerSnapshot.val();
+
+                    return {
+                        ...application,
+                        jobTitle: jobData.title,
+                        jobType: jobData.type,
+                        jobCategory: jobData.category,
+                        salary: `${Number(jobData.salaryMin).toLocaleString()} - ${Number(jobData.salaryMax).toLocaleString()} ${jobData.salaryType.toUpperCase()}`,
+                        location: jobData.contactAddress,
+                        employerName: employerData.name || employerData.email,
+                        deadline: jobData.deadline
+                    };
+                }));
+
+                // Lưu danh sách để sử dụng cho bộ lọc
+                appliedJobsList = jobDetails;
+
+                // Hiển thị danh sách ban đầu
+                filterAndDisplayAppliedJobs();
+
+                // Thêm event listener cho các bộ lọc
+                document.getElementById('appliedJobsSearch').addEventListener('input', filterAndDisplayAppliedJobs);
+                document.getElementById('appliedJobsStatus').addEventListener('change', filterAndDisplayAppliedJobs);
+                document.getElementById('appliedJobsTime').addEventListener('change', filterAndDisplayAppliedJobs);
+
+            }).catch((error) => {
+                console.error('Error loading applied jobs:', error);
+                document.getElementById('appliedJobsListContent').innerHTML = `
+                    <div class="alert alert-danger">
+                        <i class="fas fa-exclamation-circle me-2"></i>
+                        Có lỗi xảy ra khi tải danh sách việc làm đã ứng tuyển
+                    </div>
+                `;
+            });
+        }
+
+        // Hàm lọc và hiển thị danh sách việc làm đã ứng tuyển
+        function filterAndDisplayAppliedJobs() {
+            const searchTerm = document.getElementById('appliedJobsSearch').value.toLowerCase();
+            const statusFilter = document.getElementById('appliedJobsStatus').value;
+            const timeFilter = parseInt(document.getElementById('appliedJobsTime').value);
+
+            // Lọc danh sách theo các điều kiện
+            let filteredJobs = appliedJobsList;
+
+            // Lọc theo từ khóa tìm kiếm
+            if (searchTerm) {
+                filteredJobs = filteredJobs.filter(job => 
+                    job.jobTitle.toLowerCase().includes(searchTerm) ||
+                    job.employerName.toLowerCase().includes(searchTerm) ||
+                    job.jobCategory.toLowerCase().includes(searchTerm)
+                );
+            }
+
+            // Lọc theo trạng thái
+            if (statusFilter) {
+                filteredJobs = filteredJobs.filter(job => job.status === statusFilter);
+            }
+
+            // Lọc theo thời gian
+            if (timeFilter) {
+                const cutoffDate = new Date();
+                cutoffDate.setDate(cutoffDate.getDate() - timeFilter);
+                filteredJobs = filteredJobs.filter(job => new Date(job.appliedAt) >= cutoffDate);
+            }
+
+            // Sắp xếp theo thời gian ứng tuyển mới nhất
+            filteredJobs.sort((a, b) => new Date(b.appliedAt) - new Date(a.appliedAt));
+
+            // Hiển thị kết quả
+            const content = document.getElementById('appliedJobsListContent');
+            
+            if (filteredJobs.length === 0) {
+                content.innerHTML = `
+                    <div class="text-center text-muted py-4">
+                        <i class="fas fa-search fa-3x mb-3"></i>
+                        <p>Không tìm thấy kết quả phù hợp</p>
+                    </div>
+                `;
+                return;
+            }
+
+            content.innerHTML = `
+                <div class="list-group list-group-flush">
+                    ${filteredJobs.map(job => `
+                        <div class="list-group-item">
+                            <div class="d-flex w-100 justify-content-between align-items-start">
+                                <div class="flex-grow-1">
+                                    <h5 class="mb-2">${job.jobTitle}</h5>
+                                    <div class="mb-2">
+                                        <span class="badge bg-primary me-2">${job.jobCategory}</span>
+                                        <span class="badge bg-info me-2">${job.jobType}</span>
+                                        <span class="badge ${getStatusBadgeClass(job.status)}">${getStatusText(job.status)}</span>
+                                    </div>
+                                    <p class="mb-1"><i class="fas fa-building me-2"></i>${job.employerName}</p>
+                                    <p class="mb-1"><i class="fas fa-map-marker-alt me-2"></i>${job.location}</p>
+                                    <p class="mb-1"><i class="fas fa-money-bill-wave me-2"></i>${job.salary}</p>
+                                    <p class="mb-1"><i class="fas fa-calendar me-2"></i>Hạn nộp: ${job.deadline}</p>
+                                    <small class="text-muted">
+                                        <i class="fas fa-clock me-1"></i>Đã ứng tuyển: ${new Date(job.appliedAt).toLocaleDateString('vi-VN')}
+                                    </small>
+                                </div>
+                                <div class="ms-3">
+                                    <button class="btn btn-sm btn-outline-primary mb-2" onclick="viewApplication('${job.jobId}', '${job.candidateId}')">
+                                        <i class="fas fa-eye me-1"></i>Chi tiết
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    `).join('')}
                 </div>
             `;
         }
@@ -1642,8 +2467,12 @@
                     return {
                         ...job,
                         jobTitle: jobData.title,
+                        jobType: jobData.type,
+                        jobCategory: jobData.category,
+                        salary: `${Number(jobData.salaryMin).toLocaleString()} - ${Number(jobData.salaryMax).toLocaleString()} ${jobData.salaryType.toUpperCase()}`,
+                        location: jobData.contactAddress,
                         employerName: employerData.name || employerData.email,
-                        employerId: jobData.employerId
+                        deadline: jobData.deadline
                     };
                 }));
 
@@ -2287,9 +3116,7 @@
                         job.id = jobSnapshot.key;
                         jobs.push(job);
                         totalJobs++;
-                        if (job.status === 'approved') {
-                            activeJobs++;
-                        }
+                        if (job.status === 'approved') activeJobs++;
                     });
 
                     // Lấy số lượng ứng viên cho mỗi tin
@@ -2736,3 +3563,172 @@
             }
         }
     });
+
+    // CV Action Functions
+    window.editCV = function(userId) {
+        try {
+            // Chuyển đến trang chỉnh sửa CV
+            window.location.href = `edit-cv.html?id=${userId}`;
+        } catch (error) {
+            console.error("Error editing CV:", error);
+            alert("Có lỗi xảy ra khi chỉnh sửa CV. Vui lòng thử lại sau.");
+        }
+    };
+
+    window.previewCV = function(userId) {
+        try {
+            // Mở modal xem trước CV
+            const previewModal = new bootstrap.Modal(document.getElementById('previewCVModal'));
+            
+            // Load CV data và hiển thị trong modal
+            const cvRef = ref(database, `cvs/${userId}`);
+            get(cvRef).then((snapshot) => {
+                const cvData = snapshot.val();
+                if (cvData) {
+                    document.getElementById('previewCVContent').innerHTML = generateCVPreview(cvData);
+                    previewModal.show();
+                }
+            });
+        } catch (error) {
+            console.error("Error previewing CV:", error);
+            alert("Có lỗi xảy ra khi xem trước CV. Vui lòng thử lại sau.");
+        }
+    };
+
+    window.downloadCV = function(userId) {
+        try {
+            // Tải CV dưới dạng PDF
+            const cvRef = ref(database, `cvs/${userId}`);
+            get(cvRef).then((snapshot) => {
+                const cvData = snapshot.val();
+                if (cvData) {
+                    generatePDF(cvData);
+                    
+                    // Cập nhật số lượt tải
+                    const downloads = (cvData.downloads || 0) + 1;
+                    update(ref(database, `cvs/${userId}`), {
+                        downloads: downloads
+                    });
+                }
+            });
+        } catch (error) {
+            console.error("Error downloading CV:", error);
+            alert("Có lỗi xảy ra khi tải CV. Vui lòng thử lại sau.");
+        }
+    };
+
+    window.confirmDeleteCV = function(userId) {
+        // Hiển thị modal xác nhận xóa
+        const confirmModal = new bootstrap.Modal(document.getElementById('confirmDeleteModal'));
+        document.getElementById('confirmDeleteBtn').onclick = () => deleteCV(userId);
+        confirmModal.show();
+    };
+
+    window.createNewCV = function() {
+        try {
+            // Chuyển đến trang tạo CV mới
+            window.location.href = 'create-cv.html';
+        } catch (error) {
+            console.error("Error creating new CV:", error);
+            alert("Có lỗi xảy ra. Vui lòng thử lại sau.");
+        }
+    };
+
+    // Helper Functions
+    async function deleteCV(userId) {
+        try {
+            // Xóa CV từ database
+            const cvRef = ref(database, `cvs/${userId}`);
+            await remove(cvRef);
+            
+            // Reload danh sách CV
+            loadCVList(userId);
+            
+            // Đóng modal xác nhận
+            const confirmModal = bootstrap.Modal.getInstance(document.getElementById('confirmDeleteModal'));
+            confirmModal.hide();
+            
+            // Hiển thị thông báo thành công
+            showToast('success', 'Xóa CV thành công!');
+        } catch (error) {
+            console.error("Error deleting CV:", error);
+            showToast('error', 'Có lỗi xảy ra khi xóa CV. Vui lòng thử lại sau.');
+        }
+    }
+
+    function generateCVPreview(cvData) {
+        return `
+            <div class="cv-preview-container">
+                <div class="cv-header">
+                    <h2>${cvData.personalInfo.fullName}</h2>
+                    <p class="job-title">${cvData.personalInfo.jobTitle}</p>
+                </div>
+                
+                <div class="cv-contact">
+                    <p><i class="fas fa-envelope"></i> ${cvData.personalInfo.email}</p>
+                    <p><i class="fas fa-phone"></i> ${cvData.personalInfo.phone}</p>
+                    <p><i class="fas fa-map-marker-alt"></i> ${cvData.personalInfo.address}</p>
+                </div>
+                
+                <div class="cv-summary">
+                    <h3>Tóm tắt</h3>
+                    <p>${cvData.personalInfo.summary}</p>
+                </div>
+                
+                ${cvData.experience ? `
+                    <div class="cv-section">
+                        <h3>Kinh nghiệm làm việc</h3>
+                        ${cvData.experience.map(exp => `
+                            <div class="cv-item">
+                                <h4>${exp.position} tại ${exp.company}</h4>
+                                <p class="date">${formatDateTime(exp.startDate)} - ${exp.currentJob ? 'Hiện tại' : formatDateTime(exp.endDate)}</p>
+                                <p>${exp.description}</p>
+                            </div>
+                        `).join('')}
+                    </div>
+                ` : ''}
+                
+                ${cvData.education ? `
+                    <div class="cv-section">
+                        <h3>Học vấn</h3>
+                        ${cvData.education.map(edu => `
+                            <div class="cv-item">
+                                <h4>${edu.school}</h4>
+                                <p class="date">${formatDateTime(edu.startDate)} - ${formatDateTime(edu.endDate)}</p>
+                                <p>${edu.major}</p>
+                                <p>${edu.description}</p>
+                            </div>
+                        `).join('')}
+                    </div>
+                ` : ''}
+                
+                ${cvData.skills ? `
+                    <div class="cv-section">
+                        <h3>Kỹ năng</h3>
+                        ${cvData.skills.map(skill => `
+                            <div class="cv-item">
+                                <h4>${skill.name} - ${skill.level}</h4>
+                                <p>${skill.description}</p>
+                            </div>
+                        `).join('')}
+                    </div>
+                ` : ''}
+            </div>
+        `;
+    }
+
+    function generatePDF(cvData) {
+        // Implement PDF generation logic here
+        // You can use libraries like jsPDF or html2pdf
+        console.log("Generating PDF for CV:", cvData);
+    }
+
+    function showToast(type, message) {
+        const toastEl = document.getElementById('toast');
+        const toast = new bootstrap.Toast(toastEl);
+        
+        toastEl.querySelector('.toast-body').textContent = message;
+        toastEl.className = `toast ${type === 'success' ? 'bg-success' : 'bg-danger'} text-white`;
+        
+        toast.show();
+    }

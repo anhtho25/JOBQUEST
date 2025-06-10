@@ -617,240 +617,60 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <div class="hero-section position-relative" style="background: url('images/we-are-hiring-digital-collage.jpg') center center/cover no-repeat; min-height: 450px;">
-        <div class="container position-relative" style="z-index:2;">
-            <div class="row align-items-center">
-                <div class="col-8 col-lg-7.5 py-5" style="background: rgba(255,255,255,0.85); border-radius: 24px;">
-                    <h1 class="fw-bold mb-4" style="font-size:2.5rem;">Khám Phá Cơ Hội Nghề Nghiệp Của Bạn</h1>
-                    <p class="lead mb-4">
-                        Tìm kiếm công việc mơ ước với hàng ngàn cơ hội từ các công ty hàng đầu.<br>
-                        Bắt đầu hành trình sự nghiệp của bạn ngay hôm nay!
-                    </p>
-                    <div class="search-box">
-                        <form class="d-flex">
-                            <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Nhập từ khóa, vị trí công việc...">
-                                <button class="btn btn-primary" type="submit">
-                                    <i class="fas fa-search"></i> Tìm kiếm
-                                </button>
-                            </div>
-                        </form>
-                        <div class="mt-3">
-                            <span class="text-muted">Tìm kiếm phổ biến:</span>
-                            <a href="#" class="badge bg-light text-dark text-decoration-none me-2">Lập trình viên</a>
-                            <a href="#" class="badge bg-light text-dark text-decoration-none me-2">Marketing</a>
-                            <a href="#" class="badge bg-light text-dark text-decoration-none">Kinh doanh</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+  <main class="py-5">
+    <div class="container">
+      <!-- Hero Section -->
+      <div class="row mb-5">
+        <div class="col-12 text-center">
+          <h1 class="display-4 fw-bold mb-4">Tin Tức & Cập Nhật</h1>
+          <p class="lead text-muted">Cập nhật thông tin mới nhất về thị trường việc làm và các xu hướng tuyển dụng</p>
         </div>
-        <div style="position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(10,53,112,0.15);z-index:1;"></div>
-    </div>
+      </div>
 
-    <!-- Quick Stats -->
-    <div class="quick-stats py-4 bg-primary text-white">
-        <div class="container">
-            <div class="row text-center">
-                <div class="col-md-3">
-                    <div class="stat-item">
-                        <i class="fas fa-briefcase fa-2x mb-2"></i>
-                        <h3 class="mb-0">10,000+</h3>
-                        <p class="mb-0">Việc làm</p>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="stat-item">
-                        <i class="fas fa-building fa-2x mb-2"></i>
-                        <h3 class="mb-0">5,000+</h3>
-                        <p class="mb-0">Công ty</p>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="stat-item">
-                        <i class="fas fa-users fa-2x mb-2"></i>
-                        <h3 class="mb-0">50,000+</h3>
-                        <p class="mb-0">Ứng viên</p>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="stat-item">
-                        <i class="fas fa-handshake fa-2x mb-2"></i>
-                        <h3 class="mb-0">8,000+</h3>
-                        <p class="mb-0">Tuyển dụng thành công</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
-    <!-- Job Categories -->
-    <div class="job-categories py-5">
-        <div class="container">
-            <h2 class="text-center mb-5">Ngành Nghề Phổ Biến</h2>
-            <div class="row g-4">
-                <div class="col-md-3">
-                    <div class="category-card text-center p-4">
-                        <i class="fas fa-laptop-code fa-3x text-primary mb-3"></i>
-                        <h5>Công nghệ thông tin</h5>
-                        <p class="text-muted">1,234 việc làm</p>
-                        <a href="#" class="btn btn-outline-primary btn-sm">Xem ngay</a>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="category-card text-center p-4">
-                        <i class="fas fa-chart-line fa-3x text-primary mb-3"></i>
-                        <h5>Marketing</h5>
-                        <p class="text-muted">856 việc làm</p>
-                        <a href="#" class="btn btn-outline-primary btn-sm">Xem ngay</a>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="category-card text-center p-4">
-                        <i class="fas fa-bullhorn fa-3x text-primary mb-3"></i>
-                        <h5>Kinh doanh</h5>
-                        <p class="text-muted">1,567 việc làm</p>
-                        <a href="#" class="btn btn-outline-primary btn-sm">Xem ngay</a>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="category-card text-center p-4">
-                        <i class="fas fa-graduation-cap fa-3x text-primary mb-3"></i>
-                        <h5>Giáo dục</h5>
-                        <p class="text-muted">432 việc làm</p>
-                        <a href="#" class="btn btn-outline-primary btn-sm">Xem ngay</a>
-                    </div>
-                </div>
+      <!-- Featured News Section -->
+      <div class="row mb-5">
+        <div class="col-lg-8">
+          <!-- Featured Article - Will be loaded dynamically -->
+          <div id="featuredNewsContainer" class="card shadow-sm mb-4 border-0 h-100">
+            <div class="card-body text-center">
+              <div class="spinner-border text-primary" role="status">
+                <span class="visually-hidden">Đang tải...</span>
+              </div>
             </div>
+          </div>
         </div>
-    </div>
+        
+        <div class="col-lg-4">
+          <!-- Trending News - Will be loaded dynamically -->
+          <h4 class="mb-4">Tin Nổi Bật</h4>
+          <div id="trendingNewsContainer">
+            <div class="text-center">
+              <div class="spinner-border text-primary" role="status">
+                <span class="visually-hidden">Đang tải...</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
-    <!-- How It Works -->
-    <div class="how-it-works py-5 bg-light">
-        <div class="container">
-            <h2 class="text-center mb-5">Cách Thức Hoạt Động</h2>
-            <div class="row g-4">
-                <div class="col-md-4">
-                    <div class="step-card text-center p-4">
-                        <div class="step-number">1</div>
-                        <i class="fas fa-user-plus fa-3x text-primary mb-3"></i>
-                        <h5>Tạo Tài Khoản</h5>
-                        <p>Đăng ký tài khoản miễn phí và hoàn thiện hồ sơ của bạn</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="step-card text-center p-4">
-                        <div class="step-number">2</div>
-                        <i class="fas fa-search fa-3x text-primary mb-3"></i>
-                        <h5>Tìm Việc Làm</h5>
-                        <p>Tìm kiếm công việc phù hợp với kỹ năng và mong muốn của bạn</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="step-card text-center p-4">
-                        <div class="step-number">3</div>
-                        <i class="fas fa-paper-plane fa-3x text-primary mb-3"></i>
-                        <h5>Ứng Tuyển</h5>
-                        <p>Nộp đơn ứng tuyển và theo dõi trạng thái hồ sơ của bạn</p>
-                    </div>
-                </div>
-            </div>
+      <!-- Latest News Grid -->
+      <div class="row mb-5">
+        <div class="col-12">
+          <h4 class="mb-4">Tin Tức Mới Nhất</h4>
         </div>
-    </div>
-
-    <!-- Latest Jobs -->
-    <div class="latest-jobs py-5">
-        <div class="container">
-            <div class="d-flex justify-content-between align-items-center mb-5">
-                <h2 class="mb-0">Việc Làm Mới Nhất</h2>
-                <div class="job-filters">
-                    <select class="form-select">
-                        <option>Tất cả ngành nghề</option>
-                        <option>CNTT</option>
-                        <option>Marketing</option>
-                        <option>Kinh doanh</option>
-                    </select>
-                </div>
+        
+        <!-- News Grid Items - Will be loaded dynamically -->
+        <div id="latestNewsGrid" class="row">
+          <div class="col-12 text-center">
+            <div class="spinner-border text-primary" role="status">
+              <span class="visually-hidden">Đang tải...</span>
             </div>
-            <div class="row g-4" id="latestJobs">
-                <!-- Job cards sẽ được render ở đây bằng JS -->
-            </div>
-            <div class="text-center mt-4">
-                <button class="btn btn-outline-primary">Xem thêm việc làm</button>
-            </div>
+          </div>
         </div>
+      </div>
     </div>
-
-    <!-- Top Companies -->
-    <div class="top-companies py-5 bg-light">
-        <div class="container">
-            <h2 class="text-center mb-5">Công Ty Hàng Đầu</h2>
-            <div class="row g-4">
-                <div class="col-md-3">
-                    <div class="company-card text-center p-4">
-                        <img src="https://via.placeholder.com/100" alt="Company" class="company-logo mb-3" width="100">
-                        <h5>ABC Group</h5>
-                        <p class="text-muted">30+ việc làm</p>
-                        <a href="#" class="btn btn-outline-primary btn-sm">Xem công ty</a>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="company-card text-center p-4">
-                        <img src="images/company1.png" alt="Company 1" class="company-logo mb-3" width="100">
-                        <h5>Tech Solutions</h5>
-                        <p class="text-muted">50+ việc làm</p>
-                        <a href="#" class="btn btn-outline-primary btn-sm">Xem công ty</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Testimonials -->
-    <div class="testimonials py-5">
-        <div class="container">
-            <h2 class="text-center mb-5">Khách Hàng Nói Gì Về Chúng Tôi</h2>
-            <div class="row g-4">
-                <div class="col-md-4">
-                    <div class="testimonial-card p-4">
-                        <div class="d-flex align-items-center mb-3">
-                            <img src="https://via.placeholder.com/60" alt="User" class="rounded-circle me-3" width="60">
-                            <div>
-                                <h5 class="mb-1">Trần Thị B</h5>
-                                <p class="text-muted mb-0">Nhà tuyển dụng</p>
-                            </div>
-                        </div>
-                        <p class="mb-0">"JOBQUEST giúp tôi tuyển dụng nhanh chóng, tiết kiệm thời gian và chi phí."</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="testimonial-card p-4">
-                        <div class="d-flex align-items-center mb-3">
-                            <img src="images/user1.jpg" alt="User 1" class="rounded-circle me-3" width="60">
-                            <div>
-                                <h5 class="mb-1">Nguyễn Văn A</h5>
-                                <p class="text-muted mb-0">Lập trình viên</p>
-                            </div>
-                        </div>
-                        <p class="mb-0">"Tôi đã tìm được công việc mơ ước thông qua JobPortal. Quy trình ứng tuyển rất đơn giản và hiệu quả."</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Call to Action -->
-    <div class="cta-section py-5 bg-primary text-white">
-        <div class="container text-center">
-            <h2 class="mb-4">Sẵn Sàng Tìm Việc?</h2>
-            <p class="lead mb-4">Tham gia cùng hàng nghìn ứng viên đang tìm kiếm cơ hội việc làm tốt nhất</p>
-            <div class="d-flex justify-content-center gap-3">
-                <a href="#" class="btn btn-light btn-lg">Tạo hồ sơ ngay</a>
-                <a href="employer-login.html" class="btn btn-outline-light btn-lg">Đăng tin tuyển dụng</a>
-            </div>
-        </div>
-    </div>
+  </main>
 
     <!-- Footer -->
     <footer class="py-5">
@@ -904,6 +724,26 @@
             </div>
         </div>
     </footer>
+
+    <!-- News Detail Modal -->
+    <div class="modal fade" id="newsDetailModal" tabindex="-1" aria-labelledby="newsDetailModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header border-0 pb-0">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="newsDetailContent">
+                        <div class="text-center py-5">
+                            <div class="spinner-border text-primary" role="status">
+                                <span class="visually-hidden">Đang tải...</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <!-- SweetAlert2 JS -->
@@ -1051,11 +891,286 @@
         </div>
     </div>
 
+    <!-- News Detail Modal -->
+    <div class="modal fade" id="newsDetailModal" tabindex="-1" aria-labelledby="newsDetailModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header border-0 pb-0">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="newsDetailContent">
+                        <div class="text-center py-5">
+                            <div class="spinner-border text-primary" role="status">
+                                <span class="visually-hidden">Đang tải...</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
     document.addEventListener('DOMContentLoaded', function() {
         const navbarAccountArea = document.getElementById('navbarAccountArea');
         const { auth, database, signInWithEmailAndPassword, createUserWithEmailAndPassword, sendPasswordResetEmail, signOut, onAuthStateChanged, updateProfile, ref, set, onValue, query, orderByChild, equalTo, limitToFirst, GoogleAuthProvider, signInWithPopup } = window.firebase;
-        
+
+        // Hàm hiển thị chi tiết tin tức
+        function showNewsDetail(newsId) {
+            const newsRef = ref(database, 'news/' + newsId);
+            const modal = new bootstrap.Modal(document.getElementById('newsDetailModal'));
+            
+            onValue(newsRef, (snapshot) => {
+                const newsData = snapshot.val();
+                if (newsData) {
+                    // Cập nhật lượt xem
+                    const viewsRef = ref(database, `news/${newsId}/views`);
+                    const currentViews = newsData.views || 0;
+                    set(viewsRef, currentViews + 1);
+
+                    // Format nội dung chi tiết tin tức
+                    const newsDetailContent = document.getElementById('newsDetailContent');
+                    newsDetailContent.innerHTML = `
+                        <div class="text-center mb-4">
+                            <img src="${newsData.imageUrl || 'https://via.placeholder.com/800x400'}" 
+                                 class="img-fluid rounded" 
+                                 alt="${newsData.title}"
+                                 style="max-height: 400px; object-fit: cover;">
+                        </div>
+                        <span class="badge bg-${getCategoryColor(newsData.category)} mb-2">${newsData.categoryName}</span>
+                        <h2 class="mb-3">${newsData.title}</h2>
+                        <div class="d-flex align-items-center mb-4">
+                            <div>
+                                <p class="text-muted mb-0">
+                                    <i class="fas fa-calendar me-1"></i>${formatDate(newsData.publishedAt)} · 
+                                    <i class="fas fa-clock me-1"></i>${newsData.readTime} phút đọc · 
+                                    <i class="fas fa-eye me-1"></i>${currentViews + 1} lượt xem
+                                </p>
+                            </div>
+                        </div>
+                        <div class="news-content">
+                            ${newsData.content}
+                        </div>
+                        ${newsData.tags ? `
+                            <div class="mt-4">
+                                <h5>Tags:</h5>
+                                <div class="d-flex flex-wrap gap-2">
+                                    ${newsData.tags.map(tag => `
+                                        <span class="badge bg-light text-dark">#${tag}</span>
+                                    `).join('')}
+                                </div>
+                            </div>
+                        ` : ''}
+                    `;
+                    
+                    modal.show();
+                } else {
+                    Swal.fire({
+                        title: 'Lỗi!',
+                        text: 'Không tìm thấy tin tức này.',
+                        icon: 'error'
+                    });
+                }
+            }, {
+                onlyOnce: true
+            });
+        }
+
+        // Hàm load tin tức nổi bật
+        function loadFeaturedNews() {
+            const newsRef = ref(database, 'news');
+            
+            onValue(newsRef, (snapshot) => {
+                const featuredContainer = document.getElementById('featuredNewsContainer');
+                if (featuredContainer && snapshot.exists()) {
+                    const allNews = Object.entries(snapshot.val()).map(([id, data]) => ({id, ...data}));
+                    const featuredNews = allNews.filter(news => news.featured && news.status === 'published')
+                        .sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt));
+                    
+                    if (featuredNews.length > 0) {
+                        const newsData = featuredNews[0];
+                        featuredContainer.innerHTML = `
+                            <div class="card h-100 border-0" style="cursor: pointer;" onclick="showNewsDetail('${newsData.id}')">
+                                <img src="${newsData.imageUrl || 'https://via.placeholder.com/800x400'}" 
+                                     class="card-img-top" alt="${newsData.title}" 
+                                     style="height: 400px; object-fit: cover;">
+                                <div class="card-body">
+                                    <span class="badge bg-${getCategoryColor(newsData.category)} mb-2">${newsData.categoryName}</span>
+                                    <h2 class="card-title h3">${newsData.title}</h2>
+                                    <p class="card-text text-muted mb-2">${newsData.excerpt}</p>
+                                    <div class="d-flex align-items-center mt-3">
+                                        <div class="small">
+                                            <p class="mb-0 text-muted">
+                                                <i class="fas fa-calendar me-1"></i>${formatDate(newsData.publishedAt)} · 
+                                                <i class="fas fa-clock me-1"></i>${newsData.readTime} phút đọc ·
+                                                <i class="fas fa-eye me-1"></i>${newsData.views || 0} lượt xem
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                    }
+                }
+            });
+        }
+
+        // Hàm load tin tức xu hướng
+        function loadTrendingNews() {
+            const newsRef = ref(database, 'news');
+            
+            onValue(newsRef, (snapshot) => {
+                const trendingContainer = document.getElementById('trendingNewsContainer');
+                if (trendingContainer && snapshot.exists()) {
+                    const allNews = Object.entries(snapshot.val()).map(([id, data]) => ({id, ...data}));
+                    const trendingNews = allNews
+                        .filter(news => news.status === 'published')
+                        .sort((a, b) => (b.views || 0) - (a.views || 0))
+                        .slice(0, 3);
+                    
+                    if (trendingNews.length > 0) {
+                        trendingContainer.innerHTML = trendingNews.map(news => `
+                            <div class="card shadow-sm mb-3 border-0" style="cursor: pointer;" onclick="showNewsDetail('${news.id}')">
+                                <div class="row g-0">
+                                    <div class="col-4">
+                                        <img src="${news.imageUrl || 'https://via.placeholder.com/400x300'}" 
+                                             class="img-fluid rounded" alt="${news.title}" 
+                                             style="height: 100%; object-fit: cover;">
+                                    </div>
+                                    <div class="col-8">
+                                        <div class="card-body">
+                                            <span class="badge bg-${getCategoryColor(news.category)} mb-2">${news.categoryName}</span>
+                                            <h6 class="card-title">${news.title}</h6>
+                                            <small class="text-muted">
+                                                <i class="fas fa-eye me-1"></i>${news.views || 0} lượt xem
+                                            </small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        `).join('');
+                    }
+                }
+            });
+        }
+
+        // Hàm load tin tức mới nhất
+        function loadLatestNews() {
+            const newsRef = ref(database, 'news');
+            
+            onValue(newsRef, (snapshot) => {
+                const latestContainer = document.getElementById('latestNewsGrid');
+                if (latestContainer && snapshot.exists()) {
+                    const allNews = Object.entries(snapshot.val()).map(([id, data]) => ({id, ...data}));
+                    const latestNews = allNews
+                        .filter(news => news.status === 'published')
+                        .sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt))
+                        .slice(0, 6);
+                    
+                    if (latestNews.length > 0) {
+                        latestContainer.innerHTML = latestNews.map(news => `
+                            <div class="col-md-6 col-lg-4 mb-4">
+                                <div class="card shadow-sm h-100 border-0" style="cursor: pointer;" onclick="showNewsDetail('${news.id}')">
+                                    <img src="${news.imageUrl || 'https://via.placeholder.com/400x300'}" 
+                                         class="card-img-top" alt="${news.title}" 
+                                         style="height: 200px; object-fit: cover;">
+                                    <div class="card-body">
+                                        <span class="badge bg-${getCategoryColor(news.category)} mb-2">${news.categoryName}</span>
+                                        <h5 class="card-title">${news.title}</h5>
+                                        <p class="card-text text-muted">${news.excerpt}</p>
+                                        <div class="d-flex align-items-center mt-3">
+                                            <small class="text-muted">
+                                                <i class="fas fa-calendar me-1"></i>${formatDate(news.publishedAt)} · 
+                                                <i class="fas fa-clock me-1"></i>${news.readTime} phút đọc ·
+                                                <i class="fas fa-eye me-1"></i>${news.views || 0} lượt xem
+                                            </small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        `).join('');
+                    } else {
+                        latestContainer.innerHTML = '<div class="col-12 text-center"><p class="text-muted">Chưa có tin tức nào.</p></div>';
+                    }
+                }
+            });
+        }
+
+        // Make showNewsDetail available globally
+        window.showNewsDetail = showNewsDetail;
+
+        // Utility functions
+        function formatDate(dateString) {
+            if (!dateString) return 'Không rõ ngày';
+            try {
+                const date = new Date(dateString);
+                return date.toLocaleDateString('vi-VN', {
+                    day: 'numeric',
+                    month: 'long',
+                    year: 'numeric'
+                });
+            } catch (error) {
+                return 'Không rõ ngày';
+            }
+        }
+
+        function getCategoryColor(category) {
+            const colors = {
+                'job': 'primary',
+                'market': 'success', 
+                'skill': 'info',
+                'recruitment': 'warning',
+                'trend': 'primary'
+            };
+            return colors[category] || 'secondary';
+        }
+
+        // Hàm load danh mục tin tức
+        function loadNewsCategories() {
+            const categoriesRef = ref(database, 'categories');
+            const statsRef = ref(database, 'newsStats/categoriesCount');
+            
+            // Load categories trước
+            onValue(categoriesRef, (categoriesSnapshot) => {
+                const searchSelect = document.querySelector('.form-select');
+                if (searchSelect) {
+                    if (categoriesSnapshot.exists()) {
+                        const categories = categoriesSnapshot.val();
+                        
+                        // Load stats sau
+                        onValue(statsRef, (statsSnapshot) => {
+                            const stats = statsSnapshot.exists() ? statsSnapshot.val() : {};
+                            
+                            const sortedCategories = Object.entries(categories)
+                                .sort(([,a], [,b]) => (a.order || 0) - (b.order || 0));
+                            
+                            const options = sortedCategories.map(([key, category]) => 
+                                `<option value="${key}">${category.name} (${stats[key] || 0})</option>`
+                            ).join('');
+                            
+                            searchSelect.innerHTML = `
+                                <option value="">Tất cả danh mục</option>
+                                ${options}
+                            `;
+                        }, (error) => {
+                            console.error('Lỗi khi load stats:', error);
+                        });
+                    } else {
+                        searchSelect.innerHTML = '<option value="">Tất cả danh mục</option>';
+                    }
+                }
+            }, (error) => {
+                console.error('Lỗi khi load categories:', error);
+            });
+        }
+
+        // Load all news when page loads
+        loadFeaturedNews();
+        loadTrendingNews();
+        loadLatestNews();
+        loadNewsCategories();
+
         // Kiểm tra trạng thái đăng nhập
         onAuthStateChanged(auth, function(user) {
             if (user) {
@@ -1438,7 +1553,226 @@
                 }
             });
         }
+
+        // Load all data when page loads
+        try {
+            loadFeaturedNews();
+            loadTrendingNews();
+            loadLatestNews();
+            loadNewsCategories();
+        } catch (error) {
+            console.error('Lỗi khi khởi tạo:', error);
+        }
     });
+
+    // Hàm hiển thị chi tiết tin tức
+function showNewsDetail(newsId) {
+    const newsRef = firebase.ref(firebase.database, 'news/' + newsId);
+    const modal = new bootstrap.Modal(document.getElementById('newsDetailModal'));
+    
+    firebase.onValue(newsRef, (snapshot) => {
+        const newsData = snapshot.val();
+        if (newsData) {
+            // Cập nhật lượt xem
+            const viewsRef = firebase.ref(firebase.database, `news/${newsId}/views`);
+            const currentViews = newsData.views || 0;
+            firebase.set(viewsRef, currentViews + 1);
+
+            // Format nội dung chi tiết tin tức
+            const newsDetailContent = document.getElementById('newsDetailContent');
+            newsDetailContent.innerHTML = `
+                <div class="text-center mb-4">
+                    <img src="${newsData.imageUrl || 'https://via.placeholder.com/800x400'}" 
+                         class="img-fluid rounded" 
+                         alt="${newsData.title}"
+                         style="max-height: 400px; object-fit: cover;">
+                </div>
+                <span class="badge bg-${getCategoryColor(newsData.category)} mb-2">${newsData.categoryName || 'Tin tức'}</span>
+                <h2 class="mb-3">${newsData.title}</h2>
+                <div class="d-flex align-items-center mb-4">
+                    <img src="${newsData.author?.avatar || 'images/default-avatar.jpg'}" 
+                         class="rounded-circle me-2" 
+                         width="40" height="40">
+                    <div>
+                        <p class="mb-0 fw-bold">${newsData.author?.name || 'Admin'}</p>
+                        <p class="text-muted mb-0">
+                            ${formatDate(newsData.publishedAt)} · ${newsData.readTime || 5} phút đọc · 
+                            <i class="fas fa-eye me-1"></i>${currentViews + 1} lượt xem
+                        </p>
+                    </div>
+                </div>
+                <div class="news-content">
+                    ${newsData.content || newsData.excerpt}
+                </div>
+                ${newsData.tags ? `
+                    <div class="mt-4">
+                        <h5>Tags:</h5>
+                        <div class="d-flex flex-wrap gap-2">
+                            ${newsData.tags.map(tag => `
+                                <span class="badge bg-light text-dark">#${tag}</span>
+                            `).join('')}
+                        </div>
+                    </div>
+                ` : ''}
+            `;
+            
+            modal.show();
+        } else {
+            Swal.fire({
+                title: 'Lỗi!',
+                text: 'Không tìm thấy tin tức này.',
+                icon: 'error'
+            });
+        }
+    }, {
+        onlyOnce: true
+    });
+}
+
+// Hàm load tin tức nổi bật
+function loadFeaturedNews() {
+    const newsRef = firebase.ref(firebase.database, 'news');
+    
+    firebase.onValue(newsRef, (snapshot) => {
+        const featuredContainer = document.getElementById('featuredNewsContainer');
+        if (featuredContainer && snapshot.exists()) {
+            const allNews = Object.entries(snapshot.val()).map(([id, data]) => ({id, ...data}));
+            const featuredNews = allNews.filter(news => news.featured && news.status === 'published');
+            
+            if (featuredNews.length > 0) {
+                const newsData = featuredNews[0];
+                featuredContainer.innerHTML = `
+                    <div class="card h-100 border-0" style="cursor: pointer;" onclick="showNewsDetail('${newsData.id}')">
+                        <img src="${newsData.imageUrl || 'https://via.placeholder.com/800x400'}" 
+                             class="card-img-top" alt="${newsData.title}" 
+                             style="height: 400px; object-fit: cover;">
+                        <div class="card-body">
+                            <span class="badge bg-primary mb-2">${newsData.categoryName || 'Tin tức'}</span>
+                            <h2 class="card-title h3">${newsData.title}</h2>
+                            <p class="card-text text-muted mb-2">${newsData.excerpt}</p>
+                            <div class="d-flex align-items-center mt-3">
+                                <img src="${newsData.author?.avatar || 'images/default-avatar.jpg'}" 
+                                     class="rounded-circle me-2" width="32" height="32">
+                                <div class="small">
+                                    <p class="mb-0 fw-bold">${newsData.author?.name || 'Admin'}</p>
+                                    <p class="text-muted mb-0">${formatDate(newsData.publishedAt)} · ${newsData.readTime || 5} phút đọc</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+        }
+    });
+}
+
+// Hàm load tin tức xu hướng
+function loadTrendingNews() {
+    const newsRef = firebase.ref(firebase.database, 'news');
+    
+    firebase.onValue(newsRef, (snapshot) => {
+        const trendingContainer = document.getElementById('trendingNewsContainer');
+        if (trendingContainer && snapshot.exists()) {
+            const allNews = Object.entries(snapshot.val()).map(([id, data]) => ({id, ...data}));
+            const trendingNews = allNews
+                .filter(news => news.status === 'published')
+                .sort((a, b) => (b.views || 0) - (a.views || 0))
+                .slice(0, 3);
+            
+            if (trendingNews.length > 0) {
+                trendingContainer.innerHTML = trendingNews.map(news => `
+                    <div class="card shadow-sm mb-3 border-0" style="cursor: pointer;" onclick="showNewsDetail('${news.id}')">
+                        <div class="row g-0">
+                            <div class="col-4">
+                                <img src="${news.imageUrl || 'https://via.placeholder.com/400x300'}" 
+                                     class="img-fluid rounded" alt="${news.title}" 
+                                     style="height: 100%; object-fit: cover;">
+                            </div>
+                            <div class="col-8">
+                                <div class="card-body">
+                                    <span class="badge bg-${getCategoryColor(news.category)} mb-2">${news.categoryName || 'Tin tức'}</span>
+                                    <h6 class="card-title">${news.title}</h6>
+                                    <small class="text-muted">${formatDate(news.publishedAt)}</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+            }
+        }
+    });
+}
+
+// Hàm load tin tức mới nhất
+function loadLatestNews() {
+    const newsRef = firebase.ref(firebase.database, 'news');
+    
+    firebase.onValue(newsRef, (snapshot) => {
+        const latestContainer = document.getElementById('latestNewsGrid');
+        if (latestContainer && snapshot.exists()) {
+            const allNews = Object.entries(snapshot.val()).map(([id, data]) => ({id, ...data}));
+            const latestNews = allNews
+                .filter(news => news.status === 'published')
+                .sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt))
+                .slice(0, 6);
+            
+            if (latestNews.length > 0) {
+                latestContainer.innerHTML = latestNews.map(news => `
+                    <div class="col-md-6 col-lg-4 mb-4">
+                        <div class="card shadow-sm h-100 border-0" style="cursor: pointer;" onclick="showNewsDetail('${news.id}')">
+                            <img src="${news.imageUrl || 'https://via.placeholder.com/400x300'}" 
+                                 class="card-img-top" alt="${news.title}" 
+                                 style="height: 200px; object-fit: cover;">
+                            <div class="card-body">
+                                <span class="badge bg-${getCategoryColor(news.category)} mb-2">${news.categoryName || 'Tin tức'}</span>
+                                <h5 class="card-title">${news.title}</h5>
+                                <p class="card-text text-muted">${news.excerpt}</p>
+                                <div class="d-flex align-items-center mt-3">
+                                    <small class="text-muted">
+                                        ${formatDate(news.publishedAt)} · ${news.readTime || 5} phút đọc ·
+                                        <i class="fas fa-eye me-1"></i>${news.views || 0} lượt xem
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+            }
+        }
+    });
+}
+
+// Utility functions
+function formatDate(dateString) {
+    if (!dateString) return 'Không rõ ngày';
+    try {
+        const date = new Date(dateString);
+        return date.toLocaleDateString('vi-VN', {
+            day: 'numeric',
+            month: 'long',
+            year: 'numeric'
+        });
+    } catch (error) {
+        return 'Không rõ ngày';
+    }
+}
+
+function getCategoryColor(category) {
+    const colors = {
+        'job': 'primary',
+        'market': 'success', 
+        'skill': 'info',
+        'recruitment': 'warning',
+        'trend': 'primary'
+    };
+    return colors[category] || 'secondary';
+}
+
+// Make functions available globally
+window.showNewsDetail = showNewsDetail;
+window.loadFeaturedNews = loadFeaturedNews;
+window.loadTrendingNews = loadTrendingNews;
+window.loadLatestNews = loadLatestNews; 
     </script>
 </body>
 </html>

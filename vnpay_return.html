@@ -9,6 +9,84 @@
     <!-- SweetAlert2 CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.32/dist/sweetalert2.min.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.32/dist/sweetalert2.all.min.js"></script>
+
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #0a3570;
+            background: #e6f0fa;
+        }
+
+        /* Card Styles */
+        .card {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.07);
+            border: 1px solid #e6f0fa;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0,123,255,0.10);
+        }
+
+        .card-body {
+            padding: 2rem;
+        }
+
+        /* Table Styles */
+        .table {
+            color: #0a3570;
+        }
+
+        .table th {
+            background-color: #f8f9fa;
+            font-weight: 600;
+            border-bottom: 2px solid #0a3570;
+        }
+
+        .table td {
+            vertical-align: middle;
+        }
+
+        /* Button Styles */
+        .btn-primary {
+            background: #0a3570;
+            border: none;
+            padding: 0.75rem 2rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background: #007bff;
+            transform: translateY(-2px);
+        }
+
+        /* Badge Styles */
+        .badge {
+            padding: 0.5rem 1rem;
+            font-weight: 500;
+        }
+
+        .badge.bg-success {
+            background-color: #28a745 !important;
+        }
+
+        .badge.bg-danger {
+            background-color: #dc3545 !important;
+        }
+
+        /* Heading Styles */
+        h3 {
+            color: #0a3570;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+        }
+    </style>
 </head>
 <body>
     <div class="container py-5">
@@ -16,12 +94,18 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-body">
-                        <h3 class="text-center mb-4">Kết quả thanh toán</h3>
+                        <h3 class="text-center mb-4">
+                            <i class="fas fa-receipt me-2"></i>
+                            Kết quả thanh toán
+                        </h3>
                         <div id="paymentResult">
                             <!-- Kết quả thanh toán sẽ được hiển thị ở đây -->
                         </div>
                         <div class="text-center mt-4">
-                            <a href="/member.html" class="btn btn-primary">Quay lại trang chủ</a>
+                            <a href="/member.html" class="btn btn-primary">
+                                <i class="fas fa-home me-2"></i>
+                                Quay lại trang chủ
+                            </a>
                         </div>
                     </div>
                 </div>
