@@ -632,7 +632,7 @@
         <div class="container">
             <a class="navbar-brand d-flex flex-column align-items-center" href="index.html">
                 <img src="images/jobquest-logo.png" alt="JOBQUEST Logo" height="60" class="mb-1">
-                <span class="fw-bold text-white" style="font-size:1.2rem; letter-spacing:2px;">JOBQUEST</span>
+                <span class="fw-bold text-white" style="font-size:1.2rem; letter-spacing:2px;">VIỆC LÀM NHANH</span>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
@@ -685,7 +685,7 @@
                     </div>
                 </div>
                 <div class="col-lg-6 text-center">
-                    <img src="images/job-search.svg" alt="Job Search" class="img-fluid" style="max-width: 400px;">
+                    <img src="images/65_MjExMi53MDEyLm4wMDEuMjTQoS5wNi4yNA.jpg" alt="Job Search" class="img-fluid" style="max-width: 400px;">
                 </div>
             </div>
         </div>
@@ -1382,19 +1382,43 @@
             
             // First get all users
             get(usersRef).then((usersSnapshot) => {
-                const users = usersSnapshot.val();
+                const users = usersSnapshot.val() || {}; // Add default empty object
                 
                 // Then get all jobs
-                onValue(jobsRef, (snapshot) => {
+                get(jobsRef).then((jobsSnapshot) => { // Changed from onValue to get
                     allJobs = []; // Reset allJobs array
-                    snapshot.forEach((childSnapshot) => {
+                    jobsSnapshot.forEach((childSnapshot) => {
                         const job = childSnapshot.val();
-                        job.id = childSnapshot.key;
-                        // Add employer info to job
-                        if (job.employerId && users[job.employerId]) {
-                            job.employer = users[job.employerId];
+                        // Only show approved jobs for non-admin users
+                        if (job.status === 'approved') {
+                            job.id = childSnapshot.key;
+                            // Add employer info to job if available
+                            if (job.employerId && users[job.employerId]) {
+                                job.employer = users[job.employerId];
+                            }
+                            allJobs.push(job);
                         }
-                        allJobs.push(job);
+                    });
+                    filterAndDisplayJobs();
+                }).catch((error) => {
+                    console.error("Error loading jobs:", error);
+                    jobList.innerHTML = `
+                        <div class="col-12 text-center">
+                            <p class="text-danger">Có lỗi xảy ra khi tải danh sách việc làm. Vui lòng thử lại sau.</p>
+                        </div>
+                    `;
+                });
+            }).catch((error) => {
+                console.error("Error loading users:", error);
+                // Still try to load jobs even if users fetch fails
+                get(jobsRef).then((jobsSnapshot) => {
+                    allJobs = [];
+                    jobsSnapshot.forEach((childSnapshot) => {
+                        const job = childSnapshot.val();
+                        if (job.status === 'approved') {
+                            job.id = childSnapshot.key;
+                            allJobs.push(job);
+                        }
                     });
                     filterAndDisplayJobs();
                 });
