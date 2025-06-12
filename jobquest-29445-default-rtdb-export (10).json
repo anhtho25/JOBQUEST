@@ -25,6 +25,19 @@
         "status": "accepted",
         "updatedAt": "2025-06-08T07:28:31.635Z"
       }
+    },
+    "1749379634828": {
+      "vnmjGmvX5VdI3Ed9GP8ugPlYlb93": {
+        "appliedAt": "2025-06-10T05:13:55.659Z",
+        "candidateEmail": "dangthienchuong250604@gmail.com",
+        "candidateId": "vnmjGmvX5VdI3Ed9GP8ugPlYlb93",
+        "candidateName": "Chương Đặng",
+        "coverLetter": "cdfdg",
+        "cvLink": "vcvfgdg",
+        "jobId": "1749379634828",
+        "status": "rejected",
+        "updatedAt": "2025-06-10T05:15:07.083Z"
+      }
     }
   },
   "conversations": {
@@ -37,6 +50,60 @@
     }
   },
   "cvs": {
+    "vnmjGmvX5VdI3Ed9GP8ugPlYlb93": {
+      "achievements": [
+        {
+          "date": "rtrtrt",
+          "description": "rtrtrt",
+          "name": "trtrtrtr"
+        }
+      ],
+      "certificates": [
+        {
+          "expiryDate": "2025-07-12",
+          "issueDate": "2025-06-28",
+          "name": "grr",
+          "organization": "trtrt"
+        }
+      ],
+      "createdAt": "2025-06-10T05:19:56.813Z",
+      "education": [
+        {
+          "description": "3434555",
+          "endDate": "2025-07-05",
+          "major": "fgggg",
+          "school": "ffdfgf",
+          "startDate": "2025-06-28"
+        }
+      ],
+      "experience": [
+        {
+          "company": "34535",
+          "currentJob": false,
+          "description": "5353535",
+          "endDate": "2025-07-05",
+          "position": "5355",
+          "startDate": "2025-06-21"
+        }
+      ],
+      "personalInfo": {
+        "address": "fdfggg",
+        "email": "dangthienchuong250604@gmail.com",
+        "fullName": "Chương Đặng",
+        "jobTitle": "Nhân viên bán quán cafe",
+        "phone": "0394846443",
+        "summary": "dgfgfgg"
+      },
+      "skills": [
+        {
+          "description": "5355333",
+          "level": "Cơ bản",
+          "name": "5455"
+        }
+      ],
+      "updatedAt": "2025-06-10T05:19:56.813Z",
+      "userId": "vnmjGmvX5VdI3Ed9GP8ugPlYlb93"
+    },
     "wzukitDM2SaT6CdP0hsQ5jU4BGr1": {
       "achievements": [
         {
@@ -144,6 +211,23 @@
       "status": "approved",
       "title": "Kỹ thuật viên sửa chữa thiết bị điện tử",
       "type": "full-time"
+    },
+    "1749532660136": {
+      "benefits": "Lương + thưởng doanh thu hấp dẫn.\n\nHỗ trợ bữa ăn giữa ca.\n\nMôi trường làm việc thân thiện, năng động.\n\nTham gia các buổi training nâng cao kỹ năng pha chế.",
+      "category": "HR",
+      "contactAddress": "Số 123, Nguyễn Trãi, Quận 5, TP. Hồ Chí Minh",
+      "createdAt": "2025-06-10T05:17:29.653Z",
+      "date": "2025-06-10",
+      "deadline": "2025-06-29",
+      "description": "Pha chế cà phê và các loại nước uống theo menu của quán.\n\nChuẩn bị nguyên liệu, dụng cụ pha chế mỗi ngày.\n\nGiữ vệ sinh khu vực quầy bar và thiết bị pha chế.\n\nPhối hợp với nhân viên phục vụ và thu ngân để đảm bảo hoạt động hiệu quả.",
+      "employerId": "1O29cjK6R2dzYc2mZVfoTKfoT432",
+      "requirements": "Nam/nữ từ 18–30 tuổi, ngoại hình ưa nhìn.\n\nCó kinh nghiệm pha chế là một lợi thế.\n\nNhanh nhẹn, vui vẻ, giao tiếp tốt.\n\nLàm việc được theo ca, kể cả cuối tuần.",
+      "salaryMax": "10.000000",
+      "salaryMin": "7.000000",
+      "salaryType": "vnd",
+      "status": "approved",
+      "title": "Nhân viên pha chế cà phê",
+      "type": "full-time"
     }
   },
   "messages": {
@@ -208,6 +292,34 @@
           "timestamp": 1749367719374
         }
       }
+    },
+    "1749379634828": {
+      "vnmjGmvX5VdI3Ed9GP8ugPlYlb93": {
+        "1749532485160": {
+          "isRead": true,
+          "senderId": "1O29cjK6R2dzYc2mZVfoTKfoT432",
+          "text": "chào",
+          "timestamp": 1749532485380
+        },
+        "1749532490099": {
+          "isRead": true,
+          "senderId": "vnmjGmvX5VdI3Ed9GP8ugPlYlb93",
+          "text": "hehe boy",
+          "timestamp": 1749532495025
+        },
+        "1749532498101": {
+          "isRead": true,
+          "senderId": "1O29cjK6R2dzYc2mZVfoTKfoT432",
+          "text": "?",
+          "timestamp": 1749532498320
+        },
+        "1749532501859": {
+          "isRead": true,
+          "senderId": "1O29cjK6R2dzYc2mZVfoTKfoT432",
+          "text": "???",
+          "timestamp": 1749532502078
+        }
+      }
     }
   },
   "news": {
@@ -232,12 +344,80 @@
       ],
       "title": "10 Xu Hướng Nghề Nghiệp Nổi Bật Năm 2024",
       "updatedAt": "2024-03-20T10:00:00Z",
-      "views": 1262
+      "views": 1274
+    }
+  },
+  "testimonials": {
+    "-OSNQtyU0_ex1uhAyRrb": {
+      "content": "aaa",
+      "createdAt": "2025-06-10T06:03:19.878Z",
+      "name": "Nguyễn Trần Anh Thơ",
+      "photoURL": "https://lh3.googleusercontent.com/a/ACg8ocLlxilORMbw1yQ5RLSZjSFGgnJdwHT9maKnvWaQ6EG5qH5AUvc=s96-c",
+      "rating": 4,
+      "role": "Ứng viên",
+      "status": "pending",
+      "userEmail": "ntho0124@gmail.com",
+      "userId": "wzukitDM2SaT6CdP0hsQ5jU4BGr1"
+    },
+    "-OSNRvcXwQazVFcjAMaS": {
+      "content": "bbbbbbbbbbb",
+      "createdAt": "2025-06-10T06:07:48.809Z",
+      "name": "Nguyễn Trần Anh Thơ",
+      "photoURL": "https://lh3.googleusercontent.com/a/ACg8ocLlxilORMbw1yQ5RLSZjSFGgnJdwHT9maKnvWaQ6EG5qH5AUvc=s96-c",
+      "rating": 5,
+      "role": "Ứng viên",
+      "status": "approved",
+      "userEmail": "ntho0124@gmail.com",
+      "userId": "wzukitDM2SaT6CdP0hsQ5jU4BGr1"
+    },
+    "-OSNRxi0177G5YVmuV9X": {
+      "content": "cccccccccccc",
+      "createdAt": "2025-06-10T06:07:57.351Z",
+      "name": "Nguyễn Trần Anh Thơ",
+      "photoURL": "https://lh3.googleusercontent.com/a/ACg8ocLlxilORMbw1yQ5RLSZjSFGgnJdwHT9maKnvWaQ6EG5qH5AUvc=s96-c",
+      "rating": 2,
+      "role": "Ứng viên",
+      "status": "approved",
+      "userEmail": "ntho0124@gmail.com",
+      "userId": "wzukitDM2SaT6CdP0hsQ5jU4BGr1"
+    },
+    "-OSNS-2uKMt2KMF02cuQ": {
+      "content": "nnnnnnnnnn",
+      "createdAt": "2025-06-10T06:08:06.945Z",
+      "name": "Nguyễn Trần Anh Thơ",
+      "photoURL": "https://lh3.googleusercontent.com/a/ACg8ocLlxilORMbw1yQ5RLSZjSFGgnJdwHT9maKnvWaQ6EG5qH5AUvc=s96-c",
+      "rating": 3,
+      "role": "Ứng viên",
+      "status": "approved",
+      "userEmail": "ntho0124@gmail.com",
+      "userId": "wzukitDM2SaT6CdP0hsQ5jU4BGr1"
+    },
+    "-OSNS2Nje8WlsnhnD-3q": {
+      "content": "aa",
+      "createdAt": "2025-06-10T06:08:20.566Z",
+      "name": "Nguyễn Trần Anh Thơ",
+      "photoURL": "https://lh3.googleusercontent.com/a/ACg8ocLlxilORMbw1yQ5RLSZjSFGgnJdwHT9maKnvWaQ6EG5qH5AUvc=s96-c",
+      "rating": 3,
+      "role": "Ứng viên",
+      "status": "approved",
+      "userEmail": "ntho0124@gmail.com",
+      "userId": "wzukitDM2SaT6CdP0hsQ5jU4BGr1"
+    },
+    "-OSNS3LjxRHAo3JN91wt": {
+      "content": "aadc",
+      "createdAt": "2025-06-10T06:08:24.534Z",
+      "name": "Nguyễn Trần Anh Thơ",
+      "photoURL": "https://lh3.googleusercontent.com/a/ACg8ocLlxilORMbw1yQ5RLSZjSFGgnJdwHT9maKnvWaQ6EG5qH5AUvc=s96-c",
+      "rating": 3,
+      "role": "Ứng viên",
+      "status": "approved",
+      "userEmail": "ntho0124@gmail.com",
+      "userId": "wzukitDM2SaT6CdP0hsQ5jU4BGr1"
     }
   },
   "users": {
     "1O29cjK6R2dzYc2mZVfoTKfoT432": {
-      "balance": 2550000,
+      "balance": 3000000,
       "company": {
         "address": "Số 123, Nguyễn Trãi, Quận 5, TP. Hồ Chí Minh",
         "description": "Ấm - Coffee and Cake không chỉ là nơi thưởng thức cà phê và bánh ngọt, mà còn là không gian để bạn tìm thấy sự thư giãn và kết nối. Mỗi ly cà phê, mỗi chiếc bánh đều được làm từ tâm huyết, mang đến hương vị đậm đà và yêu thương.",
@@ -288,6 +468,14 @@
           "createdAt": "2025-06-08T10:47:14.828Z",
           "description": "Phí đăng tin tuyển dụng: Kỹ thuật viên sửa chữa thiết bị điện tử",
           "jobId": "1749379634828",
+          "status": "completed",
+          "type": "job_posting"
+        },
+        "POST_1O29cjK6_1749532660136": {
+          "amount": -50000,
+          "createdAt": "2025-06-10T05:17:40.136Z",
+          "description": "Phí đăng tin tuyển dụng: Nhân viên pha chế cà phê",
+          "jobId": "1749532660136",
           "status": "completed",
           "type": "job_posting"
         },
@@ -381,8 +569,28 @@
           "transactionNo": "15006788",
           "transactionStatus": "00",
           "type": "deposit"
+        },
+        "TOPUP_1O29cjK6_1749532536347": {
+          "amount": 500000,
+          "bankCode": "NCB",
+          "completedAt": "20250610121636",
+          "createdAt": "20250610121636",
+          "orderInfo": "Nap tien tai khoan JOBQUEST",
+          "paymentMethod": "vnpay",
+          "responseCode": "00",
+          "status": "completed",
+          "transactionNo": "15010508",
+          "transactionStatus": "00",
+          "type": "deposit"
         }
       }
+    },
+    "vnmjGmvX5VdI3Ed9GP8ugPlYlb93": {
+      "createdAt": "2025-06-10T05:13:15.243Z",
+      "email": "dangthienchuong250604@gmail.com",
+      "name": "Chương Đặng",
+      "photoURL": "https://lh3.googleusercontent.com/a/ACg8ocLTsa2Ey6iTRBYB6jdE6sQQbz-ueo9FRW4FPvKAgeDuOUd1OQ=s96-c",
+      "role": "candidate"
     },
     "wzukitDM2SaT6CdP0hsQ5jU4BGr1": {
       "createdAt": "2025-06-03T10:22:02.087Z",

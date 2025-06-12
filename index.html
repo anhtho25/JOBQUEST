@@ -1078,6 +1078,11 @@
         // Kiểm tra trạng thái đăng nhập
         onAuthStateChanged(auth, function(user) {
             if (user) {
+                // Nếu là tài khoản admin thì chuyển hướng sang trang admin.html
+                if (user.email === 'quantrivieclamnhanh@gmail.com') {
+                    window.location.href = 'admin.html';
+                    return;
+                }
                 // Người dùng đã đăng nhập
                 navbarAccountArea.innerHTML = `
                     <div class="dropdown" id="accountDropdownWrapper">
