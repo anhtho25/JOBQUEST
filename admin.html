@@ -1,0 +1,1720 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JOBQUEST Admin Dashboard</title>
+    
+    <!-- CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.32/dist/sweetalert2.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/apexcharts/dist/apexcharts.css">
+    
+    <!-- Core JS -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- DataTables -->
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
+    
+    <!-- Other Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.32/dist/sweetalert2.all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- TinyMCE - Using self-hosted version instead of cloud version -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/6.8.3/tinymce.min.js"></script>
+
+    <style>
+        :root {
+            --primary-color: #0a3570;
+            --secondary-color: #007bff;
+            --success-color: #28a745;
+            --danger-color: #dc3545;
+            --warning-color: #ffc107;
+            --info-color: #17a2b8;
+            --sidebar-width: 280px;
+            --header-height: 70px;
+            --card-border-radius: 15px;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            overflow-x: hidden;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            width: var(--sidebar-width);
+            background: var(--primary-color);
+            color: white;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        }
+
+        .sidebar-brand {
+            height: var(--header-height);
+            display: flex;
+            align-items: center;
+            padding: 0 25px;
+            font-size: 1.5rem;
+            font-weight: 600;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .sidebar-menu {
+            padding: 1rem 0;
+        }
+
+        .menu-item {
+            padding: 0.8rem 25px;
+            display: flex;
+            align-items: center;
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .menu-item:hover, .menu-item.active {
+            background: rgba(255,255,255,0.1);
+            color: white;
+        }
+
+        .menu-item i {
+            width: 20px;
+            margin-right: 10px;
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-left: var(--sidebar-width);
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        /* Header */
+        .header {
+            height: var(--header-height);
+            background: white;
+            padding: 0 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 0 15px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+            border-radius: var(--card-border-radius);
+        }
+
+        /* Cards */
+        .card {
+            border: none;
+            border-radius: var(--card-border-radius);
+            box-shadow: 0 0 15px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-card {
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            color: white;
+        }
+
+        .stat-card .card-body {
+            padding: 25px;
+        }
+
+        .stat-card .stat-icon {
+            font-size: 3rem;
+            opacity: 0.5;
+        }
+
+        .stat-card .stat-title {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+
+        .stat-card .stat-value {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 0;
+        }
+
+        /* Tables */
+        .table-card {
+            padding: 0;
+        }
+
+        .table-card .card-header {
+            background: white;
+            padding: 20px 25px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .table-card .card-title {
+            margin: 0;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .dataTables_wrapper {
+            padding: 20px;
+        }
+
+        /* Buttons */
+        .btn {
+            border-radius: 5px;
+            padding: 8px 15px;
+            font-weight: 500;
+        }
+
+        .btn-icon {
+            width: 35px;
+            height: 35px;
+            padding: 0;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+        /* Charts */
+        .chart-card {
+            height: 100%;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .sidebar {
+                transform: translateX(-100%);
+            }
+
+            .sidebar.show {
+                transform: translateX(0);
+            }
+
+            .main-content {
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="sidebar-brand">
+            <i class="fas fa-briefcase me-2"></i>
+            JOBQUEST
+        </div>
+        <div class="sidebar-menu">
+            <a href="#dashboard" class="menu-item active" data-section="dashboard">
+                <i class="fas fa-home"></i>
+                Dashboard
+            </a>
+            <a href="#users" class="menu-item" data-section="users">
+                <i class="fas fa-users"></i>
+                Quản lý người dùng
+            </a>
+            <a href="#jobs" class="menu-item" data-section="jobs">
+                <i class="fas fa-briefcase"></i>
+                Quản lý việc làm
+            </a>
+            <a href="#applications" class="menu-item" data-section="applications">
+                <i class="fas fa-file-alt"></i>
+                Đơn ứng tuyển
+            </a>
+            <a href="#cvs" class="menu-item" data-section="cvs">
+                <i class="fas fa-file-pdf"></i>
+                Quản lý CV
+            </a>
+            <a href="#news" class="menu-item" data-section="news">
+                <i class="fas fa-newspaper"></i>
+                Quản lý tin tức
+            </a>
+            <a href="#testimonials" class="menu-item" data-section="testimonials">
+                <i class="fas fa-star"></i>
+                Đánh giá
+            </a>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Header -->
+        <div class="header">
+            <button class="btn btn-icon" id="sidebarToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="d-flex align-items-center">
+                <span id="adminName" class="me-3">Admin</span>
+                <button class="btn btn-danger" id="logoutBtn">
+                    <i class="fas fa-sign-out-alt me-1"></i> Đăng xuất
+                </button>
+            </div>
+        </div>
+
+        <!-- Dashboard Section -->
+        <div class="section" id="dashboard-section">
+            <div class="row">
+                <!-- Stats Cards -->
+                <div class="col-md-3">
+                    <div class="card stat-card">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <div class="stat-title">Tổng người dùng</div>
+                                    <div class="stat-value" id="totalUsers">0</div>
+                                </div>
+                                <i class="fas fa-users stat-icon"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card stat-card" style="background: linear-gradient(45deg, #28a745, #20c997)">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <div class="stat-title">Việc làm</div>
+                                    <div class="stat-value" id="totalJobs">0</div>
+                                </div>
+                                <i class="fas fa-briefcase stat-icon"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card stat-card" style="background: linear-gradient(45deg, #fd7e14, #ffc107)">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <div class="stat-title">Đơn ứng tuyển</div>
+                                    <div class="stat-value" id="totalApplications">0</div>
+                                </div>
+                                <i class="fas fa-file-alt stat-icon"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card stat-card" style="background: linear-gradient(45deg, #6f42c1, #e83e8c)">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <div class="stat-title">Đánh giá</div>
+                                    <div class="stat-value" id="totalTestimonials">0</div>
+                                </div>
+                                <i class="fas fa-star stat-icon"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 1. Thêm card vào Dashboard (phía dưới các card thống kê khác, trước phần Charts Row) -->
+            <div class="row mt-4">
+                <div class="col-md-12">
+                    <div class="card chart-card mb-4">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <h5 class="card-title mb-0">Thống kê doanh thu</h5>
+                                <select id="revenueViewMode" class="form-select w-auto">
+                                    <option value="week">Theo tuần</option>
+                                    <option value="month">Theo tháng</option>
+                                    <option value="year">Theo năm</option>
+                                    <option value="day">Theo ngày trong tháng</option>
+                                </select>
+                            </div>
+                            <div style="height: 300px; position: relative;">
+                                <canvas id="revenueChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Charts Row -->
+            <div class="row mt-4">
+                <div class="col-md-8">
+                    <div class="card chart-card">
+                        <div class="card-body">
+                            <h5 class="card-title mb-4">Thống kê đơn ứng tuyển</h5>
+                            <div style="height: 300px; position: relative;">
+                                <canvas id="applicationsChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card chart-card">
+                        <div class="card-body">
+                            <h5 class="card-title mb-4">Phân bố ngành nghề</h5>
+                            <div style="height: 300px; position: relative;">
+                                <canvas id="categoriesChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Activities -->
+            <div class="card mt-4">
+                <div class="card-body">
+                    <h5 class="card-title mb-4">Hoạt động gần đây</h5>
+                    <div class="timeline">
+                        <!-- Activities will be loaded here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Users Section -->
+        <div class="section d-none" id="users-section">
+            <div class="card table-card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h5 class="card-title">Quản lý người dùng</h5>
+                    <!-- <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addUserModal">
+                        <i class="fas fa-plus me-2"></i>Thêm người dùng
+                    </button> -->
+                </div>
+                <div class="card-body">
+                    <table id="usersTable" class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Tên</th>
+                                <th>Email</th>
+                                <th>Vai trò</th>
+                                <th>Ngày tạo</th>
+                                <th>Thao tác</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Jobs Section -->
+        <div class="section d-none" id="jobs-section">
+            <div class="card table-card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h5 class="card-title">Quản lý việc làm</h5>
+                   
+                </div>
+                <div class="card-body">
+                    <table id="jobsTable" class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Tiêu đề</th>
+                                <th>Công ty</th>
+                                <th>Ngành nghề</th>
+                                <th>Mức lương</th>
+                                <th>Trạng thái</th>
+                                <th>Thao tác</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Applications Section -->
+        <div class="section d-none" id="applications-section">
+            <div class="card table-card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h5 class="card-title">Quản lý đơn ứng tuyển</h5>
+                   
+                </div>
+                <div class="card-body">
+                    <table id="applicationsTable" class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Ứng viên</th>
+                                <th>Việc làm</th>
+                                <th>Ngày ứng tuyển</th>
+                                <th>Trạng thái</th>
+                                <th>Thao tác</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- CVs Section -->
+        <div class="section d-none" id="cvs-section">
+            <div class="card table-card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h5 class="card-title">Quản lý CV</h5>
+                </div>
+                <div class="card-body">
+                    <table id="cvsTable" class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Ứng viên</th>
+                                <th>Vị trí</th>
+                                <th>Ngày tạo</th>
+                                <th>Lượt tải</th>
+                                <th>Thao tác</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- News Section -->
+        <div class="section d-none" id="news-section">
+            <div class="card table-card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h5 class="card-title">Quản lý tin tức</h5>
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addNewsModal">
+                        <i class="fas fa-plus me-2"></i>Thêm tin tức
+                    </button>
+                </div>
+                <div class="card-body">
+                    <table id="newsTable" class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Tiêu đề</th>
+                                <th>Danh mục</th>
+                                <th>Ngày đăng</th>
+                                <th>Lượt xem</th>
+                                <th>Trạng thái</th>
+                                <th>Thao tác</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Testimonials Section -->
+        <div class="section d-none" id="testimonials-section">
+            <div class="card table-card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h5 class="card-title">Quản lý đánh giá</h5>
+                </div>
+                <div class="card-body">
+                    <table id="testimonialsTable" class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Người đánh giá</th>
+                                <th>Nội dung</th>
+                                <th>Đánh giá</th>
+                                <th>Ngày tạo</th>
+                                <th>Trạng thái</th>
+                                <th>Thao tác</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modals -->
+    <!-- Add User Modal -->
+    <div class="modal fade" id="addUserModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Thêm người dùng mới</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="addUserForm">
+                        <div class="mb-3">
+                            <label class="form-label">Họ và tên</label>
+                            <input type="text" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Email</label>
+                            <input type="email" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Mật khẩu</label>
+                            <input type="password" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Vai trò</label>
+                            <select class="form-select" required>
+                                <option value="candidate">Ứng viên</option>
+                                <option value="employer">Nhà tuyển dụng</option>
+                                <option value="admin">Admin</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                    <button type="submit" form="addUserForm" class="btn btn-primary">Thêm</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Job Modal -->
+    <div class="modal fade" id="addJobModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Thêm việc làm mới</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="addJobForm">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Tiêu đề công việc</label>
+                                    <input type="text" class="form-control" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Ngành nghề</label>
+                                    <select class="form-select" required>
+                                        <option value="IT">Công nghệ thông tin</option>
+                                        <option value="Marketing">Marketing</option>
+                                        <option value="Sales">Kinh doanh</option>
+                                        <option value="HR">Nhân sự</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Loại công việc</label>
+                                    <select class="form-select" required>
+                                        <option value="full-time">Toàn thời gian</option>
+                                        <option value="part-time">Bán thời gian</option>
+                                        <option value="remote">Từ xa</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Mức lương (VND)</label>
+                                    <div class="input-group">
+                                        <input type="number" class="form-control" placeholder="Từ" required>
+                                        <span class="input-group-text">-</span>
+                                        <input type="number" class="form-control" placeholder="Đến" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Mô tả công việc</label>
+                                    <textarea class="form-control" rows="4" required></textarea>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Yêu cầu</label>
+                                    <textarea class="form-control" rows="4" required></textarea>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Quyền lợi</label>
+                                    <textarea class="form-control" rows="4" required></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                    <button type="submit" form="addJobForm" class="btn btn-primary">Thêm</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add News Modal -->
+    <div class="modal fade" id="addNewsModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Thêm tin tức mới</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="addNewsForm">
+                        <div class="mb-3">
+                            <label class="form-label">Tiêu đề</label>
+                            <input type="text" class="form-control" required>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Danh mục</label>
+                                    <select class="form-select" required>
+                                        <option value="trend">Xu hướng</option>
+                                        <option value="career">Nghề nghiệp</option>
+                                        <option value="tips">Mẹo tìm việc</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Ảnh đại diện (URL)</label>
+                                    <input type="url" class="form-control" placeholder="https://..." required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Tóm tắt</label>
+                            <textarea class="form-control" rows="3" required></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Nội dung</label>
+                            <textarea class="form-control" id="newsContent" name="newsContent" rows="10"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Tags</label>
+                            <input type="text" class="form-control" placeholder="Nhập tags, phân cách bằng dấu phẩy">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                    <button type="submit" form="addNewsForm" class="btn btn-primary">Thêm</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="changePasswordModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Đổi mật khẩu</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="changePasswordForm">
+                        <div class="mb-3">
+                            <label class="form-label">Mật khẩu hiện tại</label>
+                            <input type="password" class="form-control" required autocomplete="current-password">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Mật khẩu mới</label>
+                            <input type="password" class="form-control" required autocomplete="new-password">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Xác nhận mật khẩu mới</label>
+                            <input type="password" class="form-control" required autocomplete="new-password">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                    <button type="button" class="btn btn-primary">Lưu thay đổi</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit News Modal -->
+    <div class="modal fade" id="editNewsModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Sửa tin tức</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="editNewsForm">
+                        <input type="hidden" id="editNewsId">
+                        <div class="mb-3">
+                            <label class="form-label">Tiêu đề</label>
+                            <input type="text" class="form-control" id="editNewsTitle" required>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Danh mục</label>
+                                    <select class="form-select" id="editNewsCategory" required>
+                                        <option value="trend">Xu hướng</option>
+                                        <option value="career">Nghề nghiệp</option>
+                                        <option value="tips">Mẹo tìm việc</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Ảnh đại diện (URL)</label>
+                                    <input type="url" class="form-control" id="editNewsImageUrl" placeholder="https://..." required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Tóm tắt</label>
+                            <textarea class="form-control" id="editNewsExcerpt" rows="3" required></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Nội dung</label>
+                            <textarea class="form-control" id="editNewsContent" name="editNewsContent" rows="10"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Tags</label>
+                            <input type="text" class="form-control" id="editNewsTags" placeholder="Nhập tags, phân cách bằng dấu phẩy">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                    <button type="submit" form="editNewsForm" class="btn btn-primary">Lưu thay đổi</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Core JS -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.32/dist/sweetalert2.all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/6.8.3/tinymce.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+
+    <script type="module">
+        // Firebase imports
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+        import { getDatabase, ref, onValue, set, push, remove, get } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
+
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyBxtxHc0J2y4RTPZ5msgygaJYFG8bhyzJE",
+            authDomain: "jobquest-29445.firebaseapp.com",
+            databaseURL: "https://jobquest-29445-default-rtdb.firebaseio.com",
+            projectId: "jobquest-29445",
+            measurementId: "G-3XJ0EENTDJ"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const database = getDatabase(app);
+
+        // Initialize TinyMCE
+        tinymce.init({
+            selector: '#newsContent',
+            plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
+            toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
+            height: 500,
+            readonly: false, // Ensure editor is not read-only
+            branding: false, // Remove TinyMCE branding
+            promotion: false // Remove promotion link
+        });
+
+        // Đặt tableConfig ở đầu <script type="module">, trước các hàm load bảng
+        const tableConfig = {
+            language: {
+                "emptyTable": "Không có dữ liệu",
+                "info": "Hiển thị _START_ đến _END_ của _TOTAL_ mục",
+                "infoEmpty": "Hiển thị 0 đến 0 của 0 mục",
+                "infoFiltered": "(được lọc từ _MAX_ mục)",
+                "lengthMenu": "Hiển thị _MENU_ mục",
+                "loadingRecords": "Đang tải...",
+                "processing": "Đang xử lý...",
+                "search": "Tìm kiếm:",
+                "zeroRecords": "Không tìm thấy kết quả phù hợp",
+                "paginate": {
+                    "first": "Đầu",
+                    "last": "Cuối",
+                    "next": "Sau",
+                    "previous": "Trước"
+                },
+                "aria": {
+                    "sortAscending": ": Sắp xếp tăng dần",
+                    "sortDescending": ": Sắp xếp giảm dần"
+                }
+            },
+            pageLength: 10,
+            responsive: true,
+            dom: '<"row"<"col-sm-12 col-md-6"l><"col-sm-12 col-md-6"f>>' +
+                 '<"row"<"col-sm-12"tr>>' +
+                 '<"row"<"col-sm-12 col-md-5"i><"col-sm-12 col-md-7"p>>',
+            buttons: [
+                'copy', 'excel', 'pdf'
+            ]
+        };
+
+        // DataTables Initialization
+        $(document).ready(function() {
+            $('#usersTable').DataTable(tableConfig);
+            $('#jobsTable').DataTable(tableConfig);
+            $('#applicationsTable').DataTable(tableConfig);
+            $('#cvsTable').DataTable(tableConfig);
+            $('#newsTable').DataTable(tableConfig);
+            $('#testimonialsTable').DataTable(tableConfig);
+        });
+
+        // Check authentication state
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                // User is signed in
+                document.getElementById('adminName').textContent = user.email;
+                loadDashboardData();
+                loadUsersTable();
+                loadJobsTable();
+                loadApplicationsTable();
+                loadCVsTable();
+                loadNewsTable();
+                loadTestimonialsTable();
+                loadRecentActivities();
+                loadRevenueChart();
+            } else {
+                // User is signed out
+                console.log('User is signed out');
+                window.location.href = 'index.html';
+            }
+        });
+
+        // Load dashboard data
+        function loadDashboardData() {
+            // Initialize empty arrays for chart data
+            const monthlyApplications = new Array(12).fill(0);
+            const jobCategories = {};
+
+            // Load Users Count
+            onValue(ref(database, 'users'), (snapshot) => {
+                const users = snapshot.val() || {};
+                document.getElementById('totalUsers').textContent = Object.keys(users).length;
+            });
+
+            // Load Jobs and Categories
+            onValue(ref(database, 'jobs'), (snapshot) => {
+                const jobs = snapshot.val() || {};
+                document.getElementById('totalJobs').textContent = Object.keys(jobs).length;
+
+                // Count jobs by category
+                Object.values(jobs).forEach(job => {
+                    jobCategories[job.category] = (jobCategories[job.category] || 0) + 1;
+                });
+            });
+
+            // Load Applications
+            onValue(ref(database, 'applications'), (snapshot) => {
+                const applications = snapshot.val() || {};
+                let totalApplications = 0;
+
+                // Count applications by month
+                Object.values(applications).forEach(jobApplications => {
+                    Object.values(jobApplications).forEach(application => {
+                        totalApplications++;
+                        const appliedDate = new Date(application.appliedAt);
+                        if (appliedDate.getFullYear() === new Date().getFullYear()) {
+                            monthlyApplications[appliedDate.getMonth()]++;
+                        }
+                    });
+                });
+
+                document.getElementById('totalApplications').textContent = totalApplications;
+
+                // Initialize charts after applications data is loaded
+                initializeCharts(monthlyApplications, jobCategories);
+            });
+
+            // Load Testimonials Count
+            onValue(ref(database, 'testimonials'), (snapshot) => {
+                const testimonials = snapshot.val() || {};
+                document.getElementById('totalTestimonials').textContent = Object.keys(testimonials).length;
+            });
+        }
+
+        // Initialize Charts
+        function initializeCharts(applicationsData, categoriesData) {
+            // Applications Chart
+            const applicationsCtx = document.getElementById('applicationsChart');
+            if (!applicationsCtx) {
+                console.error('Applications chart canvas not found');
+                return;
+            }
+
+            new Chart(applicationsCtx, {
+                type: 'line',
+                data: {
+                    labels: ['Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6', 
+                            'Tháng 7', 'Tháng 8', 'Tháng 9', 'Tháng 10', 'Tháng 11', 'Tháng 12'],
+                    datasets: [{
+                        label: 'Số đơn ứng tuyển',
+                        data: applicationsData,
+                        borderColor: '#0a3570',
+                        backgroundColor: 'rgba(10, 53, 112, 0.1)',
+                        borderWidth: 2,
+                        fill: true,
+                        tension: 0.4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                stepSize: 1
+                            }
+                        }
+                    }
+                }
+            });
+
+            // Categories Chart
+            const categoriesCtx = document.getElementById('categoriesChart');
+            if (!categoriesCtx) {
+                console.error('Categories chart canvas not found');
+                return;
+            }
+
+            new Chart(categoriesCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: Object.keys(categoriesData),
+                    datasets: [{
+                        data: Object.values(categoriesData),
+                        backgroundColor: [
+                            '#0a3570',
+                            '#28a745',
+                            '#ffc107',
+                            '#dc3545',
+                            '#17a2b8',
+                            '#6610f2',
+                            '#fd7e14',
+                            '#20c997'
+                        ]
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'right'
+                        }
+                    }
+                }
+            });
+        }
+
+        // Sidebar Toggle
+        document.getElementById('sidebarToggle').addEventListener('click', () => {
+            document.querySelector('.sidebar').classList.toggle('show');
+        });
+
+        // Navigation
+        document.querySelectorAll('.menu-item').forEach(item => {
+            item.addEventListener('click', (e) => {
+                // Remove active class from all items
+                document.querySelectorAll('.menu-item').forEach(i => i.classList.remove('active'));
+                // Add active class to clicked item
+                e.target.closest('.menu-item').classList.add('active');
+
+                // Hide all sections
+                document.querySelectorAll('.section').forEach(s => s.classList.add('d-none'));
+                // Show selected section
+                const sectionId = e.target.closest('.menu-item').getAttribute('data-section');
+                document.getElementById(`${sectionId}-section`).classList.remove('d-none');
+            });
+        });
+
+        // Logout
+        document.getElementById('logoutBtn').addEventListener('click', function(e) {
+            e.preventDefault();
+            Swal.fire({
+                title: 'Xác nhận đăng xuất?',
+                text: "Bạn có chắc chắn muốn đăng xuất?",
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Đăng xuất',
+                cancelButtonText: 'Hủy'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    auth.signOut().then(() => {
+                        window.location.href = 'index.html';
+                    });
+                }
+            });
+        });
+
+        // Hiển thị danh sách người dùng
+        function loadUsersTable() {
+            const usersRef = ref(database, 'users');
+            onValue(usersRef, (snapshot) => {
+                const users = snapshot.val() || {};
+                if ($.fn.DataTable.isDataTable('#usersTable')) {
+                    $('#usersTable').DataTable().destroy();
+                }
+                const tbody = document.querySelector('#usersTable tbody');
+                tbody.innerHTML = '';
+                Object.entries(users).forEach(([id, user]) => {
+                    const tr = document.createElement('tr');
+                    tr.innerHTML = `
+                        <td>${id}</td>
+                        <td>${user.name || ''}</td>
+                        <td>${user.email || ''}</td>
+                        <td>${user.role || ''}</td>
+                        <td>${user.createdAt ? new Date(user.createdAt).toLocaleString() : ''}</td>
+                        <td>
+                          <button class="btn btn-sm btn-danger delete-user-btn" data-id="${id}"><i class="fas fa-trash"></i></button>
+                        </td>
+                    `;
+                    tbody.appendChild(tr);
+                });
+                $('#usersTable').DataTable(tableConfig);
+            });
+        }
+
+        // Hiển thị danh sách việc làm
+        function loadJobsTable() {
+            const jobsRef = ref(database, 'jobs');
+            onValue(jobsRef, (snapshot) => {
+                const jobs = snapshot.val() || {};
+                if ($.fn.DataTable.isDataTable('#jobsTable')) {
+                    $('#jobsTable').DataTable().destroy();
+                }
+                const tbody = document.querySelector('#jobsTable tbody');
+                tbody.innerHTML = '';
+                Object.entries(jobs).forEach(([id, job]) => {
+                    const tr = document.createElement('tr');
+                    tr.innerHTML = `
+                        <td>${id}</td>
+                        <td>${job.title || ''}</td>
+                        <td>${job.employerId || ''}</td>
+                        <td>${job.category || ''}</td>
+                        <td>${job.salaryMin || ''} - ${job.salaryMax || ''}</td>
+                        <td>${job.status || ''}</td>
+                        <td>
+                          <button class="btn btn-sm btn-danger delete-job-btn" data-id="${id}"><i class="fas fa-trash"></i></button>
+                        </td>
+                    `;
+                    tbody.appendChild(tr);
+                });
+                $('#jobsTable').DataTable(tableConfig);
+            });
+        }
+
+        // Hiển thị danh sách đơn ứng tuyển
+        function loadApplicationsTable() {
+            const applicationsRef = ref(database, 'applications');
+            onValue(applicationsRef, (snapshot) => {
+                const applications = snapshot.val() || {};
+                if ($.fn.DataTable.isDataTable('#applicationsTable')) {
+                    $('#applicationsTable').DataTable().destroy();
+                }
+                const tbody = document.querySelector('#applicationsTable tbody');
+                tbody.innerHTML = '';
+                Object.entries(applications).forEach(([jobId, jobApplications]) => {
+                    Object.entries(jobApplications).forEach(([candidateId, application]) => {
+                        const tr = document.createElement('tr');
+                        tr.innerHTML = `
+                            <td>${application.jobId || jobId}</td>
+                            <td>${application.candidateName || ''}</td>
+                            <td>${application.candidateEmail || ''}</td>
+                            <td>${application.appliedAt ? new Date(application.appliedAt).toLocaleString() : ''}</td>
+                            <td>${application.status || ''}</td>
+                            <td>
+                              <button class="btn btn-sm btn-danger delete-application-btn" data-jobid="${jobId}" data-candidateid="${candidateId}"><i class="fas fa-trash"></i></button>
+                            </td>
+                        `;
+                        tbody.appendChild(tr);
+                    });
+                });
+                $('#applicationsTable').DataTable(tableConfig);
+            });
+        }
+
+        // Hiển thị danh sách CV
+        function loadCVsTable() {
+            const cvsRef = ref(database, 'cvs');
+            onValue(cvsRef, (snapshot) => {
+                const cvs = snapshot.val() || {};
+                if ($.fn.DataTable.isDataTable('#cvsTable')) {
+                    $('#cvsTable').DataTable().destroy();
+                }
+                const tbody = document.querySelector('#cvsTable tbody');
+                tbody.innerHTML = '';
+                Object.entries(cvs).forEach(([id, cv]) => {
+                    const info = cv.personalInfo || {};
+                    const tr = document.createElement('tr');
+                    tr.innerHTML = `
+                        <td>${id}</td>
+                        <td>${info.fullName || ''}</td>
+                        <td>${info.jobTitle || ''}</td>
+                        <td>${cv.createdAt ? new Date(cv.createdAt).toLocaleString() : ''}</td>
+                        <td>${cv.downloads || 0}</td>
+                        <td>
+                          <button class="btn btn-sm btn-danger delete-cv-btn" data-id="${id}"><i class="fas fa-trash"></i></button>
+                        </td>
+                    `;
+                    tbody.appendChild(tr);
+                });
+                $('#cvsTable').DataTable(tableConfig);
+            });
+        }
+
+        // Hiển thị danh sách tin tức
+        function loadNewsTable() {
+            const newsRef = ref(database, 'news');
+            onValue(newsRef, (snapshot) => {
+                const news = snapshot.val() || {};
+                if ($.fn.DataTable.isDataTable('#newsTable')) {
+                    $('#newsTable').DataTable().destroy();
+                }
+                const tbody = document.querySelector('#newsTable tbody');
+                tbody.innerHTML = '';
+                Object.entries(news).forEach(([id, item]) => {
+                    const tr = document.createElement('tr');
+                    tr.innerHTML = `
+                        <td>${id}</td>
+                        <td>${item.title || ''}</td>
+                        <td>${item.categoryName || item.category || ''}</td>
+                        <td>${item.publishedAt ? new Date(item.publishedAt).toLocaleString() : ''}</td>
+                        <td>${item.views || 0}</td>
+                        <td>${item.status || ''}</td>
+                        <td>
+                          <button class="btn btn-sm btn-warning edit-news-btn" data-id="${id}"><i class="fas fa-edit"></i></button>
+                          <button class="btn btn-sm btn-danger delete-news-btn" data-id="${id}"><i class="fas fa-trash"></i></button>
+                        </td>
+                    `;
+                    tbody.appendChild(tr);
+                });
+                $('#newsTable').DataTable(tableConfig);
+            });
+        }
+
+        // Hiển thị danh sách đánh giá
+        function loadTestimonialsTable() {
+            const testimonialsRef = ref(database, 'testimonials');
+            onValue(testimonialsRef, (snapshot) => {
+                const testimonials = snapshot.val() || {};
+                if ($.fn.DataTable.isDataTable('#testimonialsTable')) {
+                    $('#testimonialsTable').DataTable().destroy();
+                }
+                const tbody = document.querySelector('#testimonialsTable tbody');
+                tbody.innerHTML = '';
+                Object.entries(testimonials).forEach(([id, item]) => {
+                    const tr = document.createElement('tr');
+                    tr.innerHTML = `
+                        <td>${id}</td>
+                        <td>${item.name || ''}</td>
+                        <td>${item.content || ''}</td>
+                        <td>${item.rating || ''}</td>
+                        <td>${item.createdAt ? new Date(item.createdAt).toLocaleString() : ''}</td>
+                        <td>${item.status || ''}</td>
+                        <td>
+                          <button class="btn btn-sm btn-danger delete-testimonial-btn" data-id="${id}"><i class="fas fa-trash"></i></button>
+                        </td>
+                    `;
+                    tbody.appendChild(tr);
+                });
+                $('#testimonialsTable').DataTable(tableConfig);
+            });
+        }
+
+        // Hàm lấy và hiển thị hoạt động gần đây trên Dashboard
+        function loadRecentActivities() {
+            const activities = [];
+            // Lấy users
+            onValue(ref(database, 'users'), (snapshot) => {
+                const users = snapshot.val() || {};
+                Object.entries(users).forEach(([id, user]) => {
+                    if (user.createdAt) {
+                        activities.push({
+                            type: 'user',
+                            time: user.createdAt,
+                            content: `<b>${user.name || user.email}</b> đã đăng ký tài khoản (${user.role || ''})` 
+                        });
+                    }
+                });
+                renderActivities();
+            });
+            // Lấy jobs
+            onValue(ref(database, 'jobs'), (snapshot) => {
+                const jobs = snapshot.val() || {};
+                Object.entries(jobs).forEach(([id, job]) => {
+                    if (job.createdAt) {
+                        activities.push({
+                            type: 'job',
+                            time: job.createdAt,
+                            content: `Tin tuyển dụng <b>${job.title}</b> được tạo bởi <b>${job.employerId}</b>`
+                        });
+                    }
+                });
+                renderActivities();
+            });
+            // Lấy applications
+            onValue(ref(database, 'applications'), (snapshot) => {
+                const applications = snapshot.val() || {};
+                Object.entries(applications).forEach(([jobId, jobApplications]) => {
+                    Object.entries(jobApplications).forEach(([candidateId, application]) => {
+                        if (application.appliedAt) {
+                            activities.push({
+                                type: 'application',
+                                time: application.appliedAt,
+                                content: `<b>${application.candidateName}</b> đã ứng tuyển vào công việc <b>${application.jobId}</b>`
+                            });
+                        }
+                    });
+                });
+                renderActivities();
+            });
+            // Lấy news
+            onValue(ref(database, 'news'), (snapshot) => {
+                const news = snapshot.val() || {};
+                Object.entries(news).forEach(([id, item]) => {
+                    if (item.publishedAt) {
+                        activities.push({
+                            type: 'news',
+                            time: item.publishedAt,
+                            content: `Tin tức <b>${item.title}</b> đã được đăng` 
+                        });
+                    }
+                });
+                renderActivities();
+            });
+            // Lấy testimonials
+            onValue(ref(database, 'testimonials'), (snapshot) => {
+                const testimonials = snapshot.val() || {};
+                Object.entries(testimonials).forEach(([id, item]) => {
+                    if (item.createdAt) {
+                        activities.push({
+                            type: 'testimonial',
+                            time: item.createdAt,
+                            content: `<b>${item.name}</b> đã gửi đánh giá: "${item.content}"` 
+                        });
+                    }
+                });
+                renderActivities();
+            });
+            // Hàm render
+            function renderActivities() {
+                // Sắp xếp theo thời gian giảm dần
+                activities.sort((a, b) => new Date(b.time) - new Date(a.time));
+                const timeline = document.querySelector('.timeline');
+                if (!timeline) return;
+                timeline.innerHTML = activities.slice(0, 10).map(act => `
+                    <div class="timeline-item mb-2">
+                        <div class="small text-muted">${new Date(act.time).toLocaleString()}</div>
+                        <div>${act.content}</div>
+                    </div>
+                `).join('');
+            }
+        }
+
+        // 2. Thêm code JS vẽ biểu đồ doanh thu
+        function loadRevenueChart() {
+            function parseDate(str) {
+                if (!str) return null;
+                if (/^\d{13}$/.test(str)) return new Date(Number(str));
+                if (/^\d{14}$/.test(str)) {
+                    const y = str.slice(0,4), m = str.slice(4,6), d = str.slice(6,8);
+                    const H = str.slice(8,10), M = str.slice(10,12), S = str.slice(12,14);
+                    return new Date(`${y}-${m}-${d}T${H}:${M}:${S}`);
+                }
+                return new Date(str);
+            }
+            let revenueData = [];
+            let revenueChartInstance = null;
+            let lastMode = 'week';
+            // Lắng nghe thay đổi select
+            document.getElementById('revenueViewMode').addEventListener('change', function() {
+                lastMode = this.value;
+                renderRevenueChart();
+            });
+            onValue(ref(database, 'users'), (snapshot) => {
+                const users = snapshot.val() || {};
+                revenueData = [];
+                Object.values(users).forEach(user => {
+                    if (user.transactions) {
+                        Object.values(user.transactions).forEach(tx => {
+                            if (tx.type === 'deposit' && tx.status === 'completed') {
+                                revenueData.push({
+                                    amount: Math.abs(Number(tx.amount)),
+                                    createdAt: tx.createdAt || tx.completedAt
+                                });
+                            }
+                        });
+                    }
+                });
+                renderRevenueChart();
+            });
+            function renderRevenueChart() {
+                const mode = document.getElementById('revenueViewMode').value || lastMode;
+                const now = new Date();
+                let labels = [], data = [];
+                if (mode === 'week') {
+                    // 7 ngày gần nhất
+                    for (let i = 6; i >= 0; i--) {
+                        const d = new Date(now);
+                        d.setDate(now.getDate() - i);
+                        const label = d.toLocaleDateString('vi-VN', { weekday: 'short', day: '2-digit', month: '2-digit' });
+                        labels.push(label);
+                        const total = revenueData.filter(tx => {
+                            const txDate = parseDate(tx.createdAt);
+                            return txDate && txDate.toDateString() === d.toDateString();
+                        }).reduce((sum, tx) => sum + tx.amount, 0);
+                        data.push(total);
+                    }
+                } else if (mode === 'month') {
+                    // 12 tháng trong năm hiện tại
+                    labels = [
+                        'Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6',
+                        'Tháng 7', 'Tháng 8', 'Tháng 9', 'Tháng 10', 'Tháng 11', 'Tháng 12'
+                    ];
+                    data = new Array(12).fill(0);
+                    revenueData.forEach(tx => {
+                        const txDate = parseDate(tx.createdAt);
+                        if (txDate && txDate.getFullYear() === now.getFullYear()) {
+                            data[txDate.getMonth()] += tx.amount;
+                        }
+                    });
+                } else if (mode === 'year') {
+                    // Các năm có dữ liệu
+                    const yearMap = {};
+                    revenueData.forEach(tx => {
+                        const txDate = parseDate(tx.createdAt);
+                        if (!txDate) return;
+                        const year = txDate.getFullYear();
+                        if (!yearMap[year]) yearMap[year] = 0;
+                        yearMap[year] += tx.amount;
+                    });
+                    labels = Object.keys(yearMap).sort();
+                    data = labels.map(y => yearMap[y]);
+                } else {
+                    // Theo ngày trong tháng hiện tại
+                    const year = now.getFullYear();
+                    const month = now.getMonth();
+                    const daysInMonth = new Date(year, month + 1, 0).getDate();
+                    for (let d = 1; d <= daysInMonth; d++) {
+                        labels.push(d.toString().padStart(2, '0'));
+                        const total = revenueData.filter(tx => {
+                            const txDate = parseDate(tx.createdAt);
+                            return txDate && txDate.getFullYear() === year && txDate.getMonth() === month && txDate.getDate() === d;
+                        }).reduce((sum, tx) => sum + tx.amount, 0);
+                        data.push(total);
+                    }
+                }
+                // Vẽ chart
+                const ctx = document.getElementById('revenueChart').getContext('2d');
+                if (revenueChartInstance) revenueChartInstance.destroy();
+                revenueChartInstance = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            label: 'Doanh thu nạp tiền (VNĐ)',
+                            data: data,
+                            backgroundColor: '#0a3570',
+                            borderRadius: 8
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: { display: false }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                ticks: {
+                                    callback: function(value) {
+                                        return value.toLocaleString('vi-VN');
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+        }
+
+        // Thêm JS validate và triggerSave cho form addNewsForm
+        document.getElementById('addNewsForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            if (window.tinymce) tinymce.triggerSave();
+
+            // Lấy dữ liệu form
+            const title = this.querySelector('input[type="text"]').value.trim();
+            const category = this.querySelector('select').value;
+            const categoryName = this.querySelector('select option:checked').textContent;
+            const excerpt = this.querySelector('textarea').value.trim();
+            const content = document.getElementById('newsContent').value.trim();
+            const tags = this.querySelector('input[placeholder^="Nhập tags"]').value.split(',').map(t => t.trim()).filter(Boolean);
+            const imageUrl = this.querySelector('input[type="url"]').value.trim();
+
+            if (!title || !category || !excerpt || !content || !imageUrl) {
+                Swal.fire('Lỗi', 'Vui lòng nhập đầy đủ thông tin!', 'error');
+                return;
+            }
+
+            // Sinh slug
+            const slug = title.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+                .replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+
+            // Sinh ID mới
+            const newsRef = push(ref(database, 'news'));
+            const newsId = newsRef.key;
+
+            // Tính readTime (số phút đọc, ví dụ: 200 từ = 1 phút)
+            const wordCount = content.split(/\s+/).length;
+            const readTime = Math.max(1, Math.round(wordCount / 200));
+
+            // Tạo object tin tức
+            const now = new Date().toISOString();
+            const newsData = {
+                category,
+                categoryName,
+                content,
+                excerpt,
+                featured: false,
+                imageUrl,
+                publishedAt: now,
+                readTime,
+                seoDescription: excerpt,
+                seoTitle: title + " | JOBQUEST",
+                slug,
+                status: "published",
+                tags,
+                title,
+                updatedAt: now,
+                views: 0
+            };
+
+            // Lưu vào Realtime Database
+            try {
+                await set(newsRef, newsData);
+                Swal.fire('Thành công', 'Đã thêm tin tức!', 'success');
+                this.reset();
+                tinymce.get('newsContent').setContent('');
+                const addNewsModal = bootstrap.Modal.getInstance(document.getElementById('addNewsModal'));
+                if (addNewsModal) addNewsModal.hide();
+                loadNewsTable();
+            } catch (err) {
+                Swal.fire('Lỗi', 'Không lưu được tin tức!', 'error');
+            }
+        });
+
+        // Chuyển focus về nút mở modal khi modal addNewsModal đóng để tránh cảnh báo aria-hidden
+        $(document).ready(function() {
+            $('#addNewsModal').on('hidden.bs.modal', function () {
+                document.querySelector('[data-bs-target="#addNewsModal"]').focus();
+            });
+        });
+
+        // Khởi tạo TinyMCE cho modal sửa khi mở modal
+        $('#editNewsModal').on('shown.bs.modal', function () {
+            if (!tinymce.get('editNewsContent')) {
+                tinymce.init({
+                    selector: '#editNewsContent',
+                    plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
+                    toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
+                    height: 500,
+                    readonly: false,
+                    branding: false,
+                    promotion: false
+                });
+            }
+        });
+
+        // Xử lý click Sửa
+        $(document).on('click', '.edit-news-btn', async function() {
+            const id = $(this).data('id');
+            const newsSnap = await get(ref(database, 'news/' + id));
+            const news = newsSnap.val();
+            if (!news) return;
+            $('#editNewsId').val(id);
+            $('#editNewsTitle').val(news.title || '');
+            $('#editNewsCategory').val(news.category || '');
+            $('#editNewsImageUrl').val(news.imageUrl || '');
+            $('#editNewsExcerpt').val(news.excerpt || '');
+            $('#editNewsTags').val((news.tags || []).join(', '));
+            setTimeout(() => {
+                if (tinymce.get('editNewsContent')) tinymce.get('editNewsContent').setContent(news.content || '');
+            }, 200);
+            $('#editNewsModal').modal('show');
+        });
+
+        // Xử lý submit form sửa
+        $('#editNewsForm').on('submit', async function(e) {
+            e.preventDefault();
+            if (window.tinymce) tinymce.get('editNewsContent').save();
+            const id = $('#editNewsId').val();
+            const title = $('#editNewsTitle').val().trim();
+            const category = $('#editNewsCategory').val();
+            const categoryName = $('#editNewsCategory option:selected').text();
+            const excerpt = $('#editNewsExcerpt').val().trim();
+            const content = $('#editNewsContent').val().trim();
+            const tags = $('#editNewsTags').val().split(',').map(t => t.trim()).filter(Boolean);
+            const imageUrl = $('#editNewsImageUrl').val().trim();
+            if (!title || !category || !excerpt || !content || !imageUrl) {
+                Swal.fire('Lỗi', 'Vui lòng nhập đầy đủ thông tin!', 'error');
+                return;
+            }
+            // Tính readTime
+            const wordCount = content.split(/\s+/).length;
+            const readTime = Math.max(1, Math.round(wordCount / 200));
+            // Sinh slug
+            const slug = title.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+            // Cập nhật
+            const now = new Date().toISOString();
+            const newsData = {
+                title, category, categoryName, excerpt, content, tags, imageUrl,
+                readTime, slug, updatedAt: now, status: 'published'
+            };
+            try {
+                await set(ref(database, 'news/' + id), { ...(await (await get(ref(database, 'news/' + id))).val()), ...newsData });
+                Swal.fire('Thành công', 'Đã cập nhật tin tức!', 'success');
+                $('#editNewsModal').modal('hide');
+                loadNewsTable();
+            } catch (err) {
+                Swal.fire('Lỗi', 'Không lưu được tin tức!', 'error');
+            }
+        });
+
+        // Xử lý click Xóa
+        $(document).on('click', '.delete-news-btn', function() {
+            const id = $(this).data('id');
+            Swal.fire({
+                title: 'Xác nhận xóa?',
+                text: 'Bạn có chắc chắn muốn xóa tin tức này?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Xóa',
+                cancelButtonText: 'Hủy'
+            }).then(async (result) => {
+                if (result.isConfirmed) {
+                    try {
+                        await remove(ref(database, 'news/' + id));
+                        Swal.fire('Đã xóa!', 'Tin tức đã được xóa.', 'success');
+                        loadNewsTable();
+                    } catch (err) {
+                        Swal.fire('Lỗi', 'Không xóa được tin tức!', 'error');
+                    }
+                }
+            });
+        });
+
+        // Thêm JS xử lý xóa người dùng
+        $(document).on('click', '.delete-user-btn', function() {
+            const id = $(this).data('id');
+            Swal.fire({
+                title: 'Xác nhận xóa?',
+                text: 'Bạn có chắc chắn muốn xóa người dùng này?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Xóa',
+                cancelButtonText: 'Hủy'
+            }).then(async (result) => {
+                if (result.isConfirmed) {
+                    try {
+                        await remove(ref(database, 'users/' + id));
+                        Swal.fire('Đã xóa!', 'Người dùng đã được xóa.', 'success');
+                        loadUsersTable();
+                    } catch (err) {
+                        Swal.fire('Lỗi', 'Không xóa được người dùng!', 'error');
+                    }
+                }
+            });
+        });
+
+        // Thêm JS xử lý xóa đơn ứng tuyển
+        $(document).on('click', '.delete-application-btn', function() {
+            const jobId = $(this).data('jobid');
+            const candidateId = $(this).data('candidateid');
+            Swal.fire({
+                title: 'Xác nhận xóa?',
+                text: 'Bạn có chắc chắn muốn xóa đơn ứng tuyển này?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Xóa',
+                cancelButtonText: 'Hủy'
+            }).then(async (result) => {
+                if (result.isConfirmed) {
+                    try {
+                        await remove(ref(database, `applications/${jobId}/${candidateId}`));
+                        Swal.fire('Đã xóa!', 'Đơn ứng tuyển đã được xóa.', 'success');
+                        loadApplicationsTable();
+                    } catch (err) {
+                        Swal.fire('Lỗi', 'Không xóa được đơn ứng tuyển!', 'error');
+                    }
+                }
+            });
+        });
+
+        // Thêm JS xử lý xóa CV
+        $(document).on('click', '.delete-cv-btn', function() {
+            const id = $(this).data('id');
+            Swal.fire({
+                title: 'Xác nhận xóa?',
+                text: 'Bạn có chắc chắn muốn xóa CV này?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Xóa',
+                cancelButtonText: 'Hủy'
+            }).then(async (result) => {
+                if (result.isConfirmed) {
+                    try {
+                        await remove(ref(database, 'cvs/' + id));
+                        Swal.fire('Đã xóa!', 'CV đã được xóa.', 'success');
+                        loadCVsTable();
+                    } catch (err) {
+                        Swal.fire('Lỗi', 'Không xóa được CV!', 'error');
+                    }
+                }
+            });
+        });
+
+        // Thêm JS xử lý xóa đánh giá
+        $(document).on('click', '.delete-testimonial-btn', function() {
+            const id = $(this).data('id');
+            Swal.fire({
+                title: 'Xác nhận xóa?',
+                text: 'Bạn có chắc chắn muốn xóa đánh giá này?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Xóa',
+                cancelButtonText: 'Hủy'
+            }).then(async (result) => {
+                if (result.isConfirmed) {
+                    try {
+                        await remove(ref(database, 'testimonials/' + id));
+                        Swal.fire('Đã xóa!', 'Đánh giá đã được xóa.', 'success');
+                        loadTestimonialsTable();
+                    } catch (err) {
+                        Swal.fire('Lỗi', 'Không xóa được đánh giá!', 'error');
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html> 
