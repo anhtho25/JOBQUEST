@@ -234,7 +234,7 @@
             .join('&');
 
         // Tạo chữ ký với secret key
-        const vnp_HashSecret = 'U3I3A1Q4G3Z3MNNJ2NODFKA7G3CBU27P';
+        const vnp_HashSecret = 'XK6DQEPQ5KAVJISM374ZZJJN1Q4WW96U';
         const hmac = CryptoJS.HmacSHA512(signData, vnp_HashSecret);
         const calculatedHash = hmac.toString(CryptoJS.enc.Hex);
 
@@ -2838,7 +2838,7 @@
             const vnpayData = {
                 vnp_Version: '2.1.0',
                 vnp_Command: 'pay',
-                vnp_TmnCode: '2Q01AVYB', // Sử dụng cùng một mã merchant
+                vnp_TmnCode: 'H69NR8NV', // Sử dụng cùng một mã merchant
                 vnp_Amount: amountInVND,
                 vnp_CurrCode: 'VND',
                 vnp_TxnRef: 'TOPUP_' + userId.substring(0, 8) + '_' + Date.now(),
@@ -2863,7 +2863,8 @@
         // Tạo URL VNPAY
         function createVNPayUrl(data) {
             const baseUrl = 'https://sandbox.vnpayment.vn/paymentv2/vpcpay.html';
-            const vnp_HashSecret = 'U3I3A1Q4G3Z3MNNJ2NODFKA7G3CBU27P'; // Sử dụng cùng một secret key
+            const vnp_TmnCode = 'H69NR8NV';
+            const vnp_HashSecret = 'XK6DQEPQ5KAVJISM374ZZJJN1Q4WW96U';
             
             // Sắp xếp các tham số theo thứ tự alphabet
             const sortedParams = Object.keys(data)
@@ -2930,7 +2931,7 @@
                 .join('&');
 
             // Tạo chữ ký với secret key
-            const vnp_HashSecret = 'U3I3A1Q4G3Z3MNNJ2NODFKA7G3CBU27P';
+            const vnp_HashSecret = 'XK6DQEPQ5KAVJISM374ZZJJN1Q4WW96U';
             const hmac = CryptoJS.HmacSHA512(signData, vnp_HashSecret);
             const calculatedHash = hmac.toString(CryptoJS.enc.Hex);
 
