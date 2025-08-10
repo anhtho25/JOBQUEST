@@ -1,0 +1,30 @@
+@startuml UC010_Policy_Sequence_Diagram
+ title UC010: Xem chính sách - Sequence Diagram
+
+actor "Khách vãng lai, Ứng viên, Nhà tuyển dụng" as User
+participant "Giao diện chính sách" as UI
+participant "Hệ thống" as System
+participant "Cơ sở dữ liệu" as DB
+
+User -> UI: 1. Truy cập trang chính sách
+activate UI
+UI -> System: 2. Yêu cầu danh sách chính sách, điều khoản
+activate System
+System -> DB: 3. Lấy danh sách chính sách, điều khoản
+DB --> System: 4. Trả về dữ liệu chính sách
+System --> UI: 5. Trả về dữ liệu chính sách
+UI --> User: 6. Hiển thị danh sách chính sách
+
+User -> UI: 7. Chọn chính sách để đọc nội dung
+UI -> System: 8. Yêu cầu nội dung chính sách
+System -> DB: 9. Lấy nội dung chính sách
+DB --> System: 10. Trả về nội dung chính sách
+System --> UI: 11. Trả về nội dung chính sách
+UI --> User: 12. Hiển thị nội dung chính sách
+note right: Chính sách được hiển thị
+
+deactivate DB
+deactivate System
+deactivate UI
+
+@enduml

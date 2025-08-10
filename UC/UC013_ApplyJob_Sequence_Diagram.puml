@@ -1,0 +1,34 @@
+@startuml UC013_ApplyJob_Sequence_Diagram
+ title UC013: Ứng tuyển việc làm - Sequence Diagram
+
+actor "Ứng viên" as User
+participant "Giao diện việc làm" as UI
+participant "Hệ thống" as System
+participant "Cơ sở dữ liệu" as DB
+
+User -> UI: 1. Xem danh sách việc làm
+activate UI
+User -> UI: 2. Chọn việc làm phù hợp
+User -> UI: 3. Nộp CV ứng tuyển
+UI -> System: 4. Gửi thông tin ứng tuyển
+activate System
+System -> DB: 5. Kiểm tra đã ứng tuyển chưa
+DB --> System: 6. Kết quả kiểm tra
+
+alt Chưa ứng tuyển
+    System -> DB:  Lưu đơn ứng tuyển
+    DB --> System:  Kết quả lưu
+    System --> UI:  Ứng tuyển thành công
+    UI --> User:  Thông báo thành công
+    note right: Đơn ứng tuyển được gửi thành công
+else Đã ứng tuyển
+    System --> UI:  Ứng tuyển thất bại
+    UI --> User:  Hiển thị lỗi: Đã ứng tuyển
+    note right: Exception: Đã ứng tuyển
+end
+
+deactivate DB
+deactivate System
+deactivate UI
+
+@enduml

@@ -1,0 +1,41 @@
+@startuml UC014_JobRecommendationAI_Sequence_Diagram
+ title UC014: Việc làm AI gợi ý - Sequence Diagram
+
+actor "Ứng viên" as User
+participant "Giao diện AI gợi ý việc làm" as UI
+participant "Hệ thống AI" as AI
+participant "Cơ sở dữ liệu" as DB
+
+User -> UI: 1. Truy cập trang việc làm AI gợi ý
+activate UI
+UI -> AI: 2. Yêu cầu AI phân tích CV
+activate AI
+AI -> DB: 3. Lấy CV của ứng viên
+AI -> DB: 4. Lấy danh sách việc làm
+DB --> AI: 5. Trả về dữ liệu CV và việc làm
+AI -> AI: 6. Phân tích, so sánh, tính toán độ phù hợp
+AI --> UI: 7. Trả về danh sách việc làm gợi ý, điểm phù hợp
+UI --> User: 8. Hiển thị danh sách gợi ý, điểm phù hợp
+
+User -> UI: 9. Chọn việc làm để ứng tuyển (tùy chọn)
+UI -> AI: 10. Gửi yêu cầu ứng tuyển
+AI -> DB: 11. Lưu đơn ứng tuyển
+DB --> AI: 12. Kết quả lưu
+AI --> UI: 13. Thông báo kết quả ứng tuyển
+UI --> User: 14. Hiển thị kết quả ứng tuyển
+
+alt Chưa có CV
+    AI --> UI: Thông báo lỗi: Chưa có CV
+    UI --> User: Hiển thị lỗi: Chưa có CV
+    note right: Exception: Chưa có CV
+else Không có việc làm phù hợp
+    AI --> UI: Thông báo lỗi: Không có việc làm phù hợp
+    UI --> User: Hiển thị lỗi: Không có việc làm phù hợp
+    note right: Exception: Không có việc làm phù hợp
+end
+
+deactivate DB
+deactivate AI
+deactivate UI
+
+@enduml

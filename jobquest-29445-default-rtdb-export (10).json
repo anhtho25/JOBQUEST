@@ -1,602 +1,659 @@
 {
   "applications": {
-    "1749359491638": {
-      "wzukitDM2SaT6CdP0hsQ5jU4BGr1": {
-        "appliedAt": "2025-06-08T05:24:39.921Z",
+    "1754805529258": {
+      "i1qAlE9jLTZE1fWUPV1CVrNzDA13": {
+        "appliedAt": "2025-08-10T06:46:48.463Z",
         "candidateEmail": "ntho0124@gmail.com",
-        "candidateId": "wzukitDM2SaT6CdP0hsQ5jU4BGr1",
+        "candidateId": "i1qAlE9jLTZE1fWUPV1CVrNzDA13",
         "candidateName": "Anh Thơ",
-        "coverLetter": "Chào anh/chị tuyển dụng,\n\nEm tên là Nguyễn Minh Thảo, hiện đang sinh sống tại TP. Hồ Chí Minh. Em là người thân thiện, chịu khó và luôn sẵn sàng học hỏi trong công việc. Em đặc biệt yêu thích không gian quán cà phê và mong muốn được làm việc trong môi trường năng động, gần gũi với khách hàng.\n\nEm viết thư này để ứng tuyển vào vị trí nhân viên phục vụ tại quán Gió & Nắng Café. Em tin rằng với tinh thần trách nhiệm và khả năng giao tiếp tốt, em sẽ là một phần hỗ trợ tích cực cho hoạt động của quán.\n\nEm rất mong nhận được cơ hội để thể hiện khả năng của mình trong buổi phỏng vấn sắp tới.\nXin cảm ơn anh/chị đã dành thời gian xem hồ sơ của em.\n\nTrân trọng,\nNguyễn Minh Thảo\n📞 0968 123 456\n📧 minhthao.nguyen01@gmail.com",
-        "cvLink": "https://example.com/cv-minhthao",
-        "jobId": "1749359491638",
-        "status": "accepted",
-        "updatedAt": "2025-06-08T07:26:37.530Z"
+        "coverLetter": "aa",
+        "cvLink": "aaa",
+        "jobId": "1754805529258",
+        "status": "pending"
       }
-    },
-    "1749367536839": {
-      "wzukitDM2SaT6CdP0hsQ5jU4BGr1": {
-        "appliedAt": "2025-06-08T07:27:37.994Z",
-        "candidateEmail": "ntho0124@gmail.com",
-        "candidateId": "wzukitDM2SaT6CdP0hsQ5jU4BGr1",
-        "candidateName": "Anh Thơ",
-        "coverLetter": "aaa",
-        "cvLink": "aa",
-        "jobId": "1749367536839",
-        "status": "accepted",
-        "updatedAt": "2025-06-08T07:28:31.635Z"
-      }
-    },
-    "1749379634828": {
-      "vnmjGmvX5VdI3Ed9GP8ugPlYlb93": {
-        "appliedAt": "2025-06-10T05:13:55.659Z",
-        "candidateEmail": "dangthienchuong250604@gmail.com",
-        "candidateId": "vnmjGmvX5VdI3Ed9GP8ugPlYlb93",
-        "candidateName": "Chương Đặng",
-        "coverLetter": "cdfdg",
-        "cvLink": "vcvfgdg",
-        "jobId": "1749379634828",
-        "status": "rejected",
-        "updatedAt": "2025-06-10T05:15:07.083Z"
-      }
-    }
-  },
-  "conversations": {
-    "1O29cjK6R2dzYc2mZVfoTKfoT432_wzukitDM2SaT6CdP0hsQ5jU4BGr1": {
-      "candidateId": "wzukitDM2SaT6CdP0hsQ5jU4BGr1",
-      "createdAt": "2025-06-08T06:23:17.965Z",
-      "employerId": "1O29cjK6R2dzYc2mZVfoTKfoT432",
-      "jobTitle": "Nhân viên phục vụ tại quán cà phê bánh ngọt",
-      "unread": false
     }
   },
   "cvs": {
-    "vnmjGmvX5VdI3Ed9GP8ugPlYlb93": {
-      "achievements": [
-        {
-          "date": "rtrtrt",
-          "description": "rtrtrt",
-          "name": "trtrtrtr"
-        }
-      ],
-      "certificates": [
-        {
-          "expiryDate": "2025-07-12",
-          "issueDate": "2025-06-28",
-          "name": "grr",
-          "organization": "trtrt"
-        }
-      ],
-      "createdAt": "2025-06-10T05:19:56.813Z",
-      "education": [
-        {
-          "description": "3434555",
-          "endDate": "2025-07-05",
-          "major": "fgggg",
-          "school": "ffdfgf",
-          "startDate": "2025-06-28"
-        }
-      ],
-      "experience": [
-        {
-          "company": "34535",
-          "currentJob": false,
-          "description": "5353535",
-          "endDate": "2025-07-05",
-          "position": "5355",
-          "startDate": "2025-06-21"
-        }
-      ],
-      "personalInfo": {
-        "address": "fdfggg",
-        "email": "dangthienchuong250604@gmail.com",
-        "fullName": "Chương Đặng",
-        "jobTitle": "Nhân viên bán quán cafe",
-        "phone": "0394846443",
-        "summary": "dgfgfgg"
-      },
-      "skills": [
-        {
-          "description": "5355333",
-          "level": "Cơ bản",
-          "name": "5455"
-        }
-      ],
-      "updatedAt": "2025-06-10T05:19:56.813Z",
-      "userId": "vnmjGmvX5VdI3Ed9GP8ugPlYlb93"
-    },
-    "wzukitDM2SaT6CdP0hsQ5jU4BGr1": {
+    "i1qAlE9jLTZE1fWUPV1CVrNzDA13": {
       "achievements": [
         {
           "date": "2021 – 2022",
-          "description": "Tham gia làm bánh handmade và tổ chức các buổi chia sẻ bánh miễn phí tại trường THPT.\n\n",
-          "name": "Tham gia CLB làm bánh"
+          "description": "aaa",
+          "name": "Nhân viên bán hàng xuất sắc tháng 12/2022 – GU STYLE"
         }
       ],
       "certificates": [
         {
-          "expiryDate": "2025-06-24",
-          "issueDate": "2025-06-08",
+          "expiryDate": "2025-08-31",
+          "issueDate": "2025-08-17",
           "name": "An toàn thực phẩm",
           "organization": "Trung tâm đào tạo vệ sinh an toàn TP.HCM"
         }
       ],
-      "createdAt": "2025-06-08T08:38:31.286Z",
-      "downloads": 2,
+      "createdAt": "2025-08-10T05:41:35.897Z",
       "education": [
         {
-          "description": "Hoàn thành chương trình THPT, có tham gia các hoạt động ngoại khóa như văn nghệ, đội thanh niên tình nguyện.\n\n",
-          "endDate": "2025-06-28",
-          "major": "Không có",
+          "description": "a",
+          "endDate": "2025-08-28",
+          "major": "Quản trị nhà hàng – khách sạn",
           "school": "Trường THPT Nguyễn Du",
-          "startDate": "2025-06-07"
+          "startDate": "2025-07-31"
         }
       ],
       "experience": [
         {
           "company": "Tiệm Bánh Mộc Mạc",
           "currentJob": false,
-          "description": " Phục vụ khách hàng tại quầy, giới thiệu bánh và thức uống, dọn dẹp khu vực quán, hỗ trợ thu ngân khi cần. Luôn giữ thái độ vui vẻ, chuyên nghiệp trong ca làm việc.",
-          "endDate": "2025-06-19",
+          "description": "a",
+          "endDate": "2025-08-30",
           "position": "Nhân viên phục vụ",
-          "startDate": "2025-06-08"
+          "startDate": "2025-08-21"
         }
       ],
       "personalInfo": {
-        "address": "cái vồn bình minh vĩnh long",
+        "address": "98 Nguyễn Văn Lạc, Phường 19, Bình Thạnh, TP.HCM",
         "email": "ntho0124@gmail.com",
-        "fullName": "Nguyễn Trần Anh Thơ",
+        "fullName": "Emxinh",
         "jobTitle": "Nhân viên phục vụ tại quán cà phê bánh ngọt",
-        "phone": "0907708210",
-        "summary": "Tôi là một người năng động, thân thiện, có tinh thần trách nhiệm cao trong công việc. Tôi yêu thích môi trường quán cà phê và bánh ngọt, luôn sẵn sàng học hỏi để mang lại trải nghiệm tốt nhất cho khách hàng. Với tinh thần phục vụ và khả năng làm việc nhóm tốt, tôi tin rằng mình có thể đóng góp tích cực vào sự phát triển của quán."
+        "phone": "0795858581",
+        "summary": "a"
       },
       "skills": [
         {
-          "description": " Có khả năng phối hợp với các bạn phục vụ, barista và thu ngân để vận hành quán hiệu quả.",
+          "description": "a",
           "level": "Khá",
-          "name": "Giao tiếp với khách hàng"
+          "name": "Giao tiếp & thuyết phục khách hàng"
         }
       ],
-      "updatedAt": "2025-06-08T08:38:31.286Z",
-      "userId": "wzukitDM2SaT6CdP0hsQ5jU4BGr1"
+      "updatedAt": "2025-08-10T05:41:35.897Z",
+      "userId": "i1qAlE9jLTZE1fWUPV1CVrNzDA13"
     }
   },
   "jobs": {
-    "1749359491638": {
-      "benefits": "Quyền lợi\nMức lương cạnh tranh + thưởng theo năng suất\n\nĐược đào tạo nghiệp vụ chuyên môn\n\nMôi trường làm việc thân thiện, nhẹ nhàng, đúng như tên gọi \"Ấm\"\n\nGiảm giá 30% cho nhân viên khi dùng sản phẩm tại quán\n\nThông tin liên hệ\n📞 Điện thoại: 02812345678\n\n🌐 Website: amcoffeeandcake.netlify.app",
+    "1754205149455": {
+      "benefits": "Thu nhập ổn định, thưởng thêm theo doanh thu bán hàng\n\nNghỉ 4 ngày/tháng, làm lâu dài có hưởng BHYT & BHXH đầy đủ\n\nMôi trường làm việc thân thiện, sạch sẽ, có bánh ăn thử mỗi tuần\n\nCơ hội thăng tiến lên trưởng ca / quản lý cửa hàng nếu gắn bó lâu dài",
       "category": "Sales",
-      "contactAddress": "Số 123, Nguyễn Trãi, Quận 5, TP. Hồ Chí Minh",
-      "createdAt": "2025-06-08T05:11:18.232Z",
-      "date": "2025-06-08",
-      "deadline": "2025-06-30",
-      "description": "Phục vụ khách hàng tại quán cà phê và bánh ngọt\n\nGiới thiệu và tư vấn sản phẩm cho khách\n\nDọn dẹp, giữ gìn vệ sinh khu vực làm việc\n\nHỗ trợ pha chế đơn giản (sẽ được đào tạo)\n\nLàm việc theo ca linh hoạt (sáng, chiều, tối)",
-      "employerId": "1O29cjK6R2dzYc2mZVfoTKfoT432",
-      "requirements": "Nam/Nữ từ 18–25 tuổi, ngoại hình ưa nhìn, thân thiện\n\nCó tinh thần trách nhiệm và làm việc nhóm\n\nƯu tiên ứng viên có kinh nghiệm phục vụ quán cà phê\n\nCó thể làm việc cuối tuần, lễ Tết",
+      "contactAddress": "123 Lê Văn Sỹ, Phường 13, Quận Phú Nhuận, TP. Hồ Chí Minh",
+      "createdAt": "2025-08-03T07:12:28.116Z",
+      "date": "2025-08-03",
+      "deadline": "2025-03-08",
+      "description": "Tư vấn và bán các loại bánh tại cửa hàng (bánh kem, bánh mì, bánh ngọt…)\n\nSắp xếp, trưng bày sản phẩm gọn gàng, sạch sẽ theo hướng dẫn\n\nKiểm tra hạn sử dụng và chất lượng sản phẩm mỗi ngày\n\nThực hiện thanh toán và in hóa đơn cho khách hàng\n\nHỗ trợ các công việc khác theo yêu cầu của quản lý",
+      "employerId": "p2hc6bZBAobt4TfI8pgqJU3u23J2",
+      "requirements": "Nữ/Nam từ 18–30 tuổi, ngoại hình ưa nhìn là một lợi thế\n\nGiao tiếp tốt, nhanh nhẹn, có tinh thần trách nhiệm\n\nCó kinh nghiệm bán hàng là lợi thế (chưa có sẽ được đào tạo)\n\nƯu tiên ứng viên có thể làm xoay ca hoặc cuối tuần",
+      "salaryMax": "10000000",
+      "salaryMin": "7000000",
+      "salaryType": "vnd",
+      "status": "approved",
+      "title": "Nhân Viên Bán Hàng Tại Tiệm Bánh ",
+      "type": "full-time"
+    },
+    "1754804886518": {
+      "benefits": "Lương + thưởng theo doanh số.\n\nĐược đào tạo kỹ năng pha chế chuyên nghiệp.\n\nMôi trường làm việc thân thiện, năng động.\n\nHỗ trợ bữa ăn ca.",
+      "category": "HR",
+      "contactAddress": "56 Lý Tự Trọng, Quận 1, TP. Hồ Chí Minh",
+      "createdAt": "2025-08-10T05:48:05.408Z",
+      "date": "2025-08-10",
+      "deadline": "2025-08-29",
+      "description": "Pha chế các loại đồ uống theo menu của quán.\n\nChuẩn bị nguyên liệu và dụng cụ trước ca làm việc.\n\nĐảm bảo khu vực làm việc sạch sẽ, gọn gàng.\n\nHỗ trợ khách hàng lựa chọn sản phẩm và thanh toán.",
+      "employerId": "MOVmccM6xlehVFoVUypESxKO06I2",
+      "requirements": "Có ít nhất 6 tháng kinh nghiệm pha chế (ưu tiên ngành cà phê).\n\nNhanh nhẹn, trung thực, giao tiếp tốt.\n\nCó thể làm việc theo ca và cuối tuần.",
+      "salaryMax": "8.000000",
+      "salaryMin": "6.000000",
+      "salaryType": "vnd",
+      "status": "approved",
+      "title": "Nhân viên Pha chế – Quán Ấm Coffee & Cake",
+      "type": "full-time"
+    },
+    "1754805233852": {
+      "benefits": "Bảo hiểm full lương, 13 tháng lương.\n\nNghỉ phép 15 ngày/năm.\n\nCơ hội tham gia dự án quốc tế",
+      "category": "IT",
+      "contactAddress": "Tòa nhà ABC, Quận Cầu Giấy, Hà Nội",
+      "createdAt": "2025-08-10T05:53:51.959Z",
+      "date": "2025-08-10",
+      "deadline": "2025-08-04",
+      "description": "Phát triển và tối ưu hệ thống backend sử dụng Java Spring Boot.\n\nLàm việc với cơ sở dữ liệu MySQL, PostgreSQL.\n\nHợp tác với team frontend để xây dựng API",
+      "employerId": "MOVmccM6xlehVFoVUypESxKO06I2",
+      "requirements": "Tối thiểu 2 năm kinh nghiệm Java backend.\n\nHiểu về RESTful API, microservices.\n\nTư duy logic, giải quyết vấn đề tốt",
+      "salaryMax": "30.000000",
+      "salaryMin": "18.000000",
+      "salaryType": "vnd",
+      "status": "approved",
+      "title": "Kỹ sư phần mềm",
+      "type": "full-time"
+    },
+    "1754805313138": {
+      "benefits": "Thưởng dự án.\n\nNghỉ phép 12 ngày/năm.\n\nLàm việc trong môi trường sáng tạo",
+      "category": "IT",
+      "contactAddress": "78 Hoàng Hoa Thám, Quận Tân Bình, TP. Hồ Chí Minh",
+      "createdAt": "2025-08-10T05:55:12.262Z",
+      "date": "2025-08-10",
+      "deadline": "2025-09-08",
+      "description": "Thiết kế banner, poster, ấn phẩm truyền thông cho khách hàng.\n\nChỉnh sửa hình ảnh sản phẩm theo yêu cầu.\n\nPhối hợp với team marketing trong các chiến dịch quảng cáo.",
+      "employerId": "MOVmccM6xlehVFoVUypESxKO06I2",
+      "requirements": "Thành thạo Photoshop, Illustrator.\n\nCó óc sáng tạo, thẩm mỹ tốt.\n\nƯu tiên ứng viên có kinh nghiệm ngành quảng cáo",
+      "salaryMax": ".000000",
+      "salaryMin": "10.000000",
+      "salaryType": "vnd",
+      "status": "approved",
+      "title": "Nhân viên Thiết kế đồ họa",
+      "type": "full-time"
+    },
+    "1754805396090": {
+      "benefits": "Hỗ trợ ăn ca và chỗ ở.\n\nĐóng BHXH, BHYT đầy đủ.\n\nThưởng theo năng suất",
+      "category": "HR",
+      "contactAddress": "KCN Sóng Thần, Bình Dương",
+      "createdAt": "2025-08-10T05:56:34.910Z",
+      "date": "2025-08-10",
+      "deadline": "2025-08-23",
+      "description": "Kiểm đếm hàng hóa nhập – xuất kho.\n\nQuản lý tồn kho và sắp xếp hàng hóa hợp lý.\n\nLập báo cáo tồn kho hàng tuần.",
+      "employerId": "MOVmccM6xlehVFoVUypESxKO06I2",
+      "requirements": "Sức khỏe tốt, trung thực.\n\nBiết sử dụng máy tính cơ bản.\n\nCó kinh nghiệm kho là lợi thế.",
       "salaryMax": "9.000000",
-      "salaryMin": "5.000000",
-      "salaryType": "vnd",
-      "status": "approved",
-      "title": "Nhân viên phục vụ tại quán cà phê bánh ngọt",
-      "type": "full-time"
-    },
-    "1749367536839": {
-      "benefits": "aa",
-      "category": "Sales",
-      "contactAddress": "45 Nguyễn Hữu Cảnh, Bình Thạnh, TP. Hồ Chí Minh",
-      "createdAt": "2025-06-08T07:25:27.684Z",
-      "date": "2025-06-08",
-      "deadline": "2025-06-30",
-      "description": "aa",
-      "employerId": "1O29cjK6R2dzYc2mZVfoTKfoT432",
-      "requirements": "aa",
-      "salaryMax": "10.000000",
-      "salaryMin": "5.000000",
-      "salaryType": "vnd",
-      "status": "approved",
-      "title": "Barista pha chế tại quán Mộc Garden Coffee",
-      "type": "full-time"
-    },
-    "1749379634828": {
-      "benefits": "Mức lương cạnh tranh, thưởng theo năng lực và hiệu suất.\n\nĐược đào tạo nâng cao kỹ năng và cập nhật công nghệ mới.\n\nMôi trường làm việc thân thiện, có cơ hội thăng tiến.\n\nTham gia BHXH, BHYT đầy đủ sau thời gian thử việc.\n\nDu lịch công ty hàng năm và các hoạt động team-building định kỳ.",
-      "category": "HR",
-      "contactAddress": "241 Lê Văn Việt, Quận 9, TP. Hồ Chí Minh",
-      "createdAt": "2025-06-08T10:47:10.945Z",
-      "date": "2025-06-08",
-      "deadline": "2025-06-30",
-      "description": "Kiểm tra, chẩn đoán lỗi và sửa chữa các thiết bị điện tử như: tivi, loa, amply, board mạch điều khiển.\n\nThay thế linh kiện, vệ sinh và bảo trì định kỳ thiết bị cho khách hàng.\n\nGhi nhận phiếu sửa chữa và báo cáo tình trạng thiết bị.\n\nHỗ trợ kỹ thuật cho bộ phận chăm sóc khách hàng khi có yêu cầu.",
-      "employerId": "1O29cjK6R2dzYc2mZVfoTKfoT432",
-      "requirements": "Nam, tuổi từ 20 – 35.\n\nTốt nghiệp Trung cấp/Cao đẳng chuyên ngành điện tử, điện – điện lạnh hoặc tương đương.\n\nCó ít nhất 1 năm kinh nghiệm sửa chữa thiết bị điện tử.\n\nSử dụng thành thạo các dụng cụ đo, hàn, khò, máy hiện sóng là lợi thế.\n\nTrung thực, có tinh thần trách nhiệm, cẩn thận trong công việc.\n\n",
-      "salaryMax": "12.000000",
-      "salaryMin": "8.000000",
-      "salaryType": "vnd",
-      "status": "approved",
-      "title": "Kỹ thuật viên sửa chữa thiết bị điện tử",
-      "type": "full-time"
-    },
-    "1749532660136": {
-      "benefits": "Lương + thưởng doanh thu hấp dẫn.\n\nHỗ trợ bữa ăn giữa ca.\n\nMôi trường làm việc thân thiện, năng động.\n\nTham gia các buổi training nâng cao kỹ năng pha chế.",
-      "category": "HR",
-      "contactAddress": "Số 123, Nguyễn Trãi, Quận 5, TP. Hồ Chí Minh",
-      "createdAt": "2025-06-10T05:17:29.653Z",
-      "date": "2025-06-10",
-      "deadline": "2025-06-29",
-      "description": "Pha chế cà phê và các loại nước uống theo menu của quán.\n\nChuẩn bị nguyên liệu, dụng cụ pha chế mỗi ngày.\n\nGiữ vệ sinh khu vực quầy bar và thiết bị pha chế.\n\nPhối hợp với nhân viên phục vụ và thu ngân để đảm bảo hoạt động hiệu quả.",
-      "employerId": "1O29cjK6R2dzYc2mZVfoTKfoT432",
-      "requirements": "Nam/nữ từ 18–30 tuổi, ngoại hình ưa nhìn.\n\nCó kinh nghiệm pha chế là một lợi thế.\n\nNhanh nhẹn, vui vẻ, giao tiếp tốt.\n\nLàm việc được theo ca, kể cả cuối tuần.",
-      "salaryMax": "10.000000",
       "salaryMin": "7.000000",
       "salaryType": "vnd",
       "status": "approved",
-      "title": "Nhân viên pha chế cà phê",
+      "title": "Nhân viên quản lý kho hàng",
+      "type": "full-time"
+    },
+    "1754805461370": {
+      "benefits": "Thưởng Tết, lương tháng 13.\n\nNghỉ phép 12 ngày/năm.\n\nĐào tạo nâng cao nghiệp vụ.",
+      "category": "HR",
+      "contactAddress": " KCN VSIP 1, Bình Dương",
+      "createdAt": "2025-08-10T05:57:40.478Z",
+      "date": "2025-08-10",
+      "deadline": "2025-09-15",
+      "description": "Hạch toán, lập báo cáo tài chính.\n\nQuản lý công nợ, thu – chi.\n\nThực hiện quyết toán thuế.",
+      "employerId": "MOVmccM6xlehVFoVUypESxKO06I2",
+      "requirements": "Tốt nghiệp chuyên ngành Kế toán.\n\nCó ít nhất 2 năm kinh nghiệm.\n\nThành thạo Excel và phần mềm kế toán.",
+      "salaryMax": "15.000000",
+      "salaryMin": "12.000000",
+      "salaryType": "vnd",
+      "status": "approved",
+      "title": "Kế toán tổng hợp",
+      "type": "full-time"
+    },
+    "1754805529258": {
+      "benefits": "Mua hàng giảm giá 50%.\n\nThưởng KPI hàng tháng.\n\nCơ hội thăng tiến lên trưởng nhóm.",
+      "category": "Marketing",
+      "contactAddress": "21 Lê Lợi, Quận 1, TP. Hồ Chí Minh",
+      "createdAt": "2025-08-10T05:58:48.181Z",
+      "date": "2025-08-10",
+      "deadline": "2025-09-14",
+      "description": "Lên kế hoạch và triển khai chiến dịch marketing online.\n\nQuản lý fanpage, TikTok, Instagram của thương hiệu.\n\nTổ chức sự kiện ra mắt sản phẩm mới.",
+      "employerId": "MOVmccM6xlehVFoVUypESxKO06I2",
+      "requirements": "Có kinh nghiệm marketing online ít nhất 1 năm.\n\nSáng tạo, bắt trend nhanh.\n\nYêu thích thời trang.",
+      "salaryMax": "15.00000",
+      "salaryMin": "9.000000",
+      "salaryType": "vnd",
+      "status": "approved",
+      "title": "Chuyên viên Marketing",
+      "type": "full-time"
+    },
+    "1754805637539": {
+      "benefits": "Bao ăn ở.\n\nLương thưởng theo mùa du lịch.\n\nBHXH đầy đủ.",
+      "category": "HR",
+      "contactAddress": " 56 Trần Hưng Đạo, Hội An, Quảng Nam",
+      "createdAt": "2025-08-10T06:00:36.086Z",
+      "date": "2025-08-10",
+      "deadline": "2025-09-12",
+      "description": "Sửa chữa, bảo trì hệ thống điện, nước, điều hòa.\n\nKiểm tra và bảo dưỡng định kỳ thiết bị.\n\nHỗ trợ khắc phục sự cố phát sinh.",
+      "employerId": "MOVmccM6xlehVFoVUypESxKO06I2",
+      "requirements": "Tốt nghiệp trung cấp điện – nước hoặc tương đương.\n\nCó ít nhất 1 năm kinh nghiệm.\n\nSiêng năng, chịu khó.",
+      "salaryMax": "9.000000",
+      "salaryMin": "6.000000",
+      "salaryType": "vnd",
+      "status": "approved",
+      "title": "Nhân viên Bảo trì",
       "type": "full-time"
     }
   },
   "messages": {
-    "1749359491638": {
-      "wzukitDM2SaT6CdP0hsQ5jU4BGr1": {
-        "1749365648488": {
+    "1754205149455": {
+      "i1qAlE9jLTZE1fWUPV1CVrNzDA13": {
+        "1754205570839": {
           "isRead": true,
-          "senderId": "1O29cjK6R2dzYc2mZVfoTKfoT432",
+          "senderId": "p2hc6bZBAobt4TfI8pgqJU3u23J2",
           "text": "chào",
-          "timestamp": 1749365648006
+          "timestamp": 1754205571281
         },
-        "1749365780410": {
+        "1754205661526": {
           "isRead": true,
-          "senderId": "wzukitDM2SaT6CdP0hsQ5jU4BGr1",
-          "text": "em nghe",
-          "timestamp": 1749365779927
+          "senderId": "p2hc6bZBAobt4TfI8pgqJU3u23J2",
+          "text": "Xin chào bạn Anh Thơ! Cảm ơn bạn đã liên hệ với chúng tôi. Bạn đang quan tâm đến vị trí Nhân viên phục vụ phải không ạ? Bạn vui lòng cung cấp thêm thông tin hoặc cho biết bạn muốn chúng tôi hỗ trợ gì tiếp theo nhé",
+          "timestamp": 1754205661961
         },
-        "1749365785602": {
+        "1754205686530": {
           "isRead": true,
-          "senderId": "1O29cjK6R2dzYc2mZVfoTKfoT432",
-          "text": "?",
-          "timestamp": 1749365785119
-        },
-        "1749365789414": {
-          "isRead": true,
-          "senderId": "wzukitDM2SaT6CdP0hsQ5jU4BGr1",
-          "text": "???",
-          "timestamp": 1749365788934
-        },
-        "1749365947288": {
-          "isRead": true,
-          "senderId": "wzukitDM2SaT6CdP0hsQ5jU4BGr1",
-          "text": "?",
-          "timestamp": 1749365946796
-        },
-        "1749365949534": {
-          "isRead": true,
-          "senderId": "1O29cjK6R2dzYc2mZVfoTKfoT432",
-          "text": "?",
-          "timestamp": 1749365949035
-        },
-        "1749365959325": {
-          "isRead": true,
-          "senderId": "wzukitDM2SaT6CdP0hsQ5jU4BGr1",
-          "text": "mé",
-          "timestamp": 1749365958832
-        },
-        "1749365961464": {
-          "isRead": true,
-          "senderId": "1O29cjK6R2dzYc2mZVfoTKfoT432",
-          "text": "cc",
-          "timestamp": 1749365960964
-        }
-      }
-    },
-    "1749367536839": {
-      "wzukitDM2SaT6CdP0hsQ5jU4BGr1": {
-        "1749367719888": {
-          "isRead": true,
-          "senderId": "1O29cjK6R2dzYc2mZVfoTKfoT432",
-          "text": "chào",
-          "timestamp": 1749367719374
-        }
-      }
-    },
-    "1749379634828": {
-      "vnmjGmvX5VdI3Ed9GP8ugPlYlb93": {
-        "1749532485160": {
-          "isRead": true,
-          "senderId": "1O29cjK6R2dzYc2mZVfoTKfoT432",
-          "text": "chào",
-          "timestamp": 1749532485380
-        },
-        "1749532490099": {
-          "isRead": true,
-          "senderId": "vnmjGmvX5VdI3Ed9GP8ugPlYlb93",
-          "text": "hehe boy",
-          "timestamp": 1749532495025
-        },
-        "1749532498101": {
-          "isRead": true,
-          "senderId": "1O29cjK6R2dzYc2mZVfoTKfoT432",
-          "text": "?",
-          "timestamp": 1749532498320
-        },
-        "1749532501859": {
-          "isRead": true,
-          "senderId": "1O29cjK6R2dzYc2mZVfoTKfoT432",
-          "text": "???",
-          "timestamp": 1749532502078
+          "senderId": "i1qAlE9jLTZE1fWUPV1CVrNzDA13",
+          "text": "Dạ đúng rồi ạ, em muốn ứng tuyển vị trí Nhân viên phục vụ. Em đã chuẩn bị sẵn hồ sơ, không biết mình cần nộp qua đâu ạ?",
+          "timestamp": 1754205686969
         }
       }
     }
   },
   "news": {
-    "news_001": {
+    "-OSb7qOq2by6NJ-MLfW3": {
       "category": "trend",
       "categoryName": "Xu hướng",
-      "content": "Khám phá những ngành nghề đang có nhu cầu cao và mức lương hấp dẫn trong năm 2024...",
-      "excerpt": "Khám phá những ngành nghề đang có nhu cầu cao và mức lương hấp dẫn trong năm 2024...",
-      "featured": true,
-      "imageUrl": "https://images.unsplash.com/photo-1521737711867-e3b97375f902",
-      "publishedAt": "2024-03-20T10:00:00Z",
-      "readTime": 8,
-      "seoDescription": "Khám phá 10 xu hướng nghề nghiệp hot nhất 2024 với mức lương hấp dẫn và cơ hội phát triển cao.",
-      "seoTitle": "10 Xu Hướng Nghề Nghiệp Nổi Bật Năm 2024 | JOBQUEST",
-      "slug": "10-xu-huong-nghe-nghiep-noi-bat-nam-2024",
+      "content": "<h3 data-start=\"1899\" data-end=\"1941\">5 B&iacute; Quyết Ph&aacute;t Triển C&aacute; Nh&acirc;n Năm 2025 Quyết Ph&aacute;t Triển C&aacute; Nh&acirc;n Năm 2025</h3>\n<p data-start=\"1943\" data-end=\"2120\">Năm 2024, việc ph&aacute;t triển bản th&acirc;n sẽ trở th&agrave;nh yếu tố quan trọng trong h&agrave;nh tr&igrave;nh th&agrave;nh c&ocirc;ng của mỗi người. Dưới đ&acirc;y l&agrave; những b&iacute; quyết gi&uacute;p bạn ph&aacute;t triển v&agrave; n&acirc;ng cao bản th&acirc;n:</p>\n<ol data-start=\"2122\" data-end=\"2883\">\n<li data-start=\"2122\" data-end=\"2244\">\n<p data-start=\"2125\" data-end=\"2244\"><strong data-start=\"2125\" data-end=\"2155\">Thiết lập mục ti&ecirc;u r&otilde; r&agrave;ng</strong><br data-start=\"2155\" data-end=\"2158\">Đặt mục ti&ecirc;u cụ thể v&agrave; đo lường được sẽ gi&uacute;p bạn đi đ&uacute;ng hướng v&agrave; duy tr&igrave; động lực.</p>\n</li>\n<li data-start=\"2246\" data-end=\"2406\">\n<p data-start=\"2249\" data-end=\"2406\"><strong data-start=\"2249\" data-end=\"2291\">Li&ecirc;n tục học hỏi v&agrave; ph&aacute;t triển kỹ năng</strong><br data-start=\"2291\" data-end=\"2294\">Việc học hỏi c&aacute;c kỹ năng mới, từ chuy&ecirc;n m&ocirc;n đến kỹ năng mềm, sẽ gi&uacute;p bạn nổi bật trong c&ocirc;ng việc v&agrave; đời sống.</p>\n</li>\n<li data-start=\"2408\" data-end=\"2560\">\n<p data-start=\"2411\" data-end=\"2560\"><strong data-start=\"2411\" data-end=\"2441\">Quản l&yacute; thời gian hiệu quả</strong><br data-start=\"2441\" data-end=\"2444\">Quản l&yacute; thời gian tốt sẽ gi&uacute;p bạn tập trung v&agrave;o những việc quan trọng, tr&aacute;nh l&atilde;ng ph&iacute; v&agrave; tăng năng suất l&agrave;m việc.</p>\n</li>\n<li data-start=\"2562\" data-end=\"2722\">\n<p data-start=\"2565\" data-end=\"2722\"><strong data-start=\"2565\" data-end=\"2609\">R&egrave;n luyện sức khỏe thể chất v&agrave; tinh thần</strong><br data-start=\"2609\" data-end=\"2612\">Sức khỏe tốt l&agrave; nền tảng để bạn c&oacute; thể cống hiến v&agrave; ph&aacute;t triển l&acirc;u d&agrave;i, v&igrave; vậy h&atilde;y ch&uacute; &yacute; chăm s&oacute;c bản th&acirc;n.</p>\n</li>\n<li data-start=\"2724\" data-end=\"2883\">\n<p data-start=\"2727\" data-end=\"2883\"><strong data-start=\"2727\" data-end=\"2760\">X&acirc;y dựng mối quan hệ t&iacute;ch cực</strong><br data-start=\"2760\" data-end=\"2763\">Mối quan hệ tốt sẽ gi&uacute;p bạn học hỏi v&agrave; mở rộng cơ hội, h&atilde;y d&agrave;nh thời gian x&acirc;y dựng v&agrave; duy tr&igrave; những kết nối t&iacute;ch cực.</p>\n</li>\n</ol>",
+      "excerpt": "Hãy cùng khám phá những phương pháp phát triển bản thân hiệu quả để đạt được thành công trong năm 2025.",
+      "featured": false,
+      "imageUrl": "https://openend.vn/wp-content/uploads/2020/06/moi-nguoi-deu-co-diem-manh-800x400.png",
+      "publishedAt": "2025-06-13T02:34:22.843Z",
+      "readTime": 1,
+      "seoDescription": "ádhqowujdw",
+      "seoTitle": "aaaa | JOBQUEST",
+      "slug": "5-bi-quyet-phat-trien-ca-nhan-nam-2025",
+      "status": "published",
+      "tags": [
+        "phat-trien-ban-than",
+        "muc-tieu",
+        "hoc-hoi",
+        "suc-khoe",
+        "quan-ly-thoi-gian"
+      ],
+      "title": "5 Bí Quyết Phát Triển Cá Nhân Năm 2025",
+      "updatedAt": "2025-06-13T08:48:21.117Z",
+      "views": 7
+    },
+    "-OScJYB4oDOAbBgwwS0t": {
+      "category": "career",
+      "categoryName": "Nghề nghiệp",
+      "content": "<h2>C&aacute;c bước để th&uacute;c đẩy v&agrave; ph&aacute;t triển sự nghiệp</h2>\n<h3>1. X&aacute;c định mục ti&ecirc;u, chiến lược</h3>\n<p>Để đi nhanh v&agrave; đi xa, đầu ti&ecirc;n bạn cần phải x&aacute;c định bản th&acirc;n đang t&igrave;m kiếm điều g&igrave;.&nbsp;H&atilde;y x&acirc;y dựng một chiến lược sự nghiệp d&agrave;i hạn, hay &iacute;t nhất l&agrave; vị tr&iacute; bạn muốn đạt được:&nbsp;Bạn muốn tăng lương bao nhi&ecirc;u, l&ecirc;n vị tr&iacute; n&agrave;o hoặc muốn được học th&ecirc;m v&agrave; ph&aacute;t triển về lĩnh vực g&igrave;? Một khi c&oacute; sự r&otilde; r&agrave;ng về hướng đi th&igrave; bạn sẽ tiết kiệm được thời gian v&agrave; đi rất nhanh.</p>\n<h3>2. Đặt ra những mốc thời gian cụ thể</h3>\n<p>Ngo&agrave;i việc thiết lập mục ti&ecirc;u r&otilde; r&agrave;ng, bạn cần đảm bảo phải c&oacute; c&aacute;c mốc thời gian cụ thể để ho&agrave;n th&agrave;nh mục ti&ecirc;u. Điều n&agrave;y sẽ gi&uacute;p bạn x&aacute;c định một lần nữa việc n&agrave;o n&ecirc;n ưu ti&ecirc;n, tăng sự tập trung, tr&aacute;nh trường hợp rơi v&agrave;o t&igrave;nh trạng bị cho&aacute;ng ngợp với khối lượng c&ocirc;ng việc</p>\n<h3>3. Học từ người kh&aacute;c</h3>\n<p>Quan s&aacute;t, ghi ch&eacute;p từ những người đang l&agrave;m ở vị tr&iacute; m&agrave; bạn ngưỡng mộ sẽ gi&uacute;p bạn phần n&agrave;o đo&aacute;n định được bạn cần bao nhi&ecirc;u thời gian, c&ocirc;ng sức để đạt được như họ trong tương lai. Ngo&agrave;i ra, nếu c&oacute; thể, h&atilde;y t&igrave;m cho m&igrave;nh một người cố vấn để được chỉ dẫn, truyền cảm hứng</p>\n<h3>4. Hướng tới kh&aacute;ch h&agrave;ng</h3>\n<p>D&ugrave; bạn l&agrave;m ở vị tr&iacute; n&agrave;o v&agrave; kh&aacute;ch h&agrave;ng l&agrave; ai, h&atilde;y lu&ocirc;n quan t&acirc;m tới nhu cầu v&agrave; mong muốn của họ. Trong mọi quyết định v&agrave; c&ocirc;ng việc của m&igrave;nh, bạn n&ecirc;n lấy tiếng n&oacute;i của kh&aacute;ch h&agrave;ng l&agrave;m trung t&acirc;m bởi suy cho c&ugrave;ng, bạn chỉ th&agrave;nh c&ocirc;ng trong c&ocirc;ng việc khi mang lại những sản phẩm, dịch vụ ho&agrave;n hảo cho kh&aacute;ch h&agrave;ng v&agrave; nhận được sự t&aacute;n dương của họ.</p>\n<h3>&nbsp;5. T&igrave;m hiểu những c&ocirc;ng cụ mới</h3>\n<p>Kiến thức l&agrave; sức mạnh. Khi bạn c&ograve;n trẻ, chưa c&oacute; nhiều tiền th&igrave; điều bạn c&oacute; l&agrave; khả năng tiếp thu những c&aacute;i mới. V&igrave; vậy, đừng lười hay ngại việc học hỏi. Học c&aacute;ch đầu tư, c&aacute;ch tiết kiệm, kiến thức chuy&ecirc;n m&ocirc;n, những c&ocirc;ng cụ mới trong m&ocirc;i trường l&agrave;m việc. Việc n&agrave;y c&oacute; thể tốn thời gian, nhưng đ&oacute; l&agrave; c&aacute;ch đầu tư th&ocirc;ng minh v&agrave; bạn chắc chắn sẽ cần đến những kiến thức đ&oacute; sau n&agrave;y.</p>\n<h3>6. Trau dồi kỹ năng, ph&aacute;t triển bản th&acirc;n</h3>\n<p>Mong muốn l&agrave; một chuyện nhưng h&agrave;nh động lại l&agrave; chuyện kh&aacute;c,&nbsp; mục ti&ecirc;u chỉ l&agrave; điều kiện cần, việc l&agrave;m của bạn mới l&agrave; nh&acirc;n tố quyết định th&agrave;nh c&ocirc;ng. Bạn cần x&aacute;c định c&aacute;c kĩ năng cần thiết đối c&ocirc;ng việc đang l&agrave;m. H&atilde;y d&agrave;nh thời gian học qua s&aacute;ch vở, b&aacute;o ch&iacute; v&agrave; Internet&hellip; bạn cũng c&oacute; thể tham gia một kh&oacute;a học về chuy&ecirc;n ng&agrave;nh để trang bị th&ecirc;m kiến thức hay t&igrave;m đến những buổi thuyết tr&igrave;nh để học hỏi kinh nghiệm của những người đ&atilde; th&agrave;nh c&ocirc;ng.&nbsp;Bằng c&aacute;ch n&agrave;y bạn sẽ c&oacute; c&aacute;i nh&igrave;n rộng hơn, linh hoạt hơn mỗi khi đ&oacute;ng g&oacute;p &yacute; kiến, giải quyết vấn đề.&nbsp;Nếu bạn c&oacute; năng lực, long say m&ecirc; c&ocirc;ng việc thực sự, cơ hội chắc chắn sẽ t&igrave;m đến với bạn.</p>\n<h3>&nbsp;7. Nhận vai tr&ograve; l&atilde;nh đạo</h3>\n<p>Đừng ngại nhận vai tr&ograve; l&atilde;nh đạo mỗi khi c&oacute; cơ hội. Quyết đo&aacute;n, chủ động sẽ cho cấp tr&ecirc;n thấy bạn đang sẵn s&agrave;ng để đ&oacute;n nhận nhiều hơn, cả về th&aacute;ch thức lẫn cơ hội. Ngo&agrave;i ra, khối lượng c&ocirc;ng việc nhiều hơn sẽ dạy bạn c&aacute;ch l&agrave;m thế n&agrave;o để quản l&yacute; thời gian hiệu quả.</p>\n<h3>8. T&igrave;m một người cố vấn đ&aacute;ng tin cậy</h3>\n<p>Một người cố vấn tốt sẽ biết c&aacute;ch kh&iacute;ch lệ v&agrave; khơi dậy niềm đam m&ecirc; c&ocirc;ng việc ở bạn. Đồng thời cũng sẽ thẳng thắn chỉ ra những khuyết điểm v&agrave; cho bạn những lời khuy&ecirc;n s&aacute;ng suốt. Bạn n&ecirc;n biết &ldquo;chọn bạn m&agrave; chơi&rdquo;, với những người chăm chỉ, chịu kh&oacute;, bạn kh&ocirc;ng chỉ c&oacute; thể chia sẻ mục ti&ecirc;u d&agrave;i hạn m&agrave; c&ograve;n c&oacute; thể học hỏi nhiều điều qu&yacute; gi&aacute; từ họ</p>\n<h3>&nbsp;9. Duy tr&igrave; sự tự tin v&agrave; tr&aacute;ch nhiệm</h3>\n<p>Điều cuối c&ugrave;ng nhưng cần thiết l&agrave; bạn n&ecirc;n duy tr&igrave; sự tự tin v&agrave;o khả năng của bản th&acirc;n. Thực hiện kiểm tra, tổng kết h&agrave;ng th&aacute;ng để chắc chắn rằng bạn đ&atilde; ho&agrave;n th&agrave;nh mục ti&ecirc;u v&agrave; kh&ocirc;ng đi chệch đường ray.</p>\n<h3>&nbsp;10. Kh&ocirc;ng ngừng mở rộng , tạo dựng mối quan hệ tốt</h3>\n<p>H&atilde;y t&iacute;ch cực gia tăng c&aacute;c mối quan hệ chuy&ecirc;n nghiệp bằng c&aacute;ch tham gia hiệp hội nghề nghiệp, tổ chức từ thiện, hoạt động chuy&ecirc;n m&ocirc;n&hellip; Bạn sẽ mở rộng danh tiếng nghề nghiệp v&agrave; tiếp cận với nhiều cơ hội ph&aacute;t triển sự nghiệp hơn.</p>\n<div class=\"al_buttons_container\">\n<div class=\"al_gplus al_btn\">&nbsp;</div>\n</div>",
+      "excerpt": "Thúc đẩy sự nghiệp là mong muốn của bất cứ ai trong chúng ta. Gặt hái những thành công trong công việc, tuy nhiên đôi khi chúng ta có thể gặp phải những rắc rối khiến cho công việc bị đình trệ. Những lời khuyên dưới đây sẽ giúp bạn thúc đẩy sự nghiệp một cách dễ dàng hơn",
+      "featured": false,
+      "imageUrl": "https://cafefcdn.com/zoom/700_438/203337114487263232/2022/4/11/photo1649662460311-16496624613051677008816.jpg",
+      "publishedAt": "2025-06-13T08:05:06.908Z",
+      "readTime": 4,
+      "seoDescription": "Thúc đẩy sự nghiệp là mong muốn của bất cứ ai trong chúng ta. Gặt hái những thành công trong công việc, tuy nhiên đôi khi chúng ta có thể gặp phải những rắc rối khiến cho công việc bị đình trệ. Những lời khuyên dưới đây sẽ giúp bạn thúc đẩy sự nghiệp một cách dễ dàng hơn",
+      "seoTitle": "Những cách để thúc đẩy sự nghiệp | JOBQUEST",
+      "slug": "nhung-cach-e-thuc-ay-su-nghiep",
+      "status": "published",
+      "tags": [
+        "nghe-nghiep",
+        "muc-tieu",
+        "ky-nang"
+      ],
+      "title": "Những cách để thúc đẩy sự nghiệp",
+      "updatedAt": "2025-06-13T08:06:53.300Z",
+      "views": 5
+    },
+    "-OScUNt55Rrs5cIS_Km5": {
+      "category": "tips",
+      "categoryName": "Mẹo tìm việc",
+      "content": "<h3 data-start=\"421\" data-end=\"496\">Những Kỹ Năng Cần C&oacute; V&agrave; Cơ Hội Nghề Nghiệp Mới</h3>\n<p data-start=\"498\" data-end=\"853\">Năm 2024 chứng kiến sự thay đổi lớn trong c&aacute;ch thức tuyển dụng v&agrave; c&aacute;c y&ecirc;u cầu đối với ứng vi&ecirc;n. Với sự ph&aacute;t triển của c&ocirc;ng nghệ v&agrave; m&ocirc;i trường l&agrave;m việc linh hoạt, c&aacute;c c&ocirc;ng ty đang t&igrave;m kiếm những nh&acirc;n sự c&oacute; khả năng th&iacute;ch nghi v&agrave; s&aacute;ng tạo. Dưới đ&acirc;y l&agrave; những yếu tố quan trọng m&agrave; nh&agrave; tuyển dụng đang t&igrave;m kiếm v&agrave; cơ hội nghề nghiệp mới m&agrave; bạn c&oacute; thể kh&aacute;m ph&aacute;:</p>\n<ol data-start=\"855\" data-end=\"2242\">\n<li data-start=\"855\" data-end=\"1128\">\n<p data-start=\"858\" data-end=\"1128\"><strong data-start=\"858\" data-end=\"883\">Kỹ Năng C&ocirc;ng Nghệ Cao</strong><br data-start=\"883\" data-end=\"886\">C&aacute;c c&ocirc;ng ty ng&agrave;y c&agrave;ng y&ecirc;u cầu nh&acirc;n vi&ecirc;n c&oacute; khả năng l&agrave;m việc với c&aacute;c c&ocirc;ng nghệ mới như AI, học m&aacute;y, dữ liệu lớn v&agrave; tự động h&oacute;a. Điều n&agrave;y mở ra cơ hội lớn cho những ai c&oacute; kỹ năng lập tr&igrave;nh, ph&acirc;n t&iacute;ch dữ liệu, v&agrave; l&agrave;m việc với c&aacute;c c&ocirc;ng cụ số.</p>\n</li>\n<li data-start=\"1130\" data-end=\"1392\">\n<p data-start=\"1133\" data-end=\"1392\"><strong data-start=\"1133\" data-end=\"1160\">Khả Năng L&agrave;m Việc Từ Xa</strong><br data-start=\"1160\" data-end=\"1163\">Sau đại dịch COVID-19, l&agrave;m việc từ xa đ&atilde; trở th&agrave;nh một lựa chọn phổ biến. C&aacute;c c&ocirc;ng ty đang t&igrave;m kiếm những ứng vi&ecirc;n c&oacute; khả năng l&agrave;m việc độc lập, quản l&yacute; thời gian hiệu quả v&agrave; duy tr&igrave; năng suất c&ocirc;ng việc trong m&ocirc;i trường từ xa.</p>\n</li>\n<li data-start=\"1394\" data-end=\"1703\">\n<p data-start=\"1397\" data-end=\"1703\"><strong data-start=\"1397\" data-end=\"1434\">Kỹ Năng Giao Tiếp v&agrave; Quản L&yacute; Nh&oacute;m</strong><br data-start=\"1434\" data-end=\"1437\">C&aacute;c kỹ năng giao tiếp mạnh mẽ, đặc biệt l&agrave; trong m&ocirc;i trường l&agrave;m việc đa dạng v&agrave; quốc tế, đang trở th&agrave;nh yếu tố quan trọng trong tuyển dụng. C&aacute;c nh&agrave; tuyển dụng cũng t&igrave;m kiếm những ứng vi&ecirc;n c&oacute; khả năng l&agrave;m việc nh&oacute;m tốt v&agrave; c&oacute; thể l&atilde;nh đạo, quản l&yacute; đội ngũ hiệu quả.</p>\n</li>\n<li data-start=\"1705\" data-end=\"1997\">\n<p data-start=\"1708\" data-end=\"1997\"><strong data-start=\"1708\" data-end=\"1750\">Khả Năng Giải Quyết Vấn Đề v&agrave; S&aacute;ng Tạo</strong><br data-start=\"1750\" data-end=\"1753\">Trong một thế giới thay đổi nhanh ch&oacute;ng, khả năng t&igrave;m ra giải ph&aacute;p s&aacute;ng tạo cho c&aacute;c vấn đề mới l&agrave; một yếu tố quan trọng gi&uacute;p ứng vi&ecirc;n nổi bật. Những ai c&oacute; khả năng tư duy phản biện v&agrave; đưa ra những s&aacute;ng kiến mới sẽ c&oacute; nhiều cơ hội thăng tiến.</p>\n</li>\n<li data-start=\"1999\" data-end=\"2242\">\n<p data-start=\"2002\" data-end=\"2242\"><strong data-start=\"2002\" data-end=\"2039\">Kinh Nghiệm v&agrave; Đ&agrave;o Tạo Chuy&ecirc;n M&ocirc;n</strong><br data-start=\"2039\" data-end=\"2042\">D&ugrave; kỹ năng mềm l&agrave; quan trọng, nhưng kiến thức chuy&ecirc;n m&ocirc;n vẫn l&agrave; yếu tố kh&ocirc;ng thể thiếu. C&aacute;c c&ocirc;ng ty ưu ti&ecirc;n những ứng vi&ecirc;n c&oacute; nền tảng học vấn vững chắc v&agrave; kinh nghiệm l&agrave;m việc thực tế trong ng&agrave;nh.</p>\n</li>\n</ol>\n<h3 data-start=\"2244\" data-end=\"2274\">C&aacute;c Cơ Hội Nghề Nghiệp Mới</h3>\n<ol data-start=\"2276\" data-end=\"3361\">\n<li data-start=\"2276\" data-end=\"2485\">\n<p data-start=\"2279\" data-end=\"2485\"><strong data-start=\"2279\" data-end=\"2321\">Chuy&ecirc;n Gia Tr&iacute; Tuệ Nh&acirc;n Tạo v&agrave; Dữ Liệu</strong><br data-start=\"2321\" data-end=\"2324\">Với sự ph&aacute;t triển nhanh ch&oacute;ng của tr&iacute; tuệ nh&acirc;n tạo v&agrave; dữ liệu lớn, c&aacute;c c&ocirc;ng ty c&ocirc;ng nghệ đang tuyển dụng nhiều chuy&ecirc;n gia về AI, học m&aacute;y v&agrave; ph&acirc;n t&iacute;ch dữ liệu.</p>\n</li>\n<li data-start=\"2487\" data-end=\"2713\">\n<p data-start=\"2490\" data-end=\"2713\"><strong data-start=\"2490\" data-end=\"2518\">Chuy&ecirc;n Vi&ecirc;n An Ninh Mạng</strong><br data-start=\"2518\" data-end=\"2521\">An ninh mạng ng&agrave;y c&agrave;ng trở n&ecirc;n quan trọng khi c&aacute;c cuộc tấn c&ocirc;ng mạng diễn ra ng&agrave;y c&agrave;ng nhiều. Những chuy&ecirc;n gia về bảo mật, mạng v&agrave; c&ocirc;ng nghệ bảo vệ dữ liệu sẽ c&oacute; nhu cầu cao trong năm 2024.</p>\n</li>\n<li data-start=\"2715\" data-end=\"2903\">\n<p data-start=\"2718\" data-end=\"2903\"><strong data-start=\"2718\" data-end=\"2751\">Chuy&ecirc;n Vi&ecirc;n Marketing Digital</strong><br data-start=\"2751\" data-end=\"2754\">Digital Marketing sẽ tiếp tục l&agrave; lĩnh vực hot với sự ph&aacute;t triển của c&aacute;c c&ocirc;ng cụ quảng c&aacute;o trực tuyến, SEO v&agrave; chiến lược marketing qua mạng x&atilde; hội.</p>\n</li>\n<li data-start=\"2905\" data-end=\"3130\">\n<p data-start=\"2908\" data-end=\"3130\"><strong data-start=\"2908\" data-end=\"2953\">Kỹ Sư Phần Mềm v&agrave; Quản L&yacute; Dự &Aacute;n C&ocirc;ng Nghệ</strong><br data-start=\"2953\" data-end=\"2956\">Ng&agrave;nh c&ocirc;ng nghệ vẫn l&agrave; một trong những lĩnh vực c&oacute; nhu cầu tuyển dụng mạnh mẽ, với c&aacute;c cơ hội cho lập tr&igrave;nh vi&ecirc;n, kỹ sư phần mềm v&agrave; c&aacute;c chuy&ecirc;n gia quản l&yacute; dự &aacute;n c&ocirc;ng nghệ.</p>\n</li>\n<li data-start=\"3132\" data-end=\"3361\">\n<p data-start=\"3135\" data-end=\"3361\"><strong data-start=\"3135\" data-end=\"3188\">Chuy&ecirc;n Vi&ecirc;n Tư Vấn Sức Khỏe Tinh Thần v&agrave; L&atilde;nh Đạo</strong><br data-start=\"3188\" data-end=\"3191\">Với sự ch&uacute; trọng đến sức khỏe t&acirc;m l&yacute; v&agrave; l&atilde;nh đạo trong m&ocirc;i trường l&agrave;m việc, c&aacute;c c&ocirc;ng ty cũng đang t&igrave;m kiếm những chuy&ecirc;n gia về sức khỏe t&acirc;m thần v&agrave; tư vấn nghề nghiệp.</p>\n</li>\n</ol>\n<h3 data-start=\"3363\" data-end=\"3395\">C&aacute;ch Để Ứng Tuyển Th&agrave;nh C&ocirc;ng</h3>\n<ul data-start=\"3397\" data-end=\"3954\">\n<li data-start=\"3397\" data-end=\"3632\">\n<p data-start=\"3399\" data-end=\"3632\"><strong data-start=\"3399\" data-end=\"3426\">Cập nhật CV v&agrave; LinkedIn</strong><br data-start=\"3426\" data-end=\"3429\">Đảm bảo rằng CV của bạn lu&ocirc;n cập nhật c&aacute;c kỹ năng, kinh nghiệm v&agrave; chứng chỉ mới nhất. Đặc biệt, LinkedIn l&agrave; nơi nh&agrave; tuyển dụng t&igrave;m kiếm ứng vi&ecirc;n, v&igrave; vậy h&atilde;y tối ưu h&oacute;a hồ sơ của bạn tr&ecirc;n nền tảng n&agrave;y.</p>\n</li>\n<li data-start=\"3634\" data-end=\"3796\">\n<p data-start=\"3636\" data-end=\"3796\"><strong data-start=\"3636\" data-end=\"3672\">Tham Gia C&aacute;c Kho&aacute; Đ&agrave;o Tạo Online</strong><br data-start=\"3672\" data-end=\"3675\">C&aacute;c kho&aacute; học trực tuyến sẽ gi&uacute;p bạn n&acirc;ng cao kỹ năng v&agrave; kiến thức, đặc biệt trong c&aacute;c lĩnh vực c&ocirc;ng nghệ v&agrave; marketing.</p>\n</li>\n<li data-start=\"3798\" data-end=\"3954\">\n<p data-start=\"3800\" data-end=\"3954\"><strong data-start=\"3800\" data-end=\"3829\">Mở Rộng Mạng Lưới Quan Hệ</strong><br data-start=\"3829\" data-end=\"3832\">Tham gia c&aacute;c sự kiện nghề nghiệp, hội thảo v&agrave; c&aacute;c nh&oacute;m chuy&ecirc;n ng&agrave;nh để mở rộng mối quan hệ v&agrave; t&igrave;m kiếm cơ hội việc l&agrave;m.</p>\n</li>\n</ul>",
+      "excerpt": "Khám phá xu hướng tuyển dụng mới trong năm 2024 và những kỹ năng cần có để đáp ứng yêu cầu của các nhà tuyển dụng hiện nay.",
+      "featured": false,
+      "imageUrl": "https://images.careerviet.vn/content/images/k%E1%BB%B9-n%C4%83ng-ngh%E1%BB%81-nghi%E1%BB%87p-careerbuilder(1).jpg",
+      "publishedAt": "2025-06-13T08:52:28.299Z",
+      "readTime": 4,
+      "seoDescription": "Khám phá xu hướng tuyển dụng mới trong năm 2024 và những kỹ năng cần có để đáp ứng yêu cầu của các nhà tuyển dụng hiện nay.",
+      "seoTitle": "Tuyển Dụng Nhân Sự 2025: Những Kỹ Năng Cần Có Và Cơ Hội Nghề Nghiệp Mới | JOBQUEST",
+      "slug": "nhung-ky-nang-can-co-va-co-hoi-nghe-nghiep-moi",
+      "status": "published",
+      "tags": [
+        "tuyen-dung",
+        "ky-nang",
+        "co-hoi-nghe-nghiep",
+        "marketing",
+        "cong-nghe"
+      ],
+      "title": "Những Kỹ Năng Cần Có Và Cơ Hội Nghề Nghiệp Mới",
+      "updatedAt": "2025-06-13T08:55:54.309Z",
+      "views": 8
+    },
+    "-OScVuEZ6-3gIKEN49HJ": {
+      "category": "tips",
+      "categoryName": "Mẹo tìm việc",
+      "content": "<h3 data-start=\"491\" data-end=\"556\">L&agrave;m Thế N&agrave;o Để T&igrave;m Việc Qua Mạng Hiệu Quả?</h3>\n<p data-start=\"558\" data-end=\"819\">Việc t&igrave;m kiếm cơ hội nghề nghiệp trực tuyến trở n&ecirc;n phổ biến v&agrave; rất tiện lợi. Tuy nhi&ecirc;n, để t&igrave;m được c&ocirc;ng việc ph&ugrave; hợp, bạn cần phải biết c&aacute;ch khai th&aacute;c c&aacute;c c&ocirc;ng cụ t&igrave;m kiếm việc l&agrave;m online một c&aacute;ch hiệu quả. Dưới đ&acirc;y l&agrave; c&aacute;c bước v&agrave; lưu &yacute; khi t&igrave;m việc qua mạng:</p>\n<ol data-start=\"821\" data-end=\"1662\">\n<li data-start=\"821\" data-end=\"1020\">\n<p data-start=\"824\" data-end=\"1020\"><strong data-start=\"824\" data-end=\"858\">Chọn Nền Tảng T&igrave;m Việc Ph&ugrave; Hợp</strong><br data-start=\"858\" data-end=\"861\">C&oacute; rất nhiều trang web v&agrave; ứng dụng t&igrave;m việc như VietnamWorks, JobStreet, LinkedIn,... H&atilde;y chọn những nền tảng ph&ugrave; hợp với ng&agrave;nh nghề v&agrave; vị tr&iacute; bạn muốn t&igrave;m.</p>\n</li>\n<li data-start=\"1022\" data-end=\"1224\">\n<p data-start=\"1025\" data-end=\"1224\"><strong data-start=\"1025\" data-end=\"1054\">Tối Ưu H&oacute;a Hồ Sơ Xin Việc</strong><br data-start=\"1054\" data-end=\"1057\">Một hồ sơ trực tuyến ấn tượng sẽ gi&uacute;p bạn nổi bật. H&atilde;y đảm bảo rằng CV của bạn lu&ocirc;n được cập nhật, thể hiện đầy đủ kỹ năng, kinh nghiệm v&agrave; c&aacute;c th&agrave;nh tựu quan trọng.</p>\n</li>\n<li data-start=\"1226\" data-end=\"1469\">\n<p data-start=\"1229\" data-end=\"1469\"><strong data-start=\"1229\" data-end=\"1253\">Tạo Mối Quan Hệ Mạng</strong><br data-start=\"1253\" data-end=\"1256\">Mạng lưới kết nối l&agrave; rất quan trọng trong việc t&igrave;m kiếm việc l&agrave;m. H&atilde;y tham gia v&agrave;o c&aacute;c nh&oacute;m nghề nghiệp tr&ecirc;n mạng x&atilde; hội, kết nối với những người c&oacute; c&ugrave;ng chuy&ecirc;n m&ocirc;n v&agrave; tham gia c&aacute;c hội thảo, sự kiện trực tuyến.</p>\n</li>\n<li data-start=\"1471\" data-end=\"1662\">\n<p data-start=\"1474\" data-end=\"1662\"><strong data-start=\"1474\" data-end=\"1520\">Nộp Đơn Ch&iacute;nh X&aacute;c v&agrave; Li&ecirc;n Lạc Thường Xuy&ecirc;n</strong><br data-start=\"1520\" data-end=\"1523\">Sau khi nộp hồ sơ, h&atilde;y chủ động li&ecirc;n hệ với nh&agrave; tuyển dụng để kiểm tra tiến độ tuyển dụng v&agrave; thể hiện sự quan t&acirc;m của bạn đến vị tr&iacute; đ&oacute;.</p>\n</li>\n</ol>",
+      "excerpt": "Tìm việc qua mạng đã trở thành xu hướng hiện nay. Hãy cùng khám phá các bước và phương pháp để tìm việc hiệu quả qua các nền tảng trực tuyến.",
+      "featured": false,
+      "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQuVUYu5Rmtxw_w8G5FwlCcMDDqwGIhy0Cihw&s",
+      "publishedAt": "2025-06-13T08:59:07.014Z",
+      "readTime": 1,
+      "seoDescription": "Tìm việc qua mạng đã trở thành xu hướng hiện nay. Hãy cùng khám phá các bước và phương pháp để tìm việc hiệu quả qua các nền tảng trực tuyến.",
+      "seoTitle": "Làm Thế Nào Để Tìm Việc Qua Mạng Hiệu Quả? | JOBQUEST",
+      "slug": "lam-the-nao-e-tim-viec-qua-mang-hieu-qua",
+      "status": "published",
+      "tags": [
+        "tuyen-dung-online",
+        "tim-viec",
+        "tuyendung",
+        "job-search"
+      ],
+      "title": "Làm Thế Nào Để Tìm Việc Qua Mạng Hiệu Quả?",
+      "updatedAt": "2025-06-13T08:59:07.014Z",
+      "views": 3
+    },
+    "-OScuBHbkYqLEiv2OXXk": {
+      "category": "trend",
+      "categoryName": "Xu hướng",
+      "content": "<h3 data-start=\"441\" data-end=\"490\">10 Ng&agrave;nh Nghề Mới Trong Năm 2025 Bạn N&ecirc;n Biết</h3>\n<p data-start=\"492\" data-end=\"724\">Năm 2024 kh&ocirc;ng chỉ đ&aacute;nh dấu sự ph&aacute;t triển mạnh mẽ của c&aacute;c ng&agrave;nh nghề truyền thống m&agrave; c&ograve;n mang đến những cơ hội nghề nghiệp mới. C&aacute;c ng&agrave;nh nghề dưới đ&acirc;y sẽ l&agrave; những lựa chọn tuyệt vời cho những ai muốn ph&aacute;t triển trong tương lai gần.</p>\n<ol data-start=\"726\" data-end=\"3153\">\n<li data-start=\"726\" data-end=\"984\">\n<p data-start=\"729\" data-end=\"984\"><strong data-start=\"729\" data-end=\"767\">Chuy&ecirc;n gia Quản l&yacute; Dự &aacute;n C&ocirc;ng nghệ</strong><br data-start=\"767\" data-end=\"770\">C&aacute;c dự &aacute;n c&ocirc;ng nghệ ng&agrave;y c&agrave;ng trở n&ecirc;n phức tạp hơn, đ&ograve;i hỏi sự kết hợp giữa kỹ thuật v&agrave; quản l&yacute;. C&aacute;c chuy&ecirc;n gia quản l&yacute; dự &aacute;n c&ocirc;ng nghệ sẽ cần c&oacute; kỹ năng xử l&yacute; c&aacute;c dự &aacute;n phức tạp trong m&ocirc;i trường đầy th&aacute;ch thức.</p>\n</li>\n<li data-start=\"986\" data-end=\"1245\">\n<p data-start=\"989\" data-end=\"1245\"><strong data-start=\"989\" data-end=\"1042\">Chuy&ecirc;n vi&ecirc;n Tư vấn Chuyển đổi Số cho Doanh nghiệp</strong><br data-start=\"1042\" data-end=\"1045\">C&aacute;c doanh nghiệp đang t&igrave;m c&aacute;ch chuyển m&igrave;nh th&agrave;nh doanh nghiệp số, v&agrave; chuy&ecirc;n gia tư vấn chuyển đổi số sẽ gi&uacute;p họ đạt được điều đ&oacute; th&ocirc;ng qua việc tối ưu h&oacute;a quy tr&igrave;nh v&agrave; cải thiện hệ thống c&ocirc;ng nghệ.</p>\n</li>\n<li data-start=\"1247\" data-end=\"1496\">\n<p data-start=\"1250\" data-end=\"1496\"><strong data-start=\"1250\" data-end=\"1304\">Chuy&ecirc;n gia Hệ thống Quản l&yacute; Dữ liệu Lớn (Big Data)</strong><br data-start=\"1304\" data-end=\"1307\">Big Data tiếp tục l&agrave; một trong những yếu tố quan trọng trong c&aacute;c quyết định kinh doanh. C&aacute;c chuy&ecirc;n gia trong lĩnh vực n&agrave;y sẽ gi&uacute;p doanh nghiệp khai th&aacute;c dữ liệu để tối ưu h&oacute;a chiến lược.</p>\n</li>\n<li data-start=\"1498\" data-end=\"1720\">\n<p data-start=\"1501\" data-end=\"1720\"><strong data-start=\"1501\" data-end=\"1531\">Kỹ sư Robot v&agrave; Tự động h&oacute;a</strong><br data-start=\"1531\" data-end=\"1534\">C&ocirc;ng nghệ robot v&agrave; tự động h&oacute;a đang gia tăng nhanh ch&oacute;ng trong c&aacute;c ng&agrave;nh sản xuất v&agrave; dịch vụ. C&aacute;c kỹ sư chuy&ecirc;n về tự động h&oacute;a sẽ đảm nhận việc thiết kế v&agrave; vận h&agrave;nh c&aacute;c hệ thống robot.</p>\n</li>\n<li data-start=\"1722\" data-end=\"1938\">\n<p data-start=\"1725\" data-end=\"1938\"><strong data-start=\"1725\" data-end=\"1765\">Chuy&ecirc;n vi&ecirc;n Tư vấn T&agrave;i ch&iacute;nh C&aacute; nh&acirc;n</strong><br data-start=\"1765\" data-end=\"1768\">Với sự phức tạp của thị trường t&agrave;i ch&iacute;nh hiện đại, c&aacute;c chuy&ecirc;n gia tư vấn t&agrave;i ch&iacute;nh sẽ gi&uacute;p c&aacute;c c&aacute; nh&acirc;n đưa ra c&aacute;c quyết định đầu tư hợp l&yacute; v&agrave; quản l&yacute; t&agrave;i sản hiệu quả.</p>\n</li>\n<li data-start=\"1940\" data-end=\"2179\">\n<p data-start=\"1943\" data-end=\"2179\"><strong data-start=\"1943\" data-end=\"1998\">Chuy&ecirc;n vi&ecirc;n Quản l&yacute; Chất lượng v&agrave; Kiểm tra Sản phẩm</strong><br data-start=\"1998\" data-end=\"2001\">C&aacute;c doanh nghiệp cần c&aacute;c chuy&ecirc;n gia kiểm tra v&agrave; đảm bảo chất lượng sản phẩm của họ đ&aacute;p ứng ti&ecirc;u chuẩn, đặc biệt trong c&aacute;c ng&agrave;nh như sản xuất, chế biến thực phẩm, v&agrave; c&ocirc;ng nghệ.</p>\n</li>\n<li data-start=\"2181\" data-end=\"2478\">\n<p data-start=\"2184\" data-end=\"2478\"><strong data-start=\"2184\" data-end=\"2226\">Chuy&ecirc;n gia Chăm s&oacute;c Sức khỏe Cộng đồng</strong><br data-start=\"2226\" data-end=\"2229\">C&aacute;c vấn đề về sức khỏe cộng đồng như ph&ograve;ng ngừa dịch bệnh v&agrave; n&acirc;ng cao &yacute; thức cộng đồng sẽ trở th&agrave;nh một phần quan trọng của hệ thống y tế. C&aacute;c chuy&ecirc;n gia n&agrave;y sẽ l&agrave;m việc với c&aacute;c tổ chức v&agrave; cộng đồng để ph&aacute;t triển c&aacute;c chiến lược chăm s&oacute;c sức khỏe.</p>\n</li>\n<li data-start=\"2480\" data-end=\"2668\">\n<p data-start=\"2483\" data-end=\"2668\"><strong data-start=\"2483\" data-end=\"2522\">Kỹ sư M&ocirc;i trường v&agrave; Năng lượng Xanh</strong><br data-start=\"2522\" data-end=\"2525\">C&ugrave;ng với xu hướng chuyển đổi sang năng lượng t&aacute;i tạo v&agrave; bảo vệ m&ocirc;i trường, nhu cầu về c&aacute;c kỹ sư m&ocirc;i trường v&agrave; năng lượng xanh đang gia tăng.</p>\n</li>\n<li data-start=\"2670\" data-end=\"2935\">\n<p data-start=\"2673\" data-end=\"2935\"><strong data-start=\"2673\" data-end=\"2728\">Chuy&ecirc;n vi&ecirc;n Thiết kế v&agrave; Ph&aacute;t triển Ứng dụng di động</strong><br data-start=\"2728\" data-end=\"2731\">C&aacute;c ứng dụng di động ng&agrave;y c&agrave;ng đ&oacute;ng vai tr&ograve; quan trọng trong cuộc sống h&agrave;ng ng&agrave;y. Chuy&ecirc;n vi&ecirc;n ph&aacute;t triển ứng dụng sẽ gi&uacute;p c&aacute;c doanh nghiệp tạo ra những sản phẩm s&aacute;ng tạo phục vụ nhu cầu của người d&ugrave;ng.</p>\n</li>\n<li data-start=\"2937\" data-end=\"3153\">\n<p data-start=\"2941\" data-end=\"3153\"><strong data-start=\"2941\" data-end=\"2985\">Giảng vi&ecirc;n/Chuy&ecirc;n gia Đ&agrave;o tạo Trực tuyến</strong><br data-start=\"2985\" data-end=\"2988\">Ng&agrave;nh gi&aacute;o dục trực tuyến đang ph&aacute;t triển mạnh mẽ, mang đến cơ hội cho những ai y&ecirc;u th&iacute;ch chia sẻ kiến thức v&agrave; gi&uacute;p đỡ người kh&aacute;c qua c&aacute;c nền tảng học trực tuyến.</p>\n</li>\n</ol>",
+      "excerpt": "Khám phá những ngành nghề mới và tiềm năng mà bạn có thể xem xét cho sự nghiệp trong năm 2025.",
+      "featured": false,
+      "imageUrl": "https://png.pngtree.com/png-vector/20230728/ourlarge/pngtree-career-clipart-different-people-with-different-professions-cartoon-vector-png-image_6806452.png",
+      "publishedAt": "2025-06-13T10:49:34.545Z",
+      "readTime": 3,
+      "seoDescription": "Khám phá những ngành nghề mới và tiềm năng mà bạn có thể xem xét cho sự nghiệp trong năm 2025.",
+      "seoTitle": "10 Ngành Nghề Mới Trong Năm 2025 Bạn Nên Biết | JOBQUEST",
+      "slug": "10-nganh-nghe-moi-trong-nam-2025-ban-nen-biet",
       "status": "published",
       "tags": [
         "xu-huong",
         "nghe-nghiep",
         "2024",
+        "công nghệ",
+        "số hóa"
+      ],
+      "title": "10 Ngành Nghề Mới Trong Năm 2025 Bạn Nên Biết",
+      "updatedAt": "2025-06-13T10:50:32.520Z",
+      "views": 1
+    },
+    "-OScw6Y_u1940llQ3dAH": {
+      "category": "trend",
+      "categoryName": "Xu hướng",
+      "content": "<h3 data-start=\"3243\" data-end=\"3325\">Những C&ocirc;ng Việc Hot Nhất Năm : Xu Hướng Tuyển Dụng v&agrave; Kỹ Năng Được Cần T&igrave;m</h3>\n<p data-start=\"3327\" data-end=\"3589\">Năm 2024 mở ra nhiều cơ hội việc l&agrave;m trong c&aacute;c ng&agrave;nh nghề kh&aacute;c nhau, đặc biệt l&agrave; trong c&ocirc;ng nghệ v&agrave; c&aacute;c ng&agrave;nh dịch vụ. Dưới đ&acirc;y l&agrave; danh s&aacute;ch c&aacute;c c&ocirc;ng việc đang dẫn đầu xu hướng tuyển dụng v&agrave; c&aacute;c kỹ năng quan trọng m&agrave; ứng vi&ecirc;n cần c&oacute; để đ&aacute;p ứng y&ecirc;u cầu c&ocirc;ng việc.</p>\n<p data-start=\"3591\" data-end=\"3898\"><strong data-start=\"3591\" data-end=\"3629\">Kỹ sư Phần mềm (Software Engineer)</strong> vẫn lu&ocirc;n l&agrave; một c&ocirc;ng việc hot trong năm 2024. Với sự ph&aacute;t triển kh&ocirc;ng ngừng của c&aacute;c nền tảng c&ocirc;ng nghệ, c&aacute;c kỹ sư phần mềm sẽ lu&ocirc;n cần thiết trong c&aacute;c c&ocirc;ng ty c&ocirc;ng nghệ. Họ sẽ tham gia v&agrave;o việc ph&aacute;t triển c&aacute;c ứng dụng di động, hệ thống phần mềm v&agrave; nền tảng trực tuyến.</p>\n<p data-start=\"3900\" data-end=\"4198\">C&ugrave;ng với đ&oacute;, <strong data-start=\"3913\" data-end=\"3968\">Chuy&ecirc;n vi&ecirc;n An ninh Mạng (Cybersecurity Specialist)</strong> cũng l&agrave; c&ocirc;ng việc được tuyển dụng mạnh mẽ. Trong bối cảnh c&aacute;c cuộc tấn c&ocirc;ng mạng ng&agrave;y c&agrave;ng gia tăng, c&aacute;c chuy&ecirc;n gia an ninh mạng sẽ đ&oacute;ng vai tr&ograve; quan trọng trong việc bảo vệ c&aacute;c hệ thống dữ liệu v&agrave; th&ocirc;ng tin nhạy cảm của tổ chức.</p>\n<p data-start=\"4200\" data-end=\"4518\"><strong data-start=\"4200\" data-end=\"4232\">Chuy&ecirc;n gia Marketing Digital</strong> tiếp tục dẫn đầu c&aacute;c xu hướng tuyển dụng, với c&aacute;c c&ocirc;ng việc li&ecirc;n quan đến <strong data-start=\"4307\" data-end=\"4314\">SEO</strong>, <strong data-start=\"4316\" data-end=\"4337\">Content Marketing</strong>, <strong data-start=\"4339\" data-end=\"4365\">Social Media Marketing</strong>, v&agrave; <strong data-start=\"4370\" data-end=\"4389\">Email Marketing</strong>. C&aacute;c c&ocirc;ng ty t&igrave;m kiếm những ứng vi&ecirc;n c&oacute; khả năng x&acirc;y dựng chiến lược marketing hiệu quả tr&ecirc;n nền tảng trực tuyến v&agrave; mạng x&atilde; hội.</p>\n<p data-start=\"4520\" data-end=\"4745\">Ng&agrave;nh <strong data-start=\"4526\" data-end=\"4568\">Tư vấn Quản l&yacute; (Management Consulting)</strong> đang ph&aacute;t triển mạnh, với nhu cầu lớn về c&aacute;c chuy&ecirc;n gia tư vấn gi&uacute;p c&aacute;c c&ocirc;ng ty tối ưu h&oacute;a quy tr&igrave;nh, n&acirc;ng cao hiệu quả hoạt động v&agrave; đưa ra c&aacute;c quyết định chiến lược s&aacute;ng suốt.</p>\n<p data-start=\"4747\" data-end=\"5011\">C&aacute;c <strong data-start=\"4751\" data-end=\"4809\">Chuy&ecirc;n vi&ecirc;n chăm s&oacute;c sức khỏe (Healthcare Specialists)</strong> cũng sẽ lu&ocirc;n c&oacute; nhu cầu lớn trong năm 2024, kh&ocirc;ng chỉ trong c&aacute;c bệnh viện v&agrave; ph&ograve;ng kh&aacute;m m&agrave; c&ograve;n trong c&aacute;c c&ocirc;ng ty cung cấp dịch vụ chăm s&oacute;c sức khỏe từ xa, đặc biệt l&agrave; trong bối cảnh dịch bệnh to&agrave;n cầu.</p>\n<p data-start=\"5013\" data-end=\"5346\"><strong data-start=\"5013\" data-end=\"5024\">Kỹ năng</strong> m&agrave; c&aacute;c nh&agrave; tuyển dụng t&igrave;m kiếm kh&ocirc;ng chỉ l&agrave; kỹ năng chuy&ecirc;n m&ocirc;n m&agrave; c&ograve;n l&agrave; c&aacute;c <strong data-start=\"5102\" data-end=\"5117\">kỹ năng mềm</strong> như <strong data-start=\"5122\" data-end=\"5143\">quản l&yacute; thời gian</strong>, <strong data-start=\"5145\" data-end=\"5167\">giao tiếp hiệu quả</strong>, <strong data-start=\"5169\" data-end=\"5188\">tư duy s&aacute;ng tạo</strong>, v&agrave; <strong data-start=\"5193\" data-end=\"5219\">khả năng l&agrave;m việc nh&oacute;m</strong>. C&aacute;c ứng vi&ecirc;n c&oacute; thể ph&aacute;t triển những kỹ năng n&agrave;y sẽ dễ d&agrave;ng nổi bật trong đ&aacute;m đ&ocirc;ng v&agrave; nhanh ch&oacute;ng thăng tiến trong sự nghiệp.</p>",
+      "excerpt": "Khám phá những công việc hot nhất trong năm 2024, từ công nghệ đến dịch vụ, đồng thời tìm hiểu kỹ năng mà các nhà tuyển dụng mong đợi từ ứng viên.",
+      "featured": false,
+      "imageUrl": "https://diginet.com.vn/wp-content/uploads/2024/02/11-xu-huong-tuyen-dung-nhan-su-quan-trong-trong-nam-2024-3.jpg",
+      "publishedAt": "2025-06-13T10:57:59.438Z",
+      "readTime": 2,
+      "seoDescription": "Khám phá những công việc hot nhất trong năm 2024, từ công nghệ đến dịch vụ, đồng thời tìm hiểu kỹ năng mà các nhà tuyển dụng mong đợi từ ứng viên.",
+      "seoTitle": "Xu Hướng Tuyển Dụng và Kỹ Năng Được Cần Tìm | JOBQUEST",
+      "slug": "xu-huong-tuyen-dung-va-ky-nang-uoc-can-tim",
+      "status": "published",
+      "tags": [
+        "tuyển-dụng",
+        "nghề-nghiệp",
+        "công-nghệ",
+        "marketing",
+        "sức-khỏe",
+        "dịch-vụ"
+      ],
+      "title": "Xu Hướng Tuyển Dụng và Kỹ Năng Được Cần Tìm",
+      "updatedAt": "2025-06-13T10:57:59.438Z",
+      "views": 2
+    },
+    "-OScx2ZhU3mPixZPv8fp": {
+      "category": "career",
+      "categoryName": "Nghề nghiệp",
+      "content": "<h3 data-start=\"623\" data-end=\"715\">C&aacute;c C&ocirc;ng Việc Tiềm Năng Trong Năm 2025: Cơ Hội Nghề Nghiệp Mới V&agrave; Kỹ Năng Cần Ph&aacute;t Triển</h3>\n<p data-start=\"717\" data-end=\"1120\">Bước v&agrave;o năm 2025, thị trường lao động tiếp tục chứng kiến sự thay đổi lớn với sự ph&aacute;t triển mạnh mẽ của c&ocirc;ng nghệ, sự thay đổi trong nhu cầu của người ti&ecirc;u d&ugrave;ng, v&agrave; sự chuyển m&igrave;nh của c&aacute;c m&ocirc; h&igrave;nh doanh nghiệp. Trong bối cảnh đ&oacute;, c&aacute;c c&ocirc;ng việc v&agrave; kỹ năng cũng đ&atilde; v&agrave; đang c&oacute; sự thay đổi lớn. Dưới đ&acirc;y l&agrave; những ng&agrave;nh nghề nổi bật v&agrave; c&aacute;c kỹ năng cần thiết để bạn c&oacute; thể ph&aacute;t triển sự nghiệp trong năm 2025.</p>\n<h4 data-start=\"1122\" data-end=\"1177\">1. <strong data-start=\"1130\" data-end=\"1177\">Chuy&ecirc;n gia Tr&iacute; Tuệ Nh&acirc;n Tạo (AI Specialist)</strong></h4>\n<p data-start=\"1179\" data-end=\"1701\">Tr&iacute; tuệ nh&acirc;n tạo tiếp tục l&agrave; lĩnh vực đi đầu v&agrave; ph&aacute;t triển mạnh mẽ trong năm 2025. C&aacute;c c&ocirc;ng ty đang t&igrave;m kiếm những chuy&ecirc;n gia c&oacute; khả năng x&acirc;y dựng, triển khai v&agrave; tối ưu h&oacute;a c&aacute;c hệ thống AI trong nhiều lĩnh vực, từ t&agrave;i ch&iacute;nh, chăm s&oacute;c sức khỏe, đến sản xuất v&agrave; gi&aacute;o dục. AI kh&ocirc;ng chỉ đơn giản l&agrave; một c&ocirc;ng nghệ mới m&agrave; đang dần trở th&agrave;nh một phần thiết yếu trong mọi ng&agrave;nh c&ocirc;ng nghiệp. C&aacute;c chuy&ecirc;n gia trong lĩnh vực n&agrave;y sẽ cần c&oacute; kiến thức vững về học m&aacute;y (machine learning), ph&acirc;n t&iacute;ch dữ liệu, v&agrave; c&aacute;c thuật to&aacute;n AI phức tạp.</p>\n<p data-start=\"1703\" data-end=\"1727\"><strong data-start=\"1703\" data-end=\"1725\">Kỹ năng cần thiết:</strong></p>\n<ul data-start=\"1728\" data-end=\"1926\">\n<li data-start=\"1728\" data-end=\"1798\">\n<p data-start=\"1730\" data-end=\"1798\">Lập tr&igrave;nh Python, R, TensorFlow, v&agrave; c&aacute;c ng&ocirc;n ngữ lập tr&igrave;nh AI kh&aacute;c</p>\n</li>\n<li data-start=\"1799\" data-end=\"1839\">\n<p data-start=\"1801\" data-end=\"1839\">Kỹ năng học m&aacute;y v&agrave; ph&acirc;n t&iacute;ch dữ liệu</p>\n</li>\n<li data-start=\"1840\" data-end=\"1926\">\n<p data-start=\"1842\" data-end=\"1926\">Hiểu biết về c&aacute;c thuật to&aacute;n học s&acirc;u (Deep Learning) v&agrave; mạng nơ-ron (Neural Networks)</p>\n</li>\n</ul>\n<h4 data-start=\"1928\" data-end=\"1986\">2. <strong data-start=\"1936\" data-end=\"1986\">Chuy&ecirc;n gia An Ninh Mạng (Cybersecurity Expert)</strong></h4>\n<p data-start=\"1988\" data-end=\"2329\">Với sự gia tăng của c&aacute;c cuộc tấn c&ocirc;ng mạng v&agrave; việc số h&oacute;a ng&agrave;y c&agrave;ng s&acirc;u rộng, an ninh mạng trở th&agrave;nh một ng&agrave;nh kh&ocirc;ng thể thiếu trong bất kỳ tổ chức n&agrave;o. C&aacute;c chuy&ecirc;n gia an ninh mạng sẽ phải đối mặt với c&aacute;c th&aacute;ch thức về bảo vệ dữ liệu c&aacute; nh&acirc;n, bảo mật hệ thống v&agrave; ứng dụng, cũng như đối ph&oacute; với c&aacute;c mối đe dọa từ c&aacute;c cuộc tấn c&ocirc;ng trực tuyến.</p>\n<p data-start=\"2331\" data-end=\"2355\"><strong data-start=\"2331\" data-end=\"2353\">Kỹ năng cần thiết:</strong></p>\n<ul data-start=\"2356\" data-end=\"2539\">\n<li data-start=\"2356\" data-end=\"2422\">\n<p data-start=\"2358\" data-end=\"2422\">Kiến thức về bảo mật mạng, m&atilde; h&oacute;a v&agrave; ph&ograve;ng chống tấn c&ocirc;ng mạng</p>\n</li>\n<li data-start=\"2423\" data-end=\"2474\">\n<p data-start=\"2425\" data-end=\"2474\">Kỹ năng quản l&yacute; v&agrave; bảo vệ c&aacute;c hệ thống phức tạp</p>\n</li>\n<li data-start=\"2475\" data-end=\"2539\">\n<p data-start=\"2477\" data-end=\"2539\">Hiểu biết về c&aacute;c c&ocirc;ng cụ bảo mật như firewall, VPN, v&agrave; IDS/IPS</p>\n</li>\n</ul>\n<h4 data-start=\"2541\" data-end=\"2582\">3. <strong data-start=\"2549\" data-end=\"2582\">Kỹ Sư Dữ Liệu (Data Engineer)</strong></h4>\n<p data-start=\"2584\" data-end=\"2924\">Sự ph&aacute;t triển của dữ liệu lớn (Big Data) v&agrave; ph&acirc;n t&iacute;ch dữ liệu tiếp tục l&agrave; động lực ch&iacute;nh trong việc đưa ra c&aacute;c quyết định chiến lược của doanh nghiệp. Kỹ sư dữ liệu sẽ đảm nhận vai tr&ograve; x&acirc;y dựng v&agrave; duy tr&igrave; c&aacute;c hệ thống cơ sở dữ liệu, hệ thống lưu trữ v&agrave; quản l&yacute; dữ liệu hiệu quả, gi&uacute;p doanh nghiệp khai th&aacute;c tối đa gi&aacute; trị từ dữ liệu của họ.</p>\n<p data-start=\"2926\" data-end=\"2950\"><strong data-start=\"2926\" data-end=\"2948\">Kỹ năng cần thiết:</strong></p>\n<ul data-start=\"2951\" data-end=\"3153\">\n<li data-start=\"2951\" data-end=\"2991\">\n<p data-start=\"2953\" data-end=\"2991\">Kiến thức về cơ sở dữ liệu SQL/NoSQL</p>\n</li>\n<li data-start=\"2992\" data-end=\"3069\">\n<p data-start=\"2994\" data-end=\"3069\">Kỹ năng lập tr&igrave;nh Python, Java, v&agrave; c&aacute;c c&ocirc;ng cụ Big Data như Hadoop, Spark</p>\n</li>\n<li data-start=\"3070\" data-end=\"3153\">\n<p data-start=\"3072\" data-end=\"3153\">Kinh nghiệm với c&aacute;c hệ thống ph&acirc;n t&iacute;ch dữ liệu v&agrave; lưu trữ đ&aacute;m m&acirc;y (Cloud storage)</p>\n</li>\n</ul>\n<h4 data-start=\"3155\" data-end=\"3188\">4. <strong data-start=\"3163\" data-end=\"3188\">Chuy&ecirc;n Gia Blockchain</strong></h4>\n<p data-start=\"3190\" data-end=\"3529\">Blockchain kh&ocirc;ng c&ograve;n chỉ l&agrave; c&ocirc;ng nghệ hỗ trợ cho tiền điện tử m&agrave; ng&agrave;y nay đ&atilde; trở th&agrave;nh một c&ocirc;ng cụ quan trọng trong nhiều lĩnh vực như ng&acirc;n h&agrave;ng, bảo hiểm, chuỗi cung ứng, v&agrave; thậm ch&iacute; cả ph&aacute;p l&yacute;. Chuy&ecirc;n gia blockchain sẽ thiết kế v&agrave; triển khai c&aacute;c giải ph&aacute;p blockchain nhằm tối ưu h&oacute;a c&aacute;c giao dịch v&agrave; đảm bảo t&iacute;nh bảo mật cao cho dữ liệu.</p>\n<p data-start=\"3531\" data-end=\"3555\"><strong data-start=\"3531\" data-end=\"3553\">Kỹ năng cần thiết:</strong></p>\n<ul data-start=\"3556\" data-end=\"3748\">\n<li data-start=\"3556\" data-end=\"3631\">\n<p data-start=\"3558\" data-end=\"3631\">Kiến thức về c&aacute;c nền tảng blockchain như Ethereum, Bitcoin, Hyperledger</p>\n</li>\n<li data-start=\"3632\" data-end=\"3685\">\n<p data-start=\"3634\" data-end=\"3685\">Kỹ năng lập tr&igrave;nh với Solidity, Go, v&agrave; JavaScript</p>\n</li>\n<li data-start=\"3686\" data-end=\"3748\">\n<p data-start=\"3688\" data-end=\"3748\">Hiểu biết về c&aacute;c thuật to&aacute;n đồng thuận v&agrave; bảo mật blockchain</p>\n</li>\n</ul>\n<h4 data-start=\"3750\" data-end=\"3820\">5. <strong data-start=\"3758\" data-end=\"3820\">Chuy&ecirc;n Vi&ecirc;n Quản L&yacute; Dự &Aacute;n C&ocirc;ng Nghệ (Tech Project Manager)</strong></h4>\n<p data-start=\"3822\" data-end=\"4109\">C&aacute;c dự &aacute;n c&ocirc;ng nghệ ng&agrave;y c&agrave;ng trở n&ecirc;n phức tạp v&agrave; y&ecirc;u cầu sự phối hợp chặt chẽ giữa c&aacute;c nh&oacute;m ph&aacute;t triển phần mềm, nh&oacute;m nghi&ecirc;n cứu, v&agrave; c&aacute;c b&ecirc;n li&ecirc;n quan. Chuy&ecirc;n gia quản l&yacute; dự &aacute;n c&ocirc;ng nghệ sẽ phải đảm bảo c&aacute;c dự &aacute;n được ho&agrave;n th&agrave;nh đ&uacute;ng tiến độ, trong ng&acirc;n s&aacute;ch v&agrave; đạt được mục ti&ecirc;u đề ra.</p>\n<p data-start=\"4111\" data-end=\"4135\"><strong data-start=\"4111\" data-end=\"4133\">Kỹ năng cần thiết:</strong></p>\n<ul data-start=\"4136\" data-end=\"4305\">\n<li data-start=\"4136\" data-end=\"4198\">\n<p data-start=\"4138\" data-end=\"4198\">Kỹ năng quản l&yacute; dự &aacute;n, lập kế hoạch v&agrave; điều phối c&ocirc;ng việc</p>\n</li>\n<li data-start=\"4199\" data-end=\"4268\">\n<p data-start=\"4201\" data-end=\"4268\">Kiến thức về c&aacute;c phương ph&aacute;p ph&aacute;t triển phần mềm như Agile, Scrum</p>\n</li>\n<li data-start=\"4269\" data-end=\"4305\">\n<p data-start=\"4271\" data-end=\"4305\">Kỹ năng giao tiếp v&agrave; l&atilde;nh đạo nh&oacute;m</p>\n</li>\n</ul>\n<h4 data-start=\"4307\" data-end=\"4348\">6. <strong data-start=\"4315\" data-end=\"4348\">Chuy&ecirc;n Vi&ecirc;n Marketing Digital</strong></h4>\n<p data-start=\"4350\" data-end=\"4650\">Marketing digital tiếp tục l&agrave; một trong những ng&agrave;nh nghề ph&aacute;t triển mạnh mẽ trong năm 2025. C&aacute;c chuy&ecirc;n vi&ecirc;n marketing sẽ cần ph&aacute;t triển chiến lược quảng b&aacute; trực tuyến, sử dụng c&aacute;c nền tảng như Google, Facebook, Instagram, v&agrave; TikTok để gi&uacute;p c&aacute;c thương hiệu x&acirc;y dựng mối quan hệ l&acirc;u d&agrave;i với kh&aacute;ch h&agrave;ng.</p>\n<p data-start=\"4652\" data-end=\"4676\"><strong data-start=\"4652\" data-end=\"4674\">Kỹ năng cần thiết:</strong></p>\n<ul data-start=\"4677\" data-end=\"4874\">\n<li data-start=\"4677\" data-end=\"4726\">\n<p data-start=\"4679\" data-end=\"4726\">Kỹ năng SEO, SEM, v&agrave; tiếp thị qua mạng x&atilde; hội</p>\n</li>\n<li data-start=\"4727\" data-end=\"4811\">\n<p data-start=\"4729\" data-end=\"4811\">Hiểu biết về ph&acirc;n t&iacute;ch dữ liệu marketing v&agrave; c&ocirc;ng cụ đo lường hiệu quả chiến dịch</p>\n</li>\n<li data-start=\"4812\" data-end=\"4874\">\n<p data-start=\"4814\" data-end=\"4874\">Kỹ năng s&aacute;ng tạo nội dung v&agrave; quản l&yacute; chiến lược truyền th&ocirc;ng</p>\n</li>\n</ul>\n<h4 data-start=\"4876\" data-end=\"4947\">7. <strong data-start=\"4884\" data-end=\"4947\">Chuy&ecirc;n Gia Năng Lượng T&aacute;i Tạo (Renewable Energy Specialist)</strong></h4>\n<p data-start=\"4949\" data-end=\"5274\">Trong bối cảnh thế giới đang chuyển m&igrave;nh sang sử dụng năng lượng sạch, nhu cầu về c&aacute;c chuy&ecirc;n gia năng lượng t&aacute;i tạo ng&agrave;y c&agrave;ng lớn. Chuy&ecirc;n gia trong lĩnh vực n&agrave;y sẽ thiết kế, ph&aacute;t triển, v&agrave; triển khai c&aacute;c giải ph&aacute;p năng lượng từ c&aacute;c nguồn t&aacute;i tạo như mặt trời, gi&oacute;, v&agrave; thủy điện, gi&uacute;p giảm thiểu t&aacute;c động của biến đổi kh&iacute; hậu.</p>\n<p data-start=\"5276\" data-end=\"5300\"><strong data-start=\"5276\" data-end=\"5298\">Kỹ năng cần thiết:</strong></p>\n<ul data-start=\"5301\" data-end=\"5528\">\n<li data-start=\"5301\" data-end=\"5384\">\n<p data-start=\"5303\" data-end=\"5384\">Kiến thức về c&aacute;c c&ocirc;ng nghệ năng lượng t&aacute;i tạo như điện mặt trời, gi&oacute;, sinh khối</p>\n</li>\n<li data-start=\"5385\" data-end=\"5454\">\n<p data-start=\"5387\" data-end=\"5454\">Kỹ năng ph&acirc;n t&iacute;ch, thiết kế v&agrave; tối ưu h&oacute;a c&aacute;c hệ thống năng lượng</p>\n</li>\n<li data-start=\"5455\" data-end=\"5528\">\n<p data-start=\"5457\" data-end=\"5528\">Kinh nghiệm trong việc triển khai c&aacute;c dự &aacute;n năng lượng sạch v&agrave; bền vững</p>\n</li>\n</ul>\n<h4 data-start=\"5530\" data-end=\"5589\">8. <strong data-start=\"5538\" data-end=\"5589\">Kỹ Sư Sản Xuất 4.0 (Manufacturing Engineer 4.0)</strong></h4>\n<p data-start=\"5591\" data-end=\"5806\">Với sự ph&aacute;t triển của c&aacute;c c&ocirc;ng nghệ tự động h&oacute;a, IoT (Internet of Things), v&agrave; AI trong ng&agrave;nh sản xuất, kỹ sư sản xuất sẽ phải đối mặt với th&aacute;ch thức lớn trong việc tối ưu h&oacute;a quy tr&igrave;nh v&agrave; n&acirc;ng cao hiệu quả sản xuất.</p>\n<p data-start=\"5808\" data-end=\"5832\"><strong data-start=\"5808\" data-end=\"5830\">Kỹ năng cần thiết:</strong></p>\n<ul data-start=\"5833\" data-end=\"6027\">\n<li data-start=\"5833\" data-end=\"5899\">\n<p data-start=\"5835\" data-end=\"5899\">Kiến thức về tự động h&oacute;a, IoT, v&agrave; hệ thống sản xuất th&ocirc;ng minh</p>\n</li>\n<li data-start=\"5900\" data-end=\"5962\">\n<p data-start=\"5902\" data-end=\"5962\">Kỹ năng quản l&yacute; quy tr&igrave;nh sản xuất v&agrave; tối ưu h&oacute;a hiệu suất</p>\n</li>\n<li data-start=\"5963\" data-end=\"6027\">\n<p data-start=\"5965\" data-end=\"6027\">Hiểu biết về c&aacute;c c&ocirc;ng nghệ mới trong sản xuất như in 3D, robot</p>\n</li>\n</ul>",
+      "excerpt": "Khám phá những xu hướng nghề nghiệp và cơ hội việc làm trong năm 2025, từ công nghệ đến các ngành chăm sóc sức khỏe, cũng như kỹ năng mà các nhà tuyển dụng sẽ tìm kiếm ở ứng viên.",
+      "featured": false,
+      "imageUrl": "https://goodgood.vn/wp-content/uploads/2023/01/xu-huong-tuyen-dung-2023-850x560.webp",
+      "publishedAt": "2025-06-13T11:02:05.266Z",
+      "readTime": 7,
+      "seoDescription": "Khám phá những xu hướng nghề nghiệp và cơ hội việc làm trong năm 2025, từ công nghệ đến các ngành chăm sóc sức khỏe, cũng như kỹ năng mà các nhà tuyển dụng sẽ tìm kiếm ở ứng viên.",
+      "seoTitle": "Các Công Việc Tiềm Năng Trong Năm 2025: Cơ Hội Nghề Nghiệp Mới Và Kỹ Năng Cần Phát Triển | JOBQUEST",
+      "slug": "cac-cong-viec-tiem-nang-trong-nam-2025-co-hoi-nghe-nghiep-moi-va-ky-nang-can-phat-trien",
+      "status": "published",
+      "tags": [
+        "tuyển-dụng",
+        "nghề-nghiep",
+        "2025",
+        "công-nghệ",
+        "AI",
+        "blockchain",
+        "marketing",
+        "năng-lượng-tái-tạo",
+        "sản-xuất"
+      ],
+      "title": "Các Công Việc Tiềm Năng Trong Năm 2025: Cơ Hội Nghề Nghiệp Mới Và Kỹ Năng Cần Phát Triển",
+      "updatedAt": "2025-06-13T11:05:44.804Z",
+      "views": 1
+    },
+    "-OScxjs65yxD8Lr0lH86": {
+      "category": "trend",
+      "categoryName": "Xu hướng",
+      "content": "<h3 data-start=\"571\" data-end=\"645\">C&aacute;c C&ocirc;ng Việc Triển Vọng Trong Năm 2025: Cơ Hội V&agrave; Xu Hướng Tuyển Dụng</h3>\n<p data-start=\"647\" data-end=\"963\">Năm 2025 l&agrave; một năm đầy th&aacute;ch thức v&agrave; cơ hội đối với những ai đang t&igrave;m kiếm c&ocirc;ng việc mới hoặc muốn thay đổi sự nghiệp. C&aacute;c ng&agrave;nh c&ocirc;ng nghiệp đang chuyển m&igrave;nh mạnh mẽ với sự tiến bộ vượt bậc của c&ocirc;ng nghệ v&agrave; c&aacute;c xu hướng x&atilde; hội mới. Dưới đ&acirc;y l&agrave; những c&ocirc;ng việc triển vọng nhất m&agrave; bạn kh&ocirc;ng thể bỏ qua trong năm 2025.</p>\n<h4 data-start=\"965\" data-end=\"1020\">1. <strong data-start=\"973\" data-end=\"1020\">Chuy&ecirc;n Gia Tr&iacute; Tuệ Nh&acirc;n Tạo (AI Specialist)</strong></h4>\n<p data-start=\"1022\" data-end=\"1457\">Tr&iacute; tuệ nh&acirc;n tạo kh&ocirc;ng chỉ l&agrave; một xu hướng m&agrave; đ&atilde; trở th&agrave;nh yếu tố kh&ocirc;ng thể thiếu trong nhiều ng&agrave;nh c&ocirc;ng nghiệp. C&aacute;c chuy&ecirc;n gia AI sẽ đ&oacute;ng vai tr&ograve; quan trọng trong việc ph&aacute;t triển c&aacute;c hệ thống th&ocirc;ng minh, gi&uacute;p c&aacute;c c&ocirc;ng ty tối ưu h&oacute;a quy tr&igrave;nh v&agrave; cải thiện hiệu quả c&ocirc;ng việc. C&aacute;c ng&agrave;nh c&ocirc;ng nghệ, t&agrave;i ch&iacute;nh, chăm s&oacute;c sức khỏe, v&agrave; thậm ch&iacute; l&agrave; gi&aacute;o dục đều đang t&igrave;m kiếm c&aacute;c chuy&ecirc;n gia AI c&oacute; khả năng &aacute;p dụng c&ocirc;ng nghệ n&agrave;y v&agrave;o thực tiễn.</p>\n<p data-start=\"1459\" data-end=\"1486\"><strong data-start=\"1459\" data-end=\"1486\">Kỹ năng cần ph&aacute;t triển:</strong></p>\n<ul data-start=\"1487\" data-end=\"1625\">\n<li data-start=\"1487\" data-end=\"1531\">\n<p data-start=\"1489\" data-end=\"1531\">Lập tr&igrave;nh AI v&agrave; học m&aacute;y (Machine Learning)</p>\n</li>\n<li data-start=\"1532\" data-end=\"1587\">\n<p data-start=\"1534\" data-end=\"1587\">Xử l&yacute; ng&ocirc;n ngữ tự nhi&ecirc;n (Natural Language Processing)</p>\n</li>\n<li data-start=\"1588\" data-end=\"1625\">\n<p data-start=\"1590\" data-end=\"1625\">Ph&aacute;t triển v&agrave; tối ưu h&oacute;a m&ocirc; h&igrave;nh AI</p>\n</li>\n</ul>\n<h4 data-start=\"1627\" data-end=\"1655\">2. <strong data-start=\"1635\" data-end=\"1655\">Kỹ Sư Blockchain</strong></h4>\n<p data-start=\"1657\" data-end=\"1951\">Blockchain tiếp tục ph&aacute;t triển v&agrave; mở rộng ứng dụng v&agrave;o nhiều lĩnh vực như t&agrave;i ch&iacute;nh, bảo mật, chuỗi cung ứng v&agrave; quản l&yacute; dữ liệu. C&aacute;c chuy&ecirc;n gia trong lĩnh vực n&agrave;y sẽ gi&uacute;p c&aacute;c tổ chức triển khai c&aacute;c giải ph&aacute;p blockchain để tăng cường bảo mật v&agrave; giảm thiểu chi ph&iacute; trong c&aacute;c giao dịch trực tuyến.</p>\n<p data-start=\"1953\" data-end=\"1980\"><strong data-start=\"1953\" data-end=\"1980\">Kỹ năng cần ph&aacute;t triển:</strong></p>\n<ul data-start=\"1981\" data-end=\"2158\">\n<li data-start=\"1981\" data-end=\"2052\">\n<p data-start=\"1983\" data-end=\"2052\">Kiến thức về c&aacute;c nền tảng blockchain (Ethereum, Bitcoin, Hyperledger)</p>\n</li>\n<li data-start=\"2053\" data-end=\"2089\">\n<p data-start=\"2055\" data-end=\"2089\">Lập tr&igrave;nh Solidity, Go, JavaScript</p>\n</li>\n<li data-start=\"2090\" data-end=\"2158\">\n<p data-start=\"2092\" data-end=\"2158\">Ph&aacute;t triển v&agrave; triển khai c&aacute;c hợp đồng th&ocirc;ng minh (Smart Contracts)</p>\n</li>\n</ul>\n<h4 data-start=\"2160\" data-end=\"2239\">3. <strong data-start=\"2168\" data-end=\"2239\">Chuy&ecirc;n Gia Tư Vấn Chuyển Đổi Số (Digital Transformation Consultant)</strong></h4>\n<p data-start=\"2241\" data-end=\"2576\">Với sự thay đổi mạnh mẽ trong m&ocirc;i trường c&ocirc;ng nghệ, c&aacute;c doanh nghiệp cần chuyển đổi số để n&acirc;ng cao hiệu quả hoạt động v&agrave; đ&aacute;p ứng nhanh ch&oacute;ng với y&ecirc;u cầu thị trường. C&aacute;c chuy&ecirc;n gia tư vấn chuyển đổi số sẽ gi&uacute;p c&aacute;c c&ocirc;ng ty x&acirc;y dựng chiến lược số h&oacute;a v&agrave; triển khai c&aacute;c giải ph&aacute;p c&ocirc;ng nghệ nhằm cải thiện quy tr&igrave;nh l&agrave;m việc v&agrave; tăng trưởng.</p>\n<p data-start=\"2578\" data-end=\"2605\"><strong data-start=\"2578\" data-end=\"2605\">Kỹ năng cần ph&aacute;t triển:</strong></p>\n<ul data-start=\"2606\" data-end=\"2757\">\n<li data-start=\"2606\" data-end=\"2656\">\n<p data-start=\"2608\" data-end=\"2656\">Quản l&yacute; v&agrave; triển khai c&aacute;c hệ thống c&ocirc;ng nghệ mới</p>\n</li>\n<li data-start=\"2657\" data-end=\"2700\">\n<p data-start=\"2659\" data-end=\"2700\">Kỹ năng ph&acirc;n t&iacute;ch v&agrave; tối ưu h&oacute;a quy tr&igrave;nh</p>\n</li>\n<li data-start=\"2701\" data-end=\"2757\">\n<p data-start=\"2703\" data-end=\"2757\">Hiểu biết về c&aacute;c c&ocirc;ng cụ v&agrave; nền tảng c&ocirc;ng nghệ đ&aacute;m m&acirc;y</p>\n</li>\n</ul>\n<h4 data-start=\"2759\" data-end=\"2831\">4. <strong data-start=\"2767\" data-end=\"2831\">Chuy&ecirc;n Vi&ecirc;n Marketing Digital (Digital Marketing Specialist)</strong></h4>\n<p data-start=\"2833\" data-end=\"3125\">Marketing digital đang ng&agrave;y c&agrave;ng trở th&agrave;nh yếu tố quan trọng đối với sự ph&aacute;t triển của doanh nghiệp. Chuy&ecirc;n gia marketing digital sẽ gi&uacute;p c&aacute;c c&ocirc;ng ty x&acirc;y dựng chiến lược marketing trực tuyến hiệu quả th&ocirc;ng qua c&aacute;c nền tảng mạng x&atilde; hội, c&ocirc;ng cụ t&igrave;m kiếm v&agrave; c&aacute;c chiến dịch quảng c&aacute;o trực tuyến.</p>\n<p data-start=\"3127\" data-end=\"3154\"><strong data-start=\"3127\" data-end=\"3154\">Kỹ năng cần ph&aacute;t triển:</strong></p>\n<ul data-start=\"3155\" data-end=\"3298\">\n<li data-start=\"3155\" data-end=\"3196\">\n<p data-start=\"3157\" data-end=\"3196\">SEO/SEM v&agrave; quản l&yacute; quảng c&aacute;o trực tuyến</p>\n</li>\n<li data-start=\"3197\" data-end=\"3243\">\n<p data-start=\"3199\" data-end=\"3243\">S&aacute;ng tạo nội dung v&agrave; chiến lược truyền th&ocirc;ng</p>\n</li>\n<li data-start=\"3244\" data-end=\"3298\">\n<p data-start=\"3246\" data-end=\"3298\">Ph&acirc;n t&iacute;ch dữ liệu marketing v&agrave; tối ưu h&oacute;a chiến dịch</p>\n</li>\n</ul>\n<h4 data-start=\"3300\" data-end=\"3359\">5. <strong data-start=\"3308\" data-end=\"3359\">Kỹ Sư Sản Xuất 4.0 (Manufacturing Engineer 4.0)</strong></h4>\n<p data-start=\"3361\" data-end=\"3639\">C&ocirc;ng nghiệp 4.0, hay c&ograve;n gọi l&agrave; c&aacute;ch mạng c&ocirc;ng nghiệp lần thứ tư, đ&atilde; mở ra cơ hội lớn cho c&aacute;c kỹ sư sản xuất. C&aacute;c c&ocirc;ng ty đang t&iacute;ch cực triển khai c&aacute;c c&ocirc;ng nghệ tự động h&oacute;a, IoT (Internet of Things), v&agrave; robot v&agrave;o d&acirc;y chuyền sản xuất để tối ưu h&oacute;a hiệu quả v&agrave; giảm thiểu chi ph&iacute;.</p>\n<p data-start=\"3641\" data-end=\"3668\"><strong data-start=\"3641\" data-end=\"3668\">Kỹ năng cần ph&aacute;t triển:</strong></p>\n<ul data-start=\"3669\" data-end=\"3840\">\n<li data-start=\"3669\" data-end=\"3718\">\n<p data-start=\"3671\" data-end=\"3718\">Kiến thức về tự động h&oacute;a v&agrave; sản xuất th&ocirc;ng minh</p>\n</li>\n<li data-start=\"3719\" data-end=\"3775\">\n<p data-start=\"3721\" data-end=\"3775\">Lập tr&igrave;nh PLC (Programmable Logic Controller) v&agrave; Robot</p>\n</li>\n<li data-start=\"3776\" data-end=\"3840\">\n<p data-start=\"3778\" data-end=\"3840\">Hiểu biết về hệ thống th&ocirc;ng minh v&agrave; ph&acirc;n t&iacute;ch dữ liệu sản xuất</p>\n</li>\n</ul>\n<h4 data-start=\"3842\" data-end=\"3904\">6. <strong data-start=\"3850\" data-end=\"3904\">Chuy&ecirc;n Gia An Ninh Mạng (Cybersecurity Specialist)</strong></h4>\n<p data-start=\"3906\" data-end=\"4197\">Với sự gia tăng của c&aacute;c cuộc tấn c&ocirc;ng mạng v&agrave; c&aacute;c mối đe dọa bảo mật, c&aacute;c c&ocirc;ng ty đang cần những chuy&ecirc;n gia an ninh mạng c&oacute; khả năng bảo vệ hệ thống v&agrave; dữ liệu của tổ chức. C&ocirc;ng việc n&agrave;y kh&ocirc;ng chỉ đ&ograve;i hỏi kiến thức về c&ocirc;ng nghệ m&agrave; c&ograve;n cần khả năng ph&acirc;n t&iacute;ch v&agrave; ứng ph&oacute; với c&aacute;c sự cố bảo mật.</p>\n<p data-start=\"4199\" data-end=\"4226\"><strong data-start=\"4199\" data-end=\"4226\">Kỹ năng cần ph&aacute;t triển:</strong></p>\n<ul data-start=\"4227\" data-end=\"4376\">\n<li data-start=\"4227\" data-end=\"4264\">\n<p data-start=\"4229\" data-end=\"4264\">Kiến thức về bảo mật mạng v&agrave; m&atilde; h&oacute;a</p>\n</li>\n<li data-start=\"4265\" data-end=\"4311\">\n<p data-start=\"4267\" data-end=\"4311\">Kỹ năng ph&acirc;n t&iacute;ch sự cố v&agrave; kh&ocirc;i phục dữ liệu</p>\n</li>\n<li data-start=\"4312\" data-end=\"4376\">\n<p data-start=\"4314\" data-end=\"4376\">Hiểu biết về c&aacute;c c&ocirc;ng cụ bảo mật như firewall, VPN, v&agrave; IDS/IPS</p>\n</li>\n</ul>\n<h4 data-start=\"4378\" data-end=\"4448\">7. <strong data-start=\"4386\" data-end=\"4448\">Chuy&ecirc;n Vi&ecirc;n Quản L&yacute; Dự &Aacute;n C&ocirc;ng Nghệ (Tech Project Manager)</strong></h4>\n<p data-start=\"4450\" data-end=\"4663\">Với sự ph&aacute;t triển mạnh mẽ của c&aacute;c dự &aacute;n c&ocirc;ng nghệ, c&aacute;c chuy&ecirc;n gia quản l&yacute; dự &aacute;n c&ocirc;ng nghệ sẽ cần c&oacute; khả năng điều phối v&agrave; gi&aacute;m s&aacute;t c&aacute;c dự &aacute;n từ đầu đến cuối, đảm bảo mọi thứ diễn ra theo đ&uacute;ng tiến độ v&agrave; ng&acirc;n s&aacute;ch.</p>\n<p data-start=\"4665\" data-end=\"4692\"><strong data-start=\"4665\" data-end=\"4692\">Kỹ năng cần ph&aacute;t triển:</strong></p>\n<ul data-start=\"4693\" data-end=\"4849\">\n<li data-start=\"4693\" data-end=\"4733\">\n<p data-start=\"4695\" data-end=\"4733\">Quản l&yacute; dự &aacute;n v&agrave; lập kế hoạch chi tiết</p>\n</li>\n<li data-start=\"4734\" data-end=\"4787\">\n<p data-start=\"4736\" data-end=\"4787\">Kỹ năng giao tiếp v&agrave; phối hợp với c&aacute;c nh&oacute;m kỹ thuật</p>\n</li>\n<li data-start=\"4788\" data-end=\"4849\">\n<p data-start=\"4790\" data-end=\"4849\">Hiểu biết về c&aacute;c phương ph&aacute;p quản l&yacute; dự &aacute;n như Agile, Scrum</p>\n</li>\n</ul>\n<h4 data-start=\"4851\" data-end=\"4925\">8. <strong data-start=\"4859\" data-end=\"4925\">Chuy&ecirc;n Vi&ecirc;n Tư Vấn Quản L&yacute; Rủi Ro (Risk Management Consultant)</strong></h4>\n<p data-start=\"4927\" data-end=\"5199\">C&aacute;c tổ chức v&agrave; doanh nghiệp đang ng&agrave;y c&agrave;ng nhận thức được tầm quan trọng của việc quản l&yacute; rủi ro trong m&ocirc;i trường kh&ocirc;ng ngừng thay đổi. Chuy&ecirc;n gia tư vấn quản l&yacute; rủi ro sẽ gi&uacute;p c&aacute;c c&ocirc;ng ty x&aacute;c định v&agrave; giảm thiểu c&aacute;c rủi ro c&oacute; thể ảnh hưởng đến hoạt động kinh doanh của họ.</p>\n<p data-start=\"5201\" data-end=\"5228\"><strong data-start=\"5201\" data-end=\"5228\">Kỹ năng cần ph&aacute;t triển:</strong></p>\n<ul data-start=\"5229\" data-end=\"5378\">\n<li data-start=\"5229\" data-end=\"5259\">\n<p data-start=\"5231\" data-end=\"5259\">Ph&acirc;n t&iacute;ch v&agrave; đ&aacute;nh gi&aacute; rủi ro</p>\n</li>\n<li data-start=\"5260\" data-end=\"5324\">\n<p data-start=\"5262\" data-end=\"5324\">Kỹ năng lập kế hoạch v&agrave; thực hiện chiến lược giảm thiểu rủi ro</p>\n</li>\n<li data-start=\"5325\" data-end=\"5378\">\n<p data-start=\"5327\" data-end=\"5378\">Kiến thức về c&aacute;c c&ocirc;ng cụ v&agrave; phần mềm quản l&yacute; rủi ro</p>\n</li>\n</ul>\n<hr data-start=\"5380\" data-end=\"5383\">\n<h3 data-start=\"5385\" data-end=\"5440\">Kỹ Năng Cần Ph&aacute;t Triển Để Th&agrave;nh C&ocirc;ng Trong Năm 2025</h3>\n<p data-start=\"5442\" data-end=\"5532\">Để đ&aacute;p ứng y&ecirc;u cầu c&ocirc;ng việc trong năm 2025, bạn cần ph&aacute;t triển một số kỹ năng quan trọng:</p>\n<ol data-start=\"5534\" data-end=\"6122\">\n<li data-start=\"5534\" data-end=\"5672\">\n<p data-start=\"5537\" data-end=\"5672\"><strong data-start=\"5537\" data-end=\"5559\">Kỹ Năng C&ocirc;ng Nghệ:</strong> C&aacute;c c&ocirc;ng ty hiện nay y&ecirc;u cầu ứng vi&ecirc;n c&oacute; kiến thức vững về c&aacute;c c&ocirc;ng nghệ mới như AI, blockchain, v&agrave; dữ liệu lớn.</p>\n</li>\n<li data-start=\"5673\" data-end=\"5798\">\n<p data-start=\"5676\" data-end=\"5798\"><strong data-start=\"5676\" data-end=\"5702\">Kỹ Năng Quản L&yacute; Dự &Aacute;n:</strong> Với sự gia tăng của c&aacute;c dự &aacute;n phức tạp, kỹ năng quản l&yacute; dự &aacute;n trở th&agrave;nh yếu tố kh&ocirc;ng thể thiếu.</p>\n</li>\n<li data-start=\"5799\" data-end=\"5929\">\n<p data-start=\"5802\" data-end=\"5929\"><strong data-start=\"5802\" data-end=\"5836\">Kỹ Năng Giao Tiếp v&agrave; L&atilde;nh Đạo:</strong> Khả năng giao tiếp hiệu quả v&agrave; l&atilde;nh đạo nh&oacute;m l&agrave; điều kiện cần thiết để ph&aacute;t triển sự nghiệp.</p>\n</li>\n<li data-start=\"5930\" data-end=\"6122\">\n<p data-start=\"5933\" data-end=\"6122\"><strong data-start=\"5933\" data-end=\"5975\">Kỹ Năng S&aacute;ng Tạo v&agrave; Giải Quyết Vấn Đề:</strong> C&aacute;c c&ocirc;ng ty đang t&igrave;m kiếm những ứng vi&ecirc;n c&oacute; khả năng s&aacute;ng tạo, giải quyết vấn đề một c&aacute;ch hiệu quả trong m&ocirc;i trường l&agrave;m việc kh&ocirc;ng ngừng thay đổi.</p>\n</li>\n</ol>\n<p data-start=\"6124\" data-end=\"6459\">C&aacute;c c&ocirc;ng ty sẽ ch&uacute; trọng hơn v&agrave;o việc tuyển dụng những người kh&ocirc;ng chỉ c&oacute; chuy&ecirc;n m&ocirc;n cao m&agrave; c&ograve;n c&oacute; khả năng học hỏi v&agrave; th&iacute;ch nghi với những thay đổi trong m&ocirc;i trường l&agrave;m việc. Điều n&agrave;y mở ra cơ hội lớn cho những ai c&oacute; khả năng li&ecirc;n tục cải thiện kỹ năng v&agrave; kiến thức, đồng thời sẵn s&agrave;ng đối mặt với những thử th&aacute;ch mới trong sự nghiệp.</p>",
+      "excerpt": "Khám phá các cơ hội việc làm triển vọng và các ngành nghề tiềm năng trong năm 2025, cùng với các kỹ năng mà nhà tuyển dụng đang tìm kiếm để chuẩn bị cho sự nghiệp tương lai.",
+      "featured": false,
+      "imageUrl": "https://trungcaptuxa.edu.vn/wp-content/uploads/2023/07/hoc-quan-tri-kinh-doanh-1-1.jpg",
+      "publishedAt": "2025-06-13T11:05:06.735Z",
+      "readTime": 8,
+      "seoDescription": "Khám phá các cơ hội việc làm triển vọng và các ngành nghề tiềm năng trong năm 2025, cùng với các kỹ năng mà nhà tuyển dụng đang tìm kiếm để chuẩn bị cho sự nghiệp tương lai.",
+      "seoTitle": "Các Công Việc Triển Vọng Trong Năm 2025: Cơ Hội Và Xu Hướng Tuyển Dụng | JOBQUEST",
+      "slug": "cac-cong-viec-trien-vong-trong-nam-2025-co-hoi-va-xu-huong-tuyen-dung",
+      "status": "published",
+      "tags": [
+        "tuyển-dụng",
+        "nghề-nghiep",
+        "2025",
+        "công-nghệ",
+        "AI",
+        "blockchain",
+        "marketing",
+        "sản-xuất",
+        "quản-lý-rủi-ro"
+      ],
+      "title": "Các Công Việc Triển Vọng Trong Năm 2025: Cơ Hội Và Xu Hướng Tuyển Dụng",
+      "updatedAt": "2025-06-13T11:05:06.735Z",
+      "views": 0
+    },
+    "news_001": {
+      "category": "trend",
+      "categoryName": "Xu hướng",
+      "content": "<p>### 10 Xu Hướng Nghề Nghiệp Nổi Bật Năm 2025</p>\n<p>Năm 2024 đ&aacute;nh dấu nhiều thay đổi lớn trong thị trường lao động với sự xuất hiện của c&aacute;c xu hướng nghề nghiệp mới, gắn liền với c&ocirc;ng nghệ, m&ocirc;i trường v&agrave; nhu cầu sống hiện đại. Dưới đ&acirc;y l&agrave; 10 ng&agrave;nh nghề được dự đo&aacute;n sẽ &ldquo;b&ugrave;ng nổ&rdquo; trong năm nay:</p>\n<p>1. **Chuy&ecirc;n gia Tr&iacute; tuệ nh&acirc;n tạo (AI) v&agrave; Học m&aacute;y (Machine Learning)** &nbsp;<br>&nbsp; &nbsp;Sự ph&aacute;t triển của AI k&eacute;o theo nhu cầu nh&acirc;n lực chất lượng cao trong lĩnh vực n&agrave;y, từ lập tr&igrave;nh, thiết kế hệ thống đến kiểm thử thuật to&aacute;n.</p>\n<p>2. **Chuy&ecirc;n vi&ecirc;n Ph&acirc;n t&iacute;ch dữ liệu (Data Analyst)** &nbsp;<br>&nbsp; &nbsp;C&aacute;c doanh nghiệp ng&agrave;y c&agrave;ng phụ thuộc v&agrave;o dữ liệu để ra quyết định, mở ra cơ hội việc l&agrave;m lớn cho c&aacute;c chuy&ecirc;n gia dữ liệu.</p>\n<p>3. **Kỹ sư Phần mềm &amp; DevOps** &nbsp;<br>&nbsp; &nbsp;C&ocirc;ng nghệ số tiếp tục chiếm lĩnh mọi lĩnh vực, l&agrave;m tăng nhu cầu đối với kỹ sư ph&aacute;t triển v&agrave; vận h&agrave;nh hệ thống.</p>\n<p>4. **Chuy&ecirc;n vi&ecirc;n An ninh mạng (Cybersecurity)** &nbsp;<br>&nbsp; &nbsp;Với sự gia tăng của c&aacute;c cuộc tấn c&ocirc;ng mạng, bảo mật trở th&agrave;nh ưu ti&ecirc;n h&agrave;ng đầu của mọi tổ chức.</p>\n<p>5. **Chuy&ecirc;n vi&ecirc;n Nội dung số v&agrave; Marketing số** &nbsp;<br>&nbsp; &nbsp;Tiếp thị qua mạng x&atilde; hội, SEO, v&agrave; s&aacute;ng tạo nội dung đang l&agrave; những nghề hot với thu nhập hấp dẫn.</p>\n<p>6. **Chuy&ecirc;n gia về Năng lượng t&aacute;i tạo** &nbsp;<br>&nbsp; &nbsp;Ng&agrave;nh c&ocirc;ng nghiệp năng lượng xanh ph&aacute;t triển mạnh mẽ, k&eacute;o theo nhu cầu nh&acirc;n lực trong điện mặt trời, điện gi&oacute;, v&agrave; c&ocirc;ng nghệ lưu trữ năng lượng.</p>\n<p>7. **Chuy&ecirc;n vi&ecirc;n Hỗ trợ sức khỏe tinh thần (Mental Health Support)** &nbsp;<br>&nbsp; &nbsp;Sức khỏe t&acirc;m l&yacute; được quan t&acirc;m hơn, đặc biệt sau đại dịch, l&agrave;m tăng nhu cầu đối với c&aacute;c chuy&ecirc;n gia t&acirc;m l&yacute;.</p>\n<p>8. **Chuy&ecirc;n vi&ecirc;n Vận h&agrave;nh chuỗi cung ứng (Supply Chain Management)** &nbsp;<br>&nbsp; &nbsp;To&agrave;n cầu h&oacute;a v&agrave; thương mại điện tử khiến ng&agrave;nh logistics, quản l&yacute; kho b&atilde;i ng&agrave;y c&agrave;ng quan trọng.</p>\n<p>9. **Chuy&ecirc;n vi&ecirc;n Thiết kế UX/UI** &nbsp;<br>&nbsp; &nbsp;Trải nghiệm người d&ugrave;ng trở th&agrave;nh yếu tố sống c&ograve;n cho c&aacute;c sản phẩm số, l&agrave;m tăng cầu về nh&acirc;n lực thiết kế.</p>\n<p>10. **Giảng vi&ecirc;n/Chuy&ecirc;n vi&ecirc;n Đ&agrave;o tạo trực tuyến (E-learning)** &nbsp;<br>&nbsp; &nbsp; Sự ph&aacute;t triển của học trực tuyến tạo cơ hội cho những ai y&ecirc;u th&iacute;ch đ&agrave;o tạo, s&aacute;ng tạo nội dung gi&aacute;o dục.</p>",
+      "excerpt": "Khám phá những ngành nghề đang có nhu cầu cao và mức lương hấp dẫn trong năm 2025",
+      "featured": true,
+      "imageUrl": "https://images.unsplash.com/photo-1521737711867-e3b97375f902",
+      "publishedAt": "2024-03-20T10:00:00Z",
+      "readTime": 2,
+      "seoDescription": "Khám phá 10 xu hướng nghề nghiệp hot nhất 2024 với mức lương hấp dẫn và cơ hội phát triển cao.",
+      "seoTitle": "10 Xu Hướng Nghề Nghiệp Nổi Bật Năm 2024 | JOBQUEST",
+      "slug": "10-xu-huong-nghe-nghiep-noi-bat-nam-2025",
+      "status": "published",
+      "tags": [
+        "xu-huong",
+        "nghe-nghiep",
+        "2025",
         "luong-cao"
       ],
-      "title": "10 Xu Hướng Nghề Nghiệp Nổi Bật Năm 2024",
-      "updatedAt": "2024-03-20T10:00:00Z",
-      "views": 1274
+      "title": "10 Xu Hướng Nghề Nghiệp Nổi Bật Năm 2025",
+      "updatedAt": "2025-06-13T07:59:03.710Z",
+      "views": 1295
     }
   },
   "testimonials": {
-    "-OSNQtyU0_ex1uhAyRrb": {
-      "content": "aaa",
-      "createdAt": "2025-06-10T06:03:19.878Z",
-      "name": "Nguyễn Trần Anh Thơ",
+    "-OWio6jRudGU25Ag0_1E": {
+      "content": "hệ thống tốt",
+      "createdAt": "2025-08-03T07:23:33.532Z",
+      "name": "Nguyền Minh Anh",
+      "rating": 5,
+      "role": "Nhà tuyển dụng",
+      "status": "approved",
+      "userEmail": "csaichiu441@gmail.com",
+      "userId": "p2hc6bZBAobt4TfI8pgqJU3u23J2"
+    },
+    "-OWioDqo-pD9YWzU1woK": {
+      "content": "tiện lợi\n",
+      "createdAt": "2025-08-03T07:24:02.676Z",
+      "name": "Anh Thơ",
       "photoURL": "https://lh3.googleusercontent.com/a/ACg8ocLlxilORMbw1yQ5RLSZjSFGgnJdwHT9maKnvWaQ6EG5qH5AUvc=s96-c",
       "rating": 4,
       "role": "Ứng viên",
-      "status": "pending",
+      "status": "approved",
       "userEmail": "ntho0124@gmail.com",
-      "userId": "wzukitDM2SaT6CdP0hsQ5jU4BGr1"
+      "userId": "i1qAlE9jLTZE1fWUPV1CVrNzDA13"
     },
-    "-OSNRvcXwQazVFcjAMaS": {
-      "content": "bbbbbbbbbbb",
-      "createdAt": "2025-06-10T06:07:48.809Z",
-      "name": "Nguyễn Trần Anh Thơ",
+    "-OXHjfwzjY4gLeGp2elZ": {
+      "content": "hay ta",
+      "createdAt": "2025-08-10T06:50:31.184Z",
+      "name": "Anh Thơ",
+      "photoURL": "https://lh3.googleusercontent.com/a/ACg8ocLlxilORMbw1yQ5RLSZjSFGgnJdwHT9maKnvWaQ6EG5qH5AUvc=s96-c",
+      "rating": 4,
+      "role": "Ứng viên",
+      "status": "approved",
+      "userEmail": "ntho0124@gmail.com",
+      "userId": "i1qAlE9jLTZE1fWUPV1CVrNzDA13"
+    },
+    "-OXHjiux-aw_9uLmyCeh": {
+      "content": "web load nhanh dị\n",
+      "createdAt": "2025-08-10T06:50:43.342Z",
+      "name": "Anh Thơ",
       "photoURL": "https://lh3.googleusercontent.com/a/ACg8ocLlxilORMbw1yQ5RLSZjSFGgnJdwHT9maKnvWaQ6EG5qH5AUvc=s96-c",
       "rating": 5,
       "role": "Ứng viên",
       "status": "approved",
       "userEmail": "ntho0124@gmail.com",
-      "userId": "wzukitDM2SaT6CdP0hsQ5jU4BGr1"
+      "userId": "i1qAlE9jLTZE1fWUPV1CVrNzDA13"
     },
-    "-OSNRxi0177G5YVmuV9X": {
-      "content": "cccccccccccc",
-      "createdAt": "2025-06-10T06:07:57.351Z",
-      "name": "Nguyễn Trần Anh Thơ",
+    "-OXHjtWAX_Dv3J64oVlp": {
+      "content": "rất tiện lợi",
+      "createdAt": "2025-08-10T06:51:26.751Z",
+      "name": "Anh Thơ",
       "photoURL": "https://lh3.googleusercontent.com/a/ACg8ocLlxilORMbw1yQ5RLSZjSFGgnJdwHT9maKnvWaQ6EG5qH5AUvc=s96-c",
-      "rating": 2,
+      "rating": 5,
       "role": "Ứng viên",
       "status": "approved",
       "userEmail": "ntho0124@gmail.com",
-      "userId": "wzukitDM2SaT6CdP0hsQ5jU4BGr1"
-    },
-    "-OSNS-2uKMt2KMF02cuQ": {
-      "content": "nnnnnnnnnn",
-      "createdAt": "2025-06-10T06:08:06.945Z",
-      "name": "Nguyễn Trần Anh Thơ",
-      "photoURL": "https://lh3.googleusercontent.com/a/ACg8ocLlxilORMbw1yQ5RLSZjSFGgnJdwHT9maKnvWaQ6EG5qH5AUvc=s96-c",
-      "rating": 3,
-      "role": "Ứng viên",
-      "status": "approved",
-      "userEmail": "ntho0124@gmail.com",
-      "userId": "wzukitDM2SaT6CdP0hsQ5jU4BGr1"
-    },
-    "-OSNS2Nje8WlsnhnD-3q": {
-      "content": "aa",
-      "createdAt": "2025-06-10T06:08:20.566Z",
-      "name": "Nguyễn Trần Anh Thơ",
-      "photoURL": "https://lh3.googleusercontent.com/a/ACg8ocLlxilORMbw1yQ5RLSZjSFGgnJdwHT9maKnvWaQ6EG5qH5AUvc=s96-c",
-      "rating": 3,
-      "role": "Ứng viên",
-      "status": "approved",
-      "userEmail": "ntho0124@gmail.com",
-      "userId": "wzukitDM2SaT6CdP0hsQ5jU4BGr1"
-    },
-    "-OSNS3LjxRHAo3JN91wt": {
-      "content": "aadc",
-      "createdAt": "2025-06-10T06:08:24.534Z",
-      "name": "Nguyễn Trần Anh Thơ",
-      "photoURL": "https://lh3.googleusercontent.com/a/ACg8ocLlxilORMbw1yQ5RLSZjSFGgnJdwHT9maKnvWaQ6EG5qH5AUvc=s96-c",
-      "rating": 3,
-      "role": "Ứng viên",
-      "status": "approved",
-      "userEmail": "ntho0124@gmail.com",
-      "userId": "wzukitDM2SaT6CdP0hsQ5jU4BGr1"
+      "userId": "i1qAlE9jLTZE1fWUPV1CVrNzDA13"
     }
   },
   "users": {
-    "1O29cjK6R2dzYc2mZVfoTKfoT432": {
-      "balance": 3000000,
+    "MOVmccM6xlehVFoVUypESxKO06I2": {
+      "balance": 650000,
       "company": {
         "address": "Số 123, Nguyễn Trãi, Quận 5, TP. Hồ Chí Minh",
         "description": "Ấm - Coffee and Cake không chỉ là nơi thưởng thức cà phê và bánh ngọt, mà còn là không gian để bạn tìm thấy sự thư giãn và kết nối. Mỗi ly cà phê, mỗi chiếc bánh đều được làm từ tâm huyết, mang đến hương vị đậm đà và yêu thương.",
-        "email": "contact@amcoffee.vn",
+        "email": "baokhangml99@gmail.com",
         "name": "Ấm coffee and cake",
-        "phone": "02812345678",
-        "website": "https://amcoffeeandcake.netlify.app/"
+        "phone": "0795858581",
+        "website": "https://amcoffeeandcake.netlify.app"
       },
-      "createdAt": "2025-06-07T03:35:49.707Z",
+      "createdAt": "2025-08-10T05:45:23.822Z",
       "email": "baokhangml99@gmail.com",
       "name": "Võ Trần Hoàng Bảo Khang",
       "role": "employer",
       "transactions": {
-        "POST_1O29cjK6_1749358644059": {
+        "POST_MOVmccM6_1754804886518": {
           "amount": -50000,
-          "createdAt": "2025-06-08T04:57:24.059Z",
-          "description": "Phí đăng tin tuyển dụng: Nhân viên pha chế tại quán The Bean House",
-          "jobId": "1749358644059",
+          "createdAt": "2025-08-10T05:48:06.518Z",
+          "description": "Phí đăng tin tuyển dụng: Nhân viên Pha chế – Quán Ấm Coffee & Cake",
+          "jobId": "1754804886518",
           "status": "completed",
           "type": "job_posting"
         },
-        "POST_1O29cjK6_1749358875661": {
+        "POST_MOVmccM6_1754805233852": {
           "amount": -50000,
-          "createdAt": "2025-06-08T05:01:15.661Z",
-          "description": "Phí đăng tin tuyển dụng: Barista pha chế tại quán Mộc Garden Coffee",
-          "jobId": "1749358875661",
+          "createdAt": "2025-08-10T05:53:53.852Z",
+          "description": "Phí đăng tin tuyển dụng: Kỹ sư phần mềm",
+          "jobId": "1754805233852",
           "status": "completed",
           "type": "job_posting"
         },
-        "POST_1O29cjK6_1749359491638": {
+        "POST_MOVmccM6_1754805313138": {
           "amount": -50000,
-          "createdAt": "2025-06-08T05:11:31.638Z",
-          "description": "Phí đăng tin tuyển dụng: Nhân viên phục vụ tại quán cà phê bánh ngọt",
-          "jobId": "1749359491638",
+          "createdAt": "2025-08-10T05:55:13.138Z",
+          "description": "Phí đăng tin tuyển dụng: Nhân viên Thiết kế đồ họa",
+          "jobId": "1754805313138",
           "status": "completed",
           "type": "job_posting"
         },
-        "POST_1O29cjK6_1749367536839": {
+        "POST_MOVmccM6_1754805396090": {
           "amount": -50000,
-          "createdAt": "2025-06-08T07:25:36.839Z",
-          "description": "Phí đăng tin tuyển dụng: Barista pha chế tại quán Mộc Garden Coffee",
-          "jobId": "1749367536839",
+          "createdAt": "2025-08-10T05:56:36.091Z",
+          "description": "Phí đăng tin tuyển dụng: Nhân viên quản lý kho hàng",
+          "jobId": "1754805396090",
           "status": "completed",
           "type": "job_posting"
         },
-        "POST_1O29cjK6_1749379634828": {
+        "POST_MOVmccM6_1754805461370": {
           "amount": -50000,
-          "createdAt": "2025-06-08T10:47:14.828Z",
-          "description": "Phí đăng tin tuyển dụng: Kỹ thuật viên sửa chữa thiết bị điện tử",
-          "jobId": "1749379634828",
+          "createdAt": "2025-08-10T05:57:41.370Z",
+          "description": "Phí đăng tin tuyển dụng: Kế toán tổng hợp",
+          "jobId": "1754805461370",
           "status": "completed",
           "type": "job_posting"
         },
-        "POST_1O29cjK6_1749532660136": {
+        "POST_MOVmccM6_1754805529258": {
           "amount": -50000,
-          "createdAt": "2025-06-10T05:17:40.136Z",
-          "description": "Phí đăng tin tuyển dụng: Nhân viên pha chế cà phê",
-          "jobId": "1749532660136",
+          "createdAt": "2025-08-10T05:58:49.258Z",
+          "description": "Phí đăng tin tuyển dụng: Chuyên viên Marketing",
+          "jobId": "1754805529258",
           "status": "completed",
           "type": "job_posting"
         },
-        "TOPUP_1O29cjK6_1749353110619": {
+        "POST_MOVmccM6_1754805637539": {
+          "amount": -50000,
+          "createdAt": "2025-08-10T06:00:37.539Z",
+          "description": "Phí đăng tin tuyển dụng: Nhân viên Bảo trì",
+          "jobId": "1754805637539",
+          "status": "completed",
+          "type": "job_posting"
+        },
+        "TOPUP_MOVmccM6_1754804736598": {
           "amount": 1000000,
           "bankCode": "NCB",
-          "completedAt": "20250608103007",
-          "createdAt": "20250608103007",
+          "completedAt": "20250810124701",
+          "createdAt": "20250810124701",
           "orderInfo": "Nap tien tai khoan JOBQUEST",
           "paymentMethod": "vnpay",
           "responseCode": "00",
           "status": "completed",
-          "transactionNo": "15006684",
-          "transactionStatus": "00",
-          "type": "deposit"
-        },
-        "TOPUP_1O29cjK6_1749353907704": {
-          "amount": 300000,
-          "bankCode": "NCB",
-          "completedAt": "20250608103955",
-          "createdAt": "20250608103955",
-          "orderInfo": "Nap tien tai khoan JOBQUEST",
-          "paymentMethod": "vnpay",
-          "responseCode": "00",
-          "status": "completed",
-          "transactionNo": "15006696",
-          "transactionStatus": "00",
-          "type": "deposit"
-        },
-        "TOPUP_1O29cjK6_1749354039041": {
-          "amount": 500000,
-          "bankCode": "NCB",
-          "completedAt": "20250608104130",
-          "createdAt": "20250608104130",
-          "orderInfo": "Nap tien tai khoan JOBQUEST",
-          "paymentMethod": "vnpay",
-          "responseCode": "00",
-          "status": "completed",
-          "transactionNo": "15006701",
-          "transactionStatus": "00",
-          "type": "deposit"
-        },
-        "TOPUP_1O29cjK6_1749354155099": {
-          "amount": 1000000,
-          "bankCode": "VNPAY",
-          "completedAt": "20250608104314",
-          "createdAt": "20250608104314",
-          "orderInfo": "Nap tien tai khoan JOBQUEST",
-          "paymentMethod": "vnpay",
-          "responseCode": "24",
-          "status": "failed",
-          "transactionNo": "0",
-          "transactionStatus": "02",
-          "type": "deposit"
-        },
-        "TOPUP_1O29cjK6_1749354949208": {
-          "amount": 1000000,
-          "bankCode": "VNPAY",
-          "completedAt": "20250608105628",
-          "createdAt": "20250608105628",
-          "orderInfo": "Nap tien tai khoan JOBQUEST",
-          "paymentMethod": "vnpay",
-          "responseCode": "24",
-          "status": "failed",
-          "transactionNo": "0",
-          "transactionStatus": "02",
-          "type": "deposit"
-        },
-        "TOPUP_1O29cjK6_1749355002560": {
-          "amount": 1000000,
-          "bankCode": "VNPAY",
-          "completedAt": "20250608105721",
-          "createdAt": "20250608105721",
-          "orderInfo": "Nap tien tai khoan JOBQUEST",
-          "paymentMethod": "vnpay",
-          "responseCode": "24",
-          "status": "failed",
-          "transactionNo": "0",
-          "transactionStatus": "02",
-          "type": "deposit"
-        },
-        "TOPUP_1O29cjK6_1749357201888": {
-          "amount": 1000000,
-          "bankCode": "NCB",
-          "completedAt": "20250608113427",
-          "createdAt": "20250608113427",
-          "orderInfo": "Nap tien tai khoan JOBQUEST",
-          "paymentMethod": "vnpay",
-          "responseCode": "00",
-          "status": "completed",
-          "transactionNo": "15006788",
-          "transactionStatus": "00",
-          "type": "deposit"
-        },
-        "TOPUP_1O29cjK6_1749532536347": {
-          "amount": 500000,
-          "bankCode": "NCB",
-          "completedAt": "20250610121636",
-          "createdAt": "20250610121636",
-          "orderInfo": "Nap tien tai khoan JOBQUEST",
-          "paymentMethod": "vnpay",
-          "responseCode": "00",
-          "status": "completed",
-          "transactionNo": "15010508",
+          "transactionNo": "15124511",
           "transactionStatus": "00",
           "type": "deposit"
         }
       }
     },
-    "vnmjGmvX5VdI3Ed9GP8ugPlYlb93": {
-      "createdAt": "2025-06-10T05:13:15.243Z",
-      "email": "dangthienchuong250604@gmail.com",
-      "name": "Chương Đặng",
-      "photoURL": "https://lh3.googleusercontent.com/a/ACg8ocLTsa2Ey6iTRBYB6jdE6sQQbz-ueo9FRW4FPvKAgeDuOUd1OQ=s96-c",
+    "i1qAlE9jLTZE1fWUPV1CVrNzDA13": {
+      "createdAt": "2025-08-03T07:12:58.466Z",
+      "email": "ntho0124@gmail.com",
+      "name": "Anh Thơ",
+      "photoURL": "https://lh3.googleusercontent.com/a/ACg8ocLlxilORMbw1yQ5RLSZjSFGgnJdwHT9maKnvWaQ6EG5qH5AUvc=s96-c",
       "role": "candidate"
     },
-    "wzukitDM2SaT6CdP0hsQ5jU4BGr1": {
-      "createdAt": "2025-06-03T10:22:02.087Z",
-      "email": "ntho0124@gmail.com",
-      "name": "Nguyễn Trần Anh Thơ",
-      "role": "candidate"
+    "p2hc6bZBAobt4TfI8pgqJU3u23J2": {
+      "balance": 250000,
+      "company": {
+        "address": "123 Đường Lê Văn Sỹ, Phường 13, Quận Phú Nhuận, TP. Hồ Chí Minh",
+        "description": "Công Ty TNHH Bánh Ngọt Tân Phúc An là doanh nghiệp chuyên kinh doanh và phân phối các dòng bánh ngọt truyền thống, bánh Âu, bánh tiệc và bánh theo yêu cầu tại TP. Hồ Chí Minh. Với phương châm \"Chất lượng tạo niềm tin\", công ty không ngừng cải tiến công thức và nguyên liệu để mang đến những sản phẩm thơm ngon, an toàn và phù hợp với khẩu vị người Việt. Bên cạnh hệ thống cửa hàng, Tân Phúc An còn cung cấp dịch vụ giao bánh tận nơi và nhận đặt bánh cho sự kiện, sinh nhật, tiệc cưới, hội nghị,…",
+        "email": "contact@amcoffee.vn",
+        "name": "Công Ty TNHH Bánh Ngọt Tân Phúc An",
+        "phone": "0907705000",
+        "website": "https://amcoffeeandcake.netlify.app"
+      },
+      "createdAt": "2025-08-03T06:25:23.052Z",
+      "email": "csaichiu441@gmail.com",
+      "name": "Nguyền Minh Anh",
+      "role": "employer",
+      "transactions": {
+        "POST_p2hc6bZB_1754205149455": {
+          "amount": -50000,
+          "createdAt": "2025-08-03T07:12:29.455Z",
+          "description": "Phí đăng tin tuyển dụng: Nhân Viên Bán Hàng Tại Tiệm Bánh ",
+          "jobId": "1754205149455",
+          "status": "completed",
+          "type": "job_posting"
+        },
+        "TOPUP_p2hc6bZB_1754202473737": {
+          "amount": 300000,
+          "bankCode": "NCB",
+          "completedAt": "20250803133110",
+          "createdAt": "20250803133110",
+          "orderInfo": "Nap tien tai khoan JOBQUEST",
+          "paymentMethod": "vnpay",
+          "responseCode": "00",
+          "status": "completed",
+          "transactionNo": "15113807",
+          "transactionStatus": "00",
+          "type": "deposit"
+        },
+        "TOPUP_p2hc6bZB_1754541535808": {
+          "amount": 150000,
+          "bankCode": "NCB",
+          "completedAt": "20250807114043",
+          "createdAt": "20250807114043",
+          "orderInfo": "Nap tien tai khoan JOBQUEST",
+          "paymentMethod": "vnpay",
+          "responseCode": "24",
+          "status": "failed",
+          "transactionNo": "15120448",
+          "transactionStatus": "02",
+          "type": "deposit"
+        }
+      }
     }
   }
 }

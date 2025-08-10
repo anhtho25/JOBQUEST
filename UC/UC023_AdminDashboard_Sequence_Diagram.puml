@@ -1,0 +1,26 @@
+@startuml UC023_AdminDashboard_Sequence_Diagram
+ title UC023: Xem dashboard thống kê - Sequence Diagram
+
+actor "Quản trị viên" as Admin
+participant "Giao diện dashboard" as UI
+participant "Hệ thống thống kê" as Stats
+participant "Cơ sở dữ liệu" as DB
+
+Admin -> UI: 1. Truy cập dashboard
+activate UI
+UI -> Stats: 2. Yêu cầu dữ liệu dashboard
+activate Stats
+Stats -> DB: 3. Lấy thống kê doanh thu
+Stats -> DB: 4. Lấy thống kê đơn ứng tuyển
+Stats -> DB: 5. Lấy phân bố ngành nghề
+Stats -> DB: 6. Lấy hoạt động gần đây
+DB --> Stats: 7. Trả về dữ liệu dashboard(1)
+Stats --> UI: 8. Trả về dữ liệu dashboard(2)
+UI --> Admin: 9. Hiển thị dashboard
+note right: Dashboard được hiển thị
+
+deactivate DB
+deactivate Stats
+deactivate UI
+
+@enduml 

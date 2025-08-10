@@ -12,10 +12,18 @@
     <!-- Firebase SDK -->
     <script type="module">
         // Import the functions you need from the SDKs you need
+
+
+        //firebase app (cho mọi ứng dụng firebase)
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-        import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-analytics.js";
+        // firebase authentication (xác thực người dùng)
         import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, sendPasswordResetEmail, signOut, onAuthStateChanged, updateProfile, GoogleAuthProvider, signInWithPopup } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+        // firebase realtime database (cơ sở dữ liệu)
         import { getDatabase, ref, set, onValue, query, orderByChild, equalTo, limitToFirst } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-analytics.js";
+
+
+
 
         // Your web app's Firebase configuration
         const firebaseConfig = {
@@ -558,22 +566,7 @@
     </style>
 </head>
 <body>
-    <!-- Top Bar -->
-    <div class="top-bar bg-dark text-light py-2">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-md-6">
-                    <small><i class="fas fa-phone-alt me-2"></i> Hotline: (84) 123-456-789</small>
-                    <small class="ms-3"><i class="fas fa-envelope me-2"></i> contact@jobportal.com</small>
-                </div>
-                <div class="col-md-6 text-end">
-                    <a href="#" class="text-light me-3"><i class="fab fa-facebook"></i></a>
-                    <a href="#" class="text-light me-3"><i class="fab fa-linkedin"></i></a>
-                    <a href="#" class="text-light"><i class="fab fa-twitter"></i></a>
-                </div>
-            </div>
-        </div>
-    </div>
+  
 
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top">
@@ -605,6 +598,9 @@
                  
                     <li class="nav-item">
                         <a class="nav-link" href="news.html"><i class="fas fa-newspaper"></i> Tin tức</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Terms of Service.html"><i class="fas fa-shield-alt"></i> Chính sách</a>
                     </li>
                 </ul>
                 <div class="d-flex align-items-center" id="navbarAccountArea">
@@ -687,26 +683,26 @@
                 <div class="col-md-2">
                     <h5 class="mb-4">Liên kết</h5>
                     <ul class="list-unstyled">
-                        <li><a href="#" class="text-light">Trang chủ</a></li>
-                        <li><a href="#" class="text-light">Tìm việc</a></li>
-                        <li><a href="#" class="text-light">Nhà tuyển dụng</a></li>
-                        <li><a href="#" class="text-light">Tin tức</a></li>
+                        <li><a href="index.html" class="text-light">Trang chủ</a></li>
+                        <li><a href="jobs.html" class="text-light">Tìm việc</a></li>
+                        <li><a href="create-cv.html"class="text-light">Tạo CV</a></li>
+                        <li><a href="news.html" class="text-light">Tin tức</a></li>
                     </ul>
                 </div>
                 <div class="col-md-3">
                     <h5 class="mb-4">Hỗ trợ</h5>
                     <ul class="list-unstyled">
-                        <li><a href="#" class="text-light">Trung tâm trợ giúp</a></li>
-                        <li><a href="#" class="text-light">Điều khoản sử dụng</a></li>
-                        <li><a href="#" class="text-light">Chính sách bảo mật</a></li>
-                        <li><a href="#" class="text-light">Liên hệ</a></li>
+                      
+                        <li><a href="Terms of Service.html" class="text-light">Điều khoản sử dụng</a></li>
+                        <li><a href="Terms of Service.html" class="text-light">Chính sách bảo mật</a></li>
+                        <li><a href="index.html" class="text-light">Đánh giá</a></li>
                     </ul>
                 </div>
                 <div class="col-md-3">
                     <h5 class="mb-4">Liên hệ</h5>
                     <ul class="list-unstyled">
-                        <li><i class="fas fa-map-marker-alt me-2"></i> 123 Đường ABC, Quận XYZ, TP.HCM</li>
-                        <li><i class="fas fa-phone me-2"></i> (84) 123-456-789</li>
+                        <li><i class="fas fa-map-marker-alt me-2"></i> 168, Nguyễn Văn Cừ, P.An Bình, Q.Ninh Kiều, TP.Cần Thơ</li>
+                        <li><i class="fas fa-phone me-2"></i> (84) 090-770-8210</li>
                         <li><i class="fas fa-envelope me-2"></i> contact@jobportal.com</li>
                     </ul>
                 </div>
@@ -717,7 +713,7 @@
                     <p class="mb-0">&copy; 2024 VIỆC LÀM NHANH. All rights reserved.</p>
                 </div>
                 <div class="col-md-6 text-end">
-                    <img src="https://sandbox.vnpayment.vn/paymentv2/images/brands/logo.svg" alt="VNPAY" height="30">
+                    <img src="images\jobquest-logo.png" alt="logo" height="45">
                 </div>
             </div>
         </div>
@@ -1064,7 +1060,7 @@
                     const latestNews = allNews
                         .filter(news => news.status === 'published')
                         .sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt))
-                        .slice(0, 6);
+                        .slice(0, 100);
                     
                     if (latestNews.length > 0) {
                         latestContainer.innerHTML = latestNews.map(news => `

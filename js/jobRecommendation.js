@@ -106,7 +106,7 @@ function calculateMatchingScore(cv, job, vocabulary) {
 }
 
 // Hàm chính để tìm các job phù hợp nhất với CV
-async function findMatchingJobs(cv, allJobs, k = 5) {
+async function findMatchingJobs(cv, allJobs, k = 3) {
     if (!cv || !allJobs || allJobs.length === 0) {
         return [];
     }
@@ -124,10 +124,11 @@ async function findMatchingJobs(cv, allJobs, k = 5) {
         };
     });
 
-    // Sắp xếp theo điểm giảm dần và lấy k jobs có điểm cao nhất
+    // Lọc jobs có điểm phù hợp trên 50% và sắp xếp theo điểm giảm dần
     return jobScores
+        .filter(job => job.matchScore >= 50) // Chỉ lấy jobs có điểm >= 50%
         .sort((a, b) => b.matchScore - a.matchScore)
-        .slice(0, k);
+        .slice(0, k); // Chỉ lấy 3 jobs có điểm cao nhất
 }
 
 // Export các hàm để sử dụng

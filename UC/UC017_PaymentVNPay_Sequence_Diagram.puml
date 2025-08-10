@@ -1,0 +1,42 @@
+@startuml UC017_PaymentVNPay_Sequence_Diagram
+ title UC017: Tài khoản và nạp tiền - Sequence Diagram
+
+actor "Nhà tuyển dụng" as Employer
+actor "VNPAY" as VNPay
+participant "Giao diện thanh toán" as UI
+participant "Hệ thống thanh toán" as Payment
+participant "Cơ sở dữ liệu" as DB
+
+Employer -> UI: 1. Chọn thanh toán qua VNPay
+activate UI
+UI -> Payment: 2. Tạo yêu cầu thanh toán
+activate Payment
+Payment -> DB: 3. Lưu thông tin giao dịch
+Payment --> UI: 4. Trả về URL thanh toán VNPay
+UI --> Employer: 5. Chuyển hướng đến cổng VNPay
+
+Employer -> VNPay: 6. Nhập thông tin thẻ
+activate VNPay
+VNPay -> VNPay: 7. Xác thực thanh toán
+VNPay --> Employer: 8. Kết quả thanh toán
+
+alt Thanh toán thành công
+    VNPay -> Payment:  Gửi kết quả thanh toán thành công
+    Payment -> DB:  Cập nhật trạng thái giao dịch
+    Payment --> UI:  Thông báo thanh toán thành công
+    UI --> Employer:  Quay về trang chủ
+    note right: Thanh toán hoàn tất
+else Thanh toán thất bại
+    VNPay -> Payment:  Gửi kết quả thanh toán thất bại
+    Payment -> DB:  Cập nhật trạng thái giao dịch
+    Payment --> UI:  Thông báo thanh toán thất bại
+    UI --> Employer:  Hiển thị lỗi thanh toán
+    note right: Exception: Thanh toán thất bại
+end
+
+deactivate VNPay
+deactivate DB
+deactivate Payment
+deactivate UI
+
+@enduml 

@@ -1,0 +1,31 @@
+@startuml UC009_News_Sequence_Diagram
+ title UC009: Xem tin tức - Sequence Diagram
+
+actor "Khách vãng lai, Ứng viên, Nhà tuyển dụng" as User
+participant "Giao diện tin tức" as UI
+participant "Hệ thống" as System
+participant "Cơ sở dữ liệu" as DB
+
+User -> UI: 1. Truy cập trang tin tức
+activate UI
+UI -> System: 2. Yêu cầu tin tức nổi bật, mới nhất
+activate System
+System -> DB: 3. Lấy tin tức nổi bật
+System -> DB: 4. Lấy tin tức mới nhất
+DB --> System: 5. Trả về dữ liệu tin tức
+System --> UI: 6. Trả về dữ liệu tin tức
+UI --> User: 7. Hiển thị danh sách tin tức
+
+User -> UI: 8. Chọn tin tức để đọc chi tiết
+UI -> System: 9. Yêu cầu chi tiết tin tức
+System -> DB: 10. Lấy chi tiết tin tức
+DB --> System: 11. Trả về chi tiết tin tức
+System --> UI: 12. Trả về chi tiết tin tức
+UI --> User: 13. Hiển thị chi tiết tin tức
+note right: Tin tức được hiển thị
+
+deactivate DB
+deactivate System
+deactivate UI
+
+@enduml

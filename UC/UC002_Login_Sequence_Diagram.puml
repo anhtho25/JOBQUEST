@@ -1,0 +1,40 @@
+@startuml UC002_Login_Sequence_Diagram
+ title UC002: Đăng ký - Sequence Diagram
+
+actor "Khách vãng lai" as User
+participant "Giao diện đăng ký" as UI
+participant "Hệ thống xác thực Firebase Authentication" as Auth
+participant "Cơ sở dữ liệu" as DB
+
+User -> UI: 1. Truy cập trang đăng ký
+activate UI
+
+User -> UI: 2. Nhập thông tin cá nhân
+User -> UI: 3. Xác nhận mật khẩu
+User -> UI: 4. Đồng ý điều khoản
+User -> UI: 5. Xác nhận đăng ký
+
+UI -> Auth: 6. Gửi thông tin đăng ký
+activate Auth
+
+Auth -> DB: 7. Kiểm tra email đã tồn tại?
+activate DB
+DB --> Auth: 8. Kết quả kiểm tra
+
+alt Email chưa tồn tại & thông tin hợp lệ
+    Auth -> DB:  Tạo tài khoản mới
+    DB --> Auth:  Kết quả tạo tài khoản
+    Auth --> UI:  Đăng ký thành công
+    UI --> User:  Thông báo thành công
+    note right: Tài khoản mới được tạo thành công
+else Email đã tồn tại hoặc thông tin không hợp lệ
+    Auth --> UI:  Đăng ký thất bại
+    UI --> User:  Hiển thị thông báo lỗi
+    note right: Exception: Email đã tồn tại/thông tin không hợp lệ
+end
+
+deactivate DB
+deactivate Auth
+deactivate UI
+
+@enduml

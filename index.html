@@ -212,34 +212,220 @@
         .quick-stats {
             background: linear-gradient(135deg, #007bff 0%, #0a3570 100%);
             color: #fff;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .quick-stats::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.1"/><circle cx="50" cy="10" r="0.5" fill="white" opacity="0.1"/><circle cx="10" cy="60" r="0.5" fill="white" opacity="0.1"/><circle cx="90" cy="40" r="0.5" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            pointer-events: none;
         }
 
         .stat-item {
-            padding: 1rem;
-            transition: transform 0.3s ease;
+            padding: 1.5rem 1rem;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 1;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         .stat-item:hover {
             transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
         }
 
         .stat-item i {
             color: #fff;
+            transition: transform 0.3s ease;
+        }
+
+        .stat-item:hover i {
+            transform: scale(1.1);
         }
 
         .stat-item h3 {
-            font-size: 2rem;
+            font-size: 2.5rem;
             font-weight: bold;
             color: #fff;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .stat-item p {
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+        }
+
+        .stat-item small {
+            font-size: 0.85rem;
+            font-weight: 400;
+        }
+
+        /* Loading animation */
+        .loading-dots {
+            display: inline-block;
+            animation: loadingDots 1.5s infinite;
+        }
+
+        @keyframes loadingDots {
+            0%, 20% {
+                content: ".";
+            }
+            40% {
+                content: "..";
+            }
+            60%, 100% {
+                content: "...";
+            }
+        }
+
+        /* Responsive cho Quick Stats */
+        @media (max-width: 768px) {
+            .stat-item {
+                padding: 1rem 0.5rem;
+                margin-bottom: 1rem;
+            }
+            
+            .stat-item h3 {
+                font-size: 2rem;
+            }
+            
+            .stat-item p {
+                font-size: 1rem;
+            }
+            
+            .stat-item small {
+                font-size: 0.8rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .stat-item h3 {
+                font-size: 1.8rem;
+            }
+            
+            .stat-item i {
+                font-size: 1.5rem !important;
+            }
+        }
+
+        /* Style cho thông báo đăng nhập */
+        .text-warning {
+            color: #ffc107 !important;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        .stat-item .text-warning {
+            font-size: 1.2rem;
+            font-weight: 600;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
         }
 
         /* Job Categories */
+        .categories-carousel-container {
+            overflow: hidden;
+            position: relative;
+            padding: 0 20px;
+        }
+
+        .categories-carousel {
+            display: flex;
+            gap: 20px;
+            animation: scrollCategories 30s linear infinite;
+            width: max-content;
+        }
+
+        .categories-carousel:hover {
+            animation-play-state: paused;
+        }
+
+        /* Thêm gradient overlay để tạo hiệu ứng fade */
+        .categories-carousel-container::before,
+        .categories-carousel-container::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 50px;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .categories-carousel-container::before {
+            left: 0;
+            background: linear-gradient(to right, #e6f0fa 0%, transparent 100%);
+        }
+
+        .categories-carousel-container::after {
+            right: 0;
+            background: linear-gradient(to left, #e6f0fa 0%, transparent 100%);
+        }
+
+        @keyframes scrollCategories {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        /* Responsive cho carousel */
+        @media (max-width: 768px) {
+            .categories-carousel {
+                gap: 15px;
+            }
+            
+            .category-card {
+                min-width: 160px;
+                padding: 15px 10px !important;
+            }
+            
+            .category-card h6 {
+                font-size: 0.9rem;
+            }
+            
+            .category-card .btn {
+                font-size: 0.8rem;
+                padding: 0.25rem 0.5rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .categories-carousel {
+                gap: 10px;
+            }
+            
+            .category-card {
+                min-width: 140px;
+                padding: 12px 8px !important;
+            }
+            
+            .category-card i {
+                font-size: 1.5rem !important;
+            }
+        }
+
         .category-card {
             background: #fff;
             border-radius: 10px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.07);
             transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s;
             border: 1px solid #e6f0fa;
+            min-width: 200px;
+            flex-shrink: 0;
         }
 
         .category-card:hover {
@@ -605,22 +791,7 @@
     </style>
 </head>
 <body>
-    <!-- Top Bar -->
-    <div class="top-bar bg-dark text-light py-2">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-md-6">
-                    <small><i class="fas fa-phone-alt me-2"></i> Hotline: (84) 123-456-789</small>
-                    <small class="ms-3"><i class="fas fa-envelope me-2"></i> contact@jobportal.com</small>
-                </div>
-                <div class="col-md-6 text-end">
-                    <a href="#" class="text-light me-3"><i class="fab fa-facebook"></i></a>
-                    <a href="#" class="text-light me-3"><i class="fab fa-linkedin"></i></a>
-                    <a href="#" class="text-light"><i class="fab fa-twitter"></i></a>
-                </div>
-            </div>
-        </div>
-    </div>
+
 
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top">
@@ -649,9 +820,12 @@
               
                         </ul>
                     </li>
-                  
+
                     <li class="nav-item">
                         <a class="nav-link" href="news.html"><i class="fas fa-newspaper"></i> Tin tức</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Terms of Service.html"><i class="fas fa-shield-alt"></i> Chính sách</a>
                     </li>
                 </ul>
                 <div class="d-flex align-items-center" id="navbarAccountArea">
@@ -663,7 +837,7 @@
     </nav>
 
     <!-- Hero Section -->
-    <div class="hero-section position-relative" style="background: url('images/we-are-hiring-digital-collage.jpg') center center/cover no-repeat; min-height: 450px;">
+    <div class="hero-section position-relative" style="background: url('images/aaa.jpg') center center/cover no-repeat; min-height: 450px;">
         <div class="container position-relative" style="z-index:2;">
             <div class="row align-items-center">
                 <!-- <div class="col-8 col-lg-7.5 py-5" style="background: rgba(255,255,255,0.85); border-radius: 24px;">
@@ -698,32 +872,36 @@
     <div class="quick-stats py-4 bg-primary text-white">
         <div class="container">
             <div class="row text-center">
-                <div class="col-md-3">
+                <div class="col-md-3 col-sm-6 mb-3">
                     <div class="stat-item">
                         <i class="fas fa-briefcase fa-2x mb-2"></i>
-                        <h3 class="mb-0">10,000+</h3>
+                        <h3 class="mb-0" id="totalJobs">0</h3>
                         <p class="mb-0">Việc làm</p>
+                        <small class="text-light opacity-75">Đã phê duyệt</small>
                     </div>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-3 col-sm-6 mb-3">
                     <div class="stat-item">
                         <i class="fas fa-building fa-2x mb-2"></i>
-                        <h3 class="mb-0">5,000+</h3>
+                        <h3 class="mb-0" id="totalCompanies">0</h3>
                         <p class="mb-0">Công ty</p>
+                        <small class="text-light opacity-75">Đang hoạt động</small>
                     </div>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-3 col-sm-6 mb-3">
                     <div class="stat-item">
                         <i class="fas fa-users fa-2x mb-2"></i>
-                        <h3 class="mb-0">50,000+</h3>
+                        <h3 class="mb-0" id="totalCandidates">0</h3>
                         <p class="mb-0">Ứng viên</p>
+                        <small class="text-light opacity-75">Đã đăng ký</small>
                     </div>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-3 col-sm-6 mb-3">
                     <div class="stat-item">
                         <i class="fas fa-handshake fa-2x mb-2"></i>
-                        <h3 class="mb-0">8,000+</h3>
-                        <p class="mb-0">Tuyển dụng thành công</p>
+                        <h3 class="mb-0" id="totalEmployers">0</h3>
+                        <p class="mb-0">Nhà tuyển dụng</p>
+                        <small class="text-light opacity-75">Đã xác thực</small>
                     </div>
                 </div>
             </div>
@@ -734,38 +912,9 @@
     <div class="job-categories py-5">
         <div class="container">
             <h2 class="text-center mb-5">Ngành Nghề Phổ Biến</h2>
-            <div class="row g-4">
-                <div class="col-md-3">
-                    <div class="category-card text-center p-4">
-                        <i class="fas fa-laptop-code fa-3x text-primary mb-3"></i>
-                        <h5>Công nghệ thông tin</h5>
-                        <p class="text-muted">1,234 việc làm</p>
-                        <a href="#" class="btn btn-outline-primary btn-sm">Xem ngay</a>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="category-card text-center p-4">
-                        <i class="fas fa-chart-line fa-3x text-primary mb-3"></i>
-                        <h5>Marketing</h5>
-                        <p class="text-muted">856 việc làm</p>
-                        <a href="#" class="btn btn-outline-primary btn-sm">Xem ngay</a>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="category-card text-center p-4">
-                        <i class="fas fa-bullhorn fa-3x text-primary mb-3"></i>
-                        <h5>Kinh doanh</h5>
-                        <p class="text-muted">1,567 việc làm</p>
-                        <a href="#" class="btn btn-outline-primary btn-sm">Xem ngay</a>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="category-card text-center p-4">
-                        <i class="fas fa-graduation-cap fa-3x text-primary mb-3"></i>
-                        <h5>Giáo dục</h5>
-                        <p class="text-muted">432 việc làm</p>
-                        <a href="#" class="btn btn-outline-primary btn-sm">Xem ngay</a>
-                    </div>
+            <div class="categories-carousel-container">
+                <div class="categories-carousel" id="jobCategoriesContainer">
+                    <!-- Categories sẽ được render động từ Firebase -->
                 </div>
             </div>
         </div>
@@ -809,14 +958,7 @@
         <div class="container">
             <div class="d-flex justify-content-between align-items-center mb-5">
                 <h2 class="mb-0">Việc Làm Mới Nhất</h2>
-                <div class="job-filters">
-                    <select class="form-select">
-                        <option>Tất cả ngành nghề</option>
-                        <option>CNTT</option>
-                        <option>Marketing</option>
-                        <option>Kinh doanh</option>
-                    </select>
-                </div>
+               
             </div>
             <div class="row g-4" id="latestJobs">
                 <!-- Job cards sẽ được render ở đây bằng JS -->
@@ -838,11 +980,7 @@
                 </div>
                 <div class="col-md-6 text-md-end">
                     <div class="testimonial-nav">
-                        <button class="btn btn-outline-primary me-2" id="prevTestimonial">
-                            <i class="fas fa-chevron-left"></i>
-                        </button>
-                        <button class="btn btn-outline-primary" id="nextTestimonial">
-                            <i class="fas fa-chevron-right"></i>
+                       
                         </button>
                     </div>
                 </div>
@@ -888,26 +1026,25 @@
                 <div class="col-md-2">
                     <h5 class="mb-4">Liên kết</h5>
                     <ul class="list-unstyled">
-                        <li><a href="#" class="text-light">Trang chủ</a></li>
-                        <li><a href="#" class="text-light">Tìm việc</a></li>
-                        <li><a href="#" class="text-light">Nhà tuyển dụng</a></li>
-                        <li><a href="#" class="text-light">Tin tức</a></li>
+                        <li><a href="index.html" class="text-light">Trang chủ</a></li>
+                        <li><a href="jobs.html" class="text-light">Tìm việc</a></li>
+                        <li><a href="create-cv.html"class="text-light">Tạo CV</a></li>
+                        <li><a href="news.html" class="text-light">Tin tức</a></li>
                     </ul>
                 </div>
                 <div class="col-md-3">
                     <h5 class="mb-4">Hỗ trợ</h5>
                     <ul class="list-unstyled">
-                        <li><a href="#" class="text-light">Trung tâm trợ giúp</a></li>
-                        <li><a href="#" class="text-light">Điều khoản sử dụng</a></li>
-                        <li><a href="#" class="text-light">Chính sách bảo mật</a></li>
-                        <li><a href="#" class="text-light">Liên hệ</a></li>
+                        <li><a href="Terms of Service.html" class="text-light">Điều khoản sử dụng</a></li>
+                        <li><a href="Terms of Service.html" class="text-light">Chính sách bảo mật</a></li>
+                        <li><a href="index.html" class="text-light">Đánh giá</a></li>
                     </ul>
                 </div>
                 <div class="col-md-3">
                     <h5 class="mb-4">Liên hệ</h5>
                     <ul class="list-unstyled">
-                        <li><i class="fas fa-map-marker-alt me-2"></i> 123 Đường ABC, Quận XYZ, TP.HCM</li>
-                        <li><i class="fas fa-phone me-2"></i> (84) 123-456-789</li>
+                        <li><i class="fas fa-map-marker-alt me-2"></i> 168, Nguyễn Văn Cừ, P.An Bình, Q.Ninh Kiều, TP.Cần Thơ</li>
+                        <li><i class="fas fa-phone me-2"></i> (84) 090-770-8210</li>
                         <li><i class="fas fa-envelope me-2"></i> contact@jobportal.com</li>
                     </ul>
                 </div>
@@ -918,7 +1055,7 @@
                     <p class="mb-0">&copy; 2024 VIỆC LÀM NHANH. All rights reserved.</p>
                 </div>
                 <div class="col-md-6 text-end">
-                    <img src="https://sandbox.vnpayment.vn/paymentv2/images/brands/logo.svg" alt="VNPAY" height="30">
+                    <img src="images\jobquest-logo.png" alt="logo" height="45">
                 </div>
             </div>
         </div>
@@ -1614,6 +1751,7 @@
         const testimonialContainer = document.getElementById('testimonialContainer');
         let allTestimonials = [];
 
+        // Function load testimonials cũ (để tương thích)
         function loadLatestTestimonials() {
             const testimonialRef = firebase.ref(database, 'testimonials');
             const testimonialQuery = firebase.query(
@@ -1630,18 +1768,24 @@
                 allTestimonials = [];
                 snapshot.forEach((childSnapshot) => {
                     const testimonial = childSnapshot.val();
-                    allTestimonials.push({
-                        id: childSnapshot.key,
-                        ...testimonial
-                    });
+                    // Chỉ hiển thị testimonials đã được approved
+                    if (testimonial.status === 'approved') {
+                        allTestimonials.push({
+                            id: childSnapshot.key,
+                            ...testimonial
+                        });
+                    }
                 });
 
-                // Sắp xếp theo thời gian mới nhất và giới hạn 5 đánh giá
+                // Sắp xếp theo thời gian mới nhất và giới hạn 3 đánh giá
                 allTestimonials.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
-                allTestimonials = allTestimonials.slice(0, 5);
+                allTestimonials = allTestimonials.slice(0, 3);
 
                 // Hiển thị đánh giá
                 renderTestimonials();
+            }, (error) => {
+                console.error('Error loading testimonials:', error);
+                testimonialContainer.innerHTML = '<div class="col-12 text-center text-muted">Không thể tải đánh giá. Vui lòng thử lại sau.</div>';
             });
         }
 
@@ -1655,12 +1799,13 @@
                 <div class="col mb-4">
                     <div class="testimonial-card p-4 h-100 border rounded shadow-sm">
                         <div class="d-flex align-items-center mb-3">
-                            <img src="${testimonial.photoURL || 'https://via.placeholder.com/60'}" 
+                            <img src="${testimonial.photoURL || 'https://via.placeholder.com/60/007bff/ffffff?text=' + testimonial.name.charAt(0)}" 
                                  alt="${testimonial.name}" 
                                  class="rounded-circle me-3" 
                                  width="60"
                                  height="60"
-                                 style="object-fit: cover;">
+                                 style="object-fit: cover;"
+                                 onerror="this.src='https://via.placeholder.com/60/007bff/ffffff?text=${testimonial.name.charAt(0)}'">
                             <div>
                                 <h5 class="mb-1">${testimonial.name}</h5>
                                 <p class="text-muted mb-0">${testimonial.role}</p>
@@ -1684,6 +1829,20 @@
                     ${testimonialHTML}
                 </div>
             `;
+
+            // Thêm hiệu ứng hover cho testimonial cards
+            const testimonialCards = document.querySelectorAll('.testimonial-card');
+            testimonialCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-5px)';
+                    this.style.boxShadow = '0 8px 25px rgba(0,0,0,0.15)';
+                    this.style.transition = 'all 0.3s ease';
+                });
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                    this.style.boxShadow = '';
+                });
+            });
         }
 
         // Load testimonials khi trang được tải
@@ -1691,6 +1850,654 @@
 
         // Load đánh giá ban đầu
         loadLatestTestimonials();
+
+        // Function để load testimonials dựa trên trạng thái đăng nhập
+        function loadTestimonialsBasedOnAuth() {
+            const unsubscribe = onAuthStateChanged(auth, (user) => {
+                // Luôn load dữ liệu thực từ database, bất kể trạng thái đăng nhập
+                loadLatestTestimonials();
+            });
+        }
+
+        // Function để kiểm tra và tạo node testimonials nếu chưa có
+        function ensureTestimonialsNode() {
+            const testimonialRef = firebase.ref(database, 'testimonials');
+            firebase.onValue(testimonialRef, (snapshot) => {
+                if (!snapshot.exists()) {
+                    console.log('Node testimonials chưa tồn tại, cần tạo...');
+                } else {
+                    console.log('Node testimonials đã tồn tại');
+                }
+            }, { once: true });
+        }
+
+        // Gọi function mới
+        loadTestimonialsBasedOnAuth();
+        ensureTestimonialsNode();
+
+        // Function debug để kiểm tra cấu trúc database
+        function debugDatabaseStructure() {
+            console.log('=== DEBUG DATABASE STRUCTURE ===');
+            
+            // Kiểm tra node testimonials
+            const testimonialRef = firebase.ref(database, 'testimonials');
+            firebase.onValue(testimonialRef, (snapshot) => {
+                console.log('Testimonials node:', snapshot.exists() ? 'EXISTS' : 'NOT EXISTS');
+                if (snapshot.exists()) {
+                    console.log('Testimonials data:', snapshot.val());
+                }
+            }, { once: true });
+
+            // Kiểm tra node messages/testimonials (nếu có)
+            const messagesTestimonialRef = firebase.ref(database, 'messages/testimonials');
+            firebase.onValue(messagesTestimonialRef, (snapshot) => {
+                console.log('Messages/testimonials node:', snapshot.exists() ? 'EXISTS' : 'NOT EXISTS');
+                if (snapshot.exists()) {
+                    console.log('Messages/testimonials data:', snapshot.val());
+                }
+            }, { once: true });
+        }
+
+        // Gọi debug function
+        debugDatabaseStructure();
+
+
+
+        // Function load testimonials từ database
+        function loadLatestTestimonials() {
+            const testimonialContainer = document.getElementById('testimonialContainer');
+            if (!testimonialContainer) return;
+
+            // Hiển thị loading
+            testimonialContainer.innerHTML = '<div class="col-12 text-center"><div class="spinner-border text-primary" role="status"><span class="visually-hidden">Loading...</span></div></div>';
+
+            // Thử load từ node testimonials trước
+            const testimonialRef = firebase.ref(database, 'testimonials');
+            const testimonialQuery = firebase.query(
+                testimonialRef,
+                firebase.orderByChild('createdAt')
+            );
+
+            firebase.onValue(testimonialQuery, (snapshot) => {
+                if (snapshot.exists()) {
+                    // Nếu có dữ liệu ở node testimonials
+                    processTestimonialsData(snapshot);
+                } else {
+                    // Thử load từ node messages/testimonials
+                    console.log('Testimonials not found at root level, trying messages/testimonials...');
+                    loadFromMessagesTestimonials();
+                }
+            }, (error) => {
+                console.error('Error loading from testimonials:', error);
+                // Thử load từ node messages/testimonials
+                loadFromMessagesTestimonials();
+            });
+        }
+
+        // Function load testimonials từ messages/testimonials
+        function loadFromMessagesTestimonials() {
+            const testimonialContainer = document.getElementById('testimonialContainer');
+            const messagesTestimonialRef = firebase.ref(database, 'messages/testimonials');
+            const messagesTestimonialQuery = firebase.query(
+                messagesTestimonialRef,
+                firebase.orderByChild('createdAt')
+            );
+
+            firebase.onValue(messagesTestimonialQuery, (snapshot) => {
+                if (snapshot.exists()) {
+                    console.log('Found testimonials in messages/testimonials');
+                    processTestimonialsData(snapshot);
+                } else {
+                    testimonialContainer.innerHTML = '<div class="col-12 text-center">Chưa có đánh giá nào.</div>';
+                }
+            }, (error) => {
+                console.error('Error loading from messages/testimonials:', error);
+                testimonialContainer.innerHTML = '<div class="col-12 text-center text-muted">Không thể tải đánh giá. Vui lòng thử lại sau.</div>';
+            });
+        }
+
+        // Function xử lý dữ liệu testimonials
+        function processTestimonialsData(snapshot) {
+            allTestimonials = [];
+            snapshot.forEach((childSnapshot) => {
+                const testimonial = childSnapshot.val();
+                // Chỉ hiển thị testimonials đã được approved
+                if (testimonial.status === 'approved') {
+                    allTestimonials.push({
+                        id: childSnapshot.key,
+                        ...testimonial
+                    });
+                }
+            });
+
+            // Sắp xếp theo thời gian mới nhất và giới hạn 3 đánh giá
+            allTestimonials.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+            allTestimonials = allTestimonials.slice(0, 3);
+
+            // Hiển thị đánh giá
+            renderTestimonials();
+        }
+
+        // Load và hiển thị ngành nghề phổ biến từ Firebase
+        function loadJobCategories() {
+            const jobCategoriesContainer = document.getElementById('jobCategoriesContainer');
+            if (!jobCategoriesContainer) return;
+
+            const jobsRef = ref(database, 'jobs');
+            
+            onValue(jobsRef, (snapshot) => {
+                if (!snapshot.exists()) {
+                    jobCategoriesContainer.innerHTML = '<div class="col-12 text-center text-muted">Chưa có dữ liệu việc làm.</div>';
+                    return;
+                }
+
+                // Đếm số lượng việc làm theo category
+                const categoryCounts = {};
+                const categoryData = {};
+
+                snapshot.forEach((childSnapshot) => {
+                    const job = childSnapshot.val();
+                    if (job.status === 'approved') {
+                        const category = job.category;
+                        if (!categoryCounts[category]) {
+                            categoryCounts[category] = 0;
+                            categoryData[category] = job;
+                        }
+                        categoryCounts[category]++;
+                    }
+                });
+
+                // Định nghĩa thông tin cho từng category
+                const categoryInfo = {
+                    'IT': {
+                        name: 'Công nghệ thông tin',
+                        icon: 'fas fa-laptop-code',
+                        color: 'text-primary'
+                    },
+                    'Marketing': {
+                        name: 'Marketing',
+                        icon: 'fas fa-chart-line',
+                        color: 'text-primary'
+                    },
+                    'Sales': {
+                        name: 'Kinh doanh & Bán hàng',
+                        icon: 'fas fa-bullhorn',
+                        color: 'text-primary'
+                    },
+                    'HR': {
+                        name: 'Nhân sự & Hành chính',
+                        icon: 'fas fa-users',
+                        color: 'text-primary'
+                    },
+                    'Education': {
+                        name: 'Giáo dục',
+                        icon: 'fas fa-graduation-cap',
+                        color: 'text-primary'
+                    },
+                    'Finance': {
+                        name: 'Tài chính & Kế toán',
+                        icon: 'fas fa-chart-pie',
+                        color: 'text-primary'
+                    },
+                    'Design': {
+                        name: 'Thiết kế & Sáng tạo',
+                        icon: 'fas fa-palette',
+                        color: 'text-primary'
+                    },
+                    'Engineering': {
+                        name: 'Kỹ thuật',
+                        icon: 'fas fa-cogs',
+                        color: 'text-primary'
+                    },
+                    'Customer Service': {
+                        name: 'Chăm sóc khách hàng',
+                        icon: 'fas fa-headset',
+                        color: 'text-primary'
+                    },
+                    'Logistics': {
+                        name: 'Vận chuyển & Logistics',
+                        icon: 'fas fa-truck',
+                        color: 'text-primary'
+                    },
+                    'Healthcare': {
+                        name: 'Y tế & Chăm sóc sức khỏe',
+                        icon: 'fas fa-heartbeat',
+                        color: 'text-primary'
+                    },
+                    'Food & Beverage': {
+                        name: 'Ẩm thực & Đồ uống',
+                        icon: 'fas fa-utensils',
+                        color: 'text-primary'
+                    },
+                    'Retail': {
+                        name: 'Bán lẻ',
+                        icon: 'fas fa-shopping-cart',
+                        color: 'text-primary'
+                    },
+                    'Manufacturing': {
+                        name: 'Sản xuất',
+                        icon: 'fas fa-industry',
+                        color: 'text-primary'
+                    },
+                    'Construction': {
+                        name: 'Xây dựng',
+                        icon: 'fas fa-hard-hat',
+                        color: 'text-primary'
+                    },
+                    'Agriculture': {
+                        name: 'Nông nghiệp',
+                        icon: 'fas fa-seedling',
+                        color: 'text-primary'
+                    },
+                    'Tourism': {
+                        name: 'Du lịch',
+                        icon: 'fas fa-plane',
+                        color: 'text-primary'
+                    },
+                    'Media': {
+                        name: 'Truyền thông',
+                        icon: 'fas fa-video',
+                        color: 'text-primary'
+                    },
+                    'Legal': {
+                        name: 'Pháp lý',
+                        icon: 'fas fa-balance-scale',
+                        color: 'text-primary'
+                    },
+                    'Research': {
+                        name: 'Nghiên cứu',
+                        icon: 'fas fa-microscope',
+                        color: 'text-primary'
+                    },
+                    'Maintenance': {
+                        name: 'Bảo trì & Sửa chữa',
+                        icon: 'fas fa-wrench',
+                        color: 'text-primary'
+                    },
+                    'Warehouse': {
+                        name: 'Kho vận & Quản lý kho',
+                        icon: 'fas fa-warehouse',
+                        color: 'text-primary'
+                    }
+                };
+
+                // Hàm tạo thông tin cho category chưa được định nghĩa
+                function getCategoryInfo(category) {
+                    if (categoryInfo[category]) {
+                        return categoryInfo[category];
+                    }
+                    
+                    // Tạo thông tin động cho category mới
+                    const categoryName = category.charAt(0).toUpperCase() + category.slice(1).toLowerCase();
+                    
+                    // Chọn icon dựa trên từ khóa trong tên category
+                    let icon = 'fas fa-briefcase'; // icon mặc định
+                    const categoryLower = category.toLowerCase();
+                    
+                    if (categoryLower.includes('tech') || categoryLower.includes('software') || categoryLower.includes('programming') || categoryLower.includes('it')) {
+                        icon = 'fas fa-laptop-code';
+                    } else if (categoryLower.includes('marketing') || categoryLower.includes('advertising')) {
+                        icon = 'fas fa-chart-line';
+                    } else if (categoryLower.includes('sales') || categoryLower.includes('business')) {
+                        icon = 'fas fa-bullhorn';
+                    } else if (categoryLower.includes('hr') || categoryLower.includes('human') || categoryLower.includes('personnel')) {
+                        icon = 'fas fa-users';
+                    } else if (categoryLower.includes('education') || categoryLower.includes('teaching') || categoryLower.includes('training')) {
+                        icon = 'fas fa-graduation-cap';
+                    } else if (categoryLower.includes('finance') || categoryLower.includes('accounting') || categoryLower.includes('banking') || categoryLower.includes('accountant')) {
+                        icon = 'fas fa-chart-pie';
+                    } else if (categoryLower.includes('design') || categoryLower.includes('creative') || categoryLower.includes('art') || categoryLower.includes('graphic')) {
+                        icon = 'fas fa-palette';
+                    } else if (categoryLower.includes('engineering') || categoryLower.includes('technical') || categoryLower.includes('maintenance')) {
+                        icon = 'fas fa-cogs';
+                    } else if (categoryLower.includes('customer') || categoryLower.includes('service') || categoryLower.includes('support')) {
+                        icon = 'fas fa-headset';
+                    } else if (categoryLower.includes('logistics') || categoryLower.includes('transport') || categoryLower.includes('shipping')) {
+                        icon = 'fas fa-truck';
+                    } else if (categoryLower.includes('health') || categoryLower.includes('medical') || categoryLower.includes('care')) {
+                        icon = 'fas fa-heartbeat';
+                    } else if (categoryLower.includes('food') || categoryLower.includes('beverage') || categoryLower.includes('restaurant') || categoryLower.includes('coffee')) {
+                        icon = 'fas fa-utensils';
+                    } else if (categoryLower.includes('retail') || categoryLower.includes('shop') || categoryLower.includes('store')) {
+                        icon = 'fas fa-shopping-cart';
+                    } else if (categoryLower.includes('manufacturing') || categoryLower.includes('production') || categoryLower.includes('factory')) {
+                        icon = 'fas fa-industry';
+                    } else if (categoryLower.includes('construction') || categoryLower.includes('building') || categoryLower.includes('architecture')) {
+                        icon = 'fas fa-hard-hat';
+                    } else if (categoryLower.includes('agriculture') || categoryLower.includes('farming') || categoryLower.includes('agricultural')) {
+                        icon = 'fas fa-seedling';
+                    } else if (categoryLower.includes('tourism') || categoryLower.includes('travel') || categoryLower.includes('hotel')) {
+                        icon = 'fas fa-plane';
+                    } else if (categoryLower.includes('media') || categoryLower.includes('communication') || categoryLower.includes('journalism')) {
+                        icon = 'fas fa-video';
+                    } else if (categoryLower.includes('legal') || categoryLower.includes('law') || categoryLower.includes('attorney')) {
+                        icon = 'fas fa-balance-scale';
+                    } else if (categoryLower.includes('research') || categoryLower.includes('development') || categoryLower.includes('analysis')) {
+                        icon = 'fas fa-microscope';
+                    } else if (categoryLower.includes('warehouse') || categoryLower.includes('inventory') || categoryLower.includes('stock')) {
+                        icon = 'fas fa-warehouse';
+                    } else if (categoryLower.includes('maintenance') || categoryLower.includes('repair') || categoryLower.includes('fix')) {
+                        icon = 'fas fa-wrench';
+                    }
+                    
+                    return {
+                        name: categoryName,
+                        icon: icon,
+                        color: 'text-primary'
+                    };
+                }
+
+                // Sắp xếp categories theo số lượng việc làm giảm dần
+                const sortedCategories = Object.keys(categoryCounts)
+                    .sort((a, b) => categoryCounts[b] - categoryCounts[a])
+                    .slice(0, Math.max(8, Object.keys(categoryCounts).length)); // Hiển thị tất cả hoặc ít nhất 8
+
+                if (sortedCategories.length === 0) {
+                    jobCategoriesContainer.innerHTML = '<div class="col-12 text-center text-muted">Chưa có việc làm nào được phê duyệt.</div>';
+                    return;
+                }
+
+                // Render categories với hiệu ứng carousel
+                const categoriesHTML = sortedCategories.map(category => {
+                    const info = getCategoryInfo(category);
+                    const count = categoryCounts[category];
+                    
+                    return `
+                        <div class="category-card text-center p-3">
+                            <i class="${info.icon} fa-2x ${info.color} mb-2"></i>
+                            <h6 class="mb-1">${info.name}</h6>
+                            <p class="text-muted small mb-2">${count.toLocaleString()} việc làm</p>
+                            <a href="jobs.html?category=${category}" class="btn btn-outline-primary btn-sm">Xem ngay</a>
+                        </div>
+                    `;
+                }).join('');
+
+                // Tạo hiệu ứng carousel lặp vô tận
+                const carouselHTML = categoriesHTML + categoriesHTML; // Lặp lại để tạo hiệu ứng seamless
+                jobCategoriesContainer.innerHTML = carouselHTML;
+
+                // Điều chỉnh tốc độ carousel dựa trên số lượng categories
+                const carousel = document.querySelector('.categories-carousel');
+                if (carousel) {
+                    const duration = Math.max(20, sortedCategories.length * 2); // Tối thiểu 20s, mỗi category thêm 2s
+                    carousel.style.animationDuration = `${duration}s`;
+                }
+
+                // Log các category không được định nghĩa để dễ dàng mở rộng
+                const undefinedCategories = Object.keys(categoryCounts).filter(cat => !categoryInfo[cat]);
+                if (undefinedCategories.length > 0) {
+                    console.log('Categories chưa được định nghĩa:', undefinedCategories);
+                }
+
+                // Log thống kê chi tiết
+                console.log('Thống kê ngành nghề:', categoryCounts);
+                console.log('Top categories:', sortedCategories);
+
+                // Thêm hiệu ứng hover cho category cards
+                const categoryCards = document.querySelectorAll('.category-card');
+                categoryCards.forEach(card => {
+                    card.addEventListener('mouseenter', function() {
+                        this.style.transform = 'translateY(-5px)';
+                        this.style.boxShadow = '0 6px 12px rgba(0,123,255,0.10)';
+                        this.style.transition = 'all 0.3s ease';
+                    });
+                    card.addEventListener('mouseleave', function() {
+                        this.style.transform = 'translateY(0)';
+                        this.style.boxShadow = '';
+                    });
+                });
+            });
+        }
+
+        // Load job categories khi trang được tải
+        loadJobCategories();
+
+        // Load và hiển thị số liệu thống kê từ Firebase
+        function loadStatistics() {
+            // Hiển thị loading animation
+            const statElements = ['totalJobs', 'totalCandidates', 'totalEmployers', 'totalCompanies'];
+            statElements.forEach(id => {
+                const element = document.getElementById(id);
+                if (element) {
+                    element.innerHTML = '<span class="loading-dots">...</span>';
+                }
+            });
+
+            // Kiểm tra trạng thái đăng nhập
+            const unsubscribe = onAuthStateChanged(auth, (user) => {
+                if (user) {
+                    // Người dùng đã đăng nhập - load dữ liệu đầy đủ
+                    loadFullStatistics();
+                } else {
+                    // Người dùng chưa đăng nhập - hiển thị dữ liệu mẫu hoặc thông báo
+                    showPublicStatistics();
+                }
+            });
+        }
+
+        // Load thống kê đầy đủ cho người dùng đã đăng nhập
+        function loadFullStatistics() {
+            // Load số lượng việc làm
+            const jobsRef = ref(database, 'jobs');
+            onValue(jobsRef, (snapshot) => {
+                let approvedJobs = 0;
+                let totalJobs = 0;
+                if (snapshot.exists()) {
+                    snapshot.forEach((childSnapshot) => {
+                        const job = childSnapshot.val();
+                        totalJobs++;
+                        if (job.status === 'approved') {
+                            approvedJobs++;
+                        }
+                    });
+                }
+                
+                const jobsElement = document.getElementById('totalJobs');
+                if (jobsElement) {
+                    animateNumber(jobsElement, 0, approvedJobs, 1000);
+                }
+                
+                console.log(`Tổng việc làm: ${totalJobs}, Đã phê duyệt: ${approvedJobs}`);
+            });
+
+            // Load số lượng người dùng
+            const usersRef = ref(database, 'users');
+            onValue(usersRef, (snapshot) => {
+                let candidates = 0;
+                let employers = 0;
+                let companies = new Set();
+                let totalUsers = 0;
+
+                if (snapshot.exists()) {
+                    snapshot.forEach((childSnapshot) => {
+                        const user = childSnapshot.val();
+                        totalUsers++;
+                        if (user.role === 'candidate') {
+                            candidates++;
+                        } else if (user.role === 'employer') {
+                            employers++;
+                            if (user.company && user.company.name) {
+                                companies.add(user.company.name);
+                            }
+                        }
+                    });
+                }
+
+                const candidatesElement = document.getElementById('totalCandidates');
+                const employersElement = document.getElementById('totalEmployers');
+                const companiesElement = document.getElementById('totalCompanies');
+
+                if (candidatesElement) {
+                    animateNumber(candidatesElement, 0, candidates, 1000);
+                }
+                if (employersElement) {
+                    animateNumber(employersElement, 0, employers, 1000);
+                }
+                if (companiesElement) {
+                    animateNumber(companiesElement, 0, companies.size, 1000);
+                }
+
+                console.log(`Tổng người dùng: ${totalUsers}, Ứng viên: ${candidates}, Nhà tuyển dụng: ${employers}, Công ty: ${companies.size}`);
+            });
+        }
+
+        // Hiển thị thống kê công khai cho người dùng chưa đăng nhập
+        function showPublicStatistics() {
+            // Thử load từ node public stats trước
+            const publicStatsRef = ref(database, 'publicStats');
+            onValue(publicStatsRef, (snapshot) => {
+                if (snapshot.exists()) {
+                    const stats = snapshot.val();
+                    const jobsElement = document.getElementById('totalJobs');
+                    const candidatesElement = document.getElementById('totalCandidates');
+                    const employersElement = document.getElementById('totalEmployers');
+                    const companiesElement = document.getElementById('totalCompanies');
+
+                    if (jobsElement) {
+                        animateNumber(jobsElement, 0, stats.totalJobs || 0, 1000);
+                    }
+                    if (candidatesElement) {
+                        animateNumber(candidatesElement, 0, stats.totalCandidates || 0, 1000);
+                    }
+                    if (employersElement) {
+                        animateNumber(employersElement, 0, stats.totalEmployers || 0, 1000);
+                    }
+                    if (companiesElement) {
+                        animateNumber(companiesElement, 0, stats.totalCompanies || 0, 1000);
+                    }
+                } else {
+                    // Nếu không có node publicStats, hiển thị dữ liệu mẫu
+                    showSampleStatistics();
+                }
+            }, (error) => {
+                console.log('Không thể load public stats:', error);
+                showSampleStatistics();
+            });
+        }
+
+        // Hiển thị dữ liệu mẫu khi không thể load từ database
+        function showSampleStatistics() {
+            const jobsElement = document.getElementById('totalJobs');
+            const candidatesElement = document.getElementById('totalCandidates');
+            const employersElement = document.getElementById('totalEmployers');
+            const companiesElement = document.getElementById('totalCompanies');
+
+            // Hiển thị dữ liệu mẫu dựa trên database thực tế
+            setTimeout(() => {
+                if (jobsElement) {
+                    animateNumber(jobsElement, 0, 8, 1000);
+                }
+                if (candidatesElement) {
+                    animateNumber(candidatesElement, 0, 1, 1000);
+                }
+                if (employersElement) {
+                    animateNumber(employersElement, 0, 2, 1000);
+                }
+                if (companiesElement) {
+                    animateNumber(companiesElement, 0, 2, 1000);
+                }
+            }, 500);
+
+            // Thêm tooltip hoặc hint
+            const statItems = document.querySelectorAll('.stat-item');
+            statItems.forEach(item => {
+                item.title = 'Đăng nhập để xem thống kê chi tiết và cập nhật';
+            });
+        }
+
+        // Hàm animate số
+        function animateNumber(element, start, end, duration) {
+            const startTime = performance.now();
+            const difference = end - start;
+            
+            function updateNumber(currentTime) {
+                const elapsed = currentTime - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                
+                // Easing function để tạo hiệu ứng mượt mà
+                const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+                const current = Math.floor(start + (difference * easeOutQuart));
+                
+                element.textContent = current.toLocaleString();
+                
+                if (progress < 1) {
+                    requestAnimationFrame(updateNumber);
+                }
+            }
+            
+            requestAnimationFrame(updateNumber);
+        }
+
+        // Load statistics khi trang được tải
+        loadStatistics();
+
+        // Function để cập nhật public stats (chỉ admin mới có thể gọi)
+        function updatePublicStats() {
+            // Chỉ cập nhật khi user là admin
+            const user = auth.currentUser;
+            if (user && user.email === 'quantrivieclamnhanh@gmail.com') {
+                const publicStatsRef = ref(database, 'publicStats');
+                
+                // Load dữ liệu hiện tại và cập nhật
+                const jobsRef = ref(database, 'jobs');
+                const usersRef = ref(database, 'users');
+                
+                Promise.all([
+                    new Promise((resolve) => {
+                        onValue(jobsRef, (snapshot) => {
+                            let approvedJobs = 0;
+                            if (snapshot.exists()) {
+                                snapshot.forEach((childSnapshot) => {
+                                    const job = childSnapshot.val();
+                                    if (job.status === 'approved') {
+                                        approvedJobs++;
+                                    }
+                                });
+                            }
+                            resolve({ totalJobs: approvedJobs });
+                        }, { once: true });
+                    }),
+                    new Promise((resolve) => {
+                        onValue(usersRef, (snapshot) => {
+                            let candidates = 0;
+                            let employers = 0;
+                            let companies = new Set();
+                            
+                            if (snapshot.exists()) {
+                                snapshot.forEach((childSnapshot) => {
+                                    const user = childSnapshot.val();
+                                    if (user.role === 'candidate') {
+                                        candidates++;
+                                    } else if (user.role === 'employer') {
+                                        employers++;
+                                        if (user.company && user.company.name) {
+                                            companies.add(user.company.name);
+                                        }
+                                    }
+                                });
+                            }
+                            resolve({ 
+                                totalCandidates: candidates, 
+                                totalEmployers: employers, 
+                                totalCompanies: companies.size 
+                            });
+                        }, { once: true });
+                    })
+                ]).then(([jobsData, usersData]) => {
+                    const publicStats = {
+                        ...jobsData,
+                        ...usersData,
+                        lastUpdated: new Date().toISOString()
+                    };
+                    
+                    set(publicStatsRef, publicStats).then(() => {
+                        console.log('Public stats updated successfully');
+                    }).catch((error) => {
+                        console.error('Error updating public stats:', error);
+                    });
+                });
+            }
+        }
 
         // Hiển thị tin tuyển dụng mới nhất từ Firebase Realtime Database
         const latestJobs = document.getElementById('latestJobs');

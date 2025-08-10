@@ -1,0 +1,35 @@
+@startuml UC019_PostJob_Sequence_Diagram
+ title UC019: Đăng tin tuyển dụng - Sequence Diagram
+
+actor "Nhà tuyển dụng" as Employer
+participant "Giao diện đăng tin tuyển dụng" as UI
+participant "Hệ thống" as System
+participant "Cơ sở dữ liệu" as DB
+
+Employer -> UI: 1. Truy cập chức năng đăng tin tuyển dụng
+activate UI
+Employer -> UI: 2. Nhập thông tin tuyển dụng
+Employer -> UI: 3. Đăng tin
+UI -> System: 4. Gửi thông tin tuyển dụng
+activate System
+System -> DB: 5. Kiểm tra số dư tài khoản
+DB --> System: 6. Kết quả kiểm tra số dư
+
+alt Số dư đủ
+    System -> DB:  Lưu tin tuyển dụng
+    System -> DB:  Trừ tiền từ tài khoản
+    DB --> System:  Kết quả lưu và trừ tiền
+    System --> UI:  Đăng tin thành công
+    UI --> Employer:  Thông báo thành công
+    note right: Đơn ứng tuyển được gửi thành công
+else Số dư không đủ
+    System --> UI:  Đăng tin thất bại
+    UI --> Employer:  Hiển thị lỗi: Số dư không đủ, cần nạp tiền
+    note right: Exception: Số dư không đủ, cần phải nạp tiền để đăng tin tuyển dụng
+end
+
+deactivate DB
+deactivate System
+deactivate UI
+
+@enduml 
