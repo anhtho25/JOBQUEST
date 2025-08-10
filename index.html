@@ -1749,11 +1749,7 @@
                 });
         }
 
-        // Hàm hiển thị modal đăng nhập
-        function showLoginModal() {
-            const loginModal = new bootstrap.Modal(document.getElementById('loginModal'));
-            loginModal.show();
-        }
+        // Hàm hiển thị modal đăng nhập - sẽ được định nghĩa ở cuối file
 
         // Theo dõi trạng thái đăng nhập
         onAuthStateChanged(auth, (user) => {
@@ -2511,6 +2507,12 @@
 
         // Load statistics khi trang được tải
         loadStatistics();
+
+        // Hàm hiển thị modal đăng nhập - phải được định nghĩa ở scope toàn cục
+        window.showLoginModal = function() {
+            const loginModal = new bootstrap.Modal(document.getElementById('loginModal'));
+            loginModal.show();
+        };
 
         // Function để cập nhật public stats (chỉ admin mới có thể gọi)
         function updatePublicStats() {
