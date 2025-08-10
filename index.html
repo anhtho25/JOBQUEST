@@ -621,6 +621,20 @@
             transform: scale(1.2);
         }
 
+        /* Đảm bảo stars hiển thị đúng */
+        .rating i.fas.fa-star {
+            color: #ffc107 !important;
+        }
+
+        .rating i.far.fa-star {
+            color: #e4e5e9 !important;
+        }
+
+        .rating i.fa-star {
+            font-size: 1.1rem;
+            margin-right: 1px;
+        }
+
         /* Call to Action */
         .cta-section {
             background: #e6f0fa;
@@ -1795,7 +1809,15 @@
                 return;
             }
 
-            const testimonialHTML = allTestimonials.map(testimonial => `
+            // Debug: Log testimonials data
+            console.log('Rendering testimonials:', allTestimonials);
+
+            const testimonialHTML = allTestimonials.map(testimonial => {
+                // Đảm bảo rating là số
+                const rating = parseInt(testimonial.rating) || 0;
+                console.log(`Testimonial ${testimonial.name}: rating = ${rating} (type: ${typeof testimonial.rating})`);
+                
+                return `
                 <div class="col mb-4">
                     <div class="testimonial-card p-4 h-100 border rounded shadow-sm">
                         <div class="d-flex align-items-center mb-3">
@@ -1813,7 +1835,7 @@
                         </div>
                         <div class="rating mb-2">
                             ${Array(5).fill(0).map((_, i) => 
-                                `<i class="${i < testimonial.rating ? 'fas' : 'far'} fa-star text-warning"></i>`
+                                `<i class="${i < rating ? 'fas' : 'far'} fa-star text-warning"></i>`
                             ).join('')}
                         </div>
                         <p class="mb-0 text-muted fst-italic">"${testimonial.content}"</p>
@@ -1822,7 +1844,8 @@
                         </small>
                     </div>
                 </div>
-            `).join('');
+            `;
+            }).join('');
 
             testimonialContainer.innerHTML = `
                 <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
@@ -1900,6 +1923,64 @@
 
         // Gọi debug function
         debugDatabaseStructure();
+
+        // Function để tạo dữ liệu mẫu cho testimonials (chỉ chạy một lần)
+        function createSampleTestimonials() {
+            const testimonialRef = firebase.ref(database, 'testimonials');
+            firebase.onValue(testimonialRef, (snapshot) => {
+                if (!snapshot.exists()) {
+                    console.log('Creating sample testimonials...');
+                    const sampleTestimonials = [
+                        {
+                            name: 'Nguyễn Văn A',
+                            role: 'Ứng viên',
+                            rating: 5,
+                            content: 'Website rất dễ sử dụng, tôi đã tìm được công việc phù hợp chỉ sau 2 tuần!',
+                            userId: 'sample1',
+                            userEmail: 'sample1@example.com',
+                            photoURL: 'https://via.placeholder.com/60/007bff/ffffff?text=N',
+                            createdAt: new Date().toISOString(),
+                            status: 'approved'
+                        },
+                        {
+                            name: 'Trần Thị B',
+                            role: 'Nhà tuyển dụng',
+                            rating: 4,
+                            content: 'Hệ thống tuyển dụng hiệu quả, giúp chúng tôi tìm được nhân tài phù hợp.',
+                            userId: 'sample2',
+                            userEmail: 'sample2@example.com',
+                            photoURL: 'https://via.placeholder.com/60/28a745/ffffff?text=T',
+                            createdAt: new Date().toISOString(),
+                            status: 'approved'
+                        },
+                        {
+                            name: 'Lê Văn C',
+                            role: 'Ứng viên',
+                            rating: 5,
+                            content: 'Giao diện đẹp, thông tin rõ ràng và hỗ trợ khách hàng rất tốt!',
+                            userId: 'sample3',
+                            userEmail: 'sample3@example.com',
+                            photoURL: 'https://via.placeholder.com/60/dc3545/ffffff?text=L',
+                            createdAt: new Date().toISOString(),
+                            status: 'approved'
+                        }
+                    ];
+
+                    // Tạo từng testimonial
+                    sampleTestimonials.forEach((testimonial, index) => {
+                        const newRef = firebase.push(testimonialRef);
+                        firebase.set(newRef, testimonial).then(() => {
+                            console.log(`Sample testimonial ${index + 1} created successfully`);
+                        }).catch((error) => {
+                            console.error(`Error creating sample testimonial ${index + 1}:`, error);
+                        });
+                    });
+                }
+            }, { once: true });
+        }
+
+        // Gọi function tạo dữ liệu mẫu (có thể comment out sau khi đã tạo)
+        createSampleTestimonials();
 
 
 
