@@ -2314,6 +2314,12 @@
                     const jobSnapshot = await get(jobRef);
                     const jobData = jobSnapshot.val();
                     
+                    // Kiểm tra nếu jobData không tồn tại
+                    if (!jobData) {
+                        console.warn(`Job data not found for jobId: ${application.jobId}`);
+                        return null;
+                    }
+                    
                     // Lấy thông tin nhà tuyển dụng
                     const employerRef = ref(database, `users/${jobData.employerId}`);
                     const employerSnapshot = await get(employerRef);
@@ -2321,43 +2327,56 @@
 
                     return {
                         ...application,
-                        jobTitle: jobData.title,
-                        jobType: jobData.type,
-                        jobCategory: jobData.category,
-                        salary: `${Number(jobData.salaryMin).toLocaleString()} - ${Number(jobData.salaryMax).toLocaleString()} ${jobData.salaryType.toUpperCase()}`,
-                        location: jobData.contactAddress,
-                        employerName: employerData.name || employerData.email,
-                        deadline: jobData.deadline
+                        jobTitle: jobData.title || 'Không có tiêu đề',
+                        jobType: jobData.type || 'Không xác định',
+                        jobCategory: jobData.category || 'Không xác định',
+                        salary: jobData.salaryMin && jobData.salaryMax && jobData.salaryType 
+                            ? `${Number(jobData.salaryMin).toLocaleString()} - ${Number(jobData.salaryMax).toLocaleString()} ${jobData.salaryType.toUpperCase()}`
+                            : 'Thỏa thuận',
+                        location: jobData.contactAddress || 'Không xác định',
+                        employerName: employerData ? (employerData.name || employerData.email) : 'Không xác định',
+                        deadline: jobData.deadline || 'Không xác định'
                     };
                 }));
 
-                // Lưu danh sách để sử dụng cho bộ lọc
-                appliedJobsList = jobDetails;
+                // Lọc bỏ các job không tồn tại và lưu danh sách để sử dụng cho bộ lọc
+                appliedJobsList = jobDetails.filter(job => job !== null);
 
                 // Hiển thị danh sách ban đầu
                 filterAndDisplayAppliedJobs();
 
                 // Thêm event listener cho các bộ lọc
-                document.getElementById('appliedJobsSearch').addEventListener('input', filterAndDisplayAppliedJobs);
-                document.getElementById('appliedJobsStatus').addEventListener('change', filterAndDisplayAppliedJobs);
-                document.getElementById('appliedJobsTime').addEventListener('change', filterAndDisplayAppliedJobs);
+                const searchElement = document.getElementById('appliedJobsSearch');
+                const statusElement = document.getElementById('appliedJobsStatus');
+                const timeElement = document.getElementById('appliedJobsTime');
+                
+                if (searchElement) searchElement.addEventListener('input', filterAndDisplayAppliedJobs);
+                if (statusElement) statusElement.addEventListener('change', filterAndDisplayAppliedJobs);
+                if (timeElement) timeElement.addEventListener('change', filterAndDisplayAppliedJobs);
 
             }).catch((error) => {
                 console.error('Error loading applied jobs:', error);
-                document.getElementById('appliedJobsListContent').innerHTML = `
-                    <div class="alert alert-danger">
-                        <i class="fas fa-exclamation-circle me-2"></i>
-                        Có lỗi xảy ra khi tải danh sách việc làm đã ứng tuyển
-                    </div>
-                `;
+                const contentElement = document.getElementById('appliedJobsListContent');
+                if (contentElement) {
+                    contentElement.innerHTML = `
+                        <div class="alert alert-danger">
+                            <i class="fas fa-exclamation-circle me-2"></i>
+                            Có lỗi xảy ra khi tải danh sách việc làm đã ứng tuyển
+                        </div>
+                    `;
+                }
             });
         }
 
         // Hàm lọc và hiển thị danh sách việc làm đã ứng tuyển
         function filterAndDisplayAppliedJobs() {
-            const searchTerm = document.getElementById('appliedJobsSearch').value.toLowerCase();
-            const statusFilter = document.getElementById('appliedJobsStatus').value;
-            const timeFilter = parseInt(document.getElementById('appliedJobsTime').value);
+            const searchElement = document.getElementById('appliedJobsSearch');
+            const statusElement = document.getElementById('appliedJobsStatus');
+            const timeElement = document.getElementById('appliedJobsTime');
+            
+            const searchTerm = searchElement ? searchElement.value.toLowerCase() : '';
+            const statusFilter = statusElement ? statusElement.value : '';
+            const timeFilter = timeElement ? parseInt(timeElement.value) : 0;
 
             // Lọc danh sách theo các điều kiện
             let filteredJobs = appliedJobsList;
@@ -2365,9 +2384,9 @@
             // Lọc theo từ khóa tìm kiếm
             if (searchTerm) {
                 filteredJobs = filteredJobs.filter(job => 
-                    job.jobTitle.toLowerCase().includes(searchTerm) ||
-                    job.employerName.toLowerCase().includes(searchTerm) ||
-                    job.jobCategory.toLowerCase().includes(searchTerm)
+                    (job.jobTitle && job.jobTitle.toLowerCase().includes(searchTerm)) ||
+                    (job.employerName && job.employerName.toLowerCase().includes(searchTerm)) ||
+                    (job.jobCategory && job.jobCategory.toLowerCase().includes(searchTerm))
                 );
             }
 
@@ -2380,14 +2399,23 @@
             if (timeFilter) {
                 const cutoffDate = new Date();
                 cutoffDate.setDate(cutoffDate.getDate() - timeFilter);
-                filteredJobs = filteredJobs.filter(job => new Date(job.appliedAt) >= cutoffDate);
+                filteredJobs = filteredJobs.filter(job => job.appliedAt && new Date(job.appliedAt) >= cutoffDate);
             }
 
             // Sắp xếp theo thời gian ứng tuyển mới nhất
-            filteredJobs.sort((a, b) => new Date(b.appliedAt) - new Date(a.appliedAt));
+            filteredJobs.sort((a, b) => {
+                const dateA = a.appliedAt ? new Date(a.appliedAt) : new Date(0);
+                const dateB = b.appliedAt ? new Date(b.appliedAt) : new Date(0);
+                return dateB - dateA;
+            });
 
             // Hiển thị kết quả
             const content = document.getElementById('appliedJobsListContent');
+            
+            if (!content) {
+                console.warn('appliedJobsListContent element not found');
+                return;
+            }
             
             if (filteredJobs.length === 0) {
                 content.innerHTML = `
@@ -2416,7 +2444,7 @@
                                     <p class="mb-1"><i class="fas fa-money-bill-wave me-2"></i>${job.salary}</p>
                                     <p class="mb-1"><i class="fas fa-calendar me-2"></i>Hạn nộp: ${job.deadline}</p>
                                     <small class="text-muted">
-                                        <i class="fas fa-clock me-1"></i>Đã ứng tuyển: ${new Date(job.appliedAt).toLocaleDateString('vi-VN')}
+                                        <i class="fas fa-clock me-1"></i>Đã ứng tuyển: ${job.appliedAt ? new Date(job.appliedAt).toLocaleDateString('vi-VN') : 'Không xác định'}
                                     </small>
                                 </div>
                                 <div class="ms-3">
