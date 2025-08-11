@@ -2728,10 +2728,22 @@
                         totalJobPostsElement.textContent = jobPostsCount;
                     }
 
-                    // Hiển thị tổng chi tiêu
+                    // Tính toán và hiển thị tổng chi tiêu
                     const totalSpentElement = document.getElementById('totalSpent');
                     if (totalSpentElement) {
-                        totalSpentElement.textContent = formatMoney(0); // Đặt mặc định là 0
+                        let totalSpent = 0;
+                        
+                        // Tính tổng chi tiêu từ các giao dịch
+                        if (userData.transactions) {
+                            Object.values(userData.transactions).forEach(transaction => {
+                                // Chỉ tính các giao dịch chi tiêu (số âm) và đã hoàn thành
+                                if (transaction.amount < 0 && transaction.status === 'completed') {
+                                    totalSpent += Math.abs(transaction.amount);
+                                }
+                            });
+                        }
+                        
+                        totalSpentElement.textContent = formatMoney(totalSpent);
                     }
                 }
             });
@@ -2806,7 +2818,7 @@
                         <div class="d-flex justify-content-between align-items-center">
                             <div>
                                 <h6 class="mb-1">${typeText}</h6>
-                                <p class="mb-1 text-muted small">${transaction.orderInfo || ''}</p>
+                                <p class="mb-1 text-muted small">${transaction.description || transaction.orderInfo || ''}</p>
                                 <p class="mb-0 text-muted small">${date}</p>
                             </div>
                             <div class="text-end">
@@ -3118,6 +3130,8 @@
             switch (type) {
                 case 'deposit':
                     return 'Nạp tiền vào tài khoản';
+                case 'job_posting':
+                    return 'Phí đăng tin tuyển dụng';
                 case 'payment':
                     return 'Chi tiêu';
                 default:
