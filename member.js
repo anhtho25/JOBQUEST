@@ -935,6 +935,24 @@
             });
         }
 
+        // Hàm format số tiền
+        function formatSalaryInput(input) {
+            // Loại bỏ tất cả ký tự không phải số
+            let value = input.value.replace(/\D/g, '');
+            
+            // Nếu có giá trị, format với dấu phẩy
+            if (value) {
+                value = parseInt(value).toLocaleString('vi-VN');
+            }
+            
+            input.value = value;
+        }
+
+        // Hàm lấy số tiền từ input đã format
+        function getSalaryValue(input) {
+            return parseInt(input.value.replace(/\D/g, '')) || 0;
+        }
+
         // Xử lý form đăng tin tuyển dụng
         const jobPostForm = document.getElementById('jobPostForm');
         if (jobPostForm) {
@@ -967,12 +985,35 @@
                     return;
                 }
 
+                // Lấy và xử lý số tiền lương
+                const salaryMinInput = document.getElementById('jobSalaryMin');
+                const salaryMaxInput = document.getElementById('jobSalaryMax');
+                
+                const salaryMin = getSalaryValue(salaryMinInput);
+                const salaryMax = getSalaryValue(salaryMaxInput);
+                
+                // Validation số tiền
+                if (isNaN(salaryMin) || salaryMin <= 0) {
+                    Swal.fire('Lỗi!', 'Vui lòng nhập lương tối thiểu hợp lệ', 'error');
+                    return;
+                }
+                
+                if (isNaN(salaryMax) || salaryMax <= 0) {
+                    Swal.fire('Lỗi!', 'Vui lòng nhập lương tối đa hợp lệ', 'error');
+                    return;
+                }
+                
+                if (salaryMin >= salaryMax) {
+                    Swal.fire('Lỗi!', 'Lương tối đa phải lớn hơn lương tối thiểu', 'error');
+                    return;
+                }
+
                 const jobData = {
                     title: document.getElementById('jobTitle').value,
                     type: document.getElementById('jobType').value,
                     category: document.getElementById('jobCategory').value,
-                    salaryMin: document.getElementById('jobSalaryMin').value,
-                    salaryMax: document.getElementById('jobSalaryMax').value,
+                    salaryMin: salaryMin.toString(),
+                    salaryMax: salaryMax.toString(),
                     salaryType: 'vnd',
                     contactAddress: document.getElementById('jobLocation').value,
                     deadline: document.getElementById('jobDeadline').value,
@@ -4107,3 +4148,29 @@
             alert(message);
         }
     }
+
+    // Thêm event listeners cho format số tiền khi trang load
+    document.addEventListener('DOMContentLoaded', function() {
+        const salaryMinInput = document.getElementById('jobSalaryMin');
+        const salaryMaxInput = document.getElementById('jobSalaryMax');
+        
+        if (salaryMinInput) {
+            salaryMinInput.addEventListener('input', function() {
+                formatSalaryInput(this);
+            });
+            
+            salaryMinInput.addEventListener('blur', function() {
+                formatSalaryInput(this);
+            });
+        }
+        
+        if (salaryMaxInput) {
+            salaryMaxInput.addEventListener('input', function() {
+                formatSalaryInput(this);
+            });
+            
+            salaryMaxInput.addEventListener('blur', function() {
+                formatSalaryInput(this);
+            });
+        }
+    });
