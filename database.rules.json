@@ -14,17 +14,17 @@
       }
     },
     "categories": {
-      ".read": true,
-      ".write": "auth != null && root.child('users').child(auth.uid).child('role').val() === 'admin'"
+    ".read": true,
+    ".write": "auth != null && root.child('users').child(auth.uid).child('role').val() === 'admin'"
     },
     "news": {
-      ".read": true,
-      ".write": "auth != null && root.child('users').child(auth.uid).child('role').val() === 'admin'",
-      ".indexOn": ["status", "publishedAt", "views", "featured"],
-      "$newsId": {
-        ".validate": "newData.hasChildren(['title', 'content', 'status'])",
-        "views": {
-          ".write": true
+    ".read": true,
+    ".write": "auth != null && root.child('users').child(auth.uid).child('role').val() === 'admin'",
+    ".indexOn": ["status", "publishedAt", "views", "featured"],
+    "$newsId": {
+       ".validate": "newData.hasChildren(['title', 'content', 'status'])",
+      "views": {
+        ".write": true
         }
       }
     },

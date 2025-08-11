@@ -1,0 +1,37 @@
+@startuml UC012_ManageCV_Sequence_Diagram
+ title UC012: Quản lý CV - Sequence Diagram
+
+actor "Ứng viên" as User
+participant "Giao diện" as UI
+participant "Hệ thống" as System
+participant "Cơ sở dữ liệu" as DB
+
+User -> UI: 1. Truy cập danh sách CV
+activate UI
+UI -> System: 2. Yêu cầu danh sách CV
+activate System
+System -> DB: 3. Lấy danh sách CV
+DB --> System: 4. Trả về dữ liệu
+System --> UI: 5. Trả về dữ liệu
+UI --> User: 6. Hiển thị danh sách
+
+User -> UI: 7. Xem/Xóa CV
+UI -> System: 8. Gửi yêu cầu
+System -> DB: 9. Xử lý yêu cầu
+DB --> System: 10. Kết quả
+
+alt CV tồn tại
+    System --> UI: Thành công
+    UI --> User: Thông báo thành công
+    note right: CV được xóa thành công
+else Không tìm thấy CV
+    System --> UI: Thất bại
+    UI --> User: Hiển thị lỗi
+    note right: Exception: Không tìm thấy CV
+end
+
+deactivate DB
+deactivate System
+deactivate UI
+
+@enduml

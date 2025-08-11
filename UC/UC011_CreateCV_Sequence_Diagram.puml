@@ -1,0 +1,31 @@
+@startuml UC011_CreateCV_Sequence_Diagram
+ title UC011: Tạo CV - Sequence Diagram
+
+actor "Ứng viên" as User
+participant "Giao diện tạo CV" as UI
+participant "Hệ thống" as System
+participant "Cơ sở dữ liệu" as DB
+
+User -> UI: 1. Truy cập chức năng tạo CV
+activate UI
+User -> UI: 2. Nhập thông tin cá nhân, học vấn, kinh nghiệm, kỹ năng...
+UI -> System: 3. Gửi thông tin tạo CV
+activate System
+System -> DB: 4. Lưu thông tin CV
+DB --> System: 5. Kết quả lưu
+
+alt Thông tin hợp lệ
+    System --> UI:  Tạo CV thành công
+    UI --> User:  Thông báo thành công
+    note right: CV được tạo thành công
+else Thông tin không hợp lệ
+    System --> UI:  Tạo CV thất bại
+    UI --> User:  Hiển thị lỗi
+    note right: Exception: Thông tin không hợp lệ
+end
+
+deactivate DB
+deactivate System
+deactivate UI
+
+@enduml

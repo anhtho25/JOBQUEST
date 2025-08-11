@@ -1,0 +1,43 @@
+@startuml UC016_ChatWithEmployer_Sequence_Diagram
+ title UC016: Chat với nhà tuyển dụng - Sequence Diagram
+
+actor "Ứng viên" as User
+participant "Giao diện chat" as UI
+participant "Hệ thống chat" as Chat
+participant "Cơ sở dữ liệu" as DB
+
+User -> UI: 1. Truy cập trang quản lý
+activate UI
+User -> UI: 2. Vào tin nhắn
+UI -> Chat: 3. Yêu cầu danh sách nhà tuyển dụng có thể chat
+activate Chat
+Chat -> DB: 4. Kiểm tra nhà tuyển dụng đã duyệt ứng tuyển
+DB --> Chat: 5. Trả về danh sách nhà tuyển dụng
+Chat --> UI: 6. Trả về danh sách nhà tuyển dụng
+UI --> User: 7. Hiển thị danh sách nhà tuyển dụng
+
+User -> UI: 8. Chọn nhà tuyển dụng để chat
+UI -> Chat: 9. Yêu cầu mở cuộc trò chuyện
+Chat -> DB: 10. Kiểm tra cuộc trò chuyện có khả dụng không
+DB --> Chat: 11. Kết quả kiểm tra
+
+alt Cuộc trò chuyện khả dụng
+    Chat --> UI:  Mở cuộc trò chuyện
+    UI --> User:  Hiển thị giao diện chat
+    User -> UI:  Gửi tin nhắn văn bản
+    UI -> Chat:  Gửi tin nhắn
+    Chat -> DB:  Lưu tin nhắn
+    Chat --> UI:  Gửi tin nhắn đến nhà tuyển dụng
+    UI --> User:  Hiển thị tin nhắn đã gửi
+    note right: Cuộc trò chuyện với nhà tuyển dụng được thực hiện thành công
+else Cuộc trò chuyện không khả dụng
+    Chat --> UI:  Thông báo lỗi
+    UI --> User:  Hiển thị lỗi: Cuộc trò chuyện không khả dụng
+    note right: Exception: Cuộc trò chuyện không khả dụng
+end
+
+deactivate DB
+deactivate Chat
+deactivate UI
+
+@enduml 

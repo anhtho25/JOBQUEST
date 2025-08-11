@@ -1,0 +1,31 @@
+@startuml UC018_CompanyManagement_Sequence_Diagram
+ title UC018: Quản lý công ty - Sequence Diagram
+
+actor "Nhà tuyển dụng" as Employer
+participant "Giao diện quản lý công ty" as UI
+participant "Hệ thống" as System
+participant "Cơ sở dữ liệu" as DB
+
+Employer -> UI: 1. Truy cập trang quản lý công ty
+activate UI
+UI -> System: 2. Yêu cầu thông tin công ty hiện tại
+activate System
+System -> DB: 3. Lấy thông tin công ty
+DB --> System: 4. Trả về thông tin công ty
+System --> UI: 5. Trả về thông tin công ty
+UI --> Employer: 6. Hiển thị thông tin hiện tại của công ty
+
+Employer -> UI: 7. Cập nhật thông tin (tên công ty, địa chỉ, website, email, số điện thoại)
+Employer -> UI: 8. Xác nhận cập nhật
+UI -> System: 9. Gửi thông tin cập nhật
+System -> DB: 10. Cập nhật thông tin công ty
+DB --> System: 11. Kết quả cập nhật
+System --> UI: 12. Thông báo cập nhật thành công
+UI --> Employer: 13. Hiển thị thông báo thành công
+note right: Cập nhật thành công
+
+deactivate DB
+deactivate System
+deactivate UI
+
+@enduml 

@@ -1,0 +1,37 @@
+@startuml UC026_ApplicationManagement_Sequence_Diagram
+ title UC026: Quản lý đơn ứng tuyển - Sequence Diagram
+
+actor "Quản trị viên" as Admin
+participant "Giao diện quản lý đơn ứng tuyển" as UI
+participant "Hệ thống" as System
+participant "Cơ sở dữ liệu" as DB
+
+Admin -> UI: 1. Xem danh sách đơn ứng tuyển
+activate UI
+UI -> System: 2. Yêu cầu danh sách đơn ứng tuyển
+activate System
+System -> DB: 3. Lấy danh sách đơn ứng tuyển
+DB --> System: 4. Trả về danh sách đơn ứng tuyển
+System --> UI: 5. Trả về dữ liệu đơn ứng tuyển
+UI --> Admin: 6. Hiển thị danh sách đơn ứng tuyển
+
+Admin -> UI: 7. Tìm kiếm đơn ứng tuyển
+UI -> System: 8. Gửi yêu cầu tìm kiếm
+System -> DB: 9. Tìm kiếm đơn ứng tuyển
+DB --> System: 10. Trả về kết quả tìm kiếm
+System --> UI: 11. Trả về kết quả tìm kiếm
+UI --> Admin: 12. Hiển thị kết quả tìm kiếm
+
+Admin -> UI: 13. Xóa đơn ứng tuyển (nếu cần)
+UI -> System: 14. Gửi yêu cầu xóa đơn ứng tuyển
+System -> DB: 15. Xóa đơn ứng tuyển
+DB --> System: 16. Kết quả xóa
+System --> UI: 17. Thông báo kết quả xóa
+UI --> Admin: 18. Hiển thị thông báo kết quả
+note right: Quản lý đơn ứng tuyển thành công
+
+deactivate DB
+deactivate System
+deactivate UI
+
+@enduml 

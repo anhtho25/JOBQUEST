@@ -1,0 +1,27 @@
+@startuml UC007_HomePage_Sequence_Diagram
+ title UC007: Xem trang chủ - Sequence Diagram
+
+actor "Khách vãng lai, Ứng viên, Nhà tuyển dụng" as User
+participant "Giao diện trang chủ" as UI
+participant "Hệ thống" as System
+participant "Cơ sở dữ liệu" as DB
+
+User -> UI: 1. Truy cập trang chủ
+activate UI
+UI -> System: 2. Yêu cầu dữ liệu trang chủ
+activate System
+System -> DB: 3. Lấy banner quảng cáo
+System -> DB: 4. Lấy ngành nghề phổ biến
+System -> DB: 5. Lấy cách thức hoạt động
+System -> DB: 6. Lấy việc làm mới nhất
+System -> DB: 7. Lấy thông tin đánh giá
+DB --> System: 8. Trả về dữ liệu tổng hợp
+System --> UI: 9. Trả về dữ liệu trang chủ
+UI --> User: 10. Hiển thị trang chủ với các thông tin
+note right: Trang chủ được hiển thị thành công
+
+deactivate DB
+deactivate System
+deactivate UI
+
+@enduml

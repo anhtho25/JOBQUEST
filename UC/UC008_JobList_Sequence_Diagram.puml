@@ -1,0 +1,23 @@
+@startuml UC008_JobList_Sequence_Diagram
+ title UC008: Xem việc làm - Sequence Diagram
+
+actor "Khách vãng lai, Người dùng, Nhà tuyển dụng" as User
+participant "Giao diện việc làm" as UI
+participant "Hệ thống" as System
+participant "Cơ sở dữ liệu" as DB
+
+User -> UI: 1. Truy cập trang việc làm
+activate UI
+UI -> System: 2. Yêu cầu danh sách việc làm
+activate System
+System -> DB: 3. Lấy danh sách việc làm
+DB --> System: 4. Trả về danh sách việc làm
+System --> UI: 5. Trả về dữ liệu việc làm
+UI --> User: 6. Hiển thị các việc làm
+note right: Các việc làm được hiển thị
+
+deactivate DB
+deactivate System
+deactivate UI
+
+@enduml

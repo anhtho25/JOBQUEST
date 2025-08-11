@@ -1,0 +1,33 @@
+@startuml UC022_StatisticsReport_Sequence_Diagram
+ title UC022: Báo cáo thống kê - Sequence Diagram
+
+actor "Nhà tuyển dụng" as Employer
+participant "Giao diện báo cáo thống kê" as UI
+participant "Hệ thống thống kê" as Stats
+participant "Cơ sở dữ liệu" as DB
+
+Employer -> UI: 1. Truy cập trang báo cáo thống kê
+activate UI
+UI -> Stats: 2. Yêu cầu dữ liệu thống kê
+activate Stats
+Stats -> DB: 3. Lấy số lượng ứng viên theo thời gian
+Stats -> DB: 4. Lấy tỷ lệ trạng thái ứng viên
+Stats -> DB: 5. Lấy số tin đăng theo thời gian
+Stats -> DB: 6. Lấy top ngành nghề có nhiều ứng viên
+DB --> Stats: 7. Trả về dữ liệu thống kê
+
+alt Có dữ liệu
+    Stats --> UI:  Trả về dữ liệu thống kê
+    UI --> Employer:  Hiển thị báo cáo thống kê
+    note right: Báo cáo thống kê được hiển thị
+else Không có dữ liệu
+    Stats --> UI:  Thông báo không có dữ liệu
+    UI --> Employer:  Hiển thị lỗi: Không có dữ liệu
+    note right: Exception: Không có dữ liệu
+end
+
+deactivate DB
+deactivate Stats
+deactivate UI
+
+@enduml 

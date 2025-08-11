@@ -1,0 +1,30 @@
+@startuml UC029_ReviewManagement_Sequence_Diagram
+ title UC029: Quản lý đánh giá - Sequence Diagram
+
+actor "Quản trị viên" as Admin
+participant "Giao diện" as UI
+participant "Hệ thống" as System
+participant "Cơ sở dữ liệu" as DB
+
+Admin -> UI: 1. Xem danh sách đánh giá
+activate UI
+UI -> System: 2. Yêu cầu danh sách đánh giá
+activate System
+System -> DB: 3. Lấy danh sách đánh giá
+DB --> System: 4. Trả về dữ liệu
+System --> UI: 5. Trả về dữ liệu
+UI --> Admin: 6. Hiển thị danh sách
+
+Admin -> UI: 7. Tìm kiếm/Xem nội dung/Xóa đánh giá
+UI -> System: 8. Gửi yêu cầu
+System -> DB: 9. Xử lý yêu cầu
+DB --> System: 10. Kết quả
+System --> UI: 11. Thông báo kết quả
+UI --> Admin: 12. Hiển thị kết quả
+note right: Quản lý đánh giá thành công
+
+deactivate DB
+deactivate System
+deactivate UI
+
+@enduml 

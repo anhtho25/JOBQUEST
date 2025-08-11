@@ -1,0 +1,38 @@
+@startuml UC005_ProfileManagement_Sequence_Diagram
+ title UC005: Quản lý hồ sơ ứng viên - Sequence Diagram
+
+actor "Ứng viên" as User
+participant "Giao diện hồ sơ cá nhân" as UI
+participant "Hệ thống " as Auth
+participant "Cơ sở dữ liệu" as DB
+
+User -> UI: 1. Truy cập trang hồ sơ cá nhân
+activate UI
+UI -> Auth: 2. Lấy thông tin cá nhân hiện tại
+activate Auth
+Auth -> DB: 3. Truy vấn thông tin cá nhân
+activate DB
+DB --> Auth: 4. Trả về thông tin cá nhân
+Auth --> UI: 5. Hiển thị thông tin cá nhân
+
+User -> UI: 6. Chỉnh sửa thông tin
+User -> UI: 7. Cập nhật thông tin
+UI -> Auth: 8. Gửi thông tin cập nhật
+Auth -> DB: 9. Cập nhật thông tin cá nhân
+DB --> Auth: 10. Kết quả cập nhật
+
+alt Thông tin hợp lệ
+    Auth --> UI:  Cập nhật thành công
+    UI --> User:  Thông báo thành công
+    note right: Thông tin cá nhân được cập nhật
+else Thông tin không hợp lệ
+    Auth --> UI:  Cập nhật thất bại
+    UI --> User:  Hiển thị lỗi
+    note right: Exception: Thông tin không hợp lệ
+end
+
+deactivate DB
+deactivate Auth
+deactivate UI
+
+@enduml

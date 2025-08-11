@@ -1,0 +1,30 @@
+@startuml UC020_CandidateManagement_Sequence_Diagram
+ title UC020: Quản lý ứng viên - Sequence Diagram
+
+actor "Nhà tuyển dụng" as Employer
+participant "Giao diện quản lý ứng viên" as UI
+participant "Hệ thống" as System
+participant "Cơ sở dữ liệu" as DB
+
+Employer -> UI: 1. Xem hồ sơ ứng viên
+activate UI
+UI -> System: 2. Yêu cầu danh sách ứng viên đã ứng tuyển
+activate System
+System -> DB: 3. Lấy danh sách ứng viên và trạng thái
+DB --> System: 4. Trả về danh sách ứng viên
+System --> UI: 5. Trả về dữ liệu ứng viên
+UI --> Employer: 6. Hiển thị danh sách ứng viên
+
+Employer -> UI: 7. Chọn duyệt hoặc từ chối ứng viên
+UI -> System: 8. Gửi quyết định duyệt/từ chối
+System -> DB: 9. Cập nhật trạng thái hồ sơ ứng viên
+DB --> System: 10. Kết quả cập nhật
+System --> UI: 11. Thông báo cập nhật thành công
+UI --> Employer: 12. Hiển thị thông báo thành công
+note right: Trạng thái hồ sơ được cập nhật
+
+deactivate DB
+deactivate System
+deactivate UI
+
+@enduml 

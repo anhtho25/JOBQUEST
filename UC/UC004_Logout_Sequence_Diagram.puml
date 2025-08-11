@@ -1,0 +1,20 @@
+@startuml UC004_Logout_Sequence_Diagram
+ title UC004: Đăng xuất - Sequence Diagram
+
+actor "Ứng viên, Nhà tuyển dụng, Quản trị viên" as User
+participant "Giao diện" as UI
+participant "Hệ thống  " as Auth
+
+User -> UI: 1. Chọn "Đăng xuất"
+activate UI
+UI -> Auth: 2. Gửi yêu cầu đăng xuất
+activate Auth
+Auth -> Auth: 3. Xóa session
+Auth --> UI: 4. Xác nhận đăng xuất
+UI --> User: 5. Chuyển hướng về trang chủ
+note right: Người dùng đã đăng xuất thành công
+
+deactivate Auth
+deactivate UI
+
+@enduml

@@ -1,0 +1,30 @@
+@startuml UC015_AppliedJobs_Sequence_Diagram
+ title UC015: Việc làm đã ứng tuyển - Sequence Diagram
+
+actor "Ứng viên" as User
+participant "Giao diện quản lý ứng tuyển" as UI
+participant "Hệ thống" as System
+participant "Cơ sở dữ liệu" as DB
+
+User -> UI: 1. Truy cập trang quản lý việc làm đã ứng tuyển
+activate UI
+UI -> System: 2. Yêu cầu danh sách đơn ứng tuyển
+activate System
+System -> DB: 3. Lấy danh sách đơn ứng tuyển và trạng thái
+DB --> System: 4. Trả về danh sách đơn ứng tuyển và trạng thái
+System --> UI: 5. Trả về dữ liệu ứng tuyển
+UI --> User: 6. Hiển thị danh sách và trạng thái
+
+User -> UI: 7. Chọn đơn ứng tuyển để xem chi tiết
+UI -> System: 8. Yêu cầu chi tiết đơn ứng tuyển
+System -> DB: 9. Lấy chi tiết đơn ứng tuyển
+DB --> System: 10. Trả về chi tiết đơn ứng tuyển
+System --> UI: 11. Trả về chi tiết đơn ứng tuyển
+UI --> User: 12. Hiển thị chi tiết đơn ứng tuyển
+note right: Thông tin trạng thái được hiển thị
+
+deactivate DB
+deactivate System
+deactivate UI
+
+@enduml

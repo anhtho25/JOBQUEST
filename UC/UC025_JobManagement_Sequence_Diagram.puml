@@ -1,0 +1,37 @@
+@startuml UC025_JobManagement_Sequence_Diagram
+ title UC025: Quản lý việc làm - Sequence Diagram
+
+actor "Quản trị viên" as Admin
+participant "Giao diện quản lý việc làm" as UI
+participant "Hệ thống" as System
+participant "Cơ sở dữ liệu" as DB
+
+Admin -> UI: 1. Xem danh sách tất cả các tin tuyển dụng
+activate UI
+UI -> System: 2. Yêu cầu danh sách tin tuyển dụng
+activate System
+System -> DB: 3. Lấy danh sách tin tuyển dụng
+DB --> System: 4. Trả về danh sách tin tuyển dụng
+System --> UI: 5. Trả về dữ liệu tin tuyển dụng
+UI --> Admin: 6. Hiển thị danh sách tin tuyển dụng
+
+Admin -> UI: 7. Tìm kiếm tin tuyển dụng
+UI -> System: 8. Gửi yêu cầu tìm kiếm
+System -> DB: 9. Tìm kiếm tin tuyển dụng
+DB --> System: 10. Trả về kết quả tìm kiếm
+System --> UI: 11. Trả về kết quả tìm kiếm
+UI --> Admin: 12. Hiển thị kết quả tìm kiếm
+
+Admin -> UI: 13. Xóa tin tuyển dụng (nếu cần)
+UI -> System: 14. Gửi yêu cầu xóa tin tuyển dụng
+System -> DB: 15. Xóa tin tuyển dụng
+DB --> System: 16. Kết quả xóa
+System --> UI: 17. Thông báo kết quả xóa
+UI --> Admin: 18. Hiển thị thông báo kết quả
+note right: Quản lý việc làm thành công
+
+deactivate DB
+deactivate System
+deactivate UI
+
+@enduml 
